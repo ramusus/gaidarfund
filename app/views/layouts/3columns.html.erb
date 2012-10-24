@@ -1,0 +1,14 @@
+<% content_for :main_column do %>
+    <div class="l-column-710">
+        <%= content_for?(:content) ? yield(:content) : yield %>
+        <div class="l-column-210">
+            <%= yield(:right_column) %>
+            <h2>Оставайтесь на&nbsp;связи</h2>
+            <div>
+                <img src="/img/tmp/social-links.png" alt=""/>
+            </div>
+        </div>
+    </div>
+<% end %>
+
+<%= render :template => 'layouts/application' %>

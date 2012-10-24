@@ -1,0 +1,22 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: gaidarfund_project
+  pool: 5
+  username: gaidarfund_project
+  password: eqd_ew3s_sd3kic
+
+test:
+  adapter: sqlite3
+  database: db/test.sqlite3
+  pool: 5
+  timeout: 5000
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: award_gaidarfund_production
+  pool: 5
+  username: award
+  password: w43i76gwhqbeirtguw

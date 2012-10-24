@@ -1,0 +1,171 @@
+<% content_for :title do %><%= @article.title.html_safe %><% end %>
+
+<% content_for :body_class do %>c-article-page<% end %>
+
+<% content_for :extra_head do %>
+    <script type="text/javascript">
+        $(function() {
+            $('li.item.articles a.link')
+                .addClass('selected')
+                .html(function(i, html) {
+                    return html + ' <b class="b-graphics b-graphics-down-arrow"><b></b></b>';
+                });
+        });
+    </script>
+<% end %>
+
+<% content_for :left_column do %>
+    <h2 class="b-navigation-title">Проекты
+        <br/>
+        Фонда
+    </h2>
+    <div class="l-shift-20">
+        <ul class="b-menu">
+            <li class="item">
+                <a class="link c-project-link" href="?menu-1">О проектах Фонда</a>
+            </li>
+            <li class="item">
+                <a class="link c-project-link" href="?menu-2">Стипендии</a>
+            </li>
+            <li class="item">
+                <a class="link c-project-link" href="?menu-3">Гайдаровские чтения</a>
+            </li>
+            <li class="item">
+                <a class="link c-project-link" href="?menu-4">Гайдаровский клуб</a>
+            </li>
+            <li class="item">
+                <a class="link c-project-link" href="?menu-5">Гайдаровский форум</a>
+            </li>
+            <li class="item">
+                <a class="link c-project-link" href="?menu-6">Гранты USRF</a>
+            </li>
+            <li class="item">
+                <a class="link c-project-link" href="?menu-7"><em>Все проекты</em></a>
+            </li>
+        </ul>
+    </div>
+    <h2 class="b-navigation-title">Календарь</h2>
+    <div class="l-shift-20">
+        <ul class="b-menu">
+            <li class="item">
+                <a class="link c-project-link" href="?menu-11">О проектах Фонда</a>
+            </li>
+        </ul>
+    </div>
+    <h2 class="b-navigation-title">Главное</h2>
+    <div class="l-shift-20">
+        <ul class="b-menu">
+            <li class="item">
+                <a class="link c-all-link" href="?menu-21">Все</a>
+            </li>
+            <li class="item">
+                <a class="link disabled c-news-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b>
+                    </b>Новости</a>
+            </li>
+            <li class="item">
+                <a class="link disabled c-about-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b>
+                    </b>Отчеты</a>
+            </li>
+            <li class="item">
+                <a class="link disabled c-article-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b>
+                    </b>Разбор архивных документов</a>
+            </li>
+            <li class="item">
+                <a class="link disabled c-project-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b>
+                    </b>Глубокое чтение</a>
+            </li>
+            <li class="item">
+                <a class="link disabled c-article-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b>
+                    </b>Интервью</a>
+            </li>
+            <li class="item">
+                <a class="link c-article-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b>
+                    </b>Видео</a>
+            </li>
+            <li class="item">
+                <a class="link disabled c-article-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b>
+                    </b>Переводы рецензий книг</a>
+            </li>
+            <li class="item">
+                <a class="link disabled c-gaidar-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b>
+                    </b>Гайдар-клуб</a>
+            </li>
+            <li class="item">
+                <a class="link disabled c-project-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b>
+                    </b>Гайдаровские чтения</a>
+            </li>
+            <li class="item">
+                <a class="link disabled c-project-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b>
+                    </b>ЦНСИ</a>
+            </li>
+            <li class="item">
+                <a class="link disabled c-project-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b>
+                    </b>События на подпроектах</a>
+            </li>
+            <li class="item">
+                <a class="link disabled c-gaidar-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b>
+                    </b>Жизнь Фонда</a>
+            </li>
+        </ul>
+    </div>
+<% end %>
+
+<% content_for :main_column do %>
+    <div class="l-column-536 l-intercolumn-24">
+        <div class="b-share">
+            <img src="/img/tmp/likes.png" alt=""/>
+        </div><h1><%= @article.title.html_safe %></h1>
+        <div class="b-meta">
+            <div class="meta">
+                <span class="date"><%= l @article.published_at, :format => '%d %B %Y' %></span>
+                <span class="b-square">■</span>
+                <strong class="author">Яков Кельберт</strong>
+            </div>
+            <div class="disqussion">
+                <a class="link" href="?">Обсуждение (37)</a>
+            </div>
+        </div>
+        <p class="b-intro">
+            <strong>Поздравляем победителей, одержавших победительную победу над побеждёнными и&nbsp;проигравшими. Поздравляем убедительных победителей, триумфально одержавших победительную победу над побеждёнными и&nbsp;проигравшими.</strong>
+        </p>
+        <%= @article.content.html_safe %>
+        <div class="b-meta b-meta-separated">
+            <div class="meta">
+                <img src="/img/tmp/likes.png" alt=""/>
+            </div>
+            <div class="disqussion">
+                <a class="link" href="?">Обсуждение (37)</a>
+            </div>
+        </div>
+        <div class="b-nearest-articles">
+            <a class="link c-article-link" href="?nearest-1"><b class="b-graphics b-graphics-left-arrow"><b></b>
+                </b>Пойман с&nbsp;поличным Квинтилий Вар</a>
+            <a class="link next c-about-link" href="?nearest-2"><b class="b-graphics b-graphics-right-arrow"><b></b>
+                </b>Румянцев побледнел но&nbsp;сдержался</a>
+        </div>
+    </div>
+    <div class="l-column-150">
+        <h2 class="b-context-title">Ещё на эту тему</h2>
+        <div class="l-shift-20">
+            <ul class="b-context-links">
+                <li class="item">
+                    <a class="link" href="?see-also-1">Интервью с А. В. Суворовым</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="?see-also-2">Интервью с фельдмаршалом Румянцевым</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="?see-also-3">Интервью с Квинтилием Варом</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="?see-also-4">Жестокие слова в жестоком старом мире</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="?see-also-5">Предводитель галлов покаялся и ушел в пустыню</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+<% end %>
+
+<%= render :template => 'layouts/application' %>

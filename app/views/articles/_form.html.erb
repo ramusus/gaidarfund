@@ -1,0 +1,69 @@
+<%= form_for(@article) do |f| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :subtitle %><br />
+    <%= f.text_area :subtitle %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.text_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :main %><br />
+    <%= f.check_box :main %>
+  </div>
+  <div class="field">
+    <%= f.label :hide %><br />
+    <%= f.check_box :hide %>
+  </div>
+  <div class="field">
+    <%= f.label :hide_discussions %><br />
+    <%= f.check_box :hide_discussions %>
+  </div>
+  <div class="field">
+    <%= f.label :checked %><br />
+    <%= f.check_box :checked %>
+  </div>
+  <div class="field">
+    <%= f.label :old_id %><br />
+    <%= f.number_field :old_id %>
+  </div>
+  <div class="field">
+    <%= f.label :published_at %><br />
+    <%= f.datetime_select :published_at %>
+  </div>
+  <div class="field">
+    <%= f.label :title_seo %><br />
+    <%= f.text_field :title_seo %>
+  </div>
+  <div class="field">
+    <%= f.label :right_column %><br />
+    <%= f.text_area :right_column %>
+  </div>
+  <div class="field">
+    <%= f.label :project_id %><br />
+    <%= f.number_field :project_id %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br />
+    <%= f.number_field :type %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

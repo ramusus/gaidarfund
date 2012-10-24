@@ -1,0 +1,35 @@
+<h1>Listing subprojects</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Color</th>
+    <th>Sign</th>
+    <th>Status</th>
+    <th>Html likes</th>
+    <th>Html partners</th>
+    <th>Html counters</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @subprojects.each do |subproject| %>
+  <tr>
+    <td><%= subproject.title %></td>
+    <td><%= subproject.color %></td>
+    <td><%= subproject.sign %></td>
+    <td><%= subproject.status %></td>
+    <td><%= subproject.likes %></td>
+    <td><%= subproject.partners %></td>
+    <td><%= subproject.counters %></td>
+    <td><%= link_to 'Show', subproject %></td>
+    <td><%= link_to 'Edit', edit_subproject_path(subproject) %></td>
+    <td><%= link_to 'Destroy', subproject, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Subproject', new_subproject_path %>

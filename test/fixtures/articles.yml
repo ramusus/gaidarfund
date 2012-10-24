@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  subtitle: MyText
+  image: 
+  main: false
+  hide: false
+  hide_discussions: false
+  checked: false
+  old_id: 1
+  published_at: 2012-10-25 00:28:48
+  title_seo: MyString
+  right_column: MyText
+  project_id: 1
+  type: 1
+
+two:
+  title: MyString
+  subtitle: MyText
+  image: 
+  main: false
+  hide: false
+  hide_discussions: false
+  checked: false
+  old_id: 1
+  published_at: 2012-10-25 00:28:48
+  title_seo: MyString
+  right_column: MyText
+  project_id: 1
+  type: 1

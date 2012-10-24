@@ -1,0 +1,38 @@
+ru:
+  time:
+    formats:
+      default: "%e %B"
+  activerecord:
+    models:
+      page: "Страница"
+      user: "Пользователь"
+      chunk: "Блок"
+      news: "Новость"
+    attributes:
+      page:
+        title: "Заголовок"
+        slug: "Адрес"
+        content: "Основной блок"
+      news:
+        title: "Заголовок"
+        subtitle: "Подзаголовок"
+        date: "Дата"
+        content: "Основной блок"
+        important: "Выделить в списке"
+      chunk:
+        title: "Название"
+        code: "Код"
+        content: "Содержимое"
+        visible: "Отображать?"
+      user:
+        email: "Email"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
+        reset_password_sent_at: "Сброс пароля"
+        remember_created_at: "Сохранение авторизации"
+        sign_in_count: "Кол-во авторизаций"
+        current_sign_in_at: "Текущая авторизация"
+        last_sign_in_at: "Предыдущая авторизация"
+        current_sign_in_ip: "Текущий IP"
+        last_sign_in_ip: "Предыдущий IP"
+        email_notifications: "Оповещать о новых заявках и вопросах"

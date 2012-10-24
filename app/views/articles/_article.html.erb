@@ -1,0 +1,15 @@
+<% if article %>
+    <div class="<% if defined?(featured) %>b-featured-article<% else %>b-article b-tiles-item<% if article.image.file? %> b-article-illustrated<% end %><% end %>">
+        <a class="link c-article-link" href="<%= article_path(article) %>">
+            <div class="b-section-label c-article-block"><%= article.type.name %></div>
+            <% if article.image.file? %>
+                <%= image_tag(article.image(:square), :class => 'image', :alt => article.title) %>
+            <% end %>
+            <% if not defined?(featured) %>
+                <div class="date"><%= l article.published_at, :format => '%d %B %Y' %></div>
+            <% end %>
+            <h3 class="title"><%= article.title.html_safe %></h3>
+        </a>
+        <p class="desc"><%= article.subtitle.html_safe %></p>
+    </div>
+<% end %>

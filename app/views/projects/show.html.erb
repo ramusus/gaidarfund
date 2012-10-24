@@ -1,0 +1,229 @@
+<% content_for :body_class do %><%= 'l-%s-page' % [@project.subdomain] %><% end %>
+
+<% content_for :extra_head do %>
+    <script type="text/javascript">
+        $(function() {
+            $('li.item.projects a.link')
+                .addClass('selected')
+                .html(function(i, html) {
+                    return html + ' <b class="b-graphics b-graphics-down-arrow"><b></b></b>';
+                });
+        });
+    </script>
+<% end %>
+
+<% content_for :left_column do %>
+    <h2 class="b-navigation-title"><%= @project.about_title.blank? ? 'О проекте' : @project.about_title %></h2>
+    <div class="l-shift-20">
+        <ul class="b-menu b-menu-separated">
+            <li class="item">
+                <a class="link c-project-link" href="?menu-11">Положение</a>
+            </li>
+            <li class="item">
+                <a class="link c-project-link" href="?menu-11">Жюри</a>
+            </li>
+            <li class="item">
+                <a class="link c-project-link" href="?menu-11">Победители</a>
+            </li>
+        </ul>
+    </div>
+    <h2 class="b-navigation-title"><%= @project.news_title.blank? ? 'Лента новостей' : @project.news_title %></h2>
+    <div class="l-shift-20">
+        <ul class="b-menu b-menu-separated">
+            <li class="item">
+                <a class="link c-about-link" href="?menu-21"><b class="b-graphics b-graphics-check"><b></b>
+                    </b>Лекции</a>
+            </li>
+            <li class="item">
+                <a class="link c-news-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b>
+                    </b>Новости</a>
+            </li>
+            <li class="item">
+                <a class="link c-article-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b>
+                    </b>Публикации</a>
+            </li>
+            <li class="item">
+                <a class="link c-project-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b>
+                    </b>Спецпроекты</a>
+            </li>
+        </ul>
+    </div>
+    <h2 class="b-navigation-title">Другие
+        <br/>
+        гранты
+        <br/>
+        Фонда
+    </h2>
+    <div class="l-shift-20">
+        <ul class="b-menu">
+            <li class="item">
+                <a class="link c-project-link" href="?menu-11">Стипендии</a>
+            </li>
+            <li class="item">
+                <a class="link c-project-link" href="?menu-11">Гранты USRF</a>
+            </li>
+            <li class="item">
+                <a class="link c-project-link" href="?menu-11">О проектах Фонда</a>
+            </li>
+            <li class="item">
+                <a class="link c-project-link" href="?menu-11">Больше о Фонде</a>
+            </li>
+        </ul>
+    </div>
+<% end %>
+
+<% content_for :content do %>
+    <div class="l-column-472 l-intercolumn-28">
+        <div class="b-award-header">
+            <div class="b-share">
+                <img src="/img/tmp/likes.png" alt=""/>
+            </div><h1 class="title"><a class="link" href="/projects/award/"><span class="text">Премия Егора Гайдара 2012</span>
+                </a></h1>
+            <div class="event">
+                <strong class="date">15 ноября —</strong>
+                церемония награждения
+            </div>
+            <p class="label">
+                Статуэтка премии.
+                <br/>
+                Авторы:
+                <br/>
+                Андрей Балашов и&nbsp;Вячеслав Бухаев
+            </p>
+        </div>
+        <div class="b-featured-article">
+            <a class="link c-gaidar-link" href="/projects/award/article.html">
+                <div class="b-section-label c-gaidar-block">Поздравляем</div>
+                <img class="image" src="/img/tmp/article-1.jpg" alt=""/><h3 class="title">Поздравляем победителей, триумфально одержавших победительную победу над&nbsp;побеждёнными и&nbsp;проигравшими!</h3></a>
+            <p class="desc">Слова эти, ставшие крылатыми, приписываются Екатерине&nbsp;II, и&nbsp;сказала она их&nbsp;будто&nbsp;бы, когда А.&nbsp;В.&nbsp;Суворов, отличавшийся смелой самостоятельностью в&nbsp;своих действиях командира, был предан военному суду за&nbsp;штурм в&nbsp;1773 году крепости Туртукай, предпринятый вопреки приказанию фельдмаршала Румянцева.</p>
+        </div>
+        <div class="b-tiles">
+            <div class="b-article b-article-illustrated b-tiles-item">
+                <a class="link c-project-link" href="/publications/article.html">
+                <div class="b-section-label c-project-block">Спецпроект</div>
+                <img class="image" src="/img/tmp/article-2.jpg" alt="" width="140" height="140"/>
+                <div class="date">25&nbsp;сентября 2012</div>
+                <h3 class="title">Как проходила либерализация цен? Новый раздел проекта &laquo;Правительство Егора Гайдара: день за&nbsp;днем&raquo;</h3>
+                /a>
+                <p class="desc">С&nbsp;помощью архивных документов и&nbsp;инфографики мы&nbsp;показываем, как изменялись цены в&nbsp;январе-феврале 1992&nbsp;года.</p>
+            </div>
+            <div class="b-article b-article-illustrated b-tiles-item">
+                <a class="link c-about-link" href="/publications/article.html">
+                    <div class="b-section-label c-about-block">Гайдар-клуб</div>
+                    <img class="image" src="/img/tmp/article-3.jpg" alt="" width="140" height="140"/>
+                    <div class="date">25&nbsp;сентября 2012</div>
+                    <h3 class="title">Лешек Бальцерович: &laquo;Людям не&nbsp;нравится слово &bdquo;шок&ldquo;, поэтому я&nbsp;предпочитаю говорить о&nbsp;радикальном подходе&raquo;.</h3></a>
+                <p class="desc">Идеолог польских экономических реформ рассказал Фонду Егора Гайдара о&nbsp;том, как изучение рыночной экономики из&nbsp;хобби превратилось в&nbsp;дело всей жизни.</p>
+            </div>
+            <div class="b-tiles-item">
+                <h2 class="b-section-label c-news-block"><a class="link" href="/publications/">Хроника</a></h2>
+                <ul class="b-news">
+                    <li class="item">
+                        <div class="date">17&nbsp;октября 2012</div>
+                        <h3 class="title"><a class="link c-news-hidden-link" href="/publications/article.html?id=1">Идеолог изложил свою идеологию</a></h3>
+                    </li>
+                    <li class="item">
+                        <div class="date">11&nbsp;октября 2012</div>
+                        <h3 class="title"><a class="link c-news-hidden-link" href="/publications/article.html?id=2">Гул затих, я&nbsp;вышел на&nbsp;подмостки</a></h3>
+                    </li>
+                    <li class="item">
+                        <div class="date">29&nbsp;сентября 2012</div>
+                        <h3 class="title"><a class="link c-news-hidden-link" href="/publications/article.html?id=3">На&nbsp;сегодня новостей нет</a></h3>
+                    </li>
+                    <li class="item">
+                        <div class="date">17&nbsp;сентября 2012</div>
+                        <h3 class="title"><a class="link c-news-hidden-link" href="/publications/article.html?id=4">Спокойно, товарищ, спокойно</a></h3>
+                    </li>
+                    <li class="item">
+                        <div class="date">30&nbsp;августа 2012</div>
+                        <h3 class="title"><a class="link c-news-hidden-link" href="/publications/article.html?id=5">Границы ключ переломлен пополам, вся грязь превратилась в&nbsp;голый лёд</a></h3>
+                    </li>
+                    <li class="item">
+                        <div class="date">1&nbsp;июля 2012</div>
+                        <h3 class="title"><a class="link c-news-hidden-link" href="/publications/article.html?id=6">Григорий Сковорода: &laquo;мир ловил меня, да&nbsp;не&nbsp;поймал&raquo;</a></h3>
+                    </li>
+                </ul>
+            </div>
+            <div class="b-article b-article-illustrated b-tiles-item">
+                <a class="link c-article-link" href="/publications/article.html">
+                    <div class="b-section-label c-article-block">Публикация</div>
+                    <img class="image" src="/img/tmp/article-5.jpg" alt="" width="140" height="140"/>
+                    <div class="date">3&nbsp;сентября 2012</div>
+                    <h3 class="title">Елена Пальцева. Как сделать курс по&nbsp;экономике интересным</h3></a>
+                <p class="desc">8&nbsp;августа 2012 года начала работать первая совместная летняя школа РЭШ и&nbsp;Фонда Егора Гайдара по&nbsp;современной экономической теории. Профессор Стокгольмской школы экономики Елена Пальцева прочитала 20&nbsp;преподавателям из&nbsp;российских региональных вузов курс &laquo;Микроэкономика: промежуточный уровень&raquo;.</p>
+            </div>
+            <div class="b-article b-article-illustrated b-tiles-item">
+                <a class="link c-project-link" href="/publications/article.html">
+                    <div class="b-section-label c-project-block">Спецпроект</div>
+                    <img class="image" src="/img/tmp/article-4.jpg" alt="" width="140" height="140"/>
+                    <div class="date">28&nbsp;августа 2012</div>
+                    <h3 class="title">Лешек Бальцерович: &laquo;Людям не&nbsp;нравится слово &bdquo;шок&ldquo;, поэтому я&nbsp;предпочитаю говорить о&nbsp;радикальном подходе&raquo;.</h3></a>
+                <p class="desc">Идеолог польских экономических реформ рассказал Фонду Егора Гайдара о&nbsp;том, как изучение рыночной экономики из&nbsp;хобби превратилось в&nbsp;дело всей жизни и&nbsp;о&nbsp;реформах.</p>
+            </div>
+            <div class="b-vote b-tiles-item">
+                <div class="b-section-label c-about-block">Опрос</div>
+                <h3 class="title">Ну&nbsp;что? Будем играть в&nbsp;несознанку?</h3>
+                <form class="form" method="post" action="?">
+                    <fieldset>
+                        <div class="b-field b-radio">
+                            <div class="item">
+                                <input id="f-vote-1" class="input" type="radio" name="vote" value="1"/>
+                                <label class="label" for="f-vote-1">Будем</label>
+                            </div>
+                            <div class="item">
+                                <input id="f-vote-2" class="input" type="radio" name="vote" value="2"/>
+                                <label class="label" for="f-vote-2">Не&nbsp;будем</label>
+                            </div>
+                            <div class="item">
+                                <input id="f-vote-3" class="input" type="radio" name="vote" value="3"/>
+                                <label class="label" for="f-vote-3">Сознание&nbsp;&mdash; это одна из&nbsp;форм, в&nbsp;которой объективная действительность отражается в&nbsp;психике человека</label>
+                            </div>
+                            <div class="item">
+                                <input id="f-vote-4" class="input" type="radio" name="vote" value="4"/>
+                                <label class="label" for="f-vote-4">По&nbsp;пятьдесят!</label>
+                            </div>
+                        </div>
+                        <input class="b-submit" type="submit" value="Отослать"/>
+                    </fieldset>
+                </form><a class="results-link" href="?vote-results">Результаты</a>
+            </div>
+            <div class="b-article b-article-illustrated b-tiles-item">
+                <a class="link c-news-link" href="/publications/article.html">
+                    <div class="b-section-label c-news-block">Новость</div>
+                    <img class="image" src="/img/tmp/article-6.jpg" alt="" width="140" height="140"/>
+                    <div class="date">4&nbsp;июля 2012</div>
+                    <h3 class="title">Как проходила либерализация цен? Новый раздел проекта &laquo;Правительство Егора Гайдара: день за&nbsp;днем&raquo;</h3></a>
+                <p class="desc">С&nbsp;помощью архивных документов и&nbsp;инфографики мы&nbsp;показываем, как изменялись цены в&nbsp;январе-феврале 1992 года и&nbsp;как на&nbsp;них реагировало население.</p>
+            </div>
+            <blockquote class="b-quote b-tiles-item">
+                <div class="b-section-label c-about-block">Реплика</div>
+                <q>
+                    <a class="link" href="?quote-1"><b class="b-graphics b-graphics-open-quote"><b></b>
+                        </b>Если не&nbsp;молиться по-настоящему, не&nbsp;иметь подлинной памяти о&nbsp;Боге, то&nbsp;невыносимо трудно жить&nbsp;&mdash; жизнью истинной, а&nbsp;не&nbsp;тенью ее<b class="b-graphics b-graphics-close-quote"><b></b>
+                        </b></a>
+                </q>
+                <span class="author">&mdash;&nbsp;игумен Нектарий (Морозов)</span>
+            </blockquote>
+            <div class="b-article b-tiles-item">
+                <a class="link c-news-link" href="/publications/article.html">
+                    <div class="b-section-label c-news-block">Новость</div>
+                    <div class="date">1&nbsp;июня 2012</div>
+                    <h3 class="title">Как проходила либерализация цен? Новый раздел проекта &laquo;Правительство Егора Гайдара: день за&nbsp;днем&raquo;</h3></a>
+                <p class="desc">С&nbsp;помощью архивных документов и&nbsp;инфографики мы&nbsp;показываем, как изменялись цены в&nbsp;январе-феврале 1992 года и&nbsp;как на&nbsp;них реагировало население.</p>
+            </div>
+        </div>
+        <div class="b-more">
+            <a class="link c-news-link" href="?more">Ещё</a>
+        </div>
+    </div>
+<% end %>
+
+<% content_for :right_column do %>
+    <div class="l-column-210 l-lift-686">
+        <div class="l-shift-20">
+            <%= @project.right_block.html_safe %>
+        </div>
+    </div>
+<% end %>
+
+<%= render :template => 'layouts/3columns' %>

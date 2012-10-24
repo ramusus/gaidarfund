@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <title>Фонд Егора Гайдара</title>
+        <link rel="stylesheet" type="text/css" href="/css/main.css" media="screen"/>
+        <!--[if lte IE 7]>
+        <link rel="stylesheet" type="text/css" href="/css/ie7.css"/>
+        <![endif]-->
+        <script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="/js/jquery.slideshow.js"></script>
+        <script type="text/javascript" src="/js/jquery.masonry.min.js"></script>
+        <script type="text/javascript" src="/js/jquery.hints.js"></script>
+        <script type="text/javascript" src="/js/main.js"></script>
+        <%= csrf_meta_tags %>
+        <%= yield :extra_head %>
+        <script type="text/javascript">
+            $(function() {
+                $('.b-tiles').masonry({
+                    itemSelector: '.b-tiles-item'
+                });
+            });
+        </script>
+    </head>
+    <body class="<%= yield(:body_class) %>">
+        <div class="l-container">
+            <div class="l-header">
+                <a class="b-logo" href="/"> <img class="image" src="/img/logo.png" alt="Фонд Егора Гайдара"/> </a>
+                <ul class="b-main-menu">
+                    <li class="item about">
+                        <%= link_to 'О Фонде', '/publications/', :class => 'link' %>
+                    </li>
+                    <li class="item gaidar">
+                        <%= link_to 'О Егоре Гайдаре', '/publications/', :class => 'link' %>
+                    </li>
+                    <li class="item articles">
+                        <%= link_to 'Публикации', articles_path(), :class => 'link' %>
+                    </li>
+                    <li class="item projects">
+                        <%= link_to 'Проекты', projects_path(), :class => 'link' %>
+                    </li>
+                    <li class="item news">
+                        <%= link_to 'Новости', '', :class => 'link' %>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="l-content l-wrapper">
+                <div class="l-column-210 l-intercolumn-40">
+                    <form class="b-search-form" method="get" action="?">
+                        <fieldset>
+                            <label class="b-hint-label" for="f-query">Поиск по сайтам Фонда</label>
+                            <input id="f-query" class="b-input" type="text" name="query"/>
+                        </fieldset>
+                    </form>
+                    <%= yield(:left_column) %>
+                </div>
+                <%= content_for?(:main_column) ? yield(:main_column) : yield %>
+            </div>
+
+            <div class="l-extra">
+                <h2 class="b-first-title">Партнёры</h2>
+                <ul class="b-partners">
+                    <li class="item">
+                        <a class="link" href="?partner-1"> <img class="image" src="/img/tmp/partner-1.png" alt=""/> </a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="?partner-1"> <img class="image" src="/img/tmp/partner-1.png" alt=""/> </a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="?partner-1"> <img class="image" src="/img/tmp/partner-1.png" alt=""/> </a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="?partner-1"> <img class="image" src="/img/tmp/partner-1.png" alt=""/> </a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="?partner-1"> <img class="image" src="/img/tmp/partner-1.png" alt=""/> </a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="?partner-1"><img class="image" src="/img/tmp/partner-1.png" alt=""/></a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="?partner-1"> <img class="image" src="/img/tmp/partner-1.png" alt=""/> </a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="?partner-1"> <img class="image" src="/img/tmp/partner-1.png" alt=""/> </a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="?partner-1"> <img class="image" src="/img/tmp/partner-1.png" alt=""/> </a>
+                    </li>
+                    <li class="item">
+                        <a class="link" href="?partner-1"> <img class="image" src="/img/tmp/partner-1.png" alt=""/> </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="l-footer">
+            <div class="l-inner l-wrapper">
+                <div class="l-column-210 l-intercolumn-30 l-shift-10">
+                    <ul class="b-featured-menu">
+                        <li class="item">
+                            <a class="link c-about-link" href="?footer-1">О Фонде</a>
+                        </li>
+                        <li class="item">
+                            <a class="link c-news-link" href="?footer-2">Новости</a>
+                        </li>
+                        <li class="item">
+                            <a class="link c-article-link" href="?footer-3">Публикации</a>
+                        </li>
+                        <li class="item">
+                            <a class="link c-news-link" href="?footer-4">Анонсы мероприятий</a>
+                        </li>
+                        <li class="item">
+                            <a class="link c-news-link" href="?footer-5">Дискуссии</a>
+                        </li>
+                        <li class="item">
+                            <a class="link c-news-link" href="?footer-6">Блоги</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="l-column-210 l-intercolumn-30">
+                    <ul class="b-featured-menu b-featured-menu-untitled">
+                        <li class="item">
+                            <a class="link c-project-link" href="?footer-11">Премия</a>
+                        </li>
+                        <li class="item">
+                            <a class="link c-project-link" href="?footer-12">Стипендии</a>
+                        </li>
+                        <li class="item">
+                            <a class="link c-project-link" href="?footer-13">Гранты USBF</a>
+                        </li>
+                        <li class="item">
+                            <a class="link c-about-link" href="?footer-14">Контакты</a>
+                        </li>
+                        <li class="item">
+                            <a class="link c-gaidar-link" href="?footer-15">Как помочь Фонду</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="l-column-230 l-intercolumn-30">
+                    <h2 class="b-featured-title"><a class="link" href="?footer-21">Проекты</a></h2>
+                    <div class="l-shift-20">
+                        <ul class="b-featured-menu">
+                            <li class="item">
+                                <a class="link c-project-link" href="?footer-22">Гайдаровские чтения</a>
+                            </li>
+                            <li class="item">
+                                <a class="link c-project-link" href="?footer-23">Гайдаровский клуб</a>
+                            </li>
+                            <li class="item">
+                                <a class="link c-project-link" href="?footer-24">Гайдаровский форум</a>
+                            </li>
+                            <li class="item">
+                                <a class="link c-project-link" href="?footer-25">Лекция в Политехническом музее</a>
+                            </li>
+                            <li class="item">
+                                <a class="link c-project-link" href="?footer-26">Повышение квалификации</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="l-column-210">
+                    <ul class="b-featured-menu b-featured-menu-untitled">
+                        <li class="item">
+                            <a class="link c-project-link" href="?footer-31">Летний лагерь</a>
+                        </li>
+                        <li class="item">
+                            <a class="link c-project-link" href="?footer-32">Конкурс теоретического наследия</a>
+                        </li>
+                        <li class="item">
+                            <a class="link c-gaidar-link" href="?footer-33">Архив Гайдара</a>
+                        </li>
+                        <li class="item">
+                            <a class="link c-project-link" href="?footer-34">День за днём</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="l-wrapper">
+                <div class="l-column-50p">
+                    <div class="b-bricks">
+                        <span class="line line-1"><span class="brick brick-1-1"></span></span>
+                        <span class="line line-2"></span>
+                        <span class="line line-3"><span class="brick brick-3-1"></span></span>
+                        <span class="line line-4"><span class="brick brick-4-1"></span></span>
+                        <span class="line line-5"></span>
+                    </div>
+                </div>
+                <div class="l-column-50p">
+                    <div class="l-shift-10">
+                        <div class="b-copyright">
+                            2010&ndash;2012&nbsp;&copy; <a class="link" href="/">Фонд Егора Гайдара</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
