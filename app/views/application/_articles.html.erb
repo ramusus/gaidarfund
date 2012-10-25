@@ -1,0 +1,7 @@
+<%= render :partial => 'article', :locals => {:article => article_main, :featured => true } %>
+<div class="b-tiles">
+    <%= render :partial => 'article', :collection => articles || 'No pubs.' %>
+</div>
+<div class="b-more">
+    <a class="link c-article-link" href="?more">Ещё</a>
+</div>

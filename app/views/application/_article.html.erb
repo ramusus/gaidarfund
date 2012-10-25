@@ -1,7 +1,9 @@
 <% if article %>
     <div class="<% if defined?(featured) %>b-featured-article<% else %>b-article b-tiles-item<% if article.image.file? %> b-article-illustrated<% end %><% end %>">
         <a class="link c-article-link" href="<%= article_path(article) %>">
-            <div class="b-section-label c-article-block"><%= article.type.name %></div>
+            <% if article.type %>
+                <div class="b-section-label c-article-block"><%= article.type.name %></div>
+            <% end %>
             <% if article.image.file? %>
                 <%= image_tag(article.image(:square), :class => 'image', :alt => article.title) %>
             <% end %>

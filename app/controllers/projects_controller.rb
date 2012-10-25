@@ -14,6 +14,8 @@ class ProjectsController < ApplicationController
   # GET /subprojects/1.json
   def show
     @project = Project.find(params[:id])
+    @article_main = Article.where("main=True AND project_id = ?", @project.id).first
+    @articles = Article.where("id != ? AND project_id = ?", @article_main ? @article_main.id: 0, @project.id)
 
     respond_to do |format|
       format.html # show.html.erb

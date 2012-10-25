@@ -113,13 +113,7 @@
         <div class="b-share">
             <img src="/img/tmp/likes.png" alt=""/>
         </div>
-        <%= render :partial => 'article', :locals => {:article => @article_main, :featured => true } %>
-        <div class="b-tiles">
-            <%= render :partial => 'article', :collection => @articles || 'No pubs.' %>
-        </div>
-        <div class="b-more">
-            <a class="link c-article-link" href="?more">Ещё</a>
-        </div>
+        <%= render :partial => 'articles', :locals => {:article_main => @article_main, :articles => @articles } %>
     </div>
 <% end %>
 

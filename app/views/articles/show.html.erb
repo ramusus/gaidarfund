@@ -1,6 +1,6 @@
 <% content_for :title do %><%= @article.title.html_safe %><% end %>
 
-<% content_for :body_class do %>c-article-page<% end %>
+<% content_for :body_class do %><% if @article.project %><%= 'l-%s-page c-gaidar-page' % [@article.project.subdomain] %><% else %>c-article-page<% end %><% end %>
 
 <% content_for :extra_head do %>
     <script type="text/javascript">
@@ -10,6 +10,7 @@
                 .html(function(i, html) {
                     return html + ' <b class="b-graphics b-graphics-down-arrow"><b></b></b>';
                 });
+            $('.b-award-header p.label').remove();
         });
     </script>
 <% end %>
@@ -111,10 +112,24 @@
 <% end %>
 
 <% content_for :main_column do %>
-    <div class="l-column-536 l-intercolumn-24">
-        <div class="b-share">
-            <img src="/img/tmp/likes.png" alt=""/>
-        </div><h1><%= @article.title.html_safe %></h1>
+    <div class="l-column-536 l-intercolumn-24<% if @article.project %> l-bg-column-40<% end %>">
+        <% if @article.project %>
+            <%= render :partial => 'project_header', :locals => {:project => @article.project} %>
+            <div class="l-cover-fix">
+                <div class="b-meta b-meta-pre">
+                <div class="meta">
+                    <%= render :partial => 'social_likes' %>
+                </div>
+                <div class="disqussion">
+                    <a class="link" href="?">Обсуждение (37)</a>
+                </div>
+                </div>
+        <% else %>
+            <div class="b-share">
+                <%= render :partial => 'social_likes' %>
+            </div>
+        <% end %>
+        <h1><%= @article.title.html_safe %></h1>
         <div class="b-meta">
             <div class="meta">
                 <span class="date"><%= l @article.published_at, :format => '%d %B %Y' %></span>
@@ -131,7 +146,7 @@
         <%= @article.content.html_safe %>
         <div class="b-meta b-meta-separated">
             <div class="meta">
-                <img src="/img/tmp/likes.png" alt=""/>
+                <%= render :partial => 'social_likes' %>
             </div>
             <div class="disqussion">
                 <a class="link" href="?">Обсуждение (37)</a>
@@ -143,8 +158,11 @@
             <a class="link next c-about-link" href="?nearest-2"><b class="b-graphics b-graphics-right-arrow"><b></b>
                 </b>Румянцев побледнел но&nbsp;сдержался</a>
         </div>
+        <% if @article.project %>
+            </div>
+        <% end %>
     </div>
-    <div class="l-column-150">
+    <div class="l-column-150<% if @article.project %> l-lift-452<% end %>">
         <h2 class="b-context-title">Ещё на эту тему</h2>
         <div class="l-shift-20">
             <ul class="b-context-links">
