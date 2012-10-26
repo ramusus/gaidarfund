@@ -8,6 +8,7 @@ gem 'devise' # rails_admin dependency
 gem "ckeditor", "3.7.0.rc3"
 gem 'paperclip', '~> 3.0'
 gem 'yaml_db', :git => 'git://github.com/lostapathy/yaml_db.git'
+gem 'unicorn'
 
 group :development do
   gem 'pg'
