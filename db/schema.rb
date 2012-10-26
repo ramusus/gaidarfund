@@ -11,11 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121026101324) do
+ActiveRecord::Schema.define(:version => 20121026153508) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.text     "subtitle"
+    t.integer  "articletype_id"
+    t.text     "content"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -25,14 +27,13 @@ ActiveRecord::Schema.define(:version => 20121026101324) do
     t.boolean  "hide_discussions"
     t.boolean  "checked"
     t.integer  "old_id"
+    t.integer  "old_group_id"
     t.datetime "published_at"
     t.string   "title_seo"
     t.text     "right_column"
     t.integer  "project_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
-    t.integer  "articletype_id"
-    t.text     "content"
   end
 
   create_table "articletypes", :force => true do |t|
@@ -78,11 +79,16 @@ ActiveRecord::Schema.define(:version => 20121026101324) do
 
   create_table "events", :force => true do |t|
     t.string   "title"
+    t.string   "subtitle"
+    t.string   "link"
     t.datetime "date"
     t.text     "content"
+    t.integer  "old_id"
+    t.integer  "old_group_id"
+    t.integer  "project_id"
+    t.boolean  "visible"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "project_id"
   end
 
   create_table "pages", :force => true do |t|

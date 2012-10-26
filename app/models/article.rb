@@ -1,7 +1,7 @@
 class Article < ActiveRecord::Base
 
   default_scope :order => 'published_at DESC, id DESC'
-  attr_accessible :title, :subtitle, :image, :main, :hide, :hide_discussions, :content, :checked, :old_id, :published_at, :title_seo, :right_column, :project_id, :articletype_id, :delete_image
+  attr_accessible :title, :subtitle, :image, :main, :hide, :hide_discussions, :content, :checked, :old_id, :published_at, :title_seo, :right_column, :project_id, :articletype_id, :delete_image, :old_group_id
 
   has_attached_file :image, :styles => {:square => "140x140"}
   attr_accessor :delete_image
@@ -13,7 +13,7 @@ class Article < ActiveRecord::Base
 #  has_many :related1, :foreign_key => "article_id", :class_name => "Relation"
 #  has_many :related, :through => :relations
 
-  def save(args)
+  def save(args={})
     if not self.published_at
       self.published_at = Time.now
     end
