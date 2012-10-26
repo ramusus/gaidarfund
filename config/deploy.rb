@@ -44,6 +44,6 @@ namespace :deploy do
   task :load_db do
     rake = fetch(:rake, "rake")
     rails_env = fetch(:rails_env, "production")
-    run "cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} db:load"
+    run "cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} db:data:load"
   end
 end
