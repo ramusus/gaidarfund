@@ -8,7 +8,8 @@ set :deploy_to, "/srv/www/apps/gaidarfund"
 set :deploy_via, :remote_cache
 set :use_sudo, true
 set :user, "www"
-set :unicorn_conf, '/srv/www/apps/gaidarfund/current/config/unicorn.rb'
+set :unicorn_conf, "#{deploy_to}/current/config/unicorn.rb"
+set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 
 set :rvm_ruby_string, "1.9.2"
 set :rvm_type, :user

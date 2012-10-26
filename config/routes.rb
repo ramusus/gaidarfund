@@ -1,17 +1,15 @@
 Gaidarfund::Application.routes.draw do
   resources :blogs
-
   resources :articles
-
   resources :projects
   resources :events
 
   mount Ckeditor::Engine => '/ckeditor'
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :users
 
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
-
+  match "/:slug/" => "pages#show"
   root :to => "application#index", :as => 'index'
 
   # The priority is based upon order of creation:
