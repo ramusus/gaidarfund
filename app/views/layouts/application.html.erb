@@ -11,6 +11,7 @@
         <script type="text/javascript" src="/js/jquery.slideshow.js"></script>
         <script type="text/javascript" src="/js/jquery.masonry.min.js"></script>
         <script type="text/javascript" src="/js/jquery.hints.js"></script>
+        <script type="text/javascript" src="/js/jquery.scrollto.js"></script>
         <script type="text/javascript" src="/js/main.js"></script>
         <%= csrf_meta_tags %>
         <%= yield :extra_head %>
@@ -58,10 +59,14 @@
                 <%= content_for?(:main_column) ? yield(:main_column) : yield %>
             </div>
 
-            <div class="l-extra">
-                <h2 class="b-first-title">Партнёры</h2>
-                <%= @partners %>
-            </div>
+            <% if content_for?(:partners) %>
+                <%= yield(:partners) %>
+            <% else %>
+                <div class="l-extra">
+                    <h2 class="b-first-title">Партнёры</h2>
+                    <%= @partners %>
+                </div>
+            <% end %>
 
         </div>
 

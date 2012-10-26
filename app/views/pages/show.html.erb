@@ -1,15 +1,58 @@
 <% content_for :title do %><%= @page.title.html_safe %><% end %>
 
+<% content_for :partners do %>&nbsp;<% end %>
+<% content_for :body_class do %>c-about-page<% end %>
+
 <% content_for :extra_head do %>
     <script type="text/javascript">
         $(function() {
-            $('ul.b-menu.b-last-textblock a.link[href="/<%= @page.slug %>/"]').addClass('selected');
+            $('li.item a.link[href="/<%= @page.slug %>/"]')
+                .addClass('selected')
+                .html(function(i, html) {
+                    return html + ' <b class="b-graphics b-graphics-down-arrow"><b></b></b>';
+                });
+
+            if($('h2.b-page-title').length == 0) {
+                $('h2.b-navigation-title:first').remove();
+                $('#menu').parent().remove();
+            } else {
+                $('h2.b-page-title').each(function() {
+                    var title = this;
+                    var li = '<li class="item"> \
+                            <a class="link c-about-link" href="">' + $(title).text() + '</a> \
+                        </li>';
+                    $('#menu').append(li);
+                    $('#menu a:last').click(function() {
+                        $.scrollTo($(title), 1000);
+                        return false;
+                    });
+                });
+            }
+
         });
     </script>
 <% end %>
 
+<% content_for :left_column do %>
+    <h2 class="b-navigation-title"><%= @page.title.html_safe %></h2>
+    <div class="l-shift-20">
+        <ul class="b-menu" id="menu">
+        </ul>
+    </div>
+    <%= render :partial => 'projects' %>
+<% end %>
+
 <% content_for :content do %>
-    <%= @page.content.html_safe %>
+    <div class="l-column-472 l-intercolumn-28">
+        <div class="b-share">
+            <img src="/img/tmp/likes.png" alt=""/>
+        </div>
+        <%= @page.content.html_safe %>
+    </div>
+<% end %>
+
+<% content_for :right_column do %>
+    <%= render :partial => 'chronicle' %>
 <% end %>
 
 <%= render :template => 'layouts/3columns' %>
