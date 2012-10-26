@@ -4,7 +4,10 @@ class ApplicationController < ActionController::Base
 
   def set_context
 
-    ['partners','place','social_buttons','status','header_links','social_likes','social_links'].each do |var_name|
+    @projects = Project.all
+    @blogs = Blog.all
+
+    ['partners','banners_right_column'].each do |var_name|
       chunk = Chunk.find_by_code(var_name)
       if chunk and chunk.visible
         chunk = chunk.content.html_safe

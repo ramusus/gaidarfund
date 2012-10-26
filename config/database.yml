@@ -16,7 +16,7 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: award_gaidarfund_production
+  database: gaidarfund
   pool: 5
-  username: award
-  password: w43i76gwhqbeirtguw
+  username: gaidarfund
+  password: w43i_2s7irtguw

@@ -60,38 +60,7 @@
 
             <div class="l-extra">
                 <h2 class="b-first-title">Партнёры</h2>
-                <ul class="b-partners">
-                    <li class="item">
-                        <a class="link" href="?partner-1"> <img class="image" src="/img/tmp/partner-1.png" alt=""/> </a>
-                    </li>
-                    <li class="item">
-                        <a class="link" href="?partner-1"> <img class="image" src="/img/tmp/partner-1.png" alt=""/> </a>
-                    </li>
-                    <li class="item">
-                        <a class="link" href="?partner-1"> <img class="image" src="/img/tmp/partner-1.png" alt=""/> </a>
-                    </li>
-                    <li class="item">
-                        <a class="link" href="?partner-1"> <img class="image" src="/img/tmp/partner-1.png" alt=""/> </a>
-                    </li>
-                    <li class="item">
-                        <a class="link" href="?partner-1"> <img class="image" src="/img/tmp/partner-1.png" alt=""/> </a>
-                    </li>
-                    <li class="item">
-                        <a class="link" href="?partner-1"><img class="image" src="/img/tmp/partner-1.png" alt=""/></a>
-                    </li>
-                    <li class="item">
-                        <a class="link" href="?partner-1"> <img class="image" src="/img/tmp/partner-1.png" alt=""/> </a>
-                    </li>
-                    <li class="item">
-                        <a class="link" href="?partner-1"> <img class="image" src="/img/tmp/partner-1.png" alt=""/> </a>
-                    </li>
-                    <li class="item">
-                        <a class="link" href="?partner-1"> <img class="image" src="/img/tmp/partner-1.png" alt=""/> </a>
-                    </li>
-                    <li class="item">
-                        <a class="link" href="?partner-1"> <img class="image" src="/img/tmp/partner-1.png" alt=""/> </a>
-                    </li>
-                </ul>
+                <%= @partners %>
             </div>
 
         </div>
@@ -143,38 +112,17 @@
                     <h2 class="b-featured-title"><a class="link" href="?footer-21">Проекты</a></h2>
                     <div class="l-shift-20">
                         <ul class="b-featured-menu">
-                            <li class="item">
-                                <a class="link c-project-link" href="?footer-22">Гайдаровские чтения</a>
-                            </li>
-                            <li class="item">
-                                <a class="link c-project-link" href="?footer-23">Гайдаровский клуб</a>
-                            </li>
-                            <li class="item">
-                                <a class="link c-project-link" href="?footer-24">Гайдаровский форум</a>
-                            </li>
-                            <li class="item">
-                                <a class="link c-project-link" href="?footer-25">Лекция в Политехническом музее</a>
-                            </li>
-                            <li class="item">
-                                <a class="link c-project-link" href="?footer-26">Повышение квалификации</a>
-                            </li>
+                            <% @projects[0..5].each do |project| %>
+                                <li class="item"><%= link_to project, project_path(project), :class => 'link c-project-link' %></li>
+                            <% end %>
                         </ul>
                     </div>
                 </div>
                 <div class="l-column-210">
                     <ul class="b-featured-menu b-featured-menu-untitled">
-                        <li class="item">
-                            <a class="link c-project-link" href="?footer-31">Летний лагерь</a>
-                        </li>
-                        <li class="item">
-                            <a class="link c-project-link" href="?footer-32">Конкурс теоретического наследия</a>
-                        </li>
-                        <li class="item">
-                            <a class="link c-gaidar-link" href="?footer-33">Архив Гайдара</a>
-                        </li>
-                        <li class="item">
-                            <a class="link c-project-link" href="?footer-34">День за днём</a>
-                        </li>
+                        <% @projects[5..5] and @projects[5..5].each do |project| %>
+                            <li class="item"><%= link_to project, project_path(project), :class => 'link c-project-link' %></li>
+                        <% end %>
                     </ul>
                 </div>
             </div>

@@ -6,4 +6,8 @@ class Project < ActiveRecord::Base
 
   has_attached_file :background_image
   has_attached_file :logo_image
+
+  def to_s
+    self.title
+  end
 end

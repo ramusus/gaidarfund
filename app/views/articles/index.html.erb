@@ -13,35 +13,7 @@
 <% end %>
 
 <% content_for :left_column do %>
-    <h2 class="b-navigation-title">Проекты
-        <br/>
-        Фонда
-    </h2>
-    <div class="l-shift-20">
-        <ul class="b-menu">
-            <li class="item">
-                <a class="link c-project-link" href="?menu-1">О проектах Фонда</a>
-            </li>
-            <li class="item">
-                <a class="link c-project-link" href="?menu-2">Стипендии</a>
-            </li>
-            <li class="item">
-                <a class="link c-project-link" href="?menu-3">Гайдаровские чтения</a>
-            </li>
-            <li class="item">
-                <a class="link c-project-link" href="?menu-4">Гайдаровский клуб</a>
-            </li>
-            <li class="item">
-                <a class="link c-project-link" href="?menu-5">Гайдаровский форум</a>
-            </li>
-            <li class="item">
-                <a class="link c-project-link" href="?menu-6">Гранты USRF</a>
-            </li>
-            <li class="item">
-                <a class="link c-project-link" href="?menu-7"><em>Все проекты</em></a>
-            </li>
-        </ul>
-    </div>
+    <%= render :partial => 'projects' %>
     <h2 class="b-navigation-title">Календарь</h2>
     <div class="l-shift-20">
         <ul class="b-menu">
@@ -118,49 +90,8 @@
 <% end %>
 
 <% content_for :right_column do %>
-    <div class="l-intercolumn-40">
-        <h2 class="b-first-title">Блоги</h2>
-        <ul class="b-blogs">
-            <li class="item">
-                <h3 class="title"><a class="link c-about-link" href="?blog-1"><img class="image" src="/img/tmp/blog-1.jpg" alt=""/>Константин
-                        <br/>
-                        Стешик
-                    </a>
-                </h3>
-                <p class="desc">Как я&nbsp;перестал беспокоиться и&nbsp;полюбил успокаиваться</p>
-            </li>
-            <li class="item">
-                <h3 class="title"><a class="link c-about-link" href="?blog-2"><img class="image" src="/img/tmp/blog-2.jpg" alt=""/>Владимир
-                        <br/>
-                        Камаев
-                    </a>
-                </h3>
-                <p class="desc">Чисто чтобы зафиксировать</p>
-            </li>
-            <li class="item">
-                <h3 class="title"><a class="link c-about-link" href="?blog-3"><img class="image" src="/img/tmp/blog-3.jpg" alt=""/>Андрей
-                        <br/>
-                        Кураев
-                    </a>
-                </h3>
-                <p class="desc">Кому послушен монах?</p>
-            </li>
-            <li class="item">
-                <h3 class="title"><a class="link c-about-link" href="?blog-4"><img class="image" src="/img/tmp/blog-4.jpg" alt=""/>Дмитрий
-                        <br/>
-                        Чернышев
-                    </a>
-                </h3>
-                <p class="desc">Honi soit qui mal y&nbsp;pense</p>
-            </li>
-        </ul>
-    </div>
-    <div class="b-banner">
-        <a href="?banner-1"><img class="image" src="/img/tmp/banner-1.png" alt=""/></a>
-    </div>
-    <div class="b-banner">
-        <a href="?banner-1"><img class="image" src="/img/tmp/banner-2.png" alt=""/></a>
-    </div>
+    <%= render :partial => 'blogs' %>
+    <%= render :partial => 'banners_right_column' %>
 <% end %>
 
 <%= render :template => 'layouts/3columns' %>

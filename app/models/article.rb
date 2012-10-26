@@ -3,7 +3,7 @@ class Article < ActiveRecord::Base
   default_scope :order => 'published_at DESC, id DESC'
   attr_accessible :title, :subtitle, :image, :main, :hide, :hide_discussions, :content, :checked, :old_id, :published_at, :title_seo, :right_column, :project_id, :articletype_id, :delete_image
 
-  has_attached_file :image, :styles => {:square => "140x140#"}
+  has_attached_file :image, :styles => {:square => "140x140"}
   attr_accessor :delete_image
   before_validation { self.image = nil if self.delete_image == '1' }
   belongs_to :project

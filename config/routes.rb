@@ -1,4 +1,6 @@
 Gaidarfund::Application.routes.draw do
+  resources :blogs
+
   resources :articles
 
   resources :projects

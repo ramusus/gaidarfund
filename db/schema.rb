@@ -11,32 +11,44 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121025191846) do
+ActiveRecord::Schema.define(:version => 20121026101324) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.text     "subtitle"
-    t.integer  "project_id"
-    t.integer  "articletype_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.datetime "published_at"
-    t.text     "content"
     t.boolean  "main"
     t.boolean  "hide"
     t.boolean  "hide_discussions"
     t.boolean  "checked"
     t.integer  "old_id"
+    t.datetime "published_at"
     t.string   "title_seo"
     t.text     "right_column"
+    t.integer  "project_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.integer  "articletype_id"
+    t.text     "content"
   end
 
   create_table "articletypes", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "blogs", :force => true do |t|
+    t.string   "author"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "link"
+    t.text     "description"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
@@ -77,9 +89,9 @@ ActiveRecord::Schema.define(:version => 20121025191846) do
     t.string   "title"
     t.text     "content"
     t.string   "slug"
-    t.integer  "project_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "project_id"
   end
 
   create_table "projects", :force => true do |t|
@@ -123,8 +135,8 @@ ActiveRecord::Schema.define(:version => 20121025191846) do
   create_table "relations", :force => true do |t|
     t.integer  "article_id"
     t.integer  "related_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

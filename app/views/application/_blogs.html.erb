@@ -1,0 +1,13 @@
+<div class="l-intercolumn-40">
+    <h2 class="b-first-title">Блоги</h2>
+    <ul class="b-blogs">
+        <% @blogs.each do |blog| %>
+            <li class="item">
+                <h3 class="title">
+                    <a class="link c-about-link" href="<%= blog.link %>"><%= image_tag(blog.photo(:square), :class => 'image', :alt => blog.author) %><%= blog.author %></a>
+                </h3>
+                <p class="desc"><%= blog.description %></p>
+            </li>
+        <% end %>
+    </ul>
+</div>
