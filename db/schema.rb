@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121028133030) do
+ActiveRecord::Schema.define(:version => 20121028145926) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20121028133030) do
 
   create_table "projects", :force => true do |t|
     t.string   "title"
+    t.string   "title_short"
     t.string   "color"
     t.string   "sign"
     t.string   "background_image_file_name"
@@ -125,6 +126,7 @@ ActiveRecord::Schema.define(:version => 20121028133030) do
     t.text     "partners"
     t.text     "right_block"
     t.text     "projects"
+    t.text     "html_block"
   end
 
   create_table "rails_admin_histories", :force => true do |t|

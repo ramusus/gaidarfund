@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  attr_accessible :title, :subdomain, :color, :sign, :about_title, :news_title, :status, :likes, :partners, :counters, :right_block, :projects, :background_image, :logo_image
+  attr_accessible :title, :title_short, :subdomain, :color, :sign, :about_title, :news_title, :status, :likes, :partners, :counters, :right_block, :projects, :background_image, :logo_image, :html_block
 
   has_many :articles
   has_many :events
@@ -8,6 +8,6 @@ class Project < ActiveRecord::Base
   has_attached_file :logo_image
 
   def to_s
-    self.title
+    self.title_short or self.title
   end
 end

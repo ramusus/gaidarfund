@@ -110,8 +110,8 @@ RailsAdmin.config do |config|
       include_fields :title, :subdomain
     end
     edit do
-      include_fields :title, :subdomain, :color, :sign, :about_title, :news_title, :status, :background_image, :logo_image
-      include_fields :likes, :partners, :counters, :right_block, :projects do
+      include_fields :title, :title_short, :subdomain, :color, :sign, :about_title, :news_title, :status, :background_image, :logo_image
+      include_fields :likes, :partners, :counters, :right_block, :projects, :html_block do
         ckeditor true
         ckeditor_config_js '/javascripts/ckeditor/config.js'
       end
