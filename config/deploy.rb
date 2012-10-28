@@ -41,9 +41,10 @@ namespace :deploy do
     rails_env = fetch(:rails_env, "production")
     run "cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} db:auto:migrate"
   end
-  task :load_db do
+  task :load_data do
     rake = fetch(:rake, "rake")
     rails_env = fetch(:rails_env, "production")
     run "cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} db:data:load"
+    top.upload "public/system/articles", "#{deploy_to}/shared/system/articles", :recursive => true
   end
 end

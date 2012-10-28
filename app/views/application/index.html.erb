@@ -190,29 +190,21 @@
         <div class="previews"></div>
     </div>
     <ul class="b-events">
-        <li class="item">
-            <a class="link nearest-1" href="/publications/article.html"><strong class="date"><span class="day">26</span>&nbsp;сентября
-                </strong>Конференция &laquo;Рождение и&nbsp;возрождение университетов&raquo;</a>
-        </li>
-        <li class="item">
-            <a class="link nearest-2" href="/publications/article.html"><strong class="date"><span class="day">3</span>&nbsp;октября
-                </strong>Лекция: &laquo;Финансовый сектор: груз или двигатель реальной экономики&raquo;</a>
-        </li>
-        <li class="item">
-            <a class="link nearest-3" href="/publications/article.html"><strong class="date"><span class="day from-1">19</span>&nbsp;октября
-                </strong>Научная конференция &laquo;Современный менеджмент: проблемы, гипотезы, исследования&raquo;</a>
-        </li>
-        <li class="item">
-            <a class="link" href="/publications/article.html"><strong class="date"><span class="day">23</span>&nbsp;октября
-                </strong>Семинар &laquo;Как стать успешным лидером&raquo;</a>
-        </li>
-        <li class="item">
-            <a class="link" href="/publications/article.html"><strong class="date"><span class="day">31</span>&nbsp;октября
-                </strong>Научная конференция &laquo;Проповедь покаяния как часть миссии церкви в&nbsp;Албании после
-                <nobr>1990-х</nobr>
-                гг.&raquo;
-            </a>
-        </li>
+        <% @events.reverse.each_with_index do |event, i| %>
+            <li class="item">
+                <% if not event.link.empty? %>
+                    <a class="link nearest-<%= i+1 %>" href="<% event.link %>">
+                <% else %>
+                    <span class="nearest-<%= i+1 %>">
+                <% end %>
+                <strong class="date"><span class="day"><%= l event.date, :format => '%d' %></span>&nbsp;<%= l event.date, :format => '%B' %></strong><%=  event.title %>
+                <% if not event.link.empty? %>
+                    </a>
+                <% else %>
+                    </span>
+                <% end %>
+            </li>
+        <% end %>
     </ul>
     <div class="l-column-472 l-intercolumn-28">
         <div class="b-featured-article">

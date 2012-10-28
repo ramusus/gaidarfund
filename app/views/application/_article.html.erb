@@ -4,7 +4,7 @@
             <% if article.type %>
                 <div class="b-section-label c-article-block"><%= article.type.name %></div>
             <% end %>
-            <% if article.image.file? %>
+            <% if article.image.exists? %>
                 <%= image_tag(article.image(:square), :class => 'image', :alt => article.title) %>
             <% end %>
             <% if not defined?(featured) %>
