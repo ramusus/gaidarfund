@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  position: 1
+  color: MyString
+  background_color: MyString
+  content: MyText
+  link: MyString
+  hide: false
+  title: MyString
+
+two:
+  position: 1
+  color: MyString
+  background_color: MyString
+  content: MyText
+  link: MyString
+  hide: false
+  title: MyString

@@ -82,106 +82,13 @@
     </div>
     <div class="b-promo">
         <div class="slides">
-            <div class="slide" color-code="news">
-                <div class="label c-news-block">Новый цикл лекций с 10 по 24 апреля</div>
-                <h2 class="main-title"><a class="link" href="/projects/award/">Гибель
-                        <br/>
-                        империи
-                    </a>
-                </h2>
-                <div class="date">
-                    <strong>Последняя лекция:</strong>
-                    24 апреля 2012, 19:00
+            <% @slides.each_with_index do |slide, i| %>
+                <div class="slide" color-code="<%= @slide_classes[i] %>" style="background: <%= slide.background_color %>; color: <%= slide.color %>;">
+                    <div class="label c-<%= @slide_classes[i] %>-block"><%= slide.top_text %></div>
+                    <h2 class="main-title"><a class="link" href="<%= slide.link %>" style="color: <%= slide.color %>;"><%= slide.title.html_safe %></a></h2>
+                    <%= slide.content.html_safe %>
                 </div>
-                <h3 class="sub-title">Россия и мир</h3>
-                <div class="persons">
-                    <strong>Главные лица:</strong>
-                    Андрей Козырев, Павел Лобков
-                </div>
-                <p class="meta">
-                    Посещение бесплатное. Запись на лекции, описание и архивы проекта, а&nbsp;также план выступлений доступны на сайте проекта <a class="link" href="http://lectures.gaidarfund.ru/">lectures.gaidarfund.ru</a>
-                </p>
-            </div>
-            <div class="slide" color-code="about" style="background: #1C1C1C;">
-                <div class="label c-about-block">Новый цикл лекций с 10 по 24 апреля</div>
-                <h2 class="main-title"><a class="link" href="/projects/award/">Гибель
-                        <br/>
-                        империи
-                    </a>
-                </h2>
-                <div class="date">
-                    <strong>Последняя лекция:</strong>
-                    24 апреля 2012, 19:00
-                </div>
-                <h3 class="sub-title">Россия и мир</h3>
-                <div class="persons">
-                    <strong>Главные лица:</strong>
-                    Андрей Козырев, Павел Лобков
-                </div>
-                <p class="meta">
-                    Посещение бесплатное. Запись на лекции, описание и архивы проекта, а&nbsp;также план выступлений доступны на сайте проекта <a class="link" href="http://lectures.gaidarfund.ru/">lectures.gaidarfund.ru</a>
-                </p>
-            </div>
-            <div class="slide" color-code="gaidar" style="background: #493B3A;">
-                <div class="label c-gaidar-block">Новый цикл лекций с 10 по 24 апреля</div>
-                <h2 class="main-title"><a class="link" href="/projects/award/">Гибель
-                        <br/>
-                        империи
-                    </a>
-                </h2>
-                <div class="date">
-                    <strong>Последняя лекция:</strong>
-                    24 апреля 2012, 19:00
-                </div>
-                <h3 class="sub-title">Россия и мир</h3>
-                <div class="persons">
-                    <strong>Главные лица:</strong>
-                    Андрей Козырев, Павел Лобков
-                </div>
-                <p class="meta">
-                    Посещение бесплатное. Запись на лекции, описание и архивы проекта, а&nbsp;также план выступлений доступны на сайте проекта <a class="link" href="http://lectures.gaidarfund.ru/">lectures.gaidarfund.ru</a>
-                </p>
-            </div>
-            <div class="slide" color-code="article" style="background: #293639">
-                <div class="label c-article-block">Новый цикл лекций с 10 по 24 апреля</div>
-                <h2 class="main-title"><a class="link" href="/projects/award/">Гибель
-                        <br/>
-                        империи
-                    </a>
-                </h2>
-                <div class="date">
-                    <strong>Последняя лекция:</strong>
-                    24 апреля 2012, 19:00
-                </div>
-                <h3 class="sub-title">Россия и мир</h3>
-                <div class="persons">
-                    <strong>Главные лица:</strong>
-                    Андрей Козырев, Павел Лобков
-                </div>
-                <p class="meta">
-                    Посещение бесплатное. Запись на лекции, описание и архивы проекта, а&nbsp;также план выступлений доступны на сайте проекта <a class="link" href="http://lectures.gaidarfund.ru/">lectures.gaidarfund.ru</a>
-                </p>
-            </div>
-            <div class="slide" color-code="project" style="background: #F8F3F0; color: #222;">
-                <div class="label c-project-block">Новый цикл лекций с 10 по 24 апреля</div>
-                <h2 class="main-title"><a class="link" href="/projects/award/" style="color: #222;">Гибель
-                        <br/>
-                        империи
-                    </a>
-                </h2>
-                <div class="date">
-                    <strong>Последняя лекция:</strong>
-                    24 апреля 2012, 19:00
-                </div>
-                <h3 class="sub-title">Россия и мир</h3>
-                <div class="persons">
-                    <strong>Главные лица:</strong>
-                    Андрей Козырев, Павел Лобков
-                </div>
-                <p class="meta">
-                    Посещение бесплатное. Запись на лекции, описание и архивы проекта, а&nbsp;также план выступлений доступны на сайте проекта <a class="link" href="http://lectures.gaidarfund.ru/">lectures.gaidarfund.ru</a>
-                </p>
-            </div>
+            <% end %>
         </div>
         <a class="prev" href="?"><b class="b-graphics b-graphics-prev"><b>Назад</b>
             </b></a>
