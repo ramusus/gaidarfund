@@ -35,13 +35,13 @@
                         <%= link_to 'О Егоре Гайдаре', '/about_gaidar/', :class => 'link' %>
                     </li>
                     <li class="item articles">
-                        <%= link_to 'Публикации', articles_path(), :class => 'link' %>
+                        <%= link_to 'Публикации', publications_path, :class => 'link' %>
                     </li>
                     <li class="item projects">
-                        <%= link_to 'Проекты', projects_path(), :class => 'link' %>
+                        <%= link_to 'Проекты', project_path(1), :class => 'link' %>
                     </li>
                     <li class="item news">
-                        <%= link_to 'Новости', '', :class => 'link' %>
+                        <%= link_to 'Новости', news_path, :class => 'link' %>
                     </li>
                 </ul>
             </div>
@@ -73,45 +73,10 @@
         <div class="l-footer">
             <div class="l-inner l-wrapper">
                 <div class="l-column-210 l-intercolumn-30 l-shift-10">
-                    <ul class="b-featured-menu">
-                        <li class="item">
-                            <a class="link c-about-link" href="?footer-1">О Фонде</a>
-                        </li>
-                        <li class="item">
-                            <a class="link c-news-link" href="?footer-2">Новости</a>
-                        </li>
-                        <li class="item">
-                            <a class="link c-article-link" href="?footer-3">Публикации</a>
-                        </li>
-                        <li class="item">
-                            <a class="link c-news-link" href="?footer-4">Анонсы мероприятий</a>
-                        </li>
-                        <li class="item">
-                            <a class="link c-news-link" href="?footer-5">Дискуссии</a>
-                        </li>
-                        <li class="item">
-                            <a class="link c-news-link" href="?footer-6">Блоги</a>
-                        </li>
-                    </ul>
+                    <%= @footer_links_1 %>
                 </div>
                 <div class="l-column-210 l-intercolumn-30">
-                    <ul class="b-featured-menu b-featured-menu-untitled">
-                        <li class="item">
-                            <a class="link c-project-link" href="?footer-11">Премия</a>
-                        </li>
-                        <li class="item">
-                            <a class="link c-project-link" href="?footer-12">Стипендии</a>
-                        </li>
-                        <li class="item">
-                            <a class="link c-project-link" href="?footer-13">Гранты USBF</a>
-                        </li>
-                        <li class="item">
-                            <a class="link c-about-link" href="?footer-14">Контакты</a>
-                        </li>
-                        <li class="item">
-                            <a class="link c-gaidar-link" href="?footer-15">Как помочь Фонду</a>
-                        </li>
-                    </ul>
+                    <%= @footer_links_2 %>
                 </div>
                 <div class="l-column-230 l-intercolumn-30">
                     <h2 class="b-featured-title"><a class="link" href="?footer-21">Проекты</a></h2>

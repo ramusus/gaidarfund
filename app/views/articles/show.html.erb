@@ -5,7 +5,7 @@
 <% content_for :extra_head do %>
     <script type="text/javascript">
         $(function() {
-            $('li.item.articles a.link')
+            $('li.item.<%= @menu_class %> a.link')
                 .addClass('selected')
                 .html(function(i, html) {
                     return html + ' <b class="b-graphics b-graphics-down-arrow"><b></b></b>';

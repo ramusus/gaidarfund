@@ -1,8 +1,11 @@
 Gaidarfund::Application.routes.draw do
   resources :blogs
-  resources :articles
   resources :projects
   resources :events
+
+  resources :articles, :only => [:show]
+  match "/news/" => "articles#news", :as => 'news'
+  match "/publications/" => "articles#publications", :as => 'publications'
 
   mount Ckeditor::Engine => '/ckeditor'
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
