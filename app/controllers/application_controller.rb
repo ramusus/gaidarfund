@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     @projects = Project.all
     @blogs = Blog.all
 
-    ['partners','banners_right_column','footer_links_1','footer_links_2'].each do |var_name|
+    ['partners','banners_right_column','footer_links_1','footer_links_2','golden_fund'].each do |var_name|
       chunk = Chunk.find_by_code(var_name)
       if chunk and chunk.visible
         chunk = chunk.content.html_safe
@@ -25,6 +25,8 @@ class ApplicationController < ActionController::Base
 
   def index
     @events = Event.limit(5)
+    @article_main = Article.visible.main.first
+    @articles = Article.visible.where("id != ?", @article_main ? @article_main.id: 0)
   end
 
 end
