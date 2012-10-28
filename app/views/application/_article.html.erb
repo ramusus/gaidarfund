@@ -1,5 +1,5 @@
 <% if article %>
-    <div class="<% if defined?(featured) %>b-featured-article<% else %>b-article b-tiles-item<% if article.image.file? %> b-article-illustrated<% end %><% end %>">
+    <div class="<% if defined?(featured) %>b-featured-article<% else %>b-article b-tiles-item<% if article.image.exists? %> b-article-illustrated<% end %><% end %>">
         <a class="link c-article-link" href="<%= article_path(article) %>">
             <% if article.type %>
                 <div class="b-section-label c-article-block"><%= article.type.name %></div>
