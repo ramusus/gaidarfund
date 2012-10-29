@@ -40,9 +40,9 @@
         <div class="b-meta">
             <div class="meta">
                 <span class="date"><%= l @article.published_at, :format => '%d %B %Y' %></span>
-                <% if false %>
+                <% if @article.author %>
                     <span class="b-square">■</span>
-                    <strong class="author">Яков Кельберт</strong>
+                    <strong class="author"><%= @article.author %></strong>
                 <% end %>
             </div>
         </div>

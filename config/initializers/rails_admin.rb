@@ -84,7 +84,7 @@ RailsAdmin.config do |config|
       end
     end
     edit do
-      include_fields :title, :subtitle, :image, :project, :articletype, :main, :hide, :hide_discussions, :checked, :published_at, :title_seo
+      include_fields :title, :subtitle, :image, :project, :articletype, :author, :main, :hide, :hide_discussions, :checked, :published_at, :title_seo
       include_fields :content, :right_column do
         ckeditor true
         ckeditor_config_js '/javascripts/ckeditor/config.js'
