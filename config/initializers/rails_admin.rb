@@ -73,7 +73,7 @@ RailsAdmin.config do |config|
 
   config.model Article do
     list do
-      include_fields :published_at, :title, :main
+      include_fields :published_at, :title, :project, :articletype, :main
     end
     show do
       include_fields :title, :published_at, :subtitle, :project, :main

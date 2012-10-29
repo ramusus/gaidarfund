@@ -32,6 +32,15 @@ class Article < ActiveRecord::Base
     self.articletype
   end
 
+  def type_class
+    types = {
+      1 => 'article',
+      4 => 'news',
+    }
+    type = types[self.type.id]
+    type ? type : 'article'
+  end
+
 end
 
 #class Relation < ActiveRecord::Base
