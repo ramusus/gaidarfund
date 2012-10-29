@@ -32,7 +32,7 @@ class ArticlesController < ApplicationController
     if @article.project
       articles = articles.where("project_id = ?", @article.project_id)
     else
-      articles = articles.where("project_id is NULL")
+      articles = articles.where("project_id < 1") # becouse in mysql value is 0, in postgres NULL
     end
     @next = articles.where("published_at > ?", @article.published_at).last
     @previous = articles.where("published_at < ?", @article.published_at).first
