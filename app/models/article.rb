@@ -36,6 +36,7 @@ class Article < ActiveRecord::Base
     types = {
       1 => 'article',
       4 => 'news',
+      7 => 'news',
     }
     type = types[self.type.id]
     type ? type : 'article'
