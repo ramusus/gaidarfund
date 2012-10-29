@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :set_locale, :set_context
+#  before_filter do |c|
+#    User.current_user = User.find(c.session[:user]) unless c.session[:user].nil?
+#  end
 
   def set_context
 

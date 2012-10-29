@@ -30,9 +30,6 @@
                 <div class="meta">
                     <%= render :partial => 'social_likes' %>
                 </div>
-                <div class="disqussion">
-                    <a class="link" href="?">Обсуждение (37)</a>
-                </div>
                 </div>
         <% else %>
             <div class="b-share">
@@ -43,15 +40,14 @@
         <div class="b-meta">
             <div class="meta">
                 <span class="date"><%= l @article.published_at, :format => '%d %B %Y' %></span>
-                <span class="b-square">■</span>
-                <strong class="author">Яков Кельберт</strong>
-            </div>
-            <div class="disqussion">
-                <a class="link" href="?">Обсуждение (37)</a>
+                <% if false %>
+                    <span class="b-square">■</span>
+                    <strong class="author">Яков Кельберт</strong>
+                <% end %>
             </div>
         </div>
         <p class="b-intro">
-            <strong>Поздравляем победителей, одержавших победительную победу над побеждёнными и&nbsp;проигравшими. Поздравляем убедительных победителей, триумфально одержавших победительную победу над побеждёнными и&nbsp;проигравшими.</strong>
+            <strong><%= @article.subtitle.html_safe %></strong>
         </p>
         <%= @article.content.html_safe %>
         <div class="b-meta b-meta-separated">
@@ -63,36 +59,30 @@
             </div>
         </div>
         <div class="b-nearest-articles">
-            <a class="link c-article-link" href="?nearest-1"><b class="b-graphics b-graphics-left-arrow"><b></b>
-                </b>Пойман с&nbsp;поличным Квинтилий Вар</a>
-            <a class="link next c-about-link" href="?nearest-2"><b class="b-graphics b-graphics-right-arrow"><b></b>
-                </b>Румянцев побледнел но&nbsp;сдержался</a>
+            <% if @previous %>
+                <a class="link c-article-link" href="<%= article_path(@previous) %>"><b class="b-graphics b-graphics-left-arrow"><b></b></b><%= @previous.title.html_safe %></a>
+            <% end %>
+            <% if @next %>
+                <a class="link next c-about-link" href="<%= article_path(@next) %>"><b class="b-graphics b-graphics-right-arrow"><b></b></b><%= @next.title.html_safe %></a>
+            <% end %>
         </div>
         <% if @article.project %>
             </div>
         <% end %>
     </div>
     <div class="l-column-150<% if @article.project %> l-lift-452<% end %>">
-        <h2 class="b-context-title">Ещё на эту тему</h2>
-        <div class="l-shift-20">
-            <ul class="b-context-links">
-                <li class="item">
-                    <a class="link" href="?see-also-1">Интервью с А. В. Суворовым</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="?see-also-2">Интервью с фельдмаршалом Румянцевым</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="?see-also-3">Интервью с Квинтилием Варом</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="?see-also-4">Жестокие слова в жестоком старом мире</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="?see-also-5">Предводитель галлов покаялся и ушел в пустыню</a>
-                </li>
-            </ul>
-        </div>
+        <% if @more.count > 0 %>
+            <h2 class="b-context-title">Ещё на эту тему</h2>
+            <div class="l-shift-20">
+                <ul class="b-context-links">
+                    <% @more.each do |article| %>
+                        <li class="item">
+                            <%= link_to article.title.html_safe, article_path(article), :class => 'link' %>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
     </div>
 <% end %>
 

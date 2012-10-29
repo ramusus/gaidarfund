@@ -28,6 +28,16 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
 
+    articles = Article.visible.where("articletype_id = ?", @article.articletype_id)
+    if @article.project
+      articles = articles.where("project_id = ?", @article.project_id)
+    else
+      articles = articles.where("project_id is NULL")
+    end
+    @next = articles.where("published_at > ?", @article.published_at).last
+    @previous = articles.where("published_at < ?", @article.published_at).first
+    @more = articles.where("id != ?", @article.id).limit(5)
+
     if @article.project
       @menu_class = 'projects'
     elsif @article.type.id == 1
