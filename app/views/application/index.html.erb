@@ -83,7 +83,7 @@
     <div class="b-promo">
         <div class="slides">
             <% @slides.each_with_index do |slide, i| %>
-                <div class="slide" color-code="<%= @slide_classes[i] %>" style="background: <%= slide.background_color %>; color: <%= slide.color %>;">
+                <div class="slide" color-code="<%= @slide_classes[i] %>" style="background: <% if slide.background_image.present? %>url('<%= slide.background_image(:slide) %>') no-repeat<% else %><%= slide.background_color %><% end %>; color: <%= slide.color %>;">
                     <div class="label c-<%= @slide_classes[i] %>-block"><%= slide.top_text %></div>
                     <h2 class="main-title"><a class="link" href="<%= slide.link %>" style="color: <%= slide.color %>;"><%= slide.title.html_safe %></a></h2>
                     <%= slide.content.html_safe %>

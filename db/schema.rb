@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121028145926) do
+ActiveRecord::Schema.define(:version => 20121029091557) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -153,6 +153,10 @@ ActiveRecord::Schema.define(:version => 20121028145926) do
     t.integer  "position"
     t.string   "color"
     t.string   "background_color"
+    t.string   "background_image_file_name"
+    t.string   "background_image_content_type"
+    t.integer  "background_image_file_size"
+    t.datetime "background_image_updated_at"
     t.text     "content"
     t.string   "link"
     t.boolean  "hide"
