@@ -79,20 +79,6 @@ ActiveRecord::Schema.define(:version => 20121029091557) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
-  create_table "events", :force => true do |t|
-    t.string   "title"
-    t.datetime "date"
-    t.text     "content"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "project_id"
-    t.string   "subtitle"
-    t.string   "link"
-    t.integer  "old_id"
-    t.integer  "old_group_id"
-    t.boolean  "visible"
-  end
-
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.text     "content"

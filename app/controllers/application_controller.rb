@@ -24,12 +24,12 @@ class ApplicationController < ActionController::Base
   end
 
   def index
-    @events = Event.limit(5)
+    @announces = Article.announces.limit(5)
     @slides = Slide.limit(5)
     @slide_classes = ['news','about','gaidar','article','project']
 
-    @article_main = Article.visible.main.first
-    @articles = Article.visible.where("id != ?", @article_main ? @article_main.id: 0)
+    @article_main = Article.not_announces.visible.main.first
+    @articles = Article.not_announces.visible.where("id != ?", @article_main ? @article_main.id: 0)
   end
 
 end

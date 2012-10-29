@@ -1,15 +1,25 @@
 class ArticlesController < ApplicationController
   def news
-    @article_main = Article.main.visible.news.first
-    @articles = Article.visible.news.where("id != ?", @article_main ? @article_main.id: 0)
+    articles = Article.visible.news
+    @article_main = articles.main.first
+    @articles = articles.where("id != ?", @article_main ? @article_main.id: 0)
     @menu_class = 'news'
     render "index"
   end
 
   def publications
-    @article_main = Article.main.visible.publications.first
-    @articles = Article.visible.publications.where("id != ?", @article_main ? @article_main.id: 0)
+    articles = Article.visible.publications
+    @article_main = articles.main.first
+    @articles = articles.where("id != ?", @article_main ? @article_main.id: 0)
     @menu_class = 'articles'
+    render "index"
+  end
+
+  def announces
+    articles = Article.visible.announces
+    @article_main = articles.main.first
+    @articles = articles.where("id != ?", @article_main ? @article_main.id: 0)
+    @menu_class = 'announces'
     render "index"
   end
 
