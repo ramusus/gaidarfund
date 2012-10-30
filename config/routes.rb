@@ -1,4 +1,6 @@
 Gaidarfund::Application.routes.draw do
+  require 'subdomain'
+
   resources :slides
 
   resources :blogs
@@ -15,7 +17,11 @@ Gaidarfund::Application.routes.draw do
   devise_for :users
 
   match "/:slug/" => "pages#show"
-  root :to => "application#index", :as => 'index'
+
+  constraints(Subdomain) do
+    match "/" => "projects#show"
+  end
+  root :to => "application#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

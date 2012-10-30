@@ -1,4 +1,4 @@
-<% content_for :body_class do %>l-award-page<% end %>
+<% content_for :body_class do %>l-award-page c-project-page<% end %>
 
 <% content_for :extra_head do %>
     <script type="text/javascript">
@@ -17,50 +17,57 @@
 <% end %>
 
 <% content_for :main_column do %>
-                <div class="l-column-710">
-                    <div class="b-share">
-                        <img src="/img/tmp/likes.png" alt=""/>
-                    </div><h1 class="b-separated-page-title">Проекты Фонда</h1>
-                    <p>По макету еще возможно будет несколько изменений, например сейчас точно надо убрать подменю слева по проектам (достаточно перечня сверху и листинга). </p>
-                    <ul>
-                        <li>
-                            По макету еще возможно будет несколько изменений: <a class="b-text-link" href="/projects/award/">Гайдаровский Форум</a>, <a class="b-text-link" href="/projects/award/">Гайдар-Клуб</a>.
-                        </li>
-                        <li>
-                            Например, сейчас точно надо убрать подменю слева по проектам: <a class="b-text-link" href="/projects/award/">Летняя школа</a>.
-                        </li>
-                        <li>
-                            Достаточно перечня сверху и листинга: <a class="b-text-link" href="/projects/award/">Премия им. Е.&nbsp;Т.&nbsp;Гайдара</a>.
-                        </li>
-                    </ul>
-                    <p>По макету еще возможно будет несколько изменений, например сейчас точно надо убрать подменю слева по проектам (достаточно перечня сверху и листинга).</p>
-                    <div class="l-wrapper">
-                        <div class="l-column-220 l-intercolumn-24">
+    <div class="l-column-710">
+        <div class="b-share">
+            <%= render :partial => 'social_likes' %>
+        </div><h1 class="b-separated-page-title">Проекты Фонда</h1>
+        <%= @projects_introduction %>
+        <ul class="b-tab-menu">
+            <li class="item">
+                <a class="link selected" href="?">Все</a>
+            </li>
+            <li class="item">
+                <a class="link" href="?">Активные</a>
+            </li>
+            <li class="item">
+                <a class="link" href="?">Дискуссионные площадки</a>
+            </li>
+            <li class="item">
+                <a class="link" href="?">Поддержка молодых экономистов</a>
+            </li>
+        </ul>
+        <div class="l-wrapper">
+            <% @projects.in_groups_of(2).each do |projects| %>
+                <div class="l-column-220 l-intercolumn-24">
+                    <% projects.each do |project| %>
+                        <% if project %>
                             <div class="b-project">
-                                <a class="b-project-link" href="/projects/award/"><h2 class="b-project-title">Название проекта</h2><em class="text">http://projecturl.gaidar.ru</em><img class="image" src="/img/tmp/project-1.png" alt=""/></a><h3 class="sub-title">Краткая суть проекта</h3>
-                                <p class="desc">По макету еще возможно будет несколько изменений, например сейчас точно надо убрать подменю слева по проектам (достаточно перечня сверху и листинга). </p>
-                                <h3 class="sub-title">Статус</h3>
-                                <p class="desc">активен</p>
-                                <h3 class="sub-title">Новости и публикации</h3>
-                                <ul class="b-news">
-                                    <li class="item">
-                                        <div class="date">17&nbsp;октября 2012</div>
-                                        <h3 class="title"><a class="link c-project-hidden-link" href="/publications/article.html?id=1">Идеолог изложил свою идеологию</a></h3>
-                                    </li>
-                                    <li class="item">
-                                        <div class="date">11&nbsp;октября 2012</div>
-                                        <h3 class="title"><a class="link c-project-hidden-link" href="/publications/article.html?id=2">Гул затих, я&nbsp;вышел на&nbsp;подмостки</a></h3>
-                                    </li>
-                                    <li class="item">
-                                        <div class="date">29&nbsp;сентября 2012</div>
-                                        <h3 class="title"><a class="link c-project-hidden-link" href="/publications/article.html?id=3">На&nbsp;сегодня новостей нет</a></h3>
-                                    </li>
-                                </ul>
-                                <a class="b-text-link" href="/projects/award/">Все публикации проекта</a>
+                                <a class="b-project-link" href="<%= project_path(project) %>"><h2 class="b-project-title"><%= project.title %></h2><em class="text"><%= project_path(project) %></em><% if project.logo_small_image.exists? %><img class="image" src="<%= project.logo_small_image(:thumb) %>" alt=""/><% end %></a>
+                                <% if not project.core.empty? %>
+                                    <h3 class="sub-title first">Краткая суть проекта</h3>
+                                    <p class="desc"><%= project.core.html_safe %></p>
+                                <% end %>
+                                <% if not project.status.empty? %>
+                                    <h3 class="sub-title">Статус</h3>
+                                    <p class="desc"><%= project.status.html_safe %></p>
+                                <% end %>
+                                <% if project.articles.count > 0 %>
+                                    <h3 class="sub-title">Новости и публикации</h3>
+                                    <ul class="b-news">
+                                        <% project.articles.slice(0,3).each do |article| %>
+                                            <li class="item">
+                                                <div class="date"><%= l article.published_at, :format => '%d %B %Y' %></div>
+                                                <h3 class="title"><%= link_to article.title, article_path(article), :class => 'link c-project-hidden-link' %></h3>
+                                            </li>
+                                        <% end%>
+                                    </ul>
+                                    <a class="b-text-link" href="<%= project_path(project) %>">Все публикации проекта</a>
+                                <% end %>
                             </div>
-                        </div>
-                        <div class="l-column-220 l-intercolumn-24">1</div>
-                        <div class="l-column-220">1</div>
-                    </div>
+                        <% end %>
+                    <% end %>
                 </div>
+            <% end %>
+        </div>
+    </div>
 <% end %>

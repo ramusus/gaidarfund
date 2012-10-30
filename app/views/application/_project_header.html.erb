@@ -3,3 +3,15 @@
     <div class="event"><%= project.status.html_safe %></div>
     <%= project.html_block.html_safe %>
 </div>
+<script type="text/javascript">
+    <% if project.background_image.exists? %>
+        $('.l-<%= project.subdomain %>-page .l-container').css({'background': 'url(<%= project.background_image %>) no-repeat 94% 43px'});
+    <% end %>
+    <% if project.logo_image.exists? %>
+        $('.b-<%= project.subdomain %>-header a.link').css({'background': 'url(<%= project.logo_image %>) no-repeat'});
+    <% end %>
+    <% if project.css.exists? %>
+        $("head").append('<link rel="stylesheet" type="text/css" href="<%= project.css %>" media="screen"/>');
+        $.getScript("<%= project.css %>");
+    <% end %>
+</script>

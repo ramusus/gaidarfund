@@ -77,18 +77,18 @@ P {
 	margin-bottom: 21px;
 	}
 UL {
-	margin: 0 0 21px 26px;
+	margin: 0 0 21px 20px;
 	}
 	UL LI {
 		margin-bottom: 10.5px;
 		list-style: none;
 		}
 	UL LI:before {
-		content: "—";
+		content: "■";
 		display: inline-block;
-		width: 24px;
-		margin-left: -26px;
-		padding-left: 2px;
+		width: 20px;
+		margin: -1px 0 -1px -20px;
+		font-size: 21px;
 		color: #999;
 		}
 	UL UL, UL OL, OL UL, OL OL {
@@ -96,7 +96,7 @@ UL {
 		}
 OL {
 	counter-reset: list_item;
-	margin: 0 0 21px 26px;
+	margin: 0 0 21px 20px;
 	}
 	OL LI {
 		display: block;
@@ -127,7 +127,7 @@ TABLE {
 		}
 BLOCKQUOTE {
 	margin: 32px 0;
-	padding: 0 26px;
+	padding: 0 20px;
 	font-size: 24px;
 	line-height: 24px;
 	color: #9C9999;
@@ -178,6 +178,10 @@ SUB {
 .l-column-210 {
 	float: left;
 	width: 210px;
+	}
+.l-column-220 {
+	float: left;
+	width: 220px;
 	}
 .l-column-230 {
 	float: left;
@@ -577,6 +581,24 @@ SUB {
 	.b-graphics-close-quote B {
 		left: -87px;
 		}
+.b-graphics-small-left-arrow {
+	top: 1px;
+	left: 0;
+	width: 11px;
+	height: 13px;
+	}
+	.b-graphics-small-left-arrow B {
+		left: -102px;
+		}
+.b-graphics-small-right-arrow {
+	top: 1px;
+	right: 0;
+	width: 11px;
+	height: 13px;
+	}
+	.b-graphics-small-right-arrow B {
+		left: -114px;
+		}
 .b-graphics-square {
 	top: 2px;
 	left: 0;
@@ -610,6 +632,38 @@ SUB {
 	font-size: 21px;
 	}
 
+/* Left fader */
+.b-left-fader {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 16px;
+	
+	background: -webkit-gradient(linear, left top, right top, from(#FFF), to(rgba(255, 255, 255, 0)));
+	background: -webkit-linear-gradient(90deg, #FFF, rgba(255, 255, 255, 0));
+	background: -moz-linear-gradient(90deg, #FFF, rgba(255, 255, 255, 0));
+	background: -o-linear-gradient(90deg, #FFF, rgba(255, 255, 255, 0));
+	background: -ms-linear-gradient(90deg, #FFF, rgba(255, 255, 255, 0));
+	background: linear-gradient(90deg, #FFF, rgba(255, 255, 255, 0));
+	}
+
+/* Left fader */
+.b-right-fader {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 16px;
+	
+	background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), to(#FFF));
+	background: -webkit-linear-gradient(90deg, rgba(255, 255, 255, 0), #FFF);
+	background: -moz-linear-gradient(90deg, rgba(255, 255, 255, 0), #FFF);
+	background: -o-linear-gradient(90deg, rgba(255, 255, 255, 0), #FFF);
+	background: -ms-linear-gradient(90deg, rgba(255, 255, 255, 0), #FFF);
+	background: linear-gradient(90deg, rgba(255, 255, 255, 0), #FFF);
+	}
+
 /* =Content blocks
 --------------------------------------- */
 
@@ -624,6 +678,11 @@ SUB {
 	text-transform: uppercase;
 	font-size: 42px;
 	line-height: 40px;
+	}
+
+/* Highlighted page title */
+.b-separated-page-title {
+	margin: 20px 0 38px 0;
 	}
 
 /* Sub title */
@@ -666,6 +725,14 @@ SUB {
 /* First title in block */
 .b-first-title {
 	margin-top: 0;
+	}
+
+/* Black link */
+.b-text-link {
+	color: #231F20 !important;
+	}
+.b-text-link:hover {
+	color: #676767 !important;
 	}
 
 /* Intro or some description */
@@ -728,6 +795,36 @@ SUB {
 .b-menu-separated {
 	margin-bottom: 98px;
 	}
+
+/* Tab menu */
+.b-tab-menu {
+	margin: 62px 0 42px -16px;
+	text-transform: uppercase;
+	font-size: 12px;
+	line-height: 16px;
+	font-weight: bold;
+	}
+	.b-tab-menu .item {
+		display: inline-block;
+		margin: 0 0 0 16px;
+		}
+	.b-tab-menu .item:before {
+		display: none;
+		content: none;
+		}
+		.b-tab-menu .link {
+			border-bottom: 1px dotted;
+			text-decoration: none;
+			color: #231F20;
+			}
+		.b-tab-menu .link:hover {
+			color: #676767;
+			}
+		.b-tab-menu .selected,
+		.b-tab-menu .selected:hover {
+			border: none;
+			color: #231F20;
+			}
 
 /* Share */
 .b-share {
@@ -878,7 +975,7 @@ SUB {
 	.b-events .item {
 		float: left;
 		width: 122px;
-		margin: 0 0 0 20px;
+		margin: 0 20px 0 0;
 		}
 	.b-events .item:before {
 		content: none;
@@ -1333,6 +1430,51 @@ SUB {
 				color: #9C9999;
 				}
 
+/* Project summary */
+.b-project {
+	margin-bottom: 32px;
+	font-size: 12px;
+	line-height: 16px;
+	}
+	.b-project-link {
+		display: block;
+		margin-bottom: 10px;
+		text-decoration: none;
+		color: #231F20 !important;
+		}
+		.b-project-title {
+			margin: 0 0 5px -2px;
+			padding-right: 40px;
+			text-transform: uppercase;
+			font-size: 24px;
+			}
+		.b-project-link .text {
+			display: block;
+			margin-bottom: 6px;
+			text-decoration: underline;
+			}
+		.b-project-link:hover .text {
+			color: #676767 !important;
+			}
+		.b-project .image {
+			display: block;
+			}
+	.b-project .sub-title {
+		margin: 16px 0 10px 0;
+		font-size: 12px;
+		line-height: 16px;
+		color: #5A54A3;
+		}
+	.b-project .first {
+		margin-top: 0;
+		}
+	.b-project .desc {
+		margin: 0;
+		}
+	.b-project .b-news {
+		margin: 0;
+		}
+
 /* =Containers
 --------------------------------------- */
 
@@ -1344,6 +1486,55 @@ SUB {
 		width: 144px;
 		margin-left: 20px;
 		}
+
+/* Slideshow functionality */
+.b-slideshow  {
+	position: relative;
+	}
+	.b-slideshow .frame {
+		width: 690px;
+		margin: -20px -20px 12px 0;
+		padding: 20px;
+		overflow: hidden;
+		}
+		.b-slideshow .slides {
+			width: 9999px;
+			margin: 0;
+			}
+		.b-slideshow .arrow {
+			position: absolute;
+			top: -7px;
+			display: none;
+			text-decoration: none;
+			font-size: 10px;
+			line-height: 14px;
+			font-style: italic;
+			color: #404040;
+			}
+			.b-slideshow .arrow .b-graphics B {
+				background-color: #404040;
+				}
+		.b-slideshow .arrow:hover {
+			color: #000;
+			}
+			.b-slideshow .arrow:hover .b-graphics B {
+				background-color: #000;
+				}
+		.b-slideshow .prev {
+			left: -2px;
+			padding-left: 14px;
+			}
+		.b-slideshow .next {
+			right: 9px;
+			padding-right: 14px;
+			}
+		.b-slideshow .b-left-fader,
+		.b-slideshow .b-right-fader {
+			top: 20px;
+			}
+		.b-slideshow .b-right-fader {
+			right: -20px;
+			}
 
 /* =Banners
 --------------------------------------- */
@@ -1446,7 +1637,7 @@ SUB {
 .c-gaidar-link,
 .c-gaidar-hidden-link:hover,
 .c-gaidar-link.disabled:hover,
-.c-gaidar-page OL LI:before,
+.c-gaidar-page LI:before,
 .c-gaidar-page .b-intro,
 .c-gaidar-page .b-huge-intro,
 .c-gaidar-page .b-sub-title,
@@ -1478,7 +1669,7 @@ SUB {
 .c-article-link,
 .c-article-hidden-link:hover,
 .c-article-link.disabled:hover,
-.c-article-page OL LI:before,
+.c-article-page LI:before,
 .c-article-page .b-intro,
 .c-article-page .b-huge-intro,
 .c-article-page .b-sub-title,
@@ -1510,7 +1701,7 @@ SUB {
 .c-project-link,
 .c-project-hidden-link:hover,
 .c-project-link.disabled:hover,
-.c-project-page OL LI:before,
+.c-project-page LI:before,
 .c-project-page .b-intro,
 .c-project-page .b-huge-intro,
 .c-project-page .b-sub-title,
@@ -1542,7 +1733,7 @@ SUB {
 .c-news-link,
 .c-news-hidden-link:hover,
 .c-news-link.disabled:hover,
-.c-news-page OL LI:before,
+.c-news-page LI:before,
 .c-news-page .b-intro,
 .c-news-page .b-huge-intro,
 .c-news-page .b-sub-title,
@@ -1568,12 +1759,4 @@ SUB {
 .c-news-link .b-graphics-next B {
 	left: -396px;
 	background-color: transparent !important;
-	}
-
-/* All colors together */
-.c-all-link {
-	color: #231F20 !important;
-	}
-.c-all-link:hover {
-	color: #676767 !important;
 	}

@@ -30,22 +30,22 @@
 
         <div class="l-container">
             <div class="l-header">
-                <a class="b-logo" href="/"> <img class="image" src="/img/logo.png" alt="Фонд Егора Гайдара"/> </a>
+                <a class="b-logo" href="<%= root_url(:subdomain => false) %>"> <img class="image" src="/img/logo.png" alt="Фонд Егора Гайдара"/> </a>
                 <ul class="b-main-menu">
                     <li class="item about">
-                        <%= link_to 'О Фонде', '/about_fund/', :class => 'link' %>
+                        <%= link_to 'О Фонде', url_for(:url => '/about_fund/', :subdomain => false), :class => 'link' %>
                     </li>
                     <li class="item gaidar">
-                        <%= link_to 'О Егоре Гайдаре', '/about_gaidar/', :class => 'link' %>
+                        <%= link_to 'О Егоре Гайдаре', url_for(:url => '/about_gaidar/', :subdomain => false), :class => 'link' %>
                     </li>
                     <li class="item articles">
-                        <%= link_to 'Публикации', publications_path, :class => 'link' %>
+                        <%= link_to 'Публикации', publications_path(:subdomain => false), :class => 'link' %>
                     </li>
                     <li class="item projects">
-                        <%= link_to 'Проекты', project_path(1), :class => 'link' %>
+                        <%= link_to 'Проекты', projects_path(:subdomain => false), :class => 'link' %>
                     </li>
                     <li class="item news">
-                        <%= link_to 'Новости', news_path, :class => 'link' %>
+                        <%= link_to 'Новости', news_path(:subdomain => false), :class => 'link' %>
                     </li>
                 </ul>
             </div>

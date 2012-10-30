@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121029203958) do
+ActiveRecord::Schema.define(:version => 20121030113643) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20121029203958) do
     t.string   "title_short"
     t.string   "color"
     t.string   "sign"
+    t.text     "core", :default => ''
     t.string   "background_image_file_name"
     t.string   "background_image_content_type"
     t.integer  "background_image_file_size"
@@ -102,6 +103,14 @@ ActiveRecord::Schema.define(:version => 20121029203958) do
     t.string   "logo_image_content_type"
     t.integer  "logo_image_file_size"
     t.datetime "logo_image_updated_at"
+    t.string   "logo_small_image_file_name"
+    t.string   "logo_small_image_content_type"
+    t.integer  "logo_small_image_file_size"
+    t.datetime "logo_small_image_updated_at"
+    t.string   "css_file_name"
+    t.string   "css_content_type"
+    t.integer  "css_file_size"
+    t.datetime "css_updated_at"
     t.text     "status"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false

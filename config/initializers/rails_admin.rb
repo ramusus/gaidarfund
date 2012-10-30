@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # RailsAdmin config file. Generated on October 20, 2012 21:50
 # See github.com/sferik/rails_admin for more informations
 
@@ -110,11 +111,22 @@ RailsAdmin.config do |config|
       include_fields :title, :subdomain
     end
     edit do
-      include_fields :title, :title_short, :subdomain, :color, :sign, :about_title, :news_title, :status, :background_image, :logo_image
+      include_fields :title, :title_short, :subdomain, :color, :sign, :status, :core
       include_fields :likes, :partners, :counters, :right_block, :projects, :html_block do
         ckeditor true
         ckeditor_config_js '/javascripts/ckeditor/config.js'
       end
+
+      group :text do
+        label "Оформление"
+        field :about_title
+        field :news_title
+        field :css
+        field :background_image
+        field :logo_image
+        field :logo_small_image
+      end
+
     end
   end
 
