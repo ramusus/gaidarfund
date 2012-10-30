@@ -11,4 +11,8 @@ class Project < ActiveRecord::Base
   def to_s
     self.title_short or self.title
   end
+
+  def body_class
+    'award'
+  end
 end

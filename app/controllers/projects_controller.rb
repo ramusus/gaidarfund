@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
   # GET /subprojects/1
   # GET /subprojects/1.json
   def show
-    @project = Project.find_by_subdomain!(request.subdomain == 'award1' ? 'award' : request.subdomain)
+    @project = Project.find_by_subdomain!(request.subdomain)
     @article_main = Article.where("main=True AND project_id = ?", @project.id).first
     @articles = Article.where("id != ? AND project_id = ?", @article_main ? @article_main.id: 0, @project.id)
 

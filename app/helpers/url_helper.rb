@@ -4,12 +4,8 @@ module UrlHelper
     subdomain += "." unless subdomain.empty?
     # TODO: remove after releasing
     if subdomain.empty?
-      subdomain = 'beta'
+      subdomain = 'beta.'
     end
-    if subdomain == 'award'
-      subdomain = 'award1'
-    end
-    #
     [subdomain, request.domain].join
   end
 

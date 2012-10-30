@@ -1,6 +1,6 @@
 <% content_for :title do %><%= @article.title.html_safe %><% end %>
 
-<% content_for :body_class do %><% if @article.project %><%= 'l-%s-page c-gaidar-page' % [@article.project.subdomain] %><% else %>c-article-page<% end %><% end %>
+<% content_for :body_class do %><% if @article.project %><%= 'l-%s-page c-gaidar-page' % [@article.project.body_class] %><% else %>c-article-page<% end %><% end %>
 
 <% content_for :extra_head do %>
     <script type="text/javascript">
