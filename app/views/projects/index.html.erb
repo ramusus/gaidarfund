@@ -22,6 +22,9 @@
             <%= render :partial => 'social_likes' %>
         </div><h1 class="b-separated-page-title">Проекты Фонда</h1>
         <%= @projects_introduction %>
+<%
+=begin
+%>
         <ul class="b-tab-menu">
             <li class="item">
                 <a class="link selected" href="?">Все</a>
@@ -36,6 +39,9 @@
                 <a class="link" href="?">Поддержка молодых экономистов</a>
             </li>
         </ul>
+<%
+=end
+%>
         <div class="l-wrapper">
             <% @projects.in_groups_of(2).each do |projects| %>
                 <div class="l-column-220 l-intercolumn-24">

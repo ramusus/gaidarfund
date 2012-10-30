@@ -2,6 +2,11 @@ module UrlHelper
   def with_subdomain(subdomain)
     subdomain = (subdomain || "")
     subdomain += "." unless subdomain.empty?
+    # TODO: remove after releasing
+    if subdomain.empty?:
+      subdomain = 'beta'
+    if subdomain == 'award':
+      subdomain = 'award1'
     [subdomain, request.domain].join
   end
 
