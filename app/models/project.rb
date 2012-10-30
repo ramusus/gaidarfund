@@ -2,6 +2,7 @@ class Project < ActiveRecord::Base
   attr_accessible :title, :title_short, :subdomain, :color, :core, :sign, :about_title, :news_title, :status, :likes, :partners, :counters, :right_block, :projects, :css, :background_image, :logo_image, :html_block, :logo_small_image
 
   has_many :articles
+  has_many :pages
 
   has_attached_file :css
   has_attached_file :background_image

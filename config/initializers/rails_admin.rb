@@ -53,7 +53,7 @@ RailsAdmin.config do |config|
 
   config.model Page do
     list do
-      include_fields :title, :slug
+      include_fields :title, :slug, :project, :page
     end
     show do
       include_fields :title, :slug
@@ -64,7 +64,7 @@ RailsAdmin.config do |config|
       end
     end
     edit do
-      include_fields :title, :slug
+      include_fields :title, :slug, :project, :page
       include_fields :content do
         ckeditor true
         ckeditor_config_js '/javascripts/ckeditor/config.js'

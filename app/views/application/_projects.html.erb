@@ -1,9 +1,11 @@
-<h2 class="b-navigation-title">Проекты<br/>Фонда</h2>
+<h2 class="b-navigation-title"><% if defined?(:current) %>Другие проекты<% else %>Проекты<% end %><br/>Фонда</h2>
 <div class="l-shift-20">
     <ul class="b-menu">
-        <li class="item"><a class="link c-project-link" href="?menu-1">О проектах Фонда</a></li>
+        <li class="item"><%= link_to 'О проектах Фонда', url_for(:url => '/about_projects/', :subdomain => false), :class => 'link c-project-link' %></li>
         <% @projects.each do |project| %>
-            <li class="item"><%= link_to project, project_path(project), :class => 'link c-project-link' %></li>
+            <% if defined?(current) and current != project %>
+                <li class="item"><%= link_to project, project_path(project), :class => 'link c-project-link' %></li>
+            <% end %>
         <% end %>
         <li class="item"><%= link_to '<em>Все проекты</em>'.html_safe, projects_path(), :class => 'link c-project-link' %></li>
     </ul>

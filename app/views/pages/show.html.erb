@@ -11,7 +11,9 @@
                 .html(function(i, html) {
                     return html + ' <b class="b-graphics b-graphics-down-arrow"><b></b></b>';
                 });
-
+<%
+=begin
+%>
             if($('h2.b-page-title').length == 0) {
                 $('h2.b-navigation-title:first').remove();
                 $('#menu').parent().remove();
@@ -28,17 +30,24 @@
                     });
                 });
             }
-
+<%
+=end
+%>
         });
     </script>
 <% end %>
 
 <% content_for :left_column do %>
-    <h2 class="b-navigation-title"><%= @page.title.html_safe %></h2>
-    <div class="l-shift-20">
-        <ul class="b-menu" id="menu">
-        </ul>
-    </div>
+    <% if @page.pages.count > 0 %>
+        <h2 class="b-navigation-title"><%= @page.title.html_safe %></h2>
+        <div class="l-shift-20">
+            <ul class="b-menu" id="menu">
+                <% @page.pages.each do |page| %>
+                    <li class="item"><%= link_to page.title, page, :class =>"link c-about-link" %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
     <%= render :partial => 'projects' %>
 <% end %>
 

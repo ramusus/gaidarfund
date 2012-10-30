@@ -13,20 +13,18 @@
 <% end %>
 
 <% content_for :left_column do %>
-    <h2 class="b-navigation-title"><%= @project.about_title.blank? ? 'О проекте' : @project.about_title %></h2>
-    <div class="l-shift-20">
-        <ul class="b-menu b-menu-separated">
-            <li class="item">
-                <a class="link c-project-link" href="?menu-11">Положение</a>
-            </li>
-            <li class="item">
-                <a class="link c-project-link" href="?menu-11">Жюри</a>
-            </li>
-            <li class="item">
-                <a class="link c-project-link" href="?menu-11">Победители</a>
-            </li>
-        </ul>
-    </div>
+
+    <% if @project.pages.count > 0 %>
+        <h2 class="b-navigation-title"><%= @project.about_title.blank? ? 'О проекте' : @project.about_title %></h2>
+        <div class="l-shift-20">
+            <ul class="b-menu b-menu-separated">
+                <% @project.pages.each do |page| %>
+                    <li class="item"><%= link_to page.title, page, :class =>"link c-about-link" %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
     <h2 class="b-navigation-title"><%= @project.news_title.blank? ? 'Лента новостей' : @project.news_title %></h2>
     <div class="l-shift-20">
         <ul class="b-menu b-menu-separated">
@@ -48,28 +46,7 @@
             </li>
         </ul>
     </div>
-    <h2 class="b-navigation-title">Другие
-        <br/>
-        гранты
-        <br/>
-        Фонда
-    </h2>
-    <div class="l-shift-20">
-        <ul class="b-menu">
-            <li class="item">
-                <a class="link c-project-link" href="?menu-11">Стипендии</a>
-            </li>
-            <li class="item">
-                <a class="link c-project-link" href="?menu-11">Гранты USRF</a>
-            </li>
-            <li class="item">
-                <a class="link c-project-link" href="?menu-11">О проектах Фонда</a>
-            </li>
-            <li class="item">
-                <a class="link c-project-link" href="?menu-11">Больше о Фонде</a>
-            </li>
-        </ul>
-    </div>
+    <%= render :partial => 'projects', :locals => {:current => @project} %>
 <% end %>
 
 <% content_for :content do %>
