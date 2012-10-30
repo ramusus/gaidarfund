@@ -4,6 +4,13 @@
     <script type="text/javascript">
         $(function() {
             $('.b-promo').slideShow();
+            $('.b-slideshow').slideShow({
+                slideSelector: '.b-events .item',
+                slideBy: 2,
+                slidePerPage: 5,
+                slideWidth: 122,
+                slideDistance: 20
+           });
         });
     </script>
 <% end %>
@@ -34,15 +41,23 @@
             </b></a>
         <div class="previews"></div>
     </div>
-    <ul class="b-events">
-        <% @announces.reverse.each_with_index do |announce, i| %>
-            <li class="item">
-                <a class="link nearest-<%= i+1 %>" href="<%= article_path(announce) %>">
-                    <strong class="date"><span class="day"><%= l announce.published_at, :format => '%d' %></span>&nbsp;<%= l announce.published_at, :format => '%B' %></strong><%=  announce.title %>
-                </a>
-            </li>
-        <% end %>
-    </ul>
+    <div class="b-slideshow">
+        <div class="frame">
+            <ul class="b-events slides">
+                <% @announces.reverse.each_with_index do |announce, i| %>
+                    <li class="item">
+                        <a class="link nearest-<%= i+1 %>" href="<%= article_path(announce) %>">
+                            <strong class="date"><span class="day"><%= l announce.published_at, :format => '%d' %></span>&nbsp;<%= l announce.published_at, :format => '%B' %></strong><%=  announce.title %>
+                        </a>
+                    </li>
+                <% end %>
+                </ul>
+            </div>
+        <a class="arrow prev" href="?"><b class="b-graphics b-graphics-small-left-arrow"><b></b></b> назад</a>
+        <a class="arrow next" href="?"><b class="b-graphics b-graphics-small-right-arrow"><b></b></b> будущее</a>
+        <i class="b-left-fader"></i>
+        <i class="b-right-fader"></i>
+    </div>
     <div class="l-column-472 l-intercolumn-28">
         <%= render :partial => 'articles', :locals => {:article_main => @article_main, :articles => @articles } %>
     </div>

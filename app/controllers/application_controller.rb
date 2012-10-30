@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def index
-    @announces = Article.announces.limit(5)
+    @announces = Article.announces.where("published_at >= ?", Time.now)
     @slides = Slide.limit(5)
     @slide_classes = ['news','about','gaidar','article','project']
 
