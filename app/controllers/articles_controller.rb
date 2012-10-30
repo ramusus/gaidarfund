@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
   end
 
   def publications
-    articles = Article.visible.publications
+    articles = Article.visible.not_news.not_announces
     @article_main = articles.main.first
     @articles = articles.where("id != ?", @article_main ? @article_main.id: 0)
     @menu_class = 'articles'

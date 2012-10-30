@@ -4,6 +4,7 @@ class Article < ActiveRecord::Base
   scope :news, where(:articletype_id => 4)
   scope :announces, where(:articletype_id => 7)
   scope :not_announces, where('articletype_id != ?',  7)
+  scope :not_news, where('articletype_id != ?',  4)
 
   scope :main, where(:main => true)
   scope :visible, where(:hide => false)

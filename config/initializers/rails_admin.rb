@@ -77,7 +77,7 @@ RailsAdmin.config do |config|
       include_fields :published_at, :title, :project, :articletype, :main
     end
     show do
-      include_fields :title, :published_at, :subtitle, :project, :main
+      include_fields :title, :published_at, :subtitle, :project, :main, :checked
       include_fields :content do
         pretty_value do
           value.html_safe
