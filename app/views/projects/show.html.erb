@@ -28,7 +28,7 @@
     <% end %>
 
     <%= render :partial => 'filters', :locals => {:show_filters => false, :defaults => {:project_ids => @project.id}} %>
-    <%= render :partial => 'projects', :locals => {:current => @project} %>
+    <%= @project.projects.html_safe %>
 <% end %>
 
 <% content_for :content do %>
@@ -40,9 +40,7 @@
 
 <% content_for :right_column do %>
     <div class="l-column-210 l-lift-686">
-        <div class="l-shift-20">
-            <%= @project.right_block.html_safe %>
-        </div>
+        <%= @project.right_block.html_safe %>
     </div>
 <% end %>
 
