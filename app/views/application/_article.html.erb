@@ -2,7 +2,7 @@
     <div class="<% if defined?(featured) %>b-featured-article<% else %>b-article b-tiles-item<% if article.image.exists? %> b-article-illustrated<% end %><% end %>">
         <a class="link c-article-link" href="<%= article_path(article) %>">
             <% if article.type %>
-                <div class="b-section-label c-<%= article.type_class %>-block"><%= article.type.name %></div>
+                <div class="b-section-label c-<%= article.type.color_class %>-block"><%= article.type.name %></div>
             <% end %>
             <% if article.image.exists? %>
                 <%= image_tag(article.image(:square), :class => 'image', :alt => article.title, :width => article.image.width(:square), :height => article.image.height(:square) ) %>

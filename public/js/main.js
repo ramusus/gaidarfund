@@ -2,6 +2,55 @@ $(function(){
 	// Form hints
 	$('.b-hint-label').hints();
 	
+	// Fixing filter
+	var filter = $('#filter');
+	
+	if( filter.length ){
+		var scrollTop = 0,
+			filterHeight = filter.height(),
+			fixedFilterClass = 'b-fixed-filter',
+			bottomFilterClass = 'b-bottom-filter',
+			content = $('.l-content'),
+			start = filter.offset().top - 20,
+			finish = 0;
+		
+		fixFilter();
+		
+		$(window).scroll(function(){
+			scrollTop = $(document).scrollTop();
+			fixFilter();
+		});
+	}
+	
+	function fixFilter( immidiately ){
+		finish = content.offset().top + content.height() - filterHeight - 20;
+		
+		if( scrollTop < start ){
+			if( filter.hasClass(fixedFilterClass) ){
+				filter.removeClass(fixedFilterClass);
+			}
+			if( filter.hasClass(bottomFilterClass) ){
+				filter.removeClass(bottomFilterClass);
+			}
+		}
+		else if( (scrollTop >= start && scrollTop < finish) || immidiately ){
+			if( !filter.hasClass(fixedFilterClass) ){
+				filter.addClass(fixedFilterClass);
+			}
+			if( filter.hasClass(bottomFilterClass) ){
+				filter.removeClass(bottomFilterClass);
+			}
+		}
+		else{
+			if( filter.hasClass(fixedFilterClass) ){
+				filter.removeClass(fixedFilterClass);
+			}
+			if( !filter.hasClass(bottomFilterClass) ){
+				filter.addClass(bottomFilterClass);
+			}
+		}
+	}
+	
 	// Articles with more button
 	var tiles = $('#tiles'),
 		moreTilesLink = $('#more-tiles');
@@ -22,6 +71,10 @@ $(function(){
 				newItems.animate({opacity: 1});
 				
 				tiles.masonry('appended', newItems, true);
+				
+				if( filter.length ){
+					fixFilter(true);
+				}
 			});
 			event.preventDefault();
 		});

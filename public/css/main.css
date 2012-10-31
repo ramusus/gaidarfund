@@ -1601,6 +1601,27 @@ SUB {
 			right: -20px;
 			}
 
+/* Filter fixing */
+.b-fixed-filter {
+	position: fixed;
+	top: 20px;
+	width: 210px;
+	height: 0;
+	margin: 0 auto;
+	padding-right: 750px;
+	}
+	.b-fixed-filter .b-navigation-title {
+		margin-top: 0;
+		}
+.b-bottom-filter {
+	position: absolute;
+	bottom: 80px;
+	width: 210px;
+	}
+	.b-bottom-filter .b-menu {
+		margin-bottom: 0;
+		}
+
 /* =Banners
 --------------------------------------- */
 

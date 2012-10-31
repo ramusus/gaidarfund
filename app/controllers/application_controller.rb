@@ -27,7 +27,6 @@ class ApplicationController < ActionController::Base
   def index
     @announces = Article.announces.where("published_at >= ?", Time.now)
     @slides = Slide.limit(5)
-    @slide_classes = ['news','about','gaidar','article','project']
 
     @type_ids = Articletype.not_announce.find(:all).map(&:id)
   end

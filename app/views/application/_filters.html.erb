@@ -1,31 +1,18 @@
 <% if show_filters %>
-    <h2 class="b-navigation-title">Главное</h2>
-    <div class="l-shift-20">
-        <ul class="b-menu" id="articlesFiltration">
-            <li class="item">
-                <a class="link c-all-link" href="#">Все</a>
-            </li>
-            <% @articletypes.each do |type| %>
+    <div id="filter">
+        <h2 class="b-navigation-title">Главное</h2>
+        <div class="l-shift-20">
+            <ul class="b-menu" id="articlesFiltration">
                 <li class="item">
-                    <%= link_to '<b class="b-graphics b-graphics-check"><b></b></b>'.html_safe + (type.name_plural or type.name), '/articles/', :class => "link c-article-link", :rel => type.id %>
+                    <a class="link c-all-link" href="#">Все</a>
                 </li>
-            <% end %>
-            <li class="item">
-                <a class="link disabled c-news-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b></b>Новости</a>
-            </li>
-            <li class="item">
-                <a class="link disabled c-about-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b></b>Отчеты</a>
-            </li>
-            <li class="item">
-                <a class="link disabled c-article-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b></b>Разбор архивных документов</a>
-            </li>
-            <li class="item">
-                <a class="link disabled c-project-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b></b>Глубокое чтение</a>
-            </li>
-            <li class="item">
-                <a class="link disabled c-article-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b></b>Интервью</a>
-            </li>
-        </ul>
+                <% @articletypes.each do |type| %>
+                    <li class="item">
+                        <%= link_to '<b class="b-graphics b-graphics-check"><b></b></b>'.html_safe + (type.name_plural or type.name), '/articles/', :class => "link c-#{type.color_class}-link", :rel => type.id %>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
     </div>
 <% end %>
 <script type="text/javascript">
@@ -63,7 +50,8 @@
                 success: function(response) {
                     if(filtration.data.page == 1) {
                         var newItems = $(response);
-                        newItems.css({opacity: 0}).appendTo($('#articlesList'));
+                        newItems.css({opacity: 0});
+                        $('#articlesList').html(newItems);
                         newItems.animate({opacity: 1});
                         $('#articlesList .b-tiles').masonry({
                             itemSelector: '.b-tiles-item'
