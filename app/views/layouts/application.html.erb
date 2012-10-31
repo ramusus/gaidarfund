@@ -72,10 +72,12 @@
             <% if content_for?(:partners) %>
                 <%= yield(:partners) %>
             <% else %>
-                <div class="l-extra">
-                    <h2 class="b-first-title">Партнёры</h2>
-                    <%= @partners %>
-                </div>
+                <% if not @partners.blank? %>
+                    <div class="l-extra">
+                        <h2 class="b-first-title">Партнёры</h2>
+                        <%= @partners %>
+                    </div>
+                <% end %>
             <% end %>
 
         </div>
