@@ -1,20 +1,24 @@
+# -*- coding: utf-8 -*-
 class ArticlesController < ApplicationController
 
   def news
     @type_ids = Articletype.news.find(:all).map(&:id)
     @menu_class = 'news'
+    @title = 'Новости'
     render "index"
   end
 
   def publications
     @type_ids = Articletype.not_news.not_announce.find(:all).map(&:id)
     @menu_class = 'articles'
+    @title = 'Публикации'
     render "index"
   end
 
   def announces
     @type_ids = Articletype.announce.find(:all).map(&:id)
     @menu_class = 'announces'
+    @title = 'Анонсы'
     render "index"
   end
 

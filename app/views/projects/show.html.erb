@@ -1,3 +1,5 @@
+<% content_for :title do %><%= strip_tags(@project.title) %><% end %>
+
 <% content_for :body_class do %><%= 'l-%s-page' % [@project.body_class] %><% end %>
 
 <% content_for :extra_head do %>
