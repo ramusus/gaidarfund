@@ -1,7 +1,11 @@
-<%= render :partial => 'article', :locals => {:article => @article_main, :featured => true } %>
-<div class="b-tiles">
+<%= render :partial => 'article', :locals => {:article => @article_main, :featured => true} %>
+<% if params[:page] == 1 %>
+    <div class="b-tiles">
+<% end %>
     <%= render :partial => 'article', :collection => @articles || 'No pubs.' %>
-</div>
-<div class="b-more">
-    <a class="link c-article-link" href="?more">Ещё</a>
-</div>
+<% if params[:page] == 1 %>
+    </div>
+<% end %>
+<% if params[:page] == 1 and params[:page] != @articles.total_pages %>
+    <div class="b-more"><a class="link c-article-link" href="#">Ещё</a></div>
+<% end %>

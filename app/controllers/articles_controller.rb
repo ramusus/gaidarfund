@@ -19,14 +19,23 @@ class ArticlesController < ApplicationController
 
   def list
     articles = Article.visible
-    if not params['type_ids'].blank?
-      articles = articles.scoped_by_articletype_id(params['type_ids'].split(','))
+    if not params[:type_ids].blank?
+      articles = articles.scoped_by_articletype_id(params[:type_ids].split(','))
     end
-    if not params['project_ids'].blank?
-      articles = articles.scoped_by_project_id(params['project_ids'].split(','))
+    if not params[:project_ids].blank?
+      articles = articles.scoped_by_project_id(params[:project_ids].split(','))
     end
-    @article_main = articles.main.first
-    @articles = articles.where("id != ?", @article_main ? @article_main.id: 0)
+    params[:page] = params[:page].to_i
+    if params[:page] == 1
+      @article_main = articles.main.first
+    end
+    @articles = articles.where("id != ?", @article_main ? @article_main.id: 0).paginate(:page => params[:page])
+    # TODO: delete last article, becouse of duplicate announce on second page
+#    if @article_main
+#      puts @articles, @articles.length-1
+#      @articles = @articles.delete_at(@articles.length-1)
+#      puts @articles
+#    end
     render :layout => false
   end
 

@@ -11,8 +11,11 @@ class Article < ActiveRecord::Base
   has_attached_file :image, :styles => {:square => "140x140"}
   attr_accessor :delete_image
   before_validation { self.image = nil if self.delete_image == '1' }
+
   belongs_to :project
   belongs_to :articletype
+
+  self.per_page = 5
 
 # http://stackoverflow.com/questions/3396831/rails-many-to-many-self-join
 #  has_many :related1, :foreign_key => "article_id", :class_name => "Relation"

@@ -31,7 +31,7 @@
 <script type="text/javascript">
    <% if defaults %>
         $(function() {
-            filtration.data = <%= defaults.to_json.html_safe %>;
+            $.extend(filtration.data, <%= defaults.to_json.html_safe %>);
             filtration.reload();
         });
     <% end %>
@@ -47,7 +47,9 @@
     });
 
     var filtration = {
-        data: {},
+        data: {
+            page: 1
+        },
         init: function(data) {
             this.data = data;
         },
@@ -57,10 +59,19 @@
                 data: this.data,
                 beforeSend: function() {},
                 success: function(response) {
-                    $('#articlesList').html(response);
-                    $('.b-tiles').masonry({
-                        itemSelector: '.b-tiles-item'
-                    });
+                    if(filtration.data.page == 1) {
+                        $('#articlesList').html(response);
+                        $('#articlesList .b-tiles').masonry({
+                            itemSelector: '.b-tiles-item'
+                        });
+                        $('#articlesList .b-more a').click(function() {
+                            filtration.data.page++;
+                            filtration.reload();
+                            return false;
+                        });
+                    } else {
+                        $('#articlesList .b-tiles').append(response).masonry('reload');
+                    }
                 }
             });
         }
