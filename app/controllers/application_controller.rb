@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     @projects = Project.all
     @blogs = Blog.all
 
-    ['partners','banners_right_column','footer_links_1','footer_links_2','golden_fund','social_likes','social_links','yandex_metrica_all','extra_head','projects_introduction'].each do |var_name|
+    ['partners','banners_right_column','footer_links_1','footer_links_2','golden_fund','social_likes','social_links','extra_head','projects_introduction'].each do |var_name|
       chunk = Chunk.find_by_code(var_name)
       if chunk and chunk.visible
         chunk = chunk.content.html_safe

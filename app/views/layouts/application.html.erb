@@ -26,7 +26,20 @@
     </head>
     <body class="<%= yield(:body_class) %>">
 
-        <%= @yandex_metrica_all %>
+        <!-- Yandex.Metrika counter only for main GaidarFund site --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter17999566 = new Ya.Metrika({id:17999566, enableAll: true, webvisor:true}); } catch(e) { } });  var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";  if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="//mc.yandex.ru/watch/17999566" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+        <!-- Yandex.Metrika counter all gaidarfund projects -->
+        <div style="display:none;"><script type="text/javascript">
+                (function(w, c) {
+                   (w[c] = w[c] || []).push(function() {
+                       try {
+                           w.yaCounter17197699 = new Ya.Metrika({id:17197699, enableAll: true});
+                       }
+                       catch(e) { }
+                   });
+                })(window, "yandex_metrika_callbacks");
+        </script></div>
+        <script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script><noscript><div><img src="//mc.yandex.ru/watch/17197699" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        <!-- /Yandex.Metrika counter -->
 
         <div class="l-container">
             <div class="l-header">
