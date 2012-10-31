@@ -75,9 +75,9 @@
                         $('#articlesList .b-tiles').append(response).masonry('reload');
                     }
                     // check ammount of items and hide 'more' link
-//                    if($('.b-tiles-item', response).length > filtration.per_page) {
-//                        $('#articlesList .b-more').remove();
-//                    }
+                    if($('.b-tiles-item,.b-featured-article', '<div>' + response + '</div>').length < filtration.per_page) {
+                        $('#articlesList .b-more').remove();
+                    }
                 }
             });
         }

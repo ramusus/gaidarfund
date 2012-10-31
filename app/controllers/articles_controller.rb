@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+
   def news
     @type_ids = Articletype.news.find(:all).map(&:id)
     @menu_class = 'news'
@@ -17,29 +18,24 @@ class ArticlesController < ApplicationController
     render "index"
   end
 
-  def list
-    articles = Article.visible
-    if not params[:type_ids].blank?
-      articles = articles.scoped_by_articletype_id(params[:type_ids].split(','))
-    end
-    if not params[:project_ids].blank?
-      articles = articles.scoped_by_project_id(params[:project_ids].split(','))
-    end
+  def show_old_news
+    show_article Article.news.find_by_old_id!(params[:id]) or not_found
+  end
 
-    params[:page] = params[:page].to_i
-    per_page = Article.per_page
-    if params[:page] == 1
-      @article_main = articles.main.first
-      #less ammount, becouse of first main article
-      per_page = per_page - 1
-    end
-    @articles = articles.where("id != ?", @article_main ? @article_main.id: 0).paginate(:page => params[:page], :per_page => per_page)
-    render :layout => false
+  def show_old_publication
+    show_article Article.publications.find_by_old_id(params[:id]) or not_found
+  end
+
+  def show_old_announce
+    show_article Article.announces.find_by_old_id(params[:id]) or not_found
   end
 
   def show
-    @article = Article.find(params[:id])
+    show_article Article.find(params[:id]) or not_found
+  end
 
+  def show_article(article)
+    @article = article
     articles = Article.visible.where("articletype_id = ?", @article.articletype_id)
     if @article.project
       articles = articles.where("project_id = ?", @article.project_id)
@@ -58,8 +54,27 @@ class ArticlesController < ApplicationController
       @menu_class = 'news'
     end
 
-    respond_to do |format|
-      format.html # show.html.erb
-    end
+    render "show"
   end
+
+  def list
+    articles = Article.visible
+    if not params[:type_ids].blank?
+      articles = articles.scoped_by_articletype_id(params[:type_ids].split(','))
+    end
+    if not params[:project_ids].blank?
+      articles = articles.scoped_by_project_id(params[:project_ids].split(','))
+    end
+
+    params[:page] = params[:page].to_i
+    per_page = Article.per_page
+    if params[:page] == 1
+      @article_main = articles.main.first
+      # decrease ammount per page, becouse of first main article
+      per_page = per_page - 1
+    end
+    @articles = articles.where("id != ?", @article_main ? @article_main.id: 0).paginate(:page => params[:page], :per_page => per_page)
+    render :layout => false
+  end
+
 end

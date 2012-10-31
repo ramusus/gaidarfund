@@ -1,6 +1,8 @@
 class Article < ActiveRecord::Base
 
   scope :announces, where(:articletype_id => Articletype::ANNOUNCE_ID)
+  scope :news, where(:articletype_id => Articletype::NEWS_ID)
+  scope :publications, where(:articletype_id => Articletype::PUBLICATION_ID)
 
   scope :main, where(:main => true)
   scope :visible, where(:hide => false)
@@ -15,7 +17,7 @@ class Article < ActiveRecord::Base
   belongs_to :project
   belongs_to :articletype
 
-  self.per_page = 10
+  self.per_page = 30
 
 # http://stackoverflow.com/questions/3396831/rails-many-to-many-self-join
 #  has_many :related1, :foreign_key => "article_id", :class_name => "Relation"

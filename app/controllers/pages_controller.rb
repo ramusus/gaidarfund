@@ -7,14 +7,11 @@ class PagesController < ApplicationController
       pages = Page.where("project_id is NULL OR project_id = 0") # for pg and mysql TODO: find more clean way via ORM
     end
 
-    @page = pages.find_by_slug(params[:slug] || '') || not_found
+    @page = pages.find_by_slug(params[:slug] || '') or not_found
 
     respond_to do |format|
       format.html # show.html.erb
     end
   end
 
-  def not_found
-    raise ActionController::RoutingError.new('Not Found')
-  end
 end

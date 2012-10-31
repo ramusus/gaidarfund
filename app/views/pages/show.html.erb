@@ -6,7 +6,7 @@
 <% content_for :extra_head do %>
     <script type="text/javascript">
         $(function() {
-            $('li.item a.link[href="/<%= @page.slug %>/"]')
+            $('li.item a.link[href$="/<%= @page.slug %>/"]')
                 .addClass('selected')
                 .html(function(i, html) {
                     return html + ' <b class="b-graphics b-graphics-down-arrow"><b></b></b>';

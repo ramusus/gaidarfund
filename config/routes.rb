@@ -6,6 +6,10 @@ Gaidarfund::Application.routes.draw do
   resources :projects
 
   resources :articles, :only => [:show]
+  match "/public.php?id=:old_id" => "articles#show_old_publication"
+  match "/news.php" => "articles#show_old_news"
+  match "/calendar.php?id=:old_id" => "articles#show_old_announce"
+
   match "/news/" => "articles#news", :as => 'news'
   match "/publications/" => "articles#publications", :as => 'publications'
   match "/calendar/" => "articles#announces", :as => 'announces'
