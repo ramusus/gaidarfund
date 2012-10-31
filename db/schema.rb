@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(:version => 20121031102140) do
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.text     "subtitle"
-    t.string   "author", :default => ''
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -30,20 +29,22 @@ ActiveRecord::Schema.define(:version => 20121031102140) do
     t.string   "title_seo"
     t.text     "right_column"
     t.integer  "project_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.integer  "articletype_id"
     t.text     "content"
     t.integer  "old_group_id"
     t.text     "old_descr"
     t.text     "old_descr2"
+    t.string   "author",             :default => ""
+    t.text     "image_meta"
   end
 
   create_table "articletypes", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "name_plural"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "blogs", :force => true do |t|
@@ -85,18 +86,16 @@ ActiveRecord::Schema.define(:version => 20121031102140) do
     t.string   "title"
     t.text     "content"
     t.string   "slug"
-    t.integer  "page_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "project_id"
+    t.integer  "page_id"
   end
 
   create_table "projects", :force => true do |t|
     t.string   "title"
-    t.string   "title_short"
     t.string   "color"
     t.string   "sign"
-    t.text     "core", :default => ''
     t.string   "background_image_file_name"
     t.string   "background_image_content_type"
     t.integer  "background_image_file_size"
@@ -105,17 +104,9 @@ ActiveRecord::Schema.define(:version => 20121031102140) do
     t.string   "logo_image_content_type"
     t.integer  "logo_image_file_size"
     t.datetime "logo_image_updated_at"
-    t.string   "logo_small_image_file_name"
-    t.string   "logo_small_image_content_type"
-    t.integer  "logo_small_image_file_size"
-    t.datetime "logo_small_image_updated_at"
-    t.string   "css_file_name"
-    t.string   "css_content_type"
-    t.integer  "css_file_size"
-    t.datetime "css_updated_at"
     t.text     "status"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
     t.string   "subdomain"
     t.string   "about_title"
     t.string   "news_title"
@@ -124,7 +115,17 @@ ActiveRecord::Schema.define(:version => 20121031102140) do
     t.text     "partners"
     t.text     "right_block"
     t.text     "projects"
+    t.string   "title_short"
     t.text     "html_block"
+    t.string   "css_file_name"
+    t.string   "css_content_type"
+    t.integer  "css_file_size"
+    t.datetime "css_updated_at"
+    t.string   "logo_small_image_file_name"
+    t.string   "logo_small_image_content_type"
+    t.integer  "logo_small_image_file_size"
+    t.datetime "logo_small_image_updated_at"
+    t.text     "core",                          :default => ""
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -151,17 +152,17 @@ ActiveRecord::Schema.define(:version => 20121031102140) do
     t.integer  "position"
     t.string   "color"
     t.string   "background_color"
-    t.string   "background_image_file_name"
-    t.string   "background_image_content_type"
-    t.integer  "background_image_file_size"
-    t.datetime "background_image_updated_at"
     t.text     "content"
     t.string   "link"
     t.boolean  "hide"
     t.string   "title"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "top_text"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.string   "background_image_file_name"
+    t.string   "background_image_content_type"
+    t.integer  "background_image_file_size"
+    t.datetime "background_image_updated_at"
   end
 
   create_table "users", :force => true do |t|

@@ -7,6 +7,7 @@ gem 'auto_migrations', :git => 'git://github.com/antage/auto_migrations.git'
 gem 'devise' # rails_admin dependency
 gem "ckeditor", "3.7.0.rc3"
 gem 'paperclip', '~> 3.0'
+gem 'paperclip-meta'
 gem 'yaml_db', :git => 'git://github.com/lostapathy/yaml_db.git'
 gem 'unicorn'
 gem 'will_paginate', '~> 3.0'

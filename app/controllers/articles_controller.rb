@@ -25,17 +25,15 @@ class ArticlesController < ApplicationController
     if not params[:project_ids].blank?
       articles = articles.scoped_by_project_id(params[:project_ids].split(','))
     end
+
     params[:page] = params[:page].to_i
+    per_page = Article.per_page
     if params[:page] == 1
       @article_main = articles.main.first
+      #less ammount, becouse of first main article
+      per_page = per_page - 1
     end
-    @articles = articles.where("id != ?", @article_main ? @article_main.id: 0).paginate(:page => params[:page])
-    # TODO: delete last article, becouse of duplicate announce on second page
-#    if @article_main
-#      puts @articles, @articles.length-1
-#      @articles = @articles.delete_at(@articles.length-1)
-#      puts @articles
-#    end
+    @articles = articles.where("id != ?", @article_main ? @article_main.id: 0).paginate(:page => params[:page], :per_page => per_page)
     render :layout => false
   end
 

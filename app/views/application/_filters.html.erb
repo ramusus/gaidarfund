@@ -47,6 +47,7 @@
     });
 
     var filtration = {
+        per_page: <%= Article.per_page %>,
         data: {
             page: 1
         },
@@ -72,6 +73,10 @@
                     } else {
                         $('#articlesList .b-tiles').append(response).masonry('reload');
                     }
+                    // check ammount of items and hide 'more' link
+//                    if($('.b-tiles-item', response).length > filtration.per_page) {
+//                        $('#articlesList .b-more').remove();
+//                    }
                 }
             });
         }

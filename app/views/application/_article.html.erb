@@ -5,7 +5,7 @@
                 <div class="b-section-label c-<%= article.type_class %>-block"><%= article.type.name %></div>
             <% end %>
             <% if article.image.exists? %>
-                <%= image_tag(article.image(:square), :class => 'image', :alt => article.title) %>
+                <%= image_tag(article.image(:square), :class => 'image', :alt => article.title, :width => article.image.width(:square), :height => article.image.height(:square) ) %>
             <% end %>
             <% if not defined?(featured) %>
                 <div class="date"><%= l article.published_at, :format => '%d %B %Y' %></div>
