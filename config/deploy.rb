@@ -45,6 +45,6 @@ namespace :deploy do
     rake = fetch(:rake, "rake")
     rails_env = fetch(:rails_env, "production")
 #    run "cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} db:data:load"
-    top.upload "public/system/projects", "#{deploy_to}/shared/system/projects", :recursive => true
+    top.upload "public/images", "#{deploy_to}/shared/system/old_images", :recursive => true
   end
 end
