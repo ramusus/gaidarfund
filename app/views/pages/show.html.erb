@@ -53,14 +53,25 @@
 
 <% content_for :content do %>
     <div class="l-column-472 l-intercolumn-28">
-        <div class="b-share">
-            <img src="/img/tmp/likes.png" alt=""/>
-        </div>
+        <% if @page.project and false %>
+            <%= render :partial => 'project_header', :locals => {:project => @page.project} %>
+            <div class="l-cover-fix">
+                <div class="b-meta b-meta-pre">
+                <div class="meta">
+                    <%= render :partial => 'social_likes' %>
+                </div>
+                </div>
+        <% else %>
+            <div class="b-share">
+                <%= render :partial => 'social_likes' %>
+            </div>
+        <% end %>
         <%= @page.content.html_safe %>
     </div>
 <% end %>
 
 <% content_for :right_column do %>
+    <%= render :partial => 'social_links' %>
 <% end %>
 
 <%= render :template => 'layouts/3columns' %>

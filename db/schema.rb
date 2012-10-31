@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121031102140) do
+ActiveRecord::Schema.define(:version => 20121031224438) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20121031102140) do
     t.text     "right_block"
     t.text     "projects"
     t.string   "title_short"
+    t.string   "title_seo",                       :default => ""
     t.text     "html_block"
     t.string   "css_file_name"
     t.string   "css_content_type"

@@ -1,4 +1,4 @@
-<% content_for :title do %><%= strip_tags(@project.title) %><% end %>
+<% content_for :title do %><%= @project.title_seo.html_safe or @project.title.html_safe %><% end %>
 
 <% content_for :body_class do %><%= 'l-%s-page' % [@project.body_class] %><% end %>
 
@@ -40,7 +40,10 @@
 
 <% content_for :right_column do %>
     <div class="l-column-210 l-lift-686">
-        <%= @project.right_block.html_safe %>
+        <div class="l-shift-20">
+            <%= @project.right_block.html_safe %>
+            <%= render :partial => 'social_links' %>
+        </div>
     </div>
 <% end %>
 

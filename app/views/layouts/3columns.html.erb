@@ -3,7 +3,6 @@
         <%= content_for?(:content) ? yield(:content) : yield %>
         <div class="l-column-210">
             <%= yield(:right_column) %>
-            <%= render :partial => 'social_links' %>
         </div>
     </div>
 <% end %>
