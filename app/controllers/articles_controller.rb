@@ -1,30 +1,35 @@
 class ArticlesController < ApplicationController
   def news
-    articles = Article.visible.news
-    @article_main = articles.main.first
-    @articles = articles.where("id != ?", @article_main ? @article_main.id: 0)
+    @type_ids = Articletype.news.find(:all).map(&:id)
     @menu_class = 'news'
     render "index"
   end
 
   def publications
-    articles = Article.visible.not_news.not_announces
-    @article_main = articles.main.first
-    @articles = articles.where("id != ?", @article_main ? @article_main.id: 0)
+    @type_ids = Articletype.not_news.not_announce.find(:all).map(&:id)
     @menu_class = 'articles'
     render "index"
   end
 
   def announces
-    articles = Article.visible.announces
-    @article_main = articles.main.first
-    @articles = articles.where("id != ?", @article_main ? @article_main.id: 0)
+    @type_ids = Articletype.announce.find(:all).map(&:id)
     @menu_class = 'announces'
     render "index"
   end
 
-  # GET /articles/1
-  # GET /articles/1.json
+  def list
+    articles = Article.visible
+    if not params['type_ids'].blank?
+      articles = articles.scoped_by_articletype_id(params['type_ids'].split(','))
+    end
+    if not params['project_ids'].blank?
+      articles = articles.scoped_by_project_id(params['project_ids'].split(','))
+    end
+    @article_main = articles.main.first
+    @articles = articles.where("id != ?", @article_main ? @article_main.id: 0)
+    render :layout => false
+  end
+
   def show
     @article = Article.find(params[:id])
 
@@ -40,15 +45,14 @@ class ArticlesController < ApplicationController
 
     if @article.project
       @menu_class = 'projects'
-    elsif @article.type.id == 1
+    elsif @article.type.id == Articletype::PUBLICATION_ID
       @menu_class = 'articles'
-    elsif @article.type.id == 4
+    elsif @article.type.id == Articletype::NEWS_ID
       @menu_class = 'news'
     end
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @article }
     end
   end
 end

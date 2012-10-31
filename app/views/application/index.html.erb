@@ -18,7 +18,7 @@
 <% content_for :left_column do %>
     <%= render :partial => 'projects' %>
     <%= render :partial => 'calendar' %>
-    <%= render :partial => 'filters' %>
+    <%= render :partial => 'filters', :locals => {:show_filters => true, :defaults => {:type_ids => @type_ids.join(',')}} %>
 <% end %>
 
 <% content_for :content do %>
@@ -59,7 +59,7 @@
         <i class="b-right-fader"></i>
     </div>
     <div class="l-column-472 l-intercolumn-28">
-        <%= render :partial => 'articles', :locals => {:article_main => @article_main, :articles => @articles } %>
+        <%= render :partial => 'articles' %>
     </div>
 <% end %>
 

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   def set_context
 
+    @articletypes = Articletype.where("id != ?", 7)
     @projects = Project.all
     @blogs = Blog.all
 
@@ -28,8 +29,7 @@ class ApplicationController < ActionController::Base
     @slides = Slide.limit(5)
     @slide_classes = ['news','about','gaidar','article','project']
 
-    @article_main = Article.not_announces.visible.main.first
-    @articles = Article.not_announces.visible.where("id != ?", @article_main ? @article_main.id: 0)
+    @type_ids = Articletype.not_announce.find(:all).map(&:id)
   end
 
 end

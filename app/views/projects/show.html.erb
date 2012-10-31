@@ -25,34 +25,14 @@
         </div>
     <% end %>
 
-    <h2 class="b-navigation-title"><%= @project.news_title.blank? ? 'Лента новостей' : @project.news_title %></h2>
-    <div class="l-shift-20">
-        <ul class="b-menu b-menu-separated">
-            <li class="item">
-                <a class="link c-about-link" href="?menu-21"><b class="b-graphics b-graphics-check"><b></b>
-                    </b>Лекции</a>
-            </li>
-            <li class="item">
-                <a class="link c-news-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b>
-                    </b>Новости</a>
-            </li>
-            <li class="item">
-                <a class="link c-article-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b>
-                    </b>Публикации</a>
-            </li>
-            <li class="item">
-                <a class="link c-project-link" href="?menu-22"><b class="b-graphics b-graphics-check"><b></b>
-                    </b>Спецпроекты</a>
-            </li>
-        </ul>
-    </div>
+    <%= render :partial => 'filters', :locals => {:show_filters => false, :defaults => {:project_ids => @project.id}} %>
     <%= render :partial => 'projects', :locals => {:current => @project} %>
 <% end %>
 
 <% content_for :content do %>
     <div class="l-column-472 l-intercolumn-28">
         <%= render :partial => 'project_header', :locals => {:project => @project} %>
-        <%= render :partial => 'articles', :locals => {:article_main => @article_main, :articles => @articles } %>
+        <%= render :partial => 'articles' %>
     </div>
 <% end %>
 

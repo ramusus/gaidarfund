@@ -2,7 +2,6 @@ Gaidarfund::Application.routes.draw do
   require 'subdomain'
 
   resources :slides
-
   resources :blogs
   resources :projects
 
@@ -10,6 +9,7 @@ Gaidarfund::Application.routes.draw do
   match "/news/" => "articles#news", :as => 'news'
   match "/publications/" => "articles#publications", :as => 'publications'
   match "/calendar/" => "articles#announces", :as => 'announces'
+  match "/articles/" => "articles#list", :as => 'articles'
 
   mount Ckeditor::Engine => '/ckeditor'
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
