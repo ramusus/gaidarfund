@@ -23,23 +23,19 @@ class ArticlesController < ApplicationController
   end
 
   def show_old_news
-    show_article Article.news.find_by_old_id!(params[:id]) or not_found
+    redirect_to Article.news.find_by_old_id!(params[:id]) or not_found
   end
 
   def show_old_publication
-    show_article Article.publications.find_by_old_id(params[:id]) or not_found
+    redirect_to Article.publications.find_by_old_id(params[:id]) or not_found
   end
 
   def show_old_announce
-    show_article Article.announces.find_by_old_id(params[:id]) or not_found
+    redirect_to Article.announces.find_by_old_id(params[:id]) or not_found
   end
 
   def show
-    show_article Article.find(params[:id]) or not_found
-  end
-
-  def show_article(article)
-    @article = article
+    @article = Article.find(params[:id]) or not_found
     articles = Article.visible.where("articletype_id = ?", @article.articletype_id)
     if @article.project
       articles = articles.where("project_id = ?", @article.project_id)

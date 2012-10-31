@@ -35,7 +35,7 @@
                 <%= render :partial => 'social_likes' %>
             </div>
         <% end %>
-        <h1><%= @article.title.html_safe %></h1>
+        <h1<% if @article.title.length > 50 %> class="b-long-page-title"<% end %>><%= @article.title.html_safe %></h1>
         <div class="b-meta">
             <div class="meta">
                 <span class="date"><%= l @article.published_at, :format => '%d %B %Y' %></span>
