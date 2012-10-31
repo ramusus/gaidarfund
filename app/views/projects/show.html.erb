@@ -1,4 +1,4 @@
-<% content_for :title do %><%= @project.title_seo.html_safe or @project.title.html_safe %><% end %>
+<% content_for :title do %><%= @project.title_seo.blank? ? @project.title.html_safe : @project.title_seo.html_safe %><% end %>
 
 <% content_for :body_class do %><%= 'l-%s-page' % [@project.body_class] %><% end %>
 
