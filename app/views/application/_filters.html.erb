@@ -62,7 +62,9 @@
                 beforeSend: function() {},
                 success: function(response) {
                     if(filtration.data.page == 1) {
-                        $('#articlesList').html(response);
+                        var newItems = $(response);
+                        newItems.css({opacity: 0}).appendTo($('#articlesList'));
+                        newItems.animate({opacity: 1});
                         $('#articlesList .b-tiles').masonry({
                             itemSelector: '.b-tiles-item'
                         });
@@ -72,7 +74,10 @@
                             return false;
                         });
                     } else {
-                        $('#articlesList .b-tiles').append(response).masonry('reload');
+                        var newItems = $(response).find('.b-tiles-item');
+                        newItems.css({opacity: 0}).appendTo($('#articlesList .b-tiles'));
+                        newItems.animate({opacity: 1});
+                        $('#articlesList .b-tiles').masonry('appended', newItems, true);
                     }
                     // check ammount of items and hide 'more' link
                     if($('.b-tiles-item,.b-featured-article', '<div>' + response + '</div>').length < filtration.per_page) {

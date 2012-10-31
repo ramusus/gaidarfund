@@ -15,7 +15,7 @@
 			slideDistance: 0,
 			animationTime: 300,
 			slideFromKeyboard: false,
-			dots: true
+			dots: false
 		};
 		
 		return this.each(function(){
@@ -134,9 +134,11 @@
 					marginLeft: currentPage * (SETTINGS.slideWidth + SETTINGS.slideDistance) * SETTINGS.slideBy * -1
 				}, SETTINGS.animationTime);
 				
-				dotsContainer.animate({
-					marginLeft: currentPage * 38 * -1
-				}, SETTINGS.animationTime);
+				if( SETTINGS.dots ){
+					dotsContainer.animate({
+						marginLeft: currentPage * 38 * -1
+					}, SETTINGS.animationTime);
+				}
 				
 				manageLinks();
 			}

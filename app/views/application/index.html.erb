@@ -3,7 +3,9 @@
 <% content_for :extra_head do %>
     <script type="text/javascript">
         $(function() {
-            $('.b-promo').slideShow();
+            $('.b-promo').slideShow({
+               dots: true
+            });
             $('.b-slideshow').slideShow({
                 slideSelector: '.b-events .item',
                 slideBy: 2,
