@@ -130,4 +130,23 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model Slide do
+    list do
+      include_fields :title, :hide
+    end
+    edit do
+      include_fields :title, :hide, :color, :background_color, :link, :position, :top_text, :background_image
+      include_fields :content do
+        ckeditor true
+        ckeditor_config_js '/javascripts/ckeditor/config.js'
+      end
+      field :color_class, :enum do
+        enum_method do
+          :color_class_enum
+        end
+      end
+
+    end
+  end
+
 end
