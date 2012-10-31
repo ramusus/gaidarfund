@@ -42,6 +42,7 @@
     $('#articlesFiltration a').click(function() {
         $('#articlesFiltration a').not(this).addClass('disabled');
         filtration.data.type_ids = [$(this).removeClass('disabled').attr('rel')].join(',');
+        filtration.data.page = 1;
         filtration.reload();
         return false;
     });
