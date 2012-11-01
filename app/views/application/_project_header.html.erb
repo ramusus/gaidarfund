@@ -1,9 +1,21 @@
-<div class="b-<%= project.body_class %>-header">
-    <%= render :partial => 'social_likes' %>
-    <h1 class="title"><a class="link" href="<%= project_path(project) %>"><%= project.title.html_safe %></a></h1>
-    <div class="event"><%= project.status.html_safe %></div>
-    <%= project.html_block.html_safe %>
-</div>
+<% if defined?(compact) %>
+    <div class="b-<%= project.body_class %>-header b-award-header-compact">
+        <div class="title">
+            <a class="link" href="<%= project_path(project) %>"><%= project.title.html_safe %></a>
+        </div>
+        <div class="event"><%= project.status.html_safe %></div>
+    </div>
+<% else %>
+    <div class="b-<%= project.body_class %>-header">
+        <%= render :partial => 'social_likes' %>
+        <div class="title"><h1 class="title">
+            <a class="link" href="<%= project_path(project) %>"><%= project.title.html_safe %></a>
+        </h1></div>
+        <div class="event"><%= project.status.html_safe %></div>
+        <%= project.html_block.html_safe %>
+    </div>
+<% end %>
+
 <script type="text/javascript">
     <% if project.background_image.exists? %>
         $('.l-<%= project.body_class %>-page .l-container').css({'background': 'url(<%= project.background_image %>) no-repeat 98% 44px'});

@@ -1,7 +1,7 @@
 <% content_for :title do %><%= @page.title.html_safe %><% end %>
 
 <% content_for :partners do %>&nbsp;<% end %>
-<% content_for :body_class do %><% if @page.project and false %><%= 'l-%s-page c-gaidar-page' % [@page.project.body_class] %><% else %>c-about-page<% end %><% end %>
+<% content_for :body_class do %><% if @page.project %><%= 'l-%s-page c-gaidar-page' % [@page.project.body_class] %><% else %>c-about-page<% end %><% end %>
 
 
 <% content_for :extra_head do %>
@@ -12,6 +12,7 @@
                 .html(function(i, html) {
                     return html + ' <b class="b-graphics b-graphics-down-arrow"><b></b></b>';
                 });
+            $('.b-award-header p.label').remove();
 <%
 =begin
 %>
@@ -52,25 +53,25 @@
     <%= render :partial => 'projects' %>
 <% end %>
 
-<% content_for :content do %>
-    <div class="l-column-472 l-intercolumn-28">
-        <% if @page.project and false %>
-            <%= render :partial => 'project_header', :locals => {:project => @page.project} %>
+<% content_for :main_column do %>
+    <% if @page.project %>
+        <div class="l-column-536 l-intercolumn-24">
+            <%= render :partial => 'project_header', :locals => {:project => @page.project, :compact => true} %>
             <div class="l-cover-fix">
-        <% else %>
+    <% else %>
+        <div class="l-column-472 l-intercolumn-28">
             <div class="b-share">
                 <%= render :partial => 'social_likes' %>
             </div>
-        <% end %>
+    <% end %>
         <%= @page.content.html_safe %>
-        <% if @page.project and false %>
-            </div>
-        <% end %>
+    </div>
+    <% if @page.project %>
+        </div>
+        <div class="l-context">
+    <% else %>
+        <div class="l-column-210">
+    <% end %>
+        <%= render :partial => 'social_links' %>
     </div>
 <% end %>
-
-<% content_for :right_column do %>
-    <%= render :partial => 'social_links' %>
-<% end %>
-
-<%= render :template => 'layouts/3columns' %>

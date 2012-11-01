@@ -23,7 +23,7 @@
 <% content_for :main_column do %>
     <div class="l-column-536 l-intercolumn-24">
         <% if @article.project %>
-            <%= render :partial => 'project_header', :locals => {:project => @article.project} %>
+            <%= render :partial => 'project_header', :locals => {:project => @article.project, :compact => true} %>
             <div class="l-cover-fix">
                 <div class="b-meta b-meta-pre">
                 <div class="meta">

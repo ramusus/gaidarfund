@@ -1125,14 +1125,14 @@ SUB {
 			}
 		.b-article .image {
 			display: block;
-			margin-bottom: 14px;
+			margin-bottom: 9px;
 			}
 		.b-article .date {
 			font-size: 11px;
 			color: #999;
 			}
 		.b-article .title {
-			margin: 0 0 10px 0;
+			margin: 0 0 6px 0;
 			font-size: 12px;
 			line-height: 16px;
 			}
