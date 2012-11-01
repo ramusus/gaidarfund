@@ -32,6 +32,10 @@ class Article < ActiveRecord::Base
     self.articletype
   end
 
+  def color_class
+    self.project ? 'project' : self.type.color_class
+  end
+
 end
 
 #class Relation < ActiveRecord::Base
