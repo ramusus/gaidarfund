@@ -2,6 +2,10 @@
 
 <% content_for :body_class do %><% if @article.project %><%= 'l-%s-page c-gaidar-page' % [@article.project.body_class] %><% else %>c-article-page<% end %><% end %>
 
+<% if @article.project %>
+    <% content_for :yandex_metrica_gaidarfund do %>-<% end %>
+<% end %>
+
 <% content_for :extra_head do %>
     <script type="text/javascript">
         $(function() {

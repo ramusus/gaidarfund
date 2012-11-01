@@ -3,6 +3,9 @@
 <% content_for :partners do %>&nbsp;<% end %>
 <% content_for :body_class do %><% if @page.project %><%= 'l-%s-page c-gaidar-page' % [@page.project.body_class] %><% else %>c-about-page<% end %><% end %>
 
+<% if @page.project %>
+    <% content_for :yandex_metrica_gaidarfund do %>-<% end %>
+<% end %>
 
 <% content_for :extra_head do %>
     <script type="text/javascript">

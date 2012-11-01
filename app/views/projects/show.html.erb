@@ -2,6 +2,8 @@
 
 <% content_for :body_class do %><%= 'l-%s-page' % [@project.body_class] %><% end %>
 
+<% content_for :yandex_metrica_gaidarfund do %>-<% end %>
+
 <% content_for :extra_head do %>
     <script type="text/javascript">
         $(function() {
@@ -15,7 +17,6 @@
 <% end %>
 
 <% content_for :left_column do %>
-
     <% if @project.pages.count > 0 %>
         <h2 class="b-navigation-title"><%= @project.about_title.blank? ? 'О проекте' : @project.about_title %></h2>
         <div class="l-shift-20">
