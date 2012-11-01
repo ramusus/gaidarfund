@@ -28,7 +28,7 @@
         </div>
     <% end %>
 
-    <%= render :partial => 'filters', :locals => {:show_filters => false, :defaults => {:project_ids => @project.id}} %>
+    <%= render :partial => 'filters', :locals => {:show_filters => false, :defaults => {:project_ids => @project.id, :per_page => 30}} %>
     <%= @project.projects.html_safe %>
 <% end %>
 

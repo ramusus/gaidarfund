@@ -18,7 +18,7 @@
 <% content_for :left_column do %>
     <%= render :partial => 'projects' %>
     <%= render :partial => 'calendar' %>
-    <%= render :partial => 'filters', :locals => {:show_filters => true, :defaults => {:type_ids => @type_ids.join(',')}} %>
+    <%= render :partial => 'filters', :locals => {:show_filters => true, :defaults => {:type_ids => @type_ids.join(','), :per_page => 15}} %>
 <% end %>
 
 <% content_for :content do %>

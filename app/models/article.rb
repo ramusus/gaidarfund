@@ -17,8 +17,6 @@ class Article < ActiveRecord::Base
   belongs_to :project
   belongs_to :articletype
 
-  self.per_page = 30
-
 # http://stackoverflow.com/questions/3396831/rails-many-to-many-self-join
 #  has_many :related1, :foreign_key => "article_id", :class_name => "Relation"
 #  has_many :related, :through => :relations
