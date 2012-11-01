@@ -1,5 +1,6 @@
 class Page < ActiveRecord::Base
-  attr_accessible :title, :slug, :content, :service, :info, :project_id, :page_id
+  default_scope :order => 'position DESC'
+  attr_accessible :title, :slug, :content, :service, :info, :project_id, :page_id, :position
 
   belongs_to :project
   belongs_to :page

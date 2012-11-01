@@ -53,7 +53,7 @@ RailsAdmin.config do |config|
 
   config.model Page do
     list do
-      include_fields :title, :slug, :project, :page
+      include_fields :title, :slug, :project, :page, :position
     end
     show do
       include_fields :title, :slug
@@ -64,7 +64,7 @@ RailsAdmin.config do |config|
       end
     end
     edit do
-      include_fields :title, :slug, :project, :page
+      include_fields :title, :slug, :project, :page, :position
       include_fields :content do
         ckeditor true
         ckeditor_config_js '/javascripts/ckeditor/config.js'
@@ -108,10 +108,10 @@ RailsAdmin.config do |config|
 
   config.model Project do
     list do
-      include_fields :title, :subdomain
+      include_fields :title, :subdomain, :position
     end
     edit do
-      include_fields :title, :title_short, :subdomain, :color, :sign, :status, :core, :title_seo
+      include_fields :title, :title_short, :subdomain, :color, :sign, :status, :core, :title_seo, :position
       include_fields :likes, :partners, :counters, :right_block, :projects, :html_block do
         ckeditor true
         ckeditor_config_js '/javascripts/ckeditor/config.js'
@@ -132,7 +132,7 @@ RailsAdmin.config do |config|
 
   config.model Slide do
     list do
-      include_fields :title, :hide
+      include_fields :title, :hide, :position
     end
     edit do
       include_fields :title, :hide, :color, :background_color, :link, :position, :top_text, :background_image
