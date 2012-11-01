@@ -16,31 +16,27 @@
     </div>
 <% end %>
 <script type="text/javascript">
-   <% if defaults %>
-        $(function() {
-            $.extend(filtration.data, <%= defaults.to_json.html_safe %>);
-            filtration.reload();
-        });
-    <% end %>
-
-    $('#articlesFiltration a').each(function() {
-
-    });
-    $('#articlesFiltration a').click(function() {
-        $('#articlesFiltration a').not(this).addClass('disabled');
-        filtration.data.type_ids = [$(this).removeClass('disabled').attr('rel')].join(',');
-        filtration.data.page = 1;
-        filtration.reload();
-        return false;
+    $(function() {
+        filtration.init(<%= defaults.to_json.html_safe %>);
     });
 
     var filtration = {
-        per_page: <%= Article.per_page %>,
         data: {
             page: 1
         },
         init: function(data) {
-            this.data = data;
+            $.extend(this.data, data);
+            this.reload();
+            this.initFilters();
+        },
+        initFilters: function() {
+            $('#articlesFiltration a').click(function() {
+                $('#articlesFiltration a').not(this).addClass('disabled');
+                filtration.data.type_ids = [$(this).removeClass('disabled').attr('rel')].join(',');
+                filtration.data.page = 1;
+                filtration.reload();
+                return false;
+            });
         },
         reload: function() {
             $.ajax({
@@ -67,8 +63,7 @@
                         newItems.animate({opacity: 1});
                         $('#articlesList .b-tiles').masonry('appended', newItems, true);
                     }
-                    // check ammount of items and hide 'more' link
-                    if($('.b-tiles-item,.b-featured-article', '<div>' + response + '</div>').length < filtration.per_page) {
+                    if($(response).filter('.b-more').length == 0) {
                         $('#articlesList .b-more').remove();
                     }
                 }

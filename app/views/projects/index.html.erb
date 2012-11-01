@@ -51,7 +51,13 @@
             <% @projects.each do |project| %>
                 <% if project %>
                     <div class="b-project b-large-tiles-item">
-                        <a class="b-project-link" href="<%= project_path(project) %>"><h2 class="b-project-title"><%= project.title %></h2><em class="text"><%= project_path(project) %></em><% if project.logo_small_image.exists? %><img class="image" src="<%= project.logo_small_image(:thumb) %>" alt=""/><% end %></a>
+                        <a class="b-project-link" href="<%= project_path(project) %>">
+                            <h2 class="b-project-title"><%= project.title.html_safe %></h2>
+                            <em class="text"><%= project_path(project) %></em>
+                            <% if project.logo_small_image.exists? %>
+                                <%= image_tag(project.logo_small_image(:thumb), :class => 'image', :alt => strip_tags(project.title), :width => project.logo_small_image.width(:thumb), :height => project.logo_small_image.height(:thumb)) %>
+                            <% end %>
+                        </a>
                         <% if not project.core.empty? %>
                             <h3 class="sub-title first">Краткая суть проекта</h3>
                             <p class="desc"><%= project.core.html_safe %></p>
