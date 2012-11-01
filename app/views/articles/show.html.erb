@@ -1,4 +1,4 @@
-<% content_for :title do %><%= @article.title_seo.blank? ? @article.title.html_safe : @article.title_seo.html_safe %><% end %>
+<% content_for :title do %><%= @article.title_seo.blank? ? strip_tags(@article.title) : @article.title_seo %><% end %>
 
 <% content_for :body_class do %><% if @article.project %><%= 'l-%s-page c-gaidar-page' % [@article.project.body_class] %><% else %>c-article-page<% end %><% end %>
 

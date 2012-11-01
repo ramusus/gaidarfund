@@ -1,4 +1,4 @@
-<% content_for :title do %><%= @project.title_seo.blank? ? @project.title.html_safe : @project.title_seo.html_safe %><% end %>
+<% content_for :title do %><%= @project.title_seo.blank? ? strip_tags(@project.title) : @project.title_seo %><% end %>
 
 <% content_for :body_class do %><%= 'l-%s-page' % [@project.body_class] %><% end %>
 
@@ -28,7 +28,7 @@
         </div>
     <% end %>
 
-    <%= render :partial => 'filters', :locals => {:show_filters => false, :defaults => {:project_ids => @project.id, :per_page => 30}} %>
+    <%= render :partial => 'filters', :locals => {:show_filters => false, :defaults => {:project_ids => @project.id, :per_page => 15}} %>
     <%= @project.projects.html_safe %>
 <% end %>
 
