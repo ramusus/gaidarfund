@@ -8,6 +8,9 @@
     <% if project.background_image.exists? %>
         $('.l-<%= project.body_class %>-page .l-container').css({'background': 'url(<%= project.background_image %>) no-repeat 98% 44px'});
     <% end %>
+    <% if project.logo_image.exists? %>
+        $('.b-<%= project.body_class %>-header a.link').css({'background': 'url(<%= project.logo_image %>) no-repeat'});
+    <% end %>
     <% if project.css.exists? %>
         $("head").append('<link rel="stylesheet" type="text/css" href="<%= project.css %>" media="screen"/>');
         $.getScript("<%= project.css %>");
