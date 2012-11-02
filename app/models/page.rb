@@ -6,4 +6,8 @@ class Page < ActiveRecord::Base
   belongs_to :page
   has_many :pages
 
+  def has_project_header
+    self.project and not self.project.hide
+  end
+
 end

@@ -1,16 +1,16 @@
 <% content_for :title do %><%= @page.title.html_safe %><% end %>
 
 <% content_for :partners do %>&nbsp;<% end %>
-<% content_for :body_class do %><% if @page.project %><%= 'l-%s-page c-gaidar-page' % [@page.project.body_class] %><% else %>c-about-page<% end %><% end %>
+<% content_for :body_class do %><% if @page.has_project_header %><%= 'l-%s-page c-gaidar-page' % [@page.project.body_class] %><% else %>c-about-page<% end %><% end %>
 
-<% if @page.project %>
+<% if @page.has_project_header %>
     <% content_for :yandex_metrica_gaidarfund do %>-<% end %>
 <% end %>
 
 <% content_for :extra_head do %>
     <script type="text/javascript">
         $(function() {
-            <% if @page.project %>
+            <% if @page.has_project_header %>
                 $('li.item.project a.link')
             <% else %>
                 $('li.item a.link[href$="/<%= @page.slug %>/"]')
@@ -61,7 +61,7 @@
 <% end %>
 
 <% content_for :main_column do %>
-    <% if @page.project %>
+    <% if @page.has_project_header %>
         <div class="l-column-536 l-intercolumn-24">
             <%= render :partial => 'project_header', :locals => {:project => @page.project, :compact => true} %>
             <div class="l-cover-fix">
@@ -73,7 +73,7 @@
     <% end %>
         <%= @page.content.html_safe %>
     </div>
-    <% if @page.project %>
+    <% if @page.has_project_header %>
         </div>
         <div class="l-context">
     <% else %>

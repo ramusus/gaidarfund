@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   def set_context
 
     @articletypes = Articletype.where("id != ?", 7)
-    @projects = Project.all
+    @projects = Project.visible.all
     @blogs = Blog.all
 
     ['partners','banners_right_column','footer_links_1','footer_links_2','golden_fund','social_likes','social_links','extra_head','projects_introduction','yandex_metrica_gaidarfund','yandex_metrica_all'].each do |var_name|

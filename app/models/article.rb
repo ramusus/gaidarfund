@@ -25,6 +25,9 @@ class Article < ActiveRecord::Base
     if not self.published_at
       self.published_at = Time.now
     end
+    if not self.articletype_id
+      self.articletype_id = Articletype::PUBLICATION_ID
+    end
     super(args)
   end
 
@@ -34,6 +37,10 @@ class Article < ActiveRecord::Base
 
   def color_class
     self.project ? 'project' : self.type.color_class
+  end
+
+  def has_project_header
+    self.project and not self.project.hide
   end
 
 end

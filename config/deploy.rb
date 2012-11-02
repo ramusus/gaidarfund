@@ -49,6 +49,7 @@ namespace :deploy do
   end
 end
 
+# from here https://gist.github.com/2016396
 namespace :deploy do
   desc "Push local changes to Git repository"
   task :push do
