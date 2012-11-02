@@ -1,8 +1,9 @@
 module ArticlesHelper
 
-  def article_path(options)
-    if options.project
-      polymorphic_url(options, :subdomain => options.project.subdomain)
+  def article_path(article)
+    puts article
+    if article.project
+      polymorphic_url(article, :subdomain => article.project.subdomain)
     else
       super
     end

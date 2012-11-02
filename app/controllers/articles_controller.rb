@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 class ArticlesController < ApplicationController
 
+  # for right method article_path here in controller
+  include ArticlesHelper
+
   def news
     @type_ids = Articletype.news.find(:all).map(&:id)
     @menu_class = 'news'
@@ -36,6 +39,19 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id]) or not_found
+
+    if @article.project
+      @menu_class = 'projects'
+      # redirect to right subdomain
+      if not Subdomain.matches?(request)
+        redirect_to article_path(@article) and return
+      end
+    elsif @article.type.id == Articletype::PUBLICATION_ID
+      @menu_class = 'articles'
+    elsif @article.type.id == Articletype::NEWS_ID
+      @menu_class = 'news'
+    end
+
     articles = Article.visible.where("articletype_id = ?", @article.articletype_id)
     if @article.project
       articles = articles.where("project_id = ?", @article.project_id)
@@ -45,14 +61,6 @@ class ArticlesController < ApplicationController
     @next = articles.where("published_at > ?", @article.published_at).last
     @previous = articles.where("published_at < ?", @article.published_at).first
     @more = articles.where("id != ?", @article.id).limit(5)
-
-    if @article.project
-      @menu_class = 'projects'
-    elsif @article.type.id == Articletype::PUBLICATION_ID
-      @menu_class = 'articles'
-    elsif @article.type.id == Articletype::NEWS_ID
-      @menu_class = 'news'
-    end
 
     render "show"
   end
