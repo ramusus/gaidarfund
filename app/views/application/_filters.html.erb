@@ -4,11 +4,11 @@
         <div class="l-shift-20">
             <ul class="b-menu" id="articlesFiltration">
                 <li class="item">
-                    <a class="link c-all-link" href="#">Все</a>
+                    <a class="link c-article-link disabled" href="#"><b class="b-graphics b-graphics-check"><b></b></b>Все</a>
                 </li>
                 <% @articletypes.each do |type| %>
                     <li class="item">
-                        <%= link_to '<b class="b-graphics b-graphics-check"><b></b></b>'.html_safe + (type.name_plural or type.name), '/articles/', :class => "link c-#{type.color_class}-link", :rel => type.id %>
+                        <%= link_to '<b class="b-graphics b-graphics-check"><b></b></b>'.html_safe + (type.name_plural or type.name), '/articles/', :class => "link c-article-link", :rel => type.id %>
                     </li>
                 <% end %>
             </ul>
