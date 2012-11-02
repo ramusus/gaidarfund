@@ -1,5 +1,6 @@
 <% content_for :title do %><%= @project.title_seo.blank? ? strip_tags(@project.title) : @project.title_seo %><% end %>
 
+<% content_for :partners do %><%= @project.partners.html_safe %><% end %>
 <% content_for :body_class do %><%= 'l-%s-page' % [@project.body_class] %><% end %>
 
 <% content_for :yandex_metrica_gaidarfund do %>-<% end %>

@@ -4,7 +4,7 @@
 <div class="vkontakte">
    <div id="vk_like<%= @vk = @vk ? @vk+1 : 1 %>"></div>
 </div>
-<div class="google" style="width: 40px;">
+<div class="google">
     <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
 </div>
 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4eb27b337e0055e1"></script>
@@ -13,5 +13,7 @@
     VK.Widgets.Like("vk_like<%= @vk %>", {type: "mini", verb: 1});
   }
   $('.facebook,.vkontakte,.google').css({float: 'left'});
-  setTimeout("$('#vk_like<%= @vk %>').css({width: 85});", 1000);
+  setTimeout(".facebook').css({width: 140});", 1000);
+  setTimeout(".vkontakte').css({width: 95});", 1000);
+  setTimeout(".google').css({width: 40});", 1000);
 </script>

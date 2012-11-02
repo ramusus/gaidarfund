@@ -4,6 +4,7 @@
 
 <% if @article.has_project_header %>
     <% content_for :yandex_metrica_gaidarfund do %>-<% end %>
+    <% content_for :social_likes do %><%= @article.project.likes.html_safe %><% end %>
 <% end %>
 
 <% content_for :extra_head do %>
