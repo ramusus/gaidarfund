@@ -2,7 +2,7 @@ class Project < ActiveRecord::Base
 
   scope :visible, where(:hide => false)
   default_scope :order => 'position DESC'
-  attr_accessible :title, :title_short, :subdomain, :color, :core, :sign, :hide, :about_title, :news_title, :status, :likes, :partners, :counters, :right_block, :projects, :css, :background_image, :logo_image, :html_block, :logo_small_image, :title_seo, :delete_css, :delete_background_image, :delete_logo_image, :delete_logo_small_image, :position
+  attr_accessible :title, :title_short, :subdomain, :url, :color, :core, :sign, :hide, :about_title, :news_title, :status, :likes, :partners, :counters, :right_block, :projects, :css, :background_image, :logo_image, :html_block, :logo_small_image, :title_seo, :delete_css, :delete_background_image, :delete_logo_image, :delete_logo_small_image, :position
 
   has_many :articles
   has_many :pages
