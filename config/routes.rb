@@ -23,7 +23,7 @@ Gaidarfund::Application.routes.draw do
 
   # special projects without subdomains
   match "/smi/" => "projects#show", :defaults => {:subdomain => 'smi'}
-  match "/memories/" => "projects#show", :defaults => {:subdomain => 'memories1'}
+  match "/memories/" => "projects#show", :defaults => {:subdomain => 'memories'}
   match "/:slug/" => "pages#show"
 
   constraints(Subdomain) do
