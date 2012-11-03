@@ -25,6 +25,7 @@ class Project < ActiveRecord::Base
   end
 
   def body_class
+    # TODO: move to template helper
     'award'
   end
 end

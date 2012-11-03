@@ -36,10 +36,12 @@ class Article < ActiveRecord::Base
   end
 
   def color_class
+    # TODO: move to template helper
     self.project ? 'project' : self.type.color_class
   end
 
   def has_project_header
+    # TODO: move to template helper
     self.project and not self.project.hide
   end
 

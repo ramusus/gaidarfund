@@ -63,10 +63,10 @@
         </div>
         <div class="b-nearest-articles">
             <% if @previous %>
-                <a class="link c-article-link" href="<%= article_path(@previous) %>"><b class="b-graphics b-graphics-left-arrow"><b></b></b><%= @previous.title.html_safe %></a>
+                <a class="link <%= "c-#{@previous.color_class}-link" %>" href="<%= article_path(@previous) %>"><b class="b-graphics b-graphics-left-arrow"><b></b></b><%= @previous.title.html_safe %></a>
             <% end %>
             <% if @next %>
-                <a class="link next c-about-link" href="<%= article_path(@next) %>"><b class="b-graphics b-graphics-right-arrow"><b></b></b><%= @next.title.html_safe %></a>
+                <a class="link <%= "c-#{@next.color_class}-link" %> next" href="<%= article_path(@next) %>"><b class="b-graphics b-graphics-right-arrow"><b></b></b><%= @next.title.html_safe %></a>
             <% end %>
         </div>
         <% if @article.has_project_header %>

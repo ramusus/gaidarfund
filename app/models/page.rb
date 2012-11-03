@@ -7,10 +7,12 @@ class Page < ActiveRecord::Base
   has_many :pages
 
   def has_project_header
+    # TODO: move to template helper
     self.project and not self.project.hide
   end
 
   def color_class
+    # TODO: move to template helper
     self.slug.include?('gaidar') ? 'gaidar' : 'about'
   end
 
