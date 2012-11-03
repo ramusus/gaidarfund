@@ -14,7 +14,7 @@ Gaidarfund::Application.routes.draw do
   match "/publications/" => "articles#publications", :as => 'publications'
   match "/articles/" => "articles#list", :as => 'articles'
   match "/calendar/" => "articles#announces", :as => 'announces'
-  match "/smi/" => "articles#media", :as => 'media'
+  match "/media/" => "articles#media", :as => 'media'
   match "/memories/" => "articles#memories", :as => 'memories'
 
   mount Ckeditor::Engine => '/ckeditor'

@@ -41,7 +41,7 @@ class Article < ActiveRecord::Base
   end
 
   def has_project_header
-    # TODO: move to template helper
+    # TODO: move to simple condition
     self.project and not self.project.hide
   end
 

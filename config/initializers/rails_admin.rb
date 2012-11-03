@@ -112,7 +112,7 @@ RailsAdmin.config do |config|
 
   config.model Project do
     list do
-      include_fields :title, :subdomain, :position
+      include_fields :title, :subdomain, :hide, :position
     end
     edit do
       include_fields :title, :title_short, :subdomain, :url, :color, :sign, :status, :core, :title_seo, :position, :hide

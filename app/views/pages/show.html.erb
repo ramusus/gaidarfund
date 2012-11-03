@@ -15,6 +15,8 @@
         $(function() {
             <% if @page.has_project_header %>
                 $('li.item.project a.link')
+            <% elsif @page.page %>
+                $('li.item.<%= @page.page.color_class %> a.link')
             <% else %>
                 $('li.item a.link[href$="/<%= @page.slug %>/"]')
             <% end %>
