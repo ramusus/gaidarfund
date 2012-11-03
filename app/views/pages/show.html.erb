@@ -1,11 +1,13 @@
 <% content_for :title do %><%= @page.title.html_safe %><% end %>
 
-<% content_for :partners do %>&nbsp;<% end %>
-<% content_for :body_class do %><% if @page.has_project_header %><%= 'l-%s-page c-gaidar-page' % [@page.project.body_class] %><% else %>c-about-page<% end %><% end %>
-
 <% if @page.has_project_header %>
+    <% content_for :body_class do %><%= 'l-%s-page c-gaidar-page' % [@page.project.body_class] %><% end %>
     <% content_for :yandex_metrica_gaidarfund do %>-<% end %>
     <% content_for :social_likes do %><%= @page.project.likes.html_safe %><% end %>
+    <% content_for :partners do %><%= @page.project.partners.html_safe %><% end %>
+<% else %>
+    <% content_for :body_class do %>c-about-page<% end %>
+    <% content_for :partners do %>&nbsp;<% end %>
 <% end %>
 
 <% content_for :extra_head do %>
