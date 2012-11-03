@@ -3,7 +3,7 @@ Gaidarfund::Application.routes.draw do
 
   resources :slides
   resources :blogs
-  resources :projects
+  resources :projects, :only => [:index]
 
   resources :articles, :only => [:show]
   match "/public.php?id=:old_id" => "articles#show_old_publication"
@@ -21,6 +21,9 @@ Gaidarfund::Application.routes.draw do
 
   devise_for :users
 
+  # special projects without subdomains
+  match "/smi/" => "projects#show", :defaults => {:subdomain => 'smi'}
+  match "/memories/" => "projects#show", :defaults => {:subdomain => 'memories1'}
   match "/:slug/" => "pages#show"
 
   constraints(Subdomain) do

@@ -1,0 +1,10 @@
+<% if items.count > 0 %>
+    <h2 class="b-navigation-title"><%= title.html_safe %></h2>
+    <div class="l-shift-20">
+        <ul class="b-menu b-menu-separated">
+            <% items.each do |item| %>
+                <li class="item"><%= link_to item.title, item, :class =>"link c-#{item.color_class}-link" %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>

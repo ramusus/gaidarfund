@@ -20,7 +20,7 @@ class Page < ActiveRecord::Base
 
   def color_class
     # TODO: move to template helper
-    self.slug.include?('gaidar') ? 'gaidar' : 'about'
+    (self.slug == 'about_gaidar' || self.page && self.page.slug == 'about_gaidar') ? 'gaidar' : 'about'
   end
 
 end

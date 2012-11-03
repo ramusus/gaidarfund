@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find_by_subdomain!(request.subdomain)
+    @project = Project.find_by_subdomain!(params[:subdomain] || request.subdomain)
 
     respond_to do |format|
       format.html # show.html.erb

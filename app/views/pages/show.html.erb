@@ -50,17 +50,21 @@
 <% end %>
 
 <% content_for :left_column do %>
-    <% if @page.pages.count > 0 %>
-        <h2 class="b-navigation-title"><%= @page.title.html_safe %></h2>
-        <div class="l-shift-20">
-            <ul class="b-menu" id="menu">
-                <% @page.pages.each do |page| %>
-                    <li class="item"><%= link_to page.title, page, :class =>"link c-#{@page.color_class}-link" %></li>
-                <% end %>
-            </ul>
-        </div>
+    <%# блок сиблингов %>
+    <% if @page.page %>
+        <%= render :partial => 'block_links', :locals => {:title => @page.page.title, :items => @page.page.pages} %>
     <% end %>
-    <%= render :partial => 'projects' %>
+    <%# блок детей %>
+    <%= render :partial => 'block_links', :locals => {:title => @page.title, :items => @page.pages} %>
+    <% if @page.has_project_header %>
+        <%# блок страниц проекта %>
+        <%= render :partial => 'block_links', :locals => {:title => @page.project.about_title.blank? ? 'О проекте' : @page.project.about_title, :items => @page.project.pages} %>
+        <%# блок проектов проекта %>
+        <%= @page.project.projects.html_safe %>
+    <% else %>
+        <%# блок всех проектов %>
+        <%= render :partial => 'projects' %>
+    <% end %>
 <% end %>
 
 <% content_for :main_column do %>
