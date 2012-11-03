@@ -12,7 +12,7 @@ gem 'yaml_db', :git => 'git://github.com/lostapathy/yaml_db.git'
 gem 'unicorn'
 gem 'will_paginate', '~> 3.0'
 gem 'squeel' # dependency of exception_notification
-gem 'exception_notification'
+gem 'exception_notification', :git => 'git://github.com/alanjds/exception_notification.git'
 gem "exception_logger", :git => 'git://github.com/ryancheung/exception_logger.git'
 
 group :development do
