@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def set_context
 
-    @articletypes = Articletype.where("id != ?", 7)
+    @articletypes = Articletype.not_announce.not_memory.not_media
     @projects = Project.visible.all
     @blogs = Blog.all
 

@@ -12,8 +12,10 @@ Gaidarfund::Application.routes.draw do
 
   match "/news/" => "articles#news", :as => 'news'
   match "/publications/" => "articles#publications", :as => 'publications'
-  match "/calendar/" => "articles#announces", :as => 'announces'
   match "/articles/" => "articles#list", :as => 'articles'
+  match "/calendar/" => "articles#announces", :as => 'announces'
+  match "/smi/" => "articles#media", :as => 'media'
+  match "/memories/" => "articles#memories", :as => 'memories'
 
   mount Ckeditor::Engine => '/ckeditor'
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
@@ -21,9 +23,6 @@ Gaidarfund::Application.routes.draw do
 
   devise_for :users
 
-  # special projects without subdomains
-  match "/smi/" => "projects#show", :defaults => {:subdomain => 'smi'}
-  match "/memories/" => "projects#show", :defaults => {:subdomain => 'memories'}
   match "/:slug/" => "pages#show"
 
   constraints(Subdomain) do

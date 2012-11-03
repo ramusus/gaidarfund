@@ -19,9 +19,23 @@ class ArticlesController < ApplicationController
   end
 
   def announces
-    @type_ids = Articletype.announce.find(:all).map(&:id)
+    @type_ids = [Articletype::ANNOUNCE_ID]
     @menu_class = 'announces'
     @title = 'Анонсы'
+    render "index"
+  end
+
+  def memories
+    @type_ids = [Articletype::MEMORY_ID]
+    @menu_class = 'gaidar'
+    @title = 'Мемуары'
+    render "index"
+  end
+
+  def media
+    @type_ids = [Articletype::MEDIA_ID]
+    @menu_class = 'about'
+    @title = 'СМИ о Фонде'
     render "index"
   end
 
