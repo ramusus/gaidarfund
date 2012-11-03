@@ -14,9 +14,9 @@ gem 'will_paginate', '~> 3.0'
 gem 'squeel' # dependency of exception_notification
 gem 'exception_notification', :git => 'git://github.com/alanjds/exception_notification.git'
 gem "exception_logger", :git => 'git://github.com/ryancheung/exception_logger.git'
+gem 'pg'
 
 group :development do
-  gem 'pg'
 end
 group :test do
   gem 'sqlite3'
