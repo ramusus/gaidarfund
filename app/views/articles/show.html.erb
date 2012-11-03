@@ -6,7 +6,7 @@
     <% content_for :social_likes do %><%= @article.project.likes.html_safe %><% end %>
     <% content_for :partners do %><%= @article.project.partners.html_safe %><% end %>
 <% else %>
-    <% content_for :body_class do %>c-article-page<% end %><% end %>
+    <% content_for :body_class do %>c-article-page<% end %>
 <% end %>
 
 <% content_for :extra_head do %>
