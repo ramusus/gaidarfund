@@ -1,12 +1,12 @@
 <% content_for :title do %><%= @page.title.html_safe %><% end %>
 
 <% if @page.has_project_header %>
-    <% content_for :body_class do %><%= 'l-%s-page c-gaidar-page' % [@page.project.body_class] %><% end %>
+    <% content_for :body_class do %><%= "l-#{@page.project.body_class}-page c-#{@page.color_class}-page" %><% end %>
     <% content_for :yandex_metrica_gaidarfund do %>-<% end %>
     <% content_for :social_likes do %><%= @page.project.likes.html_safe %><% end %>
     <% content_for :partners do %><%= @page.project.partners.html_safe %><% end %>
 <% else %>
-    <% content_for :body_class do %>c-about-page<% end %>
+    <% content_for :body_class do %><%= "c-#{@page.color_class}-page" %><% end %>
     <% content_for :partners do %>&nbsp;<% end %>
 <% end %>
 
@@ -55,7 +55,7 @@
         <div class="l-shift-20">
             <ul class="b-menu" id="menu">
                 <% @page.pages.each do |page| %>
-                    <li class="item"><%= link_to page.title, page, :class =>"link c-about-link" %></li>
+                    <li class="item"><%= link_to page.title, page, :class =>"link c-#{@page.color_class}-link" %></li>
                 <% end %>
             </ul>
         </div>

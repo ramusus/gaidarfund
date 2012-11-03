@@ -1,12 +1,12 @@
 <% content_for :title do %><%= @article.title_seo.blank? ? strip_tags(@article.title) : @article.title_seo %><% end %>
 
 <% if @article.has_project_header %>
-    <% content_for :body_class do %><%= 'l-%s-page c-gaidar-page' % [@article.project.body_class] %><% end %>
+    <% content_for :body_class do %><%= "l-#{@article.project.body_class}-page c-#{@article.color_class}-page" %><% end %>
     <% content_for :yandex_metrica_gaidarfund do %>-<% end %>
     <% content_for :social_likes do %><%= @article.project.likes.html_safe %><% end %>
     <% content_for :partners do %><%= @article.project.partners.html_safe %><% end %>
 <% else %>
-    <% content_for :body_class do %>c-article-page<% end %>
+    <% content_for :body_class do %><%= "c-#{@article.color_class}-page" %><% end %>
 <% end %>
 
 <% content_for :extra_head do %>

@@ -10,4 +10,8 @@ class Page < ActiveRecord::Base
     self.project and not self.project.hide
   end
 
+  def color_class
+    self.slug.include?('gaidar') ? 'gaidar' : 'about'
+  end
+
 end
