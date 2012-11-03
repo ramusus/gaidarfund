@@ -13,10 +13,9 @@ test:
   timeout: 5000
 
 production:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: gaidarfund
+  adapter: postgresql
+  encoding: unicode
+  database: gaidarfund_project
   pool: 5
-  username: gaidarfund
-  password: w43i_2s7irtguw
+  username: gaidarfund_project
+  password: eqd_ew3s_sd3kic
