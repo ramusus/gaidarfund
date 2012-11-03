@@ -6,6 +6,13 @@ class Page < ActiveRecord::Base
   belongs_to :page
   has_many :pages
 
+  def save(args={})
+    if not self.position
+      self.position = 0
+    end
+    super(args)
+  end
+
   def has_project_header
     # TODO: move to template helper
     self.project and not self.project.hide

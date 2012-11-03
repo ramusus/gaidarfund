@@ -24,6 +24,13 @@ class Project < ActiveRecord::Base
     self.title_short or self.title
   end
 
+  def save(args={})
+    if not self.position
+      self.position = 0
+    end
+    super(args)
+  end
+
   def body_class
     # TODO: move to template helper
     'award'
