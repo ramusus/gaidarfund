@@ -17,6 +17,7 @@ Gaidarfund::Application.routes.draw do
 
   mount Ckeditor::Engine => '/ckeditor'
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  mount ExceptionLogger::Engine => "/exception_logger"
 
   devise_for :users
 

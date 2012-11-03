@@ -66,16 +66,7 @@
                 <%= content_for?(:main_column) ? yield(:main_column) : yield %>
             </div>
 
-            <% if content_for?(:partners) %>
-                <%= yield(:partners) %>
-            <% else %>
-                <% if not @partners.blank? %>
-                    <div class="l-extra">
-                        <h2 class="b-first-title">Партнёры</h2>
-                        <%= @partners %>
-                    </div>
-                <% end %>
-            <% end %>
+            <% if content_for?(:partners) %><%= yield(:partners) %><% else %><%= @partners %><% end %>
 
         </div>
 

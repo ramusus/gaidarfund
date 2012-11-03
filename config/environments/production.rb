@@ -65,3 +65,14 @@ Gaidarfund::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
+
+config.after_initialize do
+  LoggedExceptionsController.class_eval do
+    # include any custom auth modules you need
+    # (declarative authorization gem used)
+    filter_resource_access
+    # just add any code you want to be included in the controller ;)
+    # optional, sets the application name for the rss feeds
+    self.application_name = "Gaidarfund"
+  end
+end
