@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121102205536) do
+ActiveRecord::Schema.define(:version => 20121103080354) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20121102205536) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "url",     :default => ""
     t.boolean  "main"
     t.boolean  "hide"
     t.boolean  "hide_discussions"

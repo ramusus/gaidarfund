@@ -85,7 +85,11 @@ RailsAdmin.config do |config|
       end
     end
     edit do
-      include_fields :title, :subtitle, :image, :project, :articletype, :author, :main, :hide, :hide_discussions, :checked, :published_at, :title_seo
+      include_fields :title, :subtitle, :image, :articletype, :project
+      include_fields :url do
+        help 'В случае, если поле заполнено материал является ссылкой на внешний ресурс'
+      end
+      include_fields :author, :main, :hide, :hide_discussions, :checked, :published_at, :title_seo
       include_fields :content, :right_column do
         ckeditor true
         ckeditor_config_js '/javascripts/ckeditor/config.js'
