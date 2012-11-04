@@ -43,12 +43,12 @@ class ArticlesController < ApplicationController
     redirect_to Article.news.find_by_old_id!(params[:id]) or not_found
   end
 
-  def show_old_publication
-    redirect_to Article.publications.find_by_old_id(params[:id]) or not_found
-  end
-
   def show_old_announce
     redirect_to Article.announces.find_by_old_id(params[:id]) or not_found
+  end
+
+  def show_old_publication
+    redirect_to Article.not_news.not_announces.find_by_old_id(params[:id]) or not_found
   end
 
   def show

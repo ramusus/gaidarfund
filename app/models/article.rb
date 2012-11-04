@@ -1,5 +1,8 @@
 class Article < ActiveRecord::Base
 
+  scope :not_announces, where("articletype_id != ?", Articletype::ANNOUNCE_ID)
+  scope :not_news, where("articletype_id != ?", Articletype::NEWS_ID)
+
   scope :announces, where(:articletype_id => Articletype::ANNOUNCE_ID)
   scope :news, where(:articletype_id => Articletype::NEWS_ID)
   scope :publications, where(:articletype_id => Articletype::PUBLICATION_ID)

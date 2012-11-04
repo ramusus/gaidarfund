@@ -32,8 +32,7 @@ class Project < ActiveRecord::Base
   end
 
   def body_class
-    # TODO: after releasing, remove sub method
     # TODO: move to template helper
-    self.subdomain.sub('award1','award')
+    self.subdomain
   end
 end
