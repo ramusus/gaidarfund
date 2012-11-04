@@ -45,7 +45,7 @@
                 beforeSend: function() {},
                 success: function(response) {
                     if(filtration.data.page == 1) {
-                        var newItems = $(response);
+                        var newItems = $(response).filter('div');
                         newItems.css({opacity: 0});
                         $('#articlesList').html(newItems);
                         newItems.animate({opacity: 1});
