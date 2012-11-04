@@ -71,23 +71,26 @@
 
 <% content_for :main_column do %>
     <% if @page.has_project_header %>
-        <div class="l-column-536 l-intercolumn-24">
+        <div class="l-column-710">
             <%= render :partial => 'project_header', :locals => {:project => @page.project, :compact => true} %>
-            <div class="l-cover-fix">
+            <div class="l-column-536 l-intercolumn-24">
+                <div class="l-cover-fix">
+                    <%= @page.content.html_safe %>
+                </div>
+            </div>
+            <div class="l-context">
+                <%= render :partial => 'social_links' %>
+            </div>
+        </div>
     <% else %>
         <div class="l-column-472 l-intercolumn-28">
             <div class="b-share">
                 <%= render :partial => 'social_likes' %>
             </div>
-    <% end %>
-        <%= @page.content.html_safe %>
-    </div>
-    <% if @page.has_project_header %>
+            <%= @page.content.html_safe %>
         </div>
-        <div class="l-context">
-    <% else %>
         <div class="l-column-210">
+            <%= render :partial => 'social_links' %>
+        </div>
     <% end %>
-        <%= render :partial => 'social_links' %>
-    </div>
 <% end %>

@@ -36,20 +36,22 @@
 <% end %>
 
 <% content_for :main_column do %>
-    <div class="l-column-536 l-intercolumn-24">
-        <% if @article.has_project_header %>
+    <% if @article.has_project_header %>
+        <div class="l-column-710">
             <%= render :partial => 'project_header', :locals => {:project => @article.project, :compact => true} %>
-            <div class="l-cover-fix">
-                <div class="b-meta b-meta-pre">
-                <div class="meta">
-                    <%= render :partial => 'social_likes' %>
-                </div>
-                </div>
-        <% else %>
+            <div class="l-column-536 l-intercolumn-24">
+                <div class="l-cover-fix">
+                    <div class="b-meta b-meta-pre">
+                    <div class="meta">
+                        <%= render :partial => 'social_likes' %>
+                    </div>
+                    </div>
+    <% else %>
+        <div class="l-column-536 l-intercolumn-24">
             <div class="b-share">
                 <%= render :partial => 'social_likes' %>
             </div>
-        <% end %>
+    <% end %>
         <h1<% if @article.title.length > 50 %> class="b-long-page-title"<% end %>><%= @article.title.html_safe %></h1>
         <div class="b-meta">
             <div class="meta">
@@ -78,6 +80,7 @@
             <% end %>
         </div>
         <% if @article.has_project_header %>
+                </div>
             </div>
         <% end %>
     </div>

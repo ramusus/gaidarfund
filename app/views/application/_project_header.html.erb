@@ -1,16 +1,18 @@
 <% if defined?(compact) %>
-    <div class="b-<%= project.body_class %>-header b-award-header-compact">
+    <div class="b-project-header b-project-header-<%= project.body_class %>">
         <div class="title">
             <a class="link" href="<%= project_path(project) %>"><%= project.title.html_safe %></a>
         </div>
         <div class="event"><%= project.status.html_safe %></div>
     </div>
 <% else %>
-    <div class="b-<%= project.body_class %>-header">
-        <%= render :partial => 'social_likes' %>
-        <div class="title"><h1 class="title">
+    <div class="b-project-header b-project-header-<%= project.body_class %>">
+        <div class="b-share">
+            <%= render :partial => 'social_likes' %>
+        </div>
+        <h1 class="title">
             <a class="link" href="<%= project_path(project) %>"><%= project.title.html_safe %></a>
-        </h1></div>
+        </h1>
         <div class="event"><%= project.status.html_safe %></div>
         <%= project.html_block.html_safe %>
     </div>
