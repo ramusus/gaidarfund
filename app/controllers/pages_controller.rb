@@ -1,10 +1,10 @@
 class PagesController < ApplicationController
   def show
     pages = Page.all
-    if request.subdomain and project = Project.find_by_subdomain(request.subdomain)
-      pages = Page.where("project_id = ?", project.id)
+    if not request.subdomain.empty? and project = Project.find_by_subdomain(request.subdomain)
+      pages = pages.where("project_id = ?", project.id)
     else
-      pages = Page.where("project_id is NULL OR project_id = 0") # for pg and mysql TODO: find more clean way via ORM
+      pages = pages.where("project_id is NULL")
     end
 
     @page = pages.find_by_slug(params[:slug] || '') or not_found
