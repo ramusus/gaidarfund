@@ -6,7 +6,7 @@ class PagesController < ApplicationController
       pages = Page.where("project_id is NULL")
     end
 
-    @page = pages.find_by_slug(params[:slug] || '') or not_found
+    @page = pages.find_by_slug(params[:slug] || '') || not_found
 
     respond_to do |format|
       format.html # show.html.erb

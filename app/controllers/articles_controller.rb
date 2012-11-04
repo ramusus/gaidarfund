@@ -40,19 +40,19 @@ class ArticlesController < ApplicationController
   end
 
   def show_old_news
-    redirect_to Article.news.find_by_old_id!(params[:id]) or not_found
+    redirect_to Article.news.find_by_old_id!(params[:id]) || news_path
   end
 
   def show_old_announce
-    redirect_to Article.announces.find_by_old_id(params[:id]) or not_found
+    redirect_to Article.announces.find_by_old_id(params[:id]) || announces_path
   end
 
   def show_old_publication
-    redirect_to Article.not_news.not_announces.find_by_old_id(params[:id]) or not_found
+    redirect_to Article.not_news.not_announces.find_by_old_id(params[:id]) || publication_path
   end
 
   def show
-    @article = Article.find(params[:id]) or not_found
+    @article = Article.find(params[:id]) || not_found
 
     if @article.project
       @menu_class = 'projects'

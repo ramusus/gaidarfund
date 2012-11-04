@@ -43,7 +43,7 @@
     </div>
     <div class="b-slideshow">
         <div class="frame">
-            <ul class="b-events slides">
+            <ul class="b-events slides<% if @announces.count < 4 %> b-events-compact<% end %>">
                 <% @announces.reverse.each_with_index do |announce, i| %>
                     <li class="item">
                         <a class="link nearest-<%= i+1 %>" href="<%= article_path(announce) %>">
