@@ -4,13 +4,6 @@ class ArticlesController < ApplicationController
   # for right method article_path here in controller
   include ArticlesHelper
 
-  def news
-    @type_ids = Articletype.news.find(:all).map(&:id)
-    @menu_class = 'news'
-    @title = 'Новости'
-    render "index"
-  end
-
   def publications
     @type_ids = Articletype.not_news.not_announce.find(:all).map(&:id)
     @menu_class = 'articles'
@@ -18,24 +11,10 @@ class ArticlesController < ApplicationController
     render "index"
   end
 
-  def announces
-    @type_ids = [Articletype::ANNOUNCE_ID]
-    @menu_class = 'announces'
-    @title = 'Анонсы'
-    render "index"
-  end
-
-  def memories
-    @type_ids = [Articletype::MEMORY_ID]
-    @menu_class = 'gaidar'
-    @title = 'Мемуары'
-    render "index"
-  end
-
-  def media
-    @type_ids = [Articletype::MEDIA_ID]
-    @menu_class = 'about'
-    @title = 'СМИ о Фонде'
+  def articles_by_type
+    @type_ids = [params[:id]]
+    @menu_class = params[:menu_class]
+    @title = params[:title]
     render "index"
   end
 

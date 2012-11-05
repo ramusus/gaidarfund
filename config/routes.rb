@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 Gaidarfund::Application.routes.draw do
   require 'subdomain'
 
@@ -10,12 +11,13 @@ Gaidarfund::Application.routes.draw do
   match "/news.php" => "articles#show_old_news"
   match "/calendar.php" => "articles#show_old_announce"
 
-  match "/news/" => "articles#news", :as => 'news'
-  match "/publications/" => "articles#publications", :as => 'publications'
   match "/articles/" => "articles#list", :as => 'articles'
-  match "/calendar/" => "articles#announces", :as => 'announces'
-  match "/media/" => "articles#media", :as => 'media'
-  match "/memories/" => "articles#memories", :as => 'memories'
+  match "/publications/" => "articles#publications", :as => 'publications'
+
+  Articletype::ROUTES_MAP.each do |id, params|
+    code, url, title, menu_class = params
+    match url => "articles#articles_by_type", :as => code, :title => title, :menu_class => menu_class, :id => id
+  end
 
   mount Ckeditor::Engine => '/ckeditor'
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'

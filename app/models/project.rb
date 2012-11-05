@@ -21,7 +21,7 @@ class Project < ActiveRecord::Base
   before_validation { self.logo_small_image = nil if self.delete_logo_small_image == '1' }
 
   def to_s
-    self.title_short or self.title
+    self.title_short.blank? ? self.title : self.title_short
   end
 
   def save(args={})
