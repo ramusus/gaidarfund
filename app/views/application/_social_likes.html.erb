@@ -1,5 +1,5 @@
 <div class="facebook">
-    <a class="addthis_button_facebook_like" fb:like:width="75" fb:like:layout="button_count"></a>
+    <a class="addthis_button_facebook_like" fb:like:width="75" fb:like:layout="button_count" fb:like:language="ru_RU"></a>
 </div>
 <div class="vkontakte">
    <div id="vk_like<%= @vk = @vk ? @vk+1 : 1 %>"></div>
@@ -12,8 +12,4 @@
   if (window['VK'] != undefined) {
     VK.Widgets.Like("vk_like<%= @vk %>", {type: "mini", verb: 1});
   }
-  $('.facebook,.vkontakte,.google').css({float: 'left'});
-  setTimeout("$('.facebook').css({width: 140});", 1000);
-  setTimeout("$('.vkontakte').css({width: 95});", 1000);
-  setTimeout("$('.google').css({width: 40});", 1000);
 </script>
