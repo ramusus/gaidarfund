@@ -85,18 +85,51 @@ RailsAdmin.config do |config|
       end
     end
     edit do
-      include_fields :title, :subtitle, :image, :articletype, :project
-      include_fields :url do
-        help 'В случае, если поле заполнено материал является ссылкой на внешний ресурс'
+      include_fields :title do
+        help 'Основной заголовок, желательно не длиннее 100 символов'
       end
-      include_fields :author, :main, :hide_discussions, :checked
+      include_fields :subtitle do
+        help 'Краткое описание под заголовком, желательно до 200 символов'
+      end
+      include_fields :image do
+        help 'Картинка для листинга материалов (уменьшается по ширине до размера колонки)'
+      end
+      include_fields :articletype do
+        help 'Тип публикации, она же метка на цветной вкладке в листинге материалов'
+      end
+      include_fields :project do
+        help 'Принадлежность материала проекту'
+      end
+      include_fields :url do
+        help 'Указывается только если необходим переход с анонса на внешний проект (тело материала в таком случае уже не показывается)'
+      end
+      include_fields :author do
+        help 'Если задан, выводится под заголовком'
+      end
+      include_fields :main do
+        help 'Ставиться вверху ленты, в которой представляется материал (показывается вверху один самый свежий материал).'
+      end
+      include_fields :hide_discussions do
+        help 'Скрыть переход на вкладку "Обсуждение"'
+      end
+      include_fields :checked do
+        help 'Метка для редактора'
+      end
       include_fields :hide do
         help 'Скрытый материал доступен всем по прямой ссылке, он скрывается только из листингов'
       end
       include_fields :published_at do
         help 'Если задается дата в будущем, то до этой даты материал доступен только авторизованным пользователям'
       end
-      include_fields :title_seo
+      include_fields :title_seo do
+        help 'Сео заголовок (если пуст, то по умолчанию выводистя title материала)'
+      end
+      include_fields :content do
+        help 'Основной блок материала'
+      end
+      include_fields :right_column do
+        help 'Выводится под списком смежных материалов "Еще по теме"'
+      end
       include_fields :content, :right_column do
         ckeditor true
         ckeditor_config_js '/javascripts/ckeditor/config.js'
@@ -122,22 +155,93 @@ RailsAdmin.config do |config|
       include_fields :title, :subdomain, :hide, :position
     end
     edit do
-      include_fields :title, :title_short, :subdomain, :url, :color, :sign, :status, :core, :title_seo, :position, :hide
-      include_fields :likes, :partners, :counters, :right_block, :projects, :html_block do
-        ckeditor true
-        ckeditor_config_js '/javascripts/ckeditor/config.js'
+      include_fields :title do
+        help 'Заголовок проекта на странице проекта'
+      end
+      include_fields :title_short do
+        help 'Короткий заголовок проекта в листингах и меню'
+      end
+      include_fields :subdomain do
+        help 'Заполняется Если проекту дается поддомен в зоне gaidarfund.ru (надо добавить соответствующий домен в редакторе DNS)'
+      end
+      include_fields :url do
+        help 'Заполняется только если это внешний проект, со своим доменом'
+      end
+      include_fields :color do
+        help ''
+      end
+      include_fields :sign do
+        help ''
+      end
+      include_fields :status do
+        help 'Краткое описание текущего состояния проекта, выводится в листинге проектов и на странице проекта в шапке'
+      end
+      include_fields :core do
+        help 'Краткая суть проекта для листинга (поставить перед статусом)'
+      end
+      include_fields :position do
+        help ''
+      end
+      include_fields :hide do
+        help 'Скрыть проект в автоматических листингах проекта (перенести поле в этот блок)'
+      end
+
+      group :typical_config do
+        label "Конфигурация типовых проектов"
+        active false
+        field :title_seo do
+          help 'Шаблон сео-заголовка, к которому добавляется название публикации или страницы (по умолчанию название проекта)'
+        end
+        field :likes do
+          help 'HEAD часть лайков'
+        end
+        field :projects do
+          help 'Содержимое левого блока со смежными проектами под меню "о проекте"'
+        end
+        field :right_block do
+          help ' Содержимое блока справа от ленты'
+        end
+        field :html_block do
+          help 'Произвольный блок, добавляется перед лентой (может содержать, например, краткое описание проекта или баннер)'
+        end
+        field :partners do
+          help 'Нижний блок партнеров перед подвалом'
+        end
+        field :counters do
+          help 'Коды счетчиков только для подпроекта (по умолчанию добавляется общий счетчик)'
+        end
       end
 
       group :text do
-        label "Оформление"
-        field :about_title
-        field :news_title
-        field :css
-        field :background_image
-        field :logo_image
-        field :logo_small_image
+        label "Оформление типового проекта"
+        active false
+        field :about_title do
+          help 'Заголовок блока с меню "о проекте" (по умолчанию "о проекте")'
+        end
+        field :news_title do
+          help 'Заголовок блока с фильтром ленты (если задан для проекта)'
+        end
+        field :css do
+          help 'Таблица стилей для подпроекта (любые правила переопределяются с использование класса с поддоменом проекта для BODY)'
+        end
+        field :background_image do
+          help 'Фоновое изображение (размер не меняется)'
+        end
+        field :logo_image do
+          help 'Картинка для использования в заголовке проекта, если не задается название выводится обычным заголовком (размер не меняется)'
+        end
+        field :logo_small_image do
+          help 'Картинка для использования в листинге проектов (уменьшается по ширине под размер колонки)'
+        end
+        field :logo_social_image do
+          help 'Лого проекта используемое в социальных сетях (уменьшается до размера 89 на 89 пикс)'
+        end
       end
 
+      include_fields :likes, :projects, :right_block, :html_block, :partners, :counters do
+        ckeditor true
+        ckeditor_config_js '/javascripts/ckeditor/config.js'
+      end
     end
   end
 

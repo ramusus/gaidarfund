@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121103170331) do
+ActiveRecord::Schema.define(:version => 20121106213814) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -43,9 +43,14 @@ ActiveRecord::Schema.define(:version => 20121103170331) do
 
   create_table "articletypes", :force => true do |t|
     t.string   "name"
+    t.string   "name_plural"
+    t.string   "slug",                :default => ""
+    t.string   "code",                :default => ""
+    t.string   "title",                :default => ""
+    t.string   "color_class",          :default => ""
+    t.integer  "page_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.string   "name_plural"
   end
 
   create_table "blogs", :force => true do |t|
@@ -138,12 +143,16 @@ ActiveRecord::Schema.define(:version => 20121103170331) do
     t.string   "logo_small_image_content_type"
     t.integer  "logo_small_image_file_size"
     t.datetime "logo_small_image_updated_at"
+    t.text     "logo_small_image_meta"
+    t.string   "logo_social_image_file_name"
+    t.string   "logo_social_image_content_type"
+    t.integer  "logo_social_image_file_size"
+    t.datetime "logo_social_image_updated_at"
     t.text     "core",                          :default => ""
     t.string   "title_seo",                     :default => ""
     t.integer  "position"
     t.boolean  "hide",                          :default => false
     t.string   "url",                           :default => ""
-    t.text     "logo_small_image_meta"
   end
 
   create_table "rails_admin_histories", :force => true do |t|

@@ -4,7 +4,7 @@
     <script type="text/javascript">
         $(function() {
             <% if @articletype and @articletype.page %>
-                $('.b-menu li.item a.link[href$="/<%= @articletype.page.slug %>"]').html(function(i,value) {return '<b class="b-graphics b-graphics-check"><b></b></b>' + value});
+                $('.b-menu li.item a.link[href$="/<%= @articletype.slug %>"]').html(function(i,value) {return '<b class="b-graphics b-graphics-check"><b></b></b>' + value});
                 $('ul.b-main-menu li.item.<%= @articletype.page.color_class %> a.link')
             <% else %>
                 $('ul.b-main-menu li.item.<%= @menu_class %> a.link')

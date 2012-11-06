@@ -47,7 +47,16 @@ class Articletype < ActiveRecord::Base
   scope :not_announce, where('id != ?', ANNOUNCE_ID)
   scope :not_news, where('id != ?', NEWS_ID)
 
-  attr_accessible :name, :name_plural
+  attr_accessible :name, :name_plural, :slug, :code, :title, :color_class, :page_id
+
+  COLOR_CLASS_OPTIONS = ['','news','about','gaidar','article','project'].map{|i| [i,i]}
+  validates_inclusion_of :color_class, :in => COLOR_CLASS_OPTIONS.collect{|pair| pair[1]}
+
+  belongs_to :page
+
+  def color_class_enum
+    COLOR_CLASS_OPTIONS
+  end
 
   def color_class
     CLASSES[self.id] or 'article'
