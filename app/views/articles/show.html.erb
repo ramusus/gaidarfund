@@ -60,10 +60,8 @@
             <%= render :partial => 'project_header', :locals => {:project => @article.project, :compact => true} %>
             <div class="l-column-536 l-intercolumn-24">
                 <div class="l-cover-fix">
-                    <div class="b-meta b-meta-pre">
-                    <div class="meta">
+                    <div class="b-share">
                         <%= render :partial => 'social_likes' %>
-                    </div>
                     </div>
     <% else %>
         <div class="l-column-536 l-intercolumn-24">
@@ -100,7 +98,7 @@
                 </div>
             <% end %>
             <div class="b-meta b-meta-separated">
-                <div class="meta">
+                <div class="b-share">
                     <%= render :partial => 'social_likes' %>
                 </div>
                 <% if not @article.hide_discussions %>
