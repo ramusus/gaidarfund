@@ -14,11 +14,11 @@
     <script type="text/javascript">
         $(function() {
             <% if @page.has_project_header %>
-                $('li.item.project a.link')
+                $('ul.b-main-menu li.item.project a.link')
             <% elsif @page.page %>
-                $('li.item.<%= @page.page.color_class %> a.link')
+                $('ul.b-main-menu li.item.<%= @page.page.color_class %> a.link')
             <% else %>
-                $('li.item a.link[href$="/<%= @page.slug %>/"]')
+                $('ul.b-main-menu li.item a.link[href$="/<%= @page.slug %>/"]')
             <% end %>
                 .addClass('selected')
                 .html(function(i, html) {
