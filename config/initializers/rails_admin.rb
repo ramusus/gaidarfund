@@ -89,7 +89,11 @@ RailsAdmin.config do |config|
       include_fields :url do
         help 'В случае, если поле заполнено материал является ссылкой на внешний ресурс'
       end
-      include_fields :author, :main, :hide, :hide_discussions, :checked, :published_at, :title_seo
+      include_fields :author, :main, :hide, :hide_discussions, :checked
+      include_fields :published_at do
+        help 'Если задается дата в будущем, то до этой даты материал доступен только авторизованным пользователям'
+      end
+      include_fields :title_seo
       include_fields :content, :right_column do
         ckeditor true
         ckeditor_config_js '/javascripts/ckeditor/config.js'
