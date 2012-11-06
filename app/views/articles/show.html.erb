@@ -94,9 +94,11 @@
                 </p>
                 <%= @article.content.html_safe %>
             </div>
-            <div id="disqus_thread" class="js-tab">
-                <%= @disqus %>
-            </div>
+            <% if not @article.hide_discussions %>
+                <div id="disqus_thread" class="js-tab">
+                    <%= @disqus %>
+                </div>
+            <% end %>
             <div class="b-meta b-meta-separated">
                 <div class="meta">
                     <%= render :partial => 'social_likes' %>
