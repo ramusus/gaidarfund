@@ -1,6 +1,6 @@
 <% content_for :title do %><%= @article.title_seo.blank? ? strip_tags(@article.title) : @article.title_seo %><% end %>
 
-<% if @article.has_project_header %>
+<% if @article.project %>
     <% content_for :body_class do %><%= "l-#{@article.project.body_class}-page c-#{@article.color_class}-page" %><% end %>
     <% content_for :yandex_metrica_gaidarfund do %>-<% end %>
     <% content_for :social_likes do %><%= @article.project.likes.html_safe %><% end %>
@@ -12,7 +12,12 @@
 <% content_for :extra_head do %>
     <script type="text/javascript">
         $(function() {
-            $('ul.b-main-menu li.item.<%= @menu_class && @menu_class || 'none' %> a.link')
+            <% if @article.type.page %>
+                $('.b-menu li.item a.link[href$="/<%= @article.type.page.slug %>"]').html(function(i,value) {return '<b class="b-graphics b-graphics-check"><b></b></b>' + value});
+                $('ul.b-main-menu li.item.<%= @article.type.page.color_class %> a.link')
+            <% else %>
+                $('ul.b-main-menu li.item.<%= @menu_class && @menu_class || 'none' %> a.link')
+            <% end %>
                 .addClass('selected')
                 .html(function(i, html) {
                     return html + ' <b class="b-graphics b-graphics-down-arrow"><b></b></b>';
@@ -46,7 +51,7 @@
     <% if @article.type.page %>
         <%= render :partial => 'block_links', :locals => {:title => @article.type.page.title, :items => @article.type.page.pages} %>
     <% end %>
-    <% if @article.has_project_header %>
+    <% if @article.project %>
         <%# блок страниц проекта %>
         <%= render :partial => 'block_links', :locals => {:title => @article.project.about_title.blank? ? 'О проекте' : @article.project.about_title, :items => @article.project.pages} %>
         <%# блок проектов проекта %>
@@ -59,7 +64,7 @@
 <% end %>
 
 <% content_for :main_column do %>
-    <% if @article.has_project_header %>
+    <% if @article.project %>
         <div class="l-column-710">
             <%= render :partial => 'project_header', :locals => {:project => @article.project, :compact => true} %>
             <div class="l-column-536 l-intercolumn-24">
@@ -123,7 +128,7 @@
                 <a class="link <%= "c-#{@next.color_class}-link" %> next" href="<%= article_path(@next) %>"><b class="b-graphics b-graphics-right-arrow"><b></b></b><%= @next.title.html_safe %></a>
             <% end %>
         </div>
-        <% if @article.has_project_header %>
+        <% if @article.project %>
                 </div>
         <% end %>
     </div>

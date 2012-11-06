@@ -13,11 +13,6 @@ class Page < ActiveRecord::Base
     super(args)
   end
 
-  def has_project_header
-    # TODO: move to template helper
-    self.project and not self.project.hide
-  end
-
   def color_class
     # TODO: move to template helper
     (self.slug == 'about_gaidar' || self.page && self.page.slug == 'about_gaidar') ? 'gaidar' : 'about'

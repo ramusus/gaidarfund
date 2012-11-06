@@ -89,7 +89,10 @@ RailsAdmin.config do |config|
       include_fields :url do
         help 'В случае, если поле заполнено материал является ссылкой на внешний ресурс'
       end
-      include_fields :author, :main, :hide, :hide_discussions, :checked
+      include_fields :author, :main, :hide_discussions, :checked
+      include_fields :hide do
+        help 'Скрытый материал доступен всем по прямой ссылке, он скрывается только из листингов'
+      end
       include_fields :published_at do
         help 'Если задается дата в будущем, то до этой даты материал доступен только авторизованным пользователям'
       end

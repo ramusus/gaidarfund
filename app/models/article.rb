@@ -43,11 +43,6 @@ class Article < ActiveRecord::Base
     self.project ? 'project' : self.type.color_class
   end
 
-  def has_project_header
-    # TODO: move to simple condition
-    self.project and not self.project.hide
-  end
-
   def is_video?
     self.type.id == Articletype::VIDEO_ID
   end

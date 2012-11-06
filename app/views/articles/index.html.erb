@@ -3,7 +3,12 @@
 <% content_for :extra_head do %>
     <script type="text/javascript">
         $(function() {
-            $('ul.b-main-menu li.item.<%= @menu_class %> a.link')
+            <% if @articletype and @articletype.page %>
+                $('.b-menu li.item a.link[href$="/<%= @articletype.page.slug %>"]').html(function(i,value) {return '<b class="b-graphics b-graphics-check"><b></b></b>' + value});
+                $('ul.b-main-menu li.item.<%= @articletype.page.color_class %> a.link')
+            <% else %>
+                $('ul.b-main-menu li.item.<%= @menu_class %> a.link')
+            <% end %>
                 .addClass('selected')
                 .html(function(i, html) {
                     return html + ' <b class="b-graphics b-graphics-down-arrow"><b></b></b>';

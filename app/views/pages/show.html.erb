@@ -1,6 +1,6 @@
 <% content_for :title do %><%= @page.title.html_safe %><% end %>
 
-<% if @page.has_project_header %>
+<% if @page.project %>
     <% content_for :body_class do %><%= "l-#{@page.project.body_class}-page c-#{@page.color_class}-page" %><% end %>
     <% content_for :yandex_metrica_gaidarfund do %>-<% end %>
     <% content_for :social_likes do %><%= @page.project.likes.html_safe %><% end %>
@@ -13,7 +13,7 @@
 <% content_for :extra_head do %>
     <script type="text/javascript">
         $(function() {
-            <% if @page.has_project_header %>
+            <% if @page.project %>
                 $('ul.b-main-menu li.item.project a.link')
             <% elsif @page.page %>
                 $('ul.b-main-menu li.item.<%= @page.page.color_class %> a.link')
@@ -58,7 +58,7 @@
     <% end %>
     <%# блок детей %>
     <%= render :partial => 'block_links', :locals => {:title => @page.title, :items => @page.pages} %>
-    <% if @page.has_project_header %>
+    <% if @page.project %>
         <%# блок страниц проекта %>
         <%= render :partial => 'block_links', :locals => {:title => @page.project.about_title.blank? ? 'О проекте' : @page.project.about_title, :items => @page.project.pages} %>
         <%# блок проектов проекта %>
@@ -70,7 +70,7 @@
 <% end %>
 
 <% content_for :main_column do %>
-    <% if @page.has_project_header %>
+    <% if @page.project %>
         <div class="l-column-710">
             <%= render :partial => 'project_header', :locals => {:project => @page.project, :compact => true} %>
             <div class="l-column-536 l-intercolumn-24">
