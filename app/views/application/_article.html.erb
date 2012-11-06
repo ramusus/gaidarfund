@@ -5,7 +5,10 @@
                 <div class="b-section-label c-<%= article.color_class %>-block"><%= article.type.name %></div>
             <% end %>
             <% if article.image.exists? %>
-                <%= image_tag(article.image(:square), :class => 'image', :alt => article.title, :width => article.image.width(:square), :height => article.image.height(:square)) %>
+                <div class="image-container">
+                    <%= image_tag(article.image(:square), :class => 'image', :alt => article.title, :width => article.image.width(:square), :height => article.image.height(:square)) %>
+                    <% if article.is_video? %><b class="b-icon b-icon-video"><b></b></b><% end %>
+                </div>
             <% end %>
             <% if not defined?(featured) %>
                 <div class="date"><%= l article.published_at, :format => '%d %B %Y' %></div>

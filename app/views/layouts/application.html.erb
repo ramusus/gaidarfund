@@ -82,7 +82,7 @@
                     <h2 class="b-featured-title"><a class="link" href="?footer-21">Проекты</a></h2>
                     <div class="l-shift-20">
                         <ul class="b-featured-menu">
-                            <% @projects[0..4].each do |project| %>
+                            <% @projects_footer[0..4].each do |project| %>
                                 <li class="item"><%= link_to project, project_path(project), :class => 'link c-project-link' %></li>
                             <% end %>
                         </ul>
@@ -90,7 +90,7 @@
                 </div>
                 <div class="l-column-210">
                     <ul class="b-featured-menu b-featured-menu-untitled">
-                        <% @projects[5..9] and @projects[5..9].each do |project| %>
+                        <% @projects_footer[5..9] and @projects_footer[5..9].each do |project| %>
                             <li class="item"><%= link_to project, project_path(project), :class => 'link c-project-link' %></li>
                         <% end %>
                     </ul>

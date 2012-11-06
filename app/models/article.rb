@@ -48,6 +48,10 @@ class Article < ActiveRecord::Base
     self.project and not self.project.hide
   end
 
+  def is_video?
+    self.type.id == Articletype::VIDEO_ID
+  end
+
 end
 
 #class Relation < ActiveRecord::Base
