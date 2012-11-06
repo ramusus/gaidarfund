@@ -12,13 +12,32 @@
 <% content_for :extra_head do %>
     <script type="text/javascript">
         $(function() {
-            $('li.item.<%= @menu_class %> a.link')
+            $('li.item.<%= @menu_class && @menu_class || 'none' %> a.link')
                 .addClass('selected')
                 .html(function(i, html) {
                     return html + ' <b class="b-graphics b-graphics-down-arrow"><b></b></b>';
                 });
             $('.b-award-header p.label').remove();
+            $('#tabs').tabs({
+                linkSelector: '.b-meta .disqussion .link',
+                tabSelector: '.js-tab'
+            });
         });
+    </script>
+<% end %>
+
+<% content_for :extra_body do %>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'gaidarfund'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
     </script>
 <% end %>
 
@@ -52,23 +71,42 @@
                 <%= render :partial => 'social_likes' %>
             </div>
     <% end %>
-        <h1<% if @article.title.length > 50 %> class="b-long-page-title"<% end %>><%= @article.title.html_safe %></h1>
-        <div class="b-meta">
-            <div class="meta">
-                <span class="date"><%= l @article.published_at, :format => '%d %B %Y' %></span>
-                <% if not @article.author.empty? %>
-                    <span class="b-square">■</span>
-                    <strong class="author"><%= @article.author %></strong>
+        <div id="tabs">
+            <h1<% if @article.title.length > 50 %> class="b-long-page-title"<% end %>><%= @article.title.html_safe %></h1>
+            <div class="b-meta">
+                <div class="meta">
+                    <span class="date"><%= l @article.published_at, :format => '%d %B %Y' %></span>
+                    <% if not @article.author.empty? %>
+                        <span class="b-square">■</span>
+                        <strong class="author"><%= @article.author %></strong>
+                    <% end %>
+                </div>
+                <% if not @article.hide_discussions %>
+                    <div class="disqussion">
+                        <a class="link" href="#article">Текст статьи</a>
+                        <a class="link" href="#disqus_thread">Обсуждение</a>
+                    </div>
                 <% end %>
             </div>
-        </div>
-        <p class="b-intro">
-            <strong><%= @article.subtitle.html_safe %></strong>
-        </p>
-        <%= @article.content.html_safe %>
-        <div class="b-meta b-meta-separated">
-            <div class="meta">
-                <%= render :partial => 'social_likes' %>
+            <div id="article" class="js-tab">
+                <p class="b-intro">
+                    <strong><%= @article.subtitle.html_safe %></strong>
+                </p>
+                <%= @article.content.html_safe %>
+            </div>
+            <div id="disqus_thread" class="js-tab">
+                <%= @disqus %>
+            </div>
+            <div class="b-meta b-meta-separated">
+                <div class="meta">
+                    <%= render :partial => 'social_likes' %>
+                </div>
+                <% if not @article.hide_discussions %>
+                    <div class="disqussion">
+                        <a class="link" href="#article">Текст статьи</a>
+                        <a class="link" href="#disqus_thread">Обсуждение</a>
+                    </div>
+                <% end %>
             </div>
         </div>
         <div class="b-nearest-articles">

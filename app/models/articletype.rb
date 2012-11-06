@@ -23,8 +23,8 @@ class Articletype < ActiveRecord::Base
     # id => code of path method, url, title of page, menu_class in main menu
     NEWS_ID =>        ['news',        '/news/',       'Новости',      'news'],
     ANNOUNCE_ID =>    ['announces',   '/calendar/',   'Анонсы',       'about'],
-    MEMORY_ID =>      ['mdia',        '/media/',      'Мемуары',      'gaidar'],
-    MEDIA_ID =>       ['memories',    '/memories/',   'СМИ о Фонде',  'about'],
+    MEMORY_ID =>      ['memories',    '/memories/',   'Мемуары',      'gaidar'],
+    MEDIA_ID =>       ['media',       '/media/',      'СМИ о Фонде',  'about'],
     INTERVIEW_ID =>   ['interviews',  '/interviews/', 'Интервью',     'articles'],
     DISCUSSION_ID =>  ['discussions', '/discussions/','Дискуссии',    'articles'],
     REPORT_ID =>      ['reports',     '/reports/',    'Отчеты',       'articles'],
