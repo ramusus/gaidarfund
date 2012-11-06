@@ -21,10 +21,10 @@ class Articletype < ActiveRecord::Base
 
   ROUTES_MAP = {
     # id => code of path method, url, title of page, menu_class in main menu
-    NEWS_ID =>        ['news',        '/news/',       'Новости',      'news'],
-    ANNOUNCE_ID =>    ['announces',   '/calendar/',   'Анонсы',       ''],
-    MEMORY_ID =>      ['memories',    '/memories/',   'Мемуары',      'gaidar'],
-    MEDIA_ID =>       ['media',       '/media/',      'СМИ о Фонде',  'about'],
+    NEWS_ID =>        ['news',        '/news/',       'Новости',                          'news'],
+    MEMORY_ID =>      ['memories',    '/memories/',   'Воспоминания о Егоре Гайдаре',     'gaidar'],
+    MEDIA_ID =>       ['media',       '/media/',      'СМИ о Фонде',                      'about'],
+    ANNOUNCE_ID =>    ['announces',   '/calendar/',   'Календарь',    ''],
     INTERVIEW_ID =>   ['interviews',  '/interviews/', 'Интервью',     ''],
     DISCUSSION_ID =>  ['discussions', '/discussions/','Дискуссии',    ''],
     REPORT_ID =>      ['reports',     '/reports/',    'Отчеты',       ''],

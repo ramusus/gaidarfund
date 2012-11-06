@@ -32,6 +32,9 @@
         <div class="b-share">
             <%= render :partial => 'social_likes' %>
         </div>
+        <% if @menu_class != 'news' and @menu_class != 'articles' %>
+            <h1><%= @title %></h1>
+        <% end %>
         <%= render :partial => 'articles' %>
     </div>
 <% end %>
