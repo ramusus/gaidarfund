@@ -11,31 +11,6 @@ class Articletype < ActiveRecord::Base
   MEDIA_ID = 8
   MEMORY_ID = 9
 
-  CLASSES = {
-    PUBLICATION_ID => 'article',
-    NEWS_ID => 'news',
-    ANNOUNCE_ID => 'news',
-    MEMORY_ID => 'gaidar',
-    MEDIA_ID => 'about',
-  }
-
-  ROUTES_MAP = {
-    # id => code of path method, url, title of page, menu_class in main menu
-    NEWS_ID =>        ['news',        '/news/',       'Новости',                          'news'],
-    MEMORY_ID =>      ['memories',    '/memories/',   'Воспоминания о Егоре Гайдаре',     'gaidar'],
-    MEDIA_ID =>       ['media',       '/media/',      'СМИ о Фонде',                      'about'],
-    ANNOUNCE_ID =>    ['announces',   '/calendar/',   'Календарь',    ''],
-    INTERVIEW_ID =>   ['interviews',  '/interviews/', 'Интервью',     ''],
-    DISCUSSION_ID =>  ['discussions', '/discussions/','Дискуссии',    ''],
-    REPORT_ID =>      ['reports',     '/reports/',    'Отчеты',       ''],
-    VIDEO_ID =>       ['videos',      '/videos/',     'Видео',        ''],
-  }
-
-  PAGES = {
-    MEMORY_ID => 'about_gaidar',
-    MEDIA_ID => 'about_fund',
-  }
-
   scope :publication, where(:id => PUBLICATION_ID)
   scope :news, where(:id => NEWS_ID)
   scope :media, where(:id => MEDIA_ID)
@@ -56,14 +31,6 @@ class Articletype < ActiveRecord::Base
 
   def color_class_enum
     COLOR_CLASS_OPTIONS
-  end
-
-  def color_class
-    CLASSES[self.id] or 'article'
-  end
-
-  def page
-    Page.find_by_slug(PAGES[self.id])
   end
 
 end

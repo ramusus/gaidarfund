@@ -3,9 +3,9 @@
 <% content_for :extra_head do %>
     <script type="text/javascript">
         $(function() {
-            <% if @articletype and @articletype.page %>
-                $('.b-menu li.item a.link[href$="/<%= @articletype.slug %>"]').html(function(i,value) {return '<b class="b-graphics b-graphics-check"><b></b></b>' + value});
-                $('ul.b-main-menu li.item.<%= @articletype.page.color_class %> a.link')
+            <% if @type and @type.page %>
+                $('.b-menu li.item a.link[href$="/<%= @type.slug %>"]').html(function(i,value) {return '<b class="b-graphics b-graphics-check"><b></b></b>' + value});
+                $('ul.b-main-menu li.item.<%= @type.page.color_class %> a.link')
             <% else %>
                 $('ul.b-main-menu li.item.<%= @menu_class %> a.link')
             <% end %>
@@ -19,8 +19,8 @@
 
 <% content_for :left_column do %>
     <%# меню для memorues and media листингов %>
-    <% if @articletype and @articletype.page %>
-        <%= render :partial => 'block_links', :locals => {:title => @articletype.page.title, :items => @articletype.page.pages} %>
+    <% if @type and @type.page %>
+        <%= render :partial => 'block_links', :locals => {:title => @type.page.title, :items => @type.page.pages} %>
     <% end %>
     <%= render :partial => 'projects' %>
     <%= render :partial => 'calendar' %>

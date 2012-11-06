@@ -12,10 +12,10 @@ class ArticlesController < ApplicationController
   end
 
   def articles_by_type
-    @type_ids = params[:id]
-    @menu_class = params[:menu_class]
-    @title = params[:title]
-    @articletype = Articletype.find(params[:id])
+    @type = Articletype.find_by_slug(params[:slug])
+    @type_ids = @type.id
+    @menu_class = @type.color_class
+    @title = @type.title
     render "index"
   end
 

@@ -3,21 +3,8 @@ Gaidarfund::Application.routes.draw do
   require 'subdomain'
 
   resources :slides
-  resources :blogs
   resources :projects, :only => [:index]
-
   resources :articles, :only => [:show]
-  match "/public.php" => "articles#show_old_publication"
-  match "/news.php" => "articles#show_old_news"
-  match "/calendar.php" => "articles#show_old_announce"
-
-  match "/articles/" => "articles#list", :as => 'articles'
-  match "/publications/" => "articles#publications", :as => 'publications'
-
-  Articletype::ROUTES_MAP.each do |id, params|
-    code, url, title, menu_class = params
-    match url => "articles#articles_by_type", :as => code, :title => title, :menu_class => menu_class, :id => id
-  end
 
   mount Ckeditor::Engine => '/ckeditor'
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
@@ -25,6 +12,17 @@ Gaidarfund::Application.routes.draw do
 
   devise_for :users
 
+  match "/public.php" => "articles#show_old_publication"
+  match "/news.php" => "articles#show_old_news"
+  match "/calendar.php" => "articles#show_old_announce"
+
+  match "/articles/" => "articles#list", :as => 'articles'
+  match "/publications/" => "articles#publications", :as => 'publications'
+
+  Articletype.all.each do |type|
+    match type.slug => "articles#articles_by_type", :as => type.code, :slug => type.slug
+  end
+#  match "/:slug/" => "articles#articles_by_type"
   match "/:slug/" => "pages#show"
 
   constraints(Subdomain) do
