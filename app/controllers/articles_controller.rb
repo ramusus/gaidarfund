@@ -39,12 +39,18 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id]) || not_found
 
+    # redirect to right subdomain
+    if @article.project and not Subdomain.matches?(request)
+      redirect_to article_path(@article) and return
+    end
+
+    # redirect to right subdomain
+    if @article.published_at > Time.now and not user_signed_in?
+      return forbidden
+    end
+
     if @article.project
       @menu_class = 'projects'
-      # redirect to right subdomain
-      if not Subdomain.matches?(request)
-        redirect_to article_path(@article) and return
-      end
     elsif @article.type.id == Articletype::PUBLICATION_ID
       @menu_class = 'articles'
     elsif @article.type.id == Articletype::NEWS_ID

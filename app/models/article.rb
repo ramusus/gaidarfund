@@ -8,7 +8,7 @@ class Article < ActiveRecord::Base
   scope :publications, where(:articletype_id => Articletype::PUBLICATION_ID)
 
   scope :main, where(:main => true)
-  scope :visible, where(:hide => false)
+  scope :visible, where(:hide => false).where("published_at < ?", Time.now)
 
   default_scope :order => 'published_at DESC, id DESC'
   attr_accessible :title, :subtitle, :image, :url, :main, :hide, :hide_discussions, :content, :checked, :old_id, :published_at, :title_seo, :right_column, :project_id, :articletype_id, :delete_image, :old_group_id, :old_descr, :old_descr2, :author

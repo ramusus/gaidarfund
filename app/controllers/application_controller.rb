@@ -40,4 +40,8 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError.new('Not Found')
   end
 
+  def forbidden
+    raise ActionController::RoutingError.new('Forbidden')
+  end
+
 end
