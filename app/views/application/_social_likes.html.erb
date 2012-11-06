@@ -12,4 +12,8 @@
   if (window['VK'] != undefined) {
     VK.Widgets.Like("vk_like<%= @vk %>", {type: "mini", verb: 1});
   }
+  $('.facebook,.vkontakte,.google').css({float: 'left'});
+  setTimeout("$('.facebook').css({width: 140});", 1000);
+  setTimeout("$('.vkontakte').css({width: 95});", 1000);
+  setTimeout("$('.google').css({width: 40});", 1000);
 </script>
