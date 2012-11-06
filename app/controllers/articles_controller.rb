@@ -12,15 +12,10 @@ class ArticlesController < ApplicationController
   end
 
   def articles_by_type
-    @type_ids = [params[:id]]
+    @type_ids = params[:id]
     @menu_class = params[:menu_class]
     @title = params[:title]
-    if params[:id] == Articletype::MEMORY_ID
-      @page = Page.find_by_slug('about_gaidar')
-    end
-    if params[:id] == Articletype::MEDIA_ID
-      @page = Page.find_by_slug('about_fund')
-    end
+    @articletype = Articletype.find(params[:id])
     render "index"
   end
 

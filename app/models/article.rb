@@ -51,6 +51,14 @@ class Article < ActiveRecord::Base
   def is_video?
     self.type.id == Articletype::VIDEO_ID
   end
+  def is_memory?
+    self.type.id == Articletype::MEMORY_ID
+  end
+  def is_media?
+    self.type.id == Articletype::MEDIA_ID
+  end
+
+
 
 end
 

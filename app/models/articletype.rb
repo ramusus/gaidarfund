@@ -31,6 +31,11 @@ class Articletype < ActiveRecord::Base
     VIDEO_ID =>       ['videos',      '/videos/',     'Видео',        'articles'],
   }
 
+  PAGES = {
+    MEMORY_ID => 'about_gaidar',
+    MEDIA_ID => 'about_fund',
+  }
+
   scope :publication, where(:id => PUBLICATION_ID)
   scope :news, where(:id => NEWS_ID)
   scope :media, where(:id => MEDIA_ID)
@@ -47,4 +52,9 @@ class Articletype < ActiveRecord::Base
   def color_class
     CLASSES[self.id] or 'article'
   end
+
+  def page
+    Page.find_by_slug(PAGES[self.id])
+  end
+
 end

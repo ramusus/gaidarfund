@@ -14,12 +14,12 @@
 
 <% content_for :left_column do %>
     <%# меню для memorues and media листингов %>
-    <% if @page %>
-        <%= render :partial => 'block_links', :locals => {:title => @page.title, :items => @page.pages} %>
+    <% if @articletype and @articletype.page %>
+        <%= render :partial => 'block_links', :locals => {:title => @articletype.page.title, :items => @articletype.page.pages} %>
     <% end %>
     <%= render :partial => 'projects' %>
     <%= render :partial => 'calendar' %>
-    <%= render :partial => 'filters', :locals => {:show_filters => (@menu_class == 'articles'), :defaults => {:type_ids => @type_ids.join(','), :per_page => 30}} %>
+    <%= render :partial => 'filters', :locals => {:show_filters => (@menu_class == 'articles'), :defaults => {:type_ids => @type_ids, :per_page => 30}} %>
 <% end %>
 
 <% content_for :content do %>
