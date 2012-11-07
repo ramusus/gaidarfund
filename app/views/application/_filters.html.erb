@@ -8,7 +8,7 @@
                 </li>
                 <% @articletypes.each do |type| %>
                     <li class="item">
-                        <%= link_to '<b class="b-graphics b-graphics-check"><b></b></b>'.html_safe + (type.name_plural or type.name), articletype_path(type), :class => "link b-text-link", :rel => type.id %>
+                        <%= link_to '<b class="b-graphics b-graphics-check"><b></b></b>'.html_safe + type.name_plural, articletype_path(type), :class => "link b-text-link", :rel => type.id %>
                     </li>
                 <% end %>
             </ul>
