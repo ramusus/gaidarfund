@@ -13,7 +13,7 @@ class Project < ActiveRecord::Base
   has_attached_file :css
   has_attached_file :background_image
   has_attached_file :logo_image
-  has_attached_file :logo_small_image, :styles => {:thumb => "220x"}
+  has_attached_file :logo_small_image, :styles => {:thumb => "220>"}
   has_attached_file :logo_social_image, :styles => {:square => "89x89"}
   attr_accessor :delete_css
   attr_accessor :delete_background_image
