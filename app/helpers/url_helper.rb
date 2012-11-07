@@ -2,7 +2,7 @@ module UrlHelper
   def with_subdomain(subdomain)
     subdomain = (subdomain || "")
     subdomain += "." unless subdomain.empty?
-    [subdomain, request.domain].join
+    [subdomain, request.domain || 'gaidarfund.ru'].join
   end
 
   def url_for(options = nil)
