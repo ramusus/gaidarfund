@@ -10,6 +10,7 @@ class Articletype < ActiveRecord::Base
   ANNOUNCE_ID = 7
   MEDIA_ID = 8
   MEMORY_ID = 9
+  BOOK_ID = 10
 
   scope :publication, where(:id => PUBLICATION_ID)
   scope :news, where(:id => NEWS_ID)
@@ -21,6 +22,7 @@ class Articletype < ActiveRecord::Base
   scope :not_memory, where('id != ?', MEMORY_ID)
   scope :not_announce, where('id != ?', ANNOUNCE_ID)
   scope :not_news, where('id != ?', NEWS_ID)
+  scope :not_book, where('id != ?', BOOK_ID)
 
   attr_accessible :name, :name_plural, :slug, :code, :title, :color_class, :page_id
 

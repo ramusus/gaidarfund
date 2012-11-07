@@ -54,8 +54,9 @@ class Article < ActiveRecord::Base
   def is_media?
     self.type.id == Articletype::MEDIA_ID
   end
-
-
+  def is_book?
+    self.type.id == Articletype::BOOK_ID
+  end
 
 end
 

@@ -10,7 +10,7 @@
                     <% if article.is_video? %><b class="b-icon b-icon-video"><b></b></b><% end %>
                 </div>
             <% end %>
-            <% if not defined?(featured) %>
+            <% if not defined?(featured) and not article.is_book? %>
                 <div class="date"><%= l article.published_at, :format => '%d %B %Y' %></div>
             <% end %>
             <h3 class="title"><%= article.title.html_safe %></h3>

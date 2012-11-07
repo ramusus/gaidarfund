@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   include ArticlesHelper
 
   def publications
-    @type_ids = Articletype.not_news.not_announce.find(:all).map(&:id)
+    @type_ids = Articletype.not_news.not_announce.not_book.find(:all).map(&:id)
     @menu_class = 'articles'
     @title = 'Публикации'
     render "index"

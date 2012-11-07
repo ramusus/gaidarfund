@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
     @announces = Article.announces.where("published_at >= ?", Time.now)
     @slides = Slide.limit(5)
 
-    @type_ids = Articletype.not_announce.find(:all).map(&:id)
+    @type_ids = Articletype.not_announce.not_book.find(:all).map(&:id)
   end
 
   def not_found
