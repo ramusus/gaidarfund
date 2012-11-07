@@ -74,8 +74,8 @@ class ArticlesController < ApplicationController
       articles = articles.scoped_by_project_id(params[:project_ids].split(','))
     end
 
-    params[:page] = params[:page].to_i
-    params[:per_page] = params[:per_page].to_i
+    params[:page] = params[:page].to_i || 1
+    params[:per_page] = params[:per_page].to_i || 20
     if params[:page] == 1
       @article_main = articles.main.first
       # decrease ammount per page, becouse of first main article
