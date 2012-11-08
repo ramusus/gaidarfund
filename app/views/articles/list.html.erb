@@ -1,4 +1,6 @@
-<%= render :partial => 'article', :locals => {:article => @article_main, :featured => true} %>
+<% if params[:page] == 1 %>
+    <%= render :partial => 'article', :locals => {:article => @article_main, :featured => true} %>
+<% end %>
 <div class="b-tiles">
     <%= render :partial => 'article', :collection => @articles || 'No pubs.' %>
 </div>

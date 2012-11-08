@@ -76,11 +76,7 @@ class ArticlesController < ApplicationController
 
     params[:page] = params.fetch(:page, 1).to_i
     params[:per_page] = params.fetch(:per_page, 20).to_i
-    if params[:page] == 1
-      @article_main = articles.main.first
-      # decrease ammount per page, becouse of first main article
-      params[:per_page] = params[:per_page] - 1
-    end
+    @article_main = articles.main.first
     @articles = articles.where("id != ?", @article_main ? @article_main.id: 0).paginate(:page => params[:page], :per_page => params[:per_page])
     render :layout => false
   end
