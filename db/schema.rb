@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121106213814) do
+ActiveRecord::Schema.define(:version => 20121108184815) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(:version => 20121106213814) do
     t.integer  "position"
     t.boolean  "hide",                          :default => false
     t.string   "url",                           :default => ""
+    t.integer  "per_page", :default => 15
   end
 
   create_table "rails_admin_histories", :force => true do |t|

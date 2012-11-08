@@ -19,7 +19,7 @@
 
 <% content_for :left_column do %>
     <%= render :partial => 'block_links', :locals => {:title => @project.about_title.blank? ? 'О проекте' : @project.about_title, :items => @project.pages} %>
-    <%= render :partial => 'filters', :locals => {:show_filters => false, :defaults => {:project_ids => @project.id, :per_page => 15}} %>
+    <%= render :partial => 'filters', :locals => {:show_filters => false, :defaults => {:project_ids => @project.id, :per_page => @project.per_page}} %>
     <%= @project.projects.html_safe %>
 <% end %>
 

@@ -3,7 +3,7 @@ class Project < ActiveRecord::Base
   scope :visible, where(:hide => false)
   default_scope :order => 'position DESC'
   attr_accessible :title, :title_short, :title_seo, :subdomain, :url, :color, :core, :sign, :hide, :about_title, :news_title,
-    :status, :likes, :partners, :counters, :right_block, :projects, :html_block, :position,
+    :status, :likes, :partners, :counters, :right_block, :projects, :html_block, :position, :per_page,
     :css, :background_image, :logo_image, :logo_small_image, :logo_social_image,
     :delete_css, :delete_background_image, :delete_logo_image, :delete_logo_small_image, :delete_logo_social_image
 
@@ -33,6 +33,9 @@ class Project < ActiveRecord::Base
   def save(args={})
     if not self.position
       self.position = 0
+    end
+    if not self.per_page
+      self.per_page = 15
     end
     super(args)
   end

@@ -185,6 +185,9 @@ RailsAdmin.config do |config|
       include_fields :hide do
         help 'Скрыть проект в автоматических листингах проекта (перенести поле в этот блок)'
       end
+      include_fields :per_page do
+        help 'Количество материлов, подгружаемых на странице проекта'
+      end
 
       group :typical_config do
         label "Конфигурация типовых проектов"
@@ -238,10 +241,6 @@ RailsAdmin.config do |config|
         end
       end
 
-      include_fields :likes, :projects, :right_block, :html_block, :partners, :counters do
-        ckeditor true
-        ckeditor_config_js '/javascripts/ckeditor/config.js'
-      end
     end
   end
 

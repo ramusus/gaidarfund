@@ -83,6 +83,7 @@ ru:
         logo_image: "Лого"
         logo_small_image: "Маленкое лого"
         logo_social_image: "Лого в соц. сетях"
+        per_page: "Количество материалов"
       slide:
         title: "Заголовок"
         hide: "Скрыть?"
