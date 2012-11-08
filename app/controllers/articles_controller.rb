@@ -78,8 +78,8 @@ class ArticlesController < ApplicationController
     params[:per_page] = params.fetch(:per_page, 20)
     if params[:page] == 1
       @article_main = articles.main.first
-      # decrease ammount per page, becouse of first main article
-      params[:per_page] = params[:per_page] - 1
+      # decrease ammount per page, becouse of first main article TODO: fix it on myths project
+#      params[:per_page] = params[:per_page] - 1
     end
     @articles = articles.where("id != ?", @article_main ? @article_main.id: 0).paginate(:page => params[:page], :per_page => params[:per_page])
     render :layout => false
