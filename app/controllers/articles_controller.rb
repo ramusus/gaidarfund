@@ -74,8 +74,8 @@ class ArticlesController < ApplicationController
       articles = articles.scoped_by_project_id(params[:project_ids].split(','))
     end
 
-    params[:page] = params.fetch(:page, 1)
-    params[:per_page] = params.fetch(:per_page, 20)
+    params[:page] = params.fetch(:page, 1).to_i
+    params[:per_page] = params.fetch(:per_page, 20).to_i
     if params[:page] == 1
       @article_main = articles.main.first
       # decrease ammount per page, becouse of first main article TODO: fix it on myths project
