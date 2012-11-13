@@ -112,7 +112,9 @@
             </div>
             <% if not @article.hide_discussions %>
                 <div id="disqus_thread" class="js-tab">
-                    <%= @disqus %>
+                    <div class="b-disqus">
+                        <%= @disqus %>
+                    </div>
                 </div>
             <% end %>
             <div class="b-meta b-meta-after">
