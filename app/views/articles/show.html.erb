@@ -28,6 +28,10 @@
                 linkSelector: '.b-meta .disqussion .link',
                 tabSelector: '.js-tab'
             });
+            $('#article-tabs').tabs({
+                tabSelector: '.article-tab',
+                generateMenu: true
+            });
         });
     </script>
 <% end %>
@@ -102,7 +106,9 @@
                 <p class="b-intro">
                     <strong><%= @article.subtitle.html_safe %></strong>
                 </p>
-                <%= @article.content.html_safe %>
+                <div id="article-tabs">
+                    <%= @article.content.html_safe %>
+                </div>
             </div>
             <% if not @article.hide_discussions %>
                 <div id="disqus_thread" class="js-tab">
