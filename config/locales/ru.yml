@@ -48,6 +48,7 @@ ru:
         url: "Внешняя ссылка"
         main: "Основной?"
         hide: "Скрыть?"
+        only_for_signed: "Только для авторизованных?"
         hide_discussions: "Скрыть дискуссии?"
         content: "Контент"
         checked: "Проверено?"

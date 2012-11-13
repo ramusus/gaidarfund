@@ -39,8 +39,8 @@ class ArticlesController < ApplicationController
       redirect_to article_path(@article) and return
     end
 
-    # redirect to right subdomain
-    if @article.published_at > Time.now and not user_signed_in?
+    # redirect to forbidden if article only for signed
+    if @article.only_for_signed and not user_signed_in?
       return forbidden
     end
 

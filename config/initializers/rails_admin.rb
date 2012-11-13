@@ -132,8 +132,10 @@ RailsAdmin.config do |config|
       include_fields :hide do
         help 'Скрытый материал доступен всем по прямой ссылке, он скрывается только из листингов'
       end
+      include_fields :only_for_signed do
+        help 'Материал скрывается из всех листингов и доступен по прямой ссылке только авторизованным'
+      end
       include_fields :published_at do
-        help 'Если задается дата в будущем, то до этой даты материал доступен только авторизованным пользователям'
       end
       include_fields :title_seo do
         help 'Сео заголовок (если пуст, то по умолчанию выводистя title материала)'

@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20121113132514) do
     t.boolean  "hide"
     t.boolean  "hide_discussions"
     t.boolean  "checked"
+    t.boolean  "only_for_signed", :default => false
     t.integer  "old_id"
     t.datetime "published_at"
     t.string   "title_seo"
