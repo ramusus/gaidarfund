@@ -64,7 +64,16 @@ RailsAdmin.config do |config|
       end
     end
     edit do
-      include_fields :title, :slug, :project, :page, :position
+      include_fields :title, :slug
+      include_fields :project do
+        help 'Принадлежность страницы проекту'
+        associated_collection_scope do
+          Proc.new { |scope|
+            scope = scope.linkable
+          }
+        end
+      end
+      include_fields :page, :position
       include_fields :content do
         ckeditor true
         ckeditor_config_js '/javascripts/ckeditor/config.js'
@@ -99,6 +108,11 @@ RailsAdmin.config do |config|
       end
       include_fields :project do
         help 'Принадлежность материала проекту'
+        associated_collection_scope do
+          Proc.new { |scope|
+            scope = scope.linkable
+          }
+        end
       end
       include_fields :url do
         help 'Указывается только если необходим переход с анонса на внешний проект (тело материала в таком случае уже не показывается)'
@@ -184,6 +198,9 @@ RailsAdmin.config do |config|
       end
       include_fields :hide do
         help 'Скрыть проект в автоматических листингах проекта (перенести поле в этот блок)'
+      end
+      include_fields :not_linkable do
+        help 'Скрыть проект в выпадающих списка форм материалов и страниц'
       end
       include_fields :per_page do
         help 'Количество материлов, подгружаемых на странице проекта'
