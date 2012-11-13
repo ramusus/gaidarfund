@@ -7,8 +7,10 @@
         <meta name="og:url" content="http://<%= content_for?(:domain) ? yield(:domain) : 'gaidarfund.ru' %>">
         <meta name="og:site_name" content="<%= content_for?(:domain) ? yield(:domain) : 'gaidarfund.ru' %>">
         <meta name="og:image" content="<%= content_for?(:og_image) ? yield(:og_image) : 'http://profile.ak.fbcdn.net/hprofile-ak-ash2/188014_174472589266834_4288339_q.jpg' %>">
-        <meta name="og:title" content="<%= content_for?(:title) ? yield(:title) + ' - Фонд Егора Гайдара' : 'Фонд Егора Гайдара' %>">
-        <title><%= content_for?(:title) ? yield(:title) + ' - Фонд Егора Гайдара' : 'Фонд Егора Гайдара' %></title>
+        <%# strip_tags(yield()) не работает несмотря на https://github.com/rails/rails/issues/1744 #%>
+        <meta name="og:description" content="<%= content_for?(:description) ? strip_tags(yield(:description)) : 'Фонд Егора Гайдара' %>">
+        <meta name="og:title" content="<%= content_for?(:title) ? strip_tags(yield(:title)) + ' - Фонд Егора Гайдара' : 'Фонд Егора Гайдара' %>">
+        <title><%= content_for?(:title) ? strip_tags(yield(:title)) + ' - Фонд Егора Гайдара' : 'Фонд Егора Гайдара' %></title>
         <%= stylesheet_link_tag    "application" %>
         <%= javascript_include_tag "application" %>
         <%= csrf_meta_tags %>

@@ -34,6 +34,7 @@ class ApplicationController < ActionController::Base
     @slides = Slide.limit(5)
 
     @type_ids = Articletype.not_announce.not_book.find(:all).map(&:id)
+    @article_main = Article.visible.scoped_by_articletype_id(@type_ids).main.first
   end
 
   def not_found
