@@ -238,6 +238,7 @@ SUB {
 .b-main-menu:after,
 .b-social-links:after,
 .b-events:after,
+.b-featured-article:after,
 .b-meta:after,
 .b-structure:after,
 .b-contacts:after,
@@ -894,12 +895,17 @@ SUB {
 			border: none;
 			color: #231F20;
 			}
+.b-tab-menu-compact {
+	margin-top: 32px;
+	margin-bottom: 21px;
+	}
 
 /* Share */
 .b-share {
 	position: absolute;
 	top: -49px;
 	left: 250px;
+	width: 350px;
 	}
 	.b-share .facebook {
 		float: left;
@@ -1730,6 +1736,21 @@ SUB {
 	overflow: hidden;
 	}
 
+/* Disqus comments */
+.b-disqus {
+	margin: 12px 0 32px 0;
+	padding: 2px 20px;
+	border: 1px solid #DDD;
+	background: #EEE;
+	
+	font-size: 12px;
+	line-height: 16px;
+	}
+	.b-disqus UL LI:before {
+		content: none;
+		display: none;
+		}
+
 /* =Banners
 --------------------------------------- */
 
@@ -1828,10 +1849,6 @@ SUB {
 				font: bold 24px/24px "Franklin Gothic", Arial, Helvitica, sans-serif;
 				color: #E95429;
 				}
-	.b-project-header .long {
-		font-size: 36px;
-		line-height: 36px;
-		}
 	.b-project-header .desc {
 		width: 275px;
 		text-transform: uppercase;

@@ -22,6 +22,16 @@ role :web, "beta.gaidarfund.ru"                          # Your HTTP server, Apa
 role :app, "beta.gaidarfund.ru"                          # This may be the same as your `Web` server
 role :db,  "beta.gaidarfund.ru", :primary => true # This is where Rails migrations will run
 
+set :css_files, ['main.css']
+set :js_files, ['jquery-1.8.2.min.js',
+  'jquery.hints.js',
+  'jquery.masonry.min.js',
+  'jquery.scrollto.js',
+  'jquery.slideshow.js',
+  'jquery.tabs.js']
+set :css_source_dir, '../project_html/www/css/'
+set :js_source_dir, '../project_html/www/js/'
+
 default_run_options[:pty] = true
 
 after "bundle:install", "deploy:auto_migrate"
@@ -41,11 +51,24 @@ namespace :deploy do
     rails_env = fetch(:rails_env, "production")
     run "cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} db:auto:migrate"
   end
-  task :load_data do
+end
+
+namespace :data do
+  task :load do
     rake = fetch(:rake, "rake")
     rails_env = fetch(:rails_env, "production")
 #    run "cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} db:data:load"
     top.upload "public/images", "#{deploy_to}/shared/system/old_images", :recursive => true
+  end
+end
+namespace :static do
+  task :copy do
+    css_files.each do |file|
+      system "cp #{css_source_dir}#{file} app/assets/stylesheets/"
+    end
+    js_files.each do |file|
+      system "cp #{js_source_dir}#{file} app/assets/javascripts/"
+    end
   end
 end
 
