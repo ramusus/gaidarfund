@@ -20,10 +20,10 @@
 
 <script type="text/javascript">
     <% if project.background_image.exists? %>
-        $('.l-<%= project.body_class %>-page .l-container').css('backgroundImage', 'url(<%= project.background_image %>)');
+        $('.l-<%= project.body_class %>-page .l-container').css('background', 'url(<%= project.background_image %>) no-repeat;');
     <% end %>
     <% if project.logo_image.exists? %>
-        $('.b-<%= project.body_class %>-header a.link').css({'backgroundImage', 'url(<%= project.logo_image %>)');
+        $('.b-<%= project.body_class %>-header a.link').css({'background', 'url(<%= project.logo_image %>) no-repeat;');
     <% end %>
     <% if project.css.exists? %>
         $("head").append('<link rel="stylesheet" type="text/css" href="<%= project.css %>" media="screen"/>');
