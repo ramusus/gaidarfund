@@ -2,14 +2,14 @@
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
-        <meta name="og:type" content="website">
-        <meta name="og:locale" content="ru_RU">
-        <meta name="og:url" content="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>">
-        <meta name="og:site_name" content="<%= request.host_with_port %>">
-        <meta name="og:image" content="<%= content_for?(:og_image) ? yield(:og_image) : (@file_social_logo ? @file_social_logo.file : 'http://profile.ak.fbcdn.net/hprofile-ak-ash2/188014_174472589266834_4288339_q.jpg') %>">
+        <meta property="og:type" content="website">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:url" content="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>">
+        <meta property="og:site_name" content="<%= request.host_with_port %>">
+        <meta property="og:image" content="<%= content_for?(:og_image) ? yield(:og_image) : (@file_social_logo ? @file_social_logo.file : 'http://profile.ak.fbcdn.net/hprofile-ak-ash2/188014_174472589266834_4288339_q.jpg') %>">
         <%# strip_tags(yield()) не работает несмотря на https://github.com/rails/rails/issues/1744 #%>
-        <meta name="og:description" content="<%= content_for?(:description) ? strip_tags(yield(:description)) : 'Фонд Егора Гайдара' %>">
-        <meta name="og:title" content="<%= content_for?(:title) ? strip_tags(yield(:title)) + ' - Фонд Егора Гайдара' : 'Фонд Егора Гайдара' %>">
+        <meta property="og:description" content="<%= content_for?(:description) ? strip_tags(yield(:description)) : 'Фонд Егора Гайдара' %>">
+        <meta property="og:title" content="<%= content_for?(:title) ? strip_tags(yield(:title)) + ' - Фонд Егора Гайдара' : 'Фонд Егора Гайдара' %>">
         <title><%= content_for?(:title) ? strip_tags(yield(:title)) + ' - Фонд Егора Гайдара' : 'Фонд Егора Гайдара' %></title>
         <%= stylesheet_link_tag    "application" %>
         <%= javascript_include_tag "application" %>
