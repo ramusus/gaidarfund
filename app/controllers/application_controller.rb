@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
 
     @articletypes = Articletype.not_announce.not_memory.not_media
     @projects = Project.visible.all
+    @projects_sidebar = Project.visible.where(:hide_sidebar => false)
     @projects_footer = Project.visible.where("id != 1 AND id != 2 AND id != 7")
     @blogs = Blog.all
 

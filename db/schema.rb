@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114163850) do
+ActiveRecord::Schema.define(:version => 20121114171425) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -169,6 +169,7 @@ ActiveRecord::Schema.define(:version => 20121114163850) do
     t.string   "title_seo",                     :default => ""
     t.integer  "position"
     t.boolean  "hide",                          :default => false
+    t.boolean  "hide_sidebar",                  :default => false
     t.boolean  "not_linkable",                  :default => false
     t.string   "url",                           :default => ""
     t.integer  "per_page", :default => 15

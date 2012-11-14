@@ -1,7 +1,7 @@
 <h2 class="b-navigation-title">Проекты<br/>Фонда</h2>
 <div class="l-shift-20">
     <ul class="b-menu">
-        <% @projects.each do |project| %>
+        <% @projects_sidebar.each do |project| %>
             <% if defined?(current) and current != project or not defined?(current) %>
                 <li class="item"><%= link_to project, project_path(project), :class => 'link c-project-link' %></li>
             <% end %>

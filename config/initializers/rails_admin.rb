@@ -215,11 +215,14 @@ RailsAdmin.config do |config|
         help ''
       end
       include_fields :hide do
-        help 'Скрыть проект в автоматических листингах проекта (перенести поле в этот блок)'
+        help 'Скрыть проект в автоматических листингах проекта'
       end
-      include_fields :not_linkable do
-        help 'Скрыть проект в выпадающих списка форм материалов и страниц'
+      include_fields :hide_sidebar do
+        help 'Скрыть проект в левом меню проекта'
       end
+#      include_fields :not_linkable do
+#        help 'Скрыть проект в выпадающих списка форм материалов и страниц'
+#      end
       include_fields :per_page do
         help 'Количество материлов, подгружаемых на странице проекта'
       end
