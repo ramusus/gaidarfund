@@ -7,7 +7,7 @@
     <% content_for :social_likes do %><%= @page.project.likes.html_safe %><% end %>
     <% content_for :partners do %><%= @page.project.partners.html_safe %><% end %>
     <% if @page.project.social_image.exists? %>
-        <% content_for :og_image do %><%= @page.project.social_image(:square) %><% end %>
+        <% content_for :og_image do %><%= "#{request.protocol}#{request.host_with_port}#{@page.project.social_image(:square)}" %><% end %>
     <% end %>
 <% else %>
     <% content_for :body_class do %><%= "c-#{@page.color_class}-page" %><% end %>

@@ -11,9 +11,9 @@
 <% end %>
 
 <% if @article.social_image.exists? %>
-    <% content_for :og_image do %><%= @article.social_image(:square) %><% end %>
+    <% content_for :og_image do %><%= "#{request.protocol}#{request.host_with_port}#{@article.social_image(:square)}" %><% end %>
 <% elsif @article.project and @article.project.social_image.exists? %>
-    <% content_for :og_image do %><%= @article.project.social_image(:square) %><% end %>
+    <% content_for :og_image do %><%= "#{request.protocol}#{request.host_with_port}#{@article.project.social_image(:square)}" %><% end %>
 <% end %>
 
 <% content_for :extra_head do %>
