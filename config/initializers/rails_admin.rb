@@ -146,6 +146,9 @@ RailsAdmin.config do |config|
       include_fields :right_column do
         help 'Выводится под списком смежных материалов "Еще по теме"'
       end
+      include_fields :social_image do
+        help 'Картинка проекта используемая в социальных сетях (уменьшается до размера 89 на 89 пикс)'
+      end
       include_fields :content, :right_column do
         ckeditor true
         ckeditor_config_js '/javascripts/ckeditor/config.js'
@@ -159,6 +162,19 @@ RailsAdmin.config do |config|
     end
     edit do
       include_fields :title, :code, :visible, :content
+#      include_fields :content do
+#        ckeditor true
+#        ckeditor_config_js '/javascripts/ckeditor/config.js'
+#      end
+    end
+  end
+
+  config.model StaticFile do
+    list do
+      include_fields :alt, :code, :file
+    end
+    edit do
+      include_fields :alt, :code, :file
 #      include_fields :content do
 #        ckeditor true
 #        ckeditor_config_js '/javascripts/ckeditor/config.js'
@@ -255,8 +271,8 @@ RailsAdmin.config do |config|
         field :logo_small_image do
           help 'Картинка для использования в листинге проектов (уменьшается по ширине под размер колонки)'
         end
-        field :logo_social_image do
-          help 'Лого проекта используемое в социальных сетях (уменьшается до размера 89 на 89 пикс)'
+        field :social_image do
+          help 'Картинка проекта используемая в социальных сетях (уменьшается до размера 89 на 89 пикс)'
         end
       end
 

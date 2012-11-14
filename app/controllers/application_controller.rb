@@ -23,6 +23,14 @@ class ApplicationController < ActionController::Base
       self.instance_variable_set('@' + var_name, chunk)
     end
 
+    ['social_logo'].each do |var_name|
+      file = StaticFile.find_by_code(var_name)
+      if not file or not file.file or not file.file.exists?
+        file = false
+      end
+      self.instance_variable_set('@file_' + var_name, file)
+    end
+
   end
 
   def set_locale

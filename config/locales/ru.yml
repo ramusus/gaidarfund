@@ -13,6 +13,7 @@ ru:
       slide: "Промослайд"
       articletype: "Тип материала"
       blog: "Блог"
+      static_file: "Файл"
     attributes:
       page:
         title: "Заголовок"
@@ -29,6 +30,10 @@ ru:
         code: "Код"
         content: "Содержимое"
         visible: "Отображать?"
+      static_file:
+        alt: "Alt"
+        code: "Код"
+        file: "Файл"
       user:
         email: "Email"
         password: "Пароль"
@@ -45,6 +50,7 @@ ru:
         title: "Заголовок"
         subtitle: "Подзаголовок"
         image: "Картинка в анонсе"
+        social_image: "Картинка в соц. сетях"
         url: "Внешняя ссылка"
         main: "Основной?"
         hide: "Скрыть?"
@@ -84,7 +90,7 @@ ru:
         background_image: "Фоновая картинка"
         logo_image: "Лого"
         logo_small_image: "Маленкое лого"
-        logo_social_image: "Лого в соц. сетях"
+        social_image: "Картинка в соц. сетях"
         per_page: "Количество материалов"
       slide:
         title: "Заголовок"

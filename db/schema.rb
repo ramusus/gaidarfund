@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121113132514) do
+ActiveRecord::Schema.define(:version => 20121114163850) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -20,6 +20,10 @@ ActiveRecord::Schema.define(:version => 20121113132514) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "social_image_file_name"
+    t.string   "social_image_content_type"
+    t.integer  "social_image_file_size"
+    t.datetime "social_image_updated_at"
     t.boolean  "main"
     t.boolean  "hide"
     t.boolean  "hide_discussions"
@@ -100,6 +104,18 @@ ActiveRecord::Schema.define(:version => 20121113132514) do
     t.datetime "created_at"
   end
 
+  create_table "static_files", :force => true do |t|
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.text     "file_meta"
+    t.string   "alt"
+    t.string   "code"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+  end
+
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.text     "content"
@@ -145,10 +161,10 @@ ActiveRecord::Schema.define(:version => 20121113132514) do
     t.integer  "logo_small_image_file_size"
     t.datetime "logo_small_image_updated_at"
     t.text     "logo_small_image_meta"
-    t.string   "logo_social_image_file_name"
-    t.string   "logo_social_image_content_type"
-    t.integer  "logo_social_image_file_size"
-    t.datetime "logo_social_image_updated_at"
+    t.string   "social_image_file_name"
+    t.string   "social_image_content_type"
+    t.integer  "social_image_file_size"
+    t.datetime "social_image_updated_at"
     t.text     "core",                          :default => ""
     t.string   "title_seo",                     :default => ""
     t.integer  "position"

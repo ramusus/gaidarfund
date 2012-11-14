@@ -13,11 +13,15 @@ class Article < ActiveRecord::Base
   default_scope :order => 'published_at DESC, id DESC'
   attr_accessible :title, :subtitle, :image, :url, :main, :hide, :hide_discussions, :content, :checked, :only_for_signed,
     :old_id, :published_at, :title_seo, :right_column, :project_id, :articletype_id, :delete_image, :old_group_id,
-    :old_descr, :old_descr2, :author
+    :old_descr, :old_descr2, :author,
+    :social_image, :delete_social_image
 
   has_attached_file :image, :styles => {:square => "140x140"}
+  has_attached_file :social_image, :styles => {:square => "200x200"}
   attr_accessor :delete_image
+  attr_accessor :delete_social_image
   before_validation { self.image = nil if self.delete_image == '1' }
+  before_validation { self.social_image = nil if self.delete_social_image == '1' }
 
   belongs_to :project
   belongs_to :articletype

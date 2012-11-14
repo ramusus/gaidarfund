@@ -10,6 +10,12 @@
     <% content_for :body_class do %><%= "c-#{@article.color_class}-page" %><% end %>
 <% end %>
 
+<% if @article.social_image.exists? %>
+    <% content_for :og_image do %><%= @article.social_image(:square) %><% end %>
+<% elsif @article.project and @article.project.social_image.exists? %>
+    <% content_for :og_image do %><%= @article.project.social_image(:square) %><% end %>
+<% end %>
+
 <% content_for :extra_head do %>
     <script type="text/javascript">
         $(function() {

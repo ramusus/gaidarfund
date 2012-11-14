@@ -5,6 +5,10 @@
 <% content_for :social_likes do %><%= @project.likes.html_safe %><% end %>
 <% content_for :partners do %><%= @project.partners.html_safe %><% end %>
 
+<% if @project.social_image.exists? %>
+    <% content_for :og_image do %><%= @project.social_image(:square) %><% end %>
+<% end %>
+
 <% content_for :extra_head do %>
     <script type="text/javascript">
         $(function() {
