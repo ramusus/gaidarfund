@@ -13,8 +13,20 @@
             <% if not defined?(featured) and not article.is_book? %>
                 <div class="date"><%= l article.published_at, :format => '%d %B %Y' %></div>
             <% end %>
-            <h3 class="title"><%= article.title.html_safe %></h3>
+            <h3 class="title">
+                <% if article.excerpts %>
+                    <%= article.excerpts.title.html_safe %>
+                <% else %>
+                    <%= article.title.html_safe %>
+                <% end %>
+            </h3>
         </a>
-        <p class="desc"><%= article.subtitle.html_safe %></p>
+        <p class="desc">
+            <% if article.excerpts %>
+                <%= article.excerpts.subtitle.html_safe %>
+            <% else %>
+                <%= article.subtitle.html_safe %>
+            <% end %>
+        </p>
     </div>
 <% end %>

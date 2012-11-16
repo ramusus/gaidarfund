@@ -1,0 +1,41 @@
+<% content_for :extra_head do %>
+    <script type="text/javascript">
+        $(function() {
+            $('#f-project-only').change(function() {
+                filtration.data.project_ids = $(this).is(':checked') ? [$(this).val()] : [];
+                filtration.data.page = 1;
+                filtration.reload();
+            });
+            $('.order_by').click(function() {
+                $(this).addClass('selected');
+                $('.order_by').not(this).removeClass('selected');
+
+                filtration.data.order = $(this).attr('rel');
+                filtration.data.page = 1;
+                filtration.reload();
+                return false;
+            });
+        });
+    </script>
+<% end %>
+
+<% content_for :left_column do %>
+    <%= render :partial => 'filters', :locals => {:show_filters => true, :defaults => {:project_ids => @project ? @project.id : '', :query => params[:query], :per_page => 30}} %>
+<% end %>
+
+<% content_for :main_column do %>
+    <div class="l-column-710">
+        <h1>Результаты поиска</h1>
+        <% if @project %>
+            <div>
+                <input id="f-project-only" type="checkbox" checked="checked" name="project_ids" value="<%= @project.id %>"/>
+                <label for="f-project-only">Искать только в материалах проекта «<%= @project %>»</label>
+            </div>
+        <% end %>
+        <ul class="b-tab-menu b-tab-menu-compact">
+            <li class="item"><a rel="date" class="link order_by" href="#">По дате публикации</a></li>
+            <li class="item"><a rel="relevance" class="link order_by selected" href="#">По релевантности</a></li>
+        </ul>
+        <%= render :partial => 'articles' %>
+    </div>
+<% end %>

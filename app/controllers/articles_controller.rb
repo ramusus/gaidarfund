@@ -74,10 +74,21 @@ class ArticlesController < ApplicationController
       articles = articles.scoped_by_project_id(params[:project_ids].split(','))
     end
 
+    if params[:query].blank?
+      @article_main = articles.main.first
+    end
+    articles = articles.where("id != ?", @article_main ? @article_main.id: 0)
+
     params[:page] = params.fetch(:page, 1).to_i
     params[:per_page] = params.fetch(:per_page, 20).to_i
-    @article_main = articles.main.first
-    @articles = articles.where("id != ?", @article_main ? @article_main.id: 0).paginate(:page => params[:page], :per_page => params[:per_page])
+    if not params[:query].blank?
+      order = params[:order] == 'date' ? "published_at DESC" : "@relevance DESC"
+      articles = Article.search(params[:query], :order => order, :with => {:id => articles.map(&:id)}, :page => params[:page], :per_page => params[:per_page])
+    else
+      articles = articles.paginate(:page => params[:page], :per_page => params[:per_page])
+    end
+
+    @articles = articles
     render :layout => false
   end
 

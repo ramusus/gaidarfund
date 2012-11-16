@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+  require 'domainatrix'
+
   include ExceptionLogger::ExceptionLoggable # loades the module
   rescue_from Exception, :with => :log_exception_handler # tells rails to forward the 'Exception' (you can change the type) to the handler of the module
 
@@ -11,7 +13,7 @@ class ApplicationController < ActionController::Base
     @articletypes = Articletype.not_announce.not_memory.not_media
     @projects = Project.visible.all
     @projects_sidebar = Project.visible.where(:hide_sidebar => false)
-    @projects_footer = Project.visible.where("id != 1 AND id != 2 AND id != 7")
+    @projects_footer = Project.visible.where("id NOT IN (1,2,7)")
     @blogs = Blog.all
 
     ['partners','banners_right_column','footer_links_1','footer_links_2','golden_fund','social_likes','social_links','extra_head','projects_introduction','yandex_metrica_gaidarfund','yandex_metrica_all','disqus'].each do |var_name|
@@ -44,6 +46,17 @@ class ApplicationController < ActionController::Base
 
     @type_ids = Articletype.not_announce.not_book.find(:all).map(&:id)
     @article_main = Article.visible.scoped_by_articletype_id(@type_ids).main.first
+  end
+
+  def search
+    @articletypes = Articletype.all
+    @project = false
+    if not request.env['HTTP_REFERER'].blank?
+      url = Domainatrix.parse(request.env['HTTP_REFERER'])
+      if not url.subdomain.blank?
+        @project = Project.find_by_subdomain(url.subdomain)
+      end
+    end
   end
 
   def not_found

@@ -18,6 +18,7 @@ Gaidarfund::Application.routes.draw do
 
   match "/articles/" => "articles#list", :as => 'articles'
   match "/publications/" => "articles#publications", :as => 'publications'
+  match "/search/" => "application#search", :as => 'search'
 
   Articletype.where("slug != ''").each do |type|
     match type.slug => "articles#articles_by_type", :as => type.code, :slug => type.slug

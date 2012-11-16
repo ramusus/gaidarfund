@@ -57,18 +57,12 @@
 
             <div class="l-content l-wrapper">
                 <div class="l-column-210 l-intercolumn-40">
-<%
-=begin
-%>
-                    <form class="b-search-form" method="get" action="?">
+                    <form id="searchForm" class="b-search-form" method="get" action="<%= search_path %>">
                         <fieldset>
                             <label class="b-hint-label" for="f-query">Поиск по сайтам Фонда</label>
-                            <input id="f-query" class="b-input" type="text" name="query"/>
+                            <input id="f-query" class="b-input" type="text" name="query" value="<%= params[:query] %>" />
                         </fieldset>
                     </form>
-<%
-=end
-%>
                     <%= yield(:left_column) %>
                 </div>
                 <%= content_for?(:main_column) ? yield(:main_column) : yield %>

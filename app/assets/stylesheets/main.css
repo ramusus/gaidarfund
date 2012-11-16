@@ -804,6 +804,13 @@ SUB {
 		background-color: #676767;
 		}
 
+/* Sphinx search results highlight */
+.match {
+	margin: 0 -2px;
+	padding: 0 2px;
+	background: #FFFF0A;
+	}
+
 /* Intro or some description */
 .b-intro,
 .b-sub-intro {

@@ -28,6 +28,7 @@
             $.extend(this.data, data);
             this.reload();
             this.initFilters();
+            this.initSearch();
         },
         initFilters: function() {
             $('#articlesFiltration a').click(function() {
@@ -37,6 +38,16 @@
                 filtration.reload();
                 return false;
             });
+        },
+        initSearch: function() {
+            if(document.location.pathname == '<%= search_path %>') {
+                $('form#searchForm').submit(function() {
+                    filtration.data.query = $('#f-query').val();
+                    filtration.data.page = 1;
+                    filtration.reload();
+                    return false;
+                });
+            }
         },
         reload: function() {
             $.ajax({
