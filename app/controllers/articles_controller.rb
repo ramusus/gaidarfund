@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
   end
 
   def show_old_news
-    redirect_to Article.news.find_by_old_id!(params[:id]) || news_path
+    redirect_to Article.news.find_by_old_id(params[:id]) || news_path
   end
 
   def show_old_announce
@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
   end
 
   def show_old_publication
-    redirect_to Article.not_news.not_announces.find_by_old_id(params[:id]) || publication_path
+    redirect_to Article.not_news.not_announces.find_by_old_id(params[:id]) || publications_path
   end
 
   def show
