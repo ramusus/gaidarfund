@@ -75,7 +75,11 @@ class ArticlesController < ApplicationController
     end
 
     if params[:query].blank?
-      @article_main = articles.main.first
+      if not params[:project_ids].blank?
+        @article_main = articles.main_for_project.first
+      else
+        @article_main = articles.main.first
+      end
     end
     articles = articles.where("id != ?", @article_main ? @article_main.id: 0)
 

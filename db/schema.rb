@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114171425) do
+ActiveRecord::Schema.define(:version => 20121116225145) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20121114171425) do
     t.integer  "social_image_file_size"
     t.datetime "social_image_updated_at"
     t.boolean  "main"
+    t.boolean  "main_for_project"
     t.boolean  "hide"
     t.boolean  "hide_discussions"
     t.boolean  "checked"

@@ -8,10 +8,11 @@ class Article < ActiveRecord::Base
   scope :publications, where(:articletype_id => Articletype::PUBLICATION_ID)
 
   scope :main, where(:main => true)
+  scope :main_for_project, where(:main_for_project => true)
   scope :visible, where(:hide => false).where(:only_for_signed => false)
 
   default_scope :order => 'published_at DESC, id DESC'
-  attr_accessible :title, :subtitle, :image, :url, :main, :hide, :hide_discussions, :content, :checked, :only_for_signed,
+  attr_accessible :title, :subtitle, :image, :url, :main, :main_for_project, :hide, :hide_discussions, :content, :checked, :only_for_signed,
     :old_id, :published_at, :title_seo, :right_column, :project_id, :articletype_id, :delete_image, :old_group_id,
     :old_descr, :old_descr2, :author,
     :social_image, :delete_social_image

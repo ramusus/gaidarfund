@@ -123,6 +123,9 @@ RailsAdmin.config do |config|
       include_fields :main do
         help 'Ставиться вверху ленты, в которой представляется материал (показывается вверху один самый свежий материал).'
       end
+      include_fields :main_for_project do
+        help 'Ставиться вверху ленты проекта, в котором представляется материал (показывается вверху один самый свежий материал).'
+      end
       include_fields :hide_discussions do
         help 'Скрыть переход на вкладку "Обсуждение"'
       end
