@@ -46,7 +46,9 @@ class ApplicationController < ActionController::Base
 
     @type_ids = Articletype.not_announce.not_book.find(:all).map(&:id)
     @article_main = Article.visible.scoped_by_articletype_id(@type_ids).main.first
-    render "index"
+    respond_to do |format|
+      format.html
+    end
   end
 
   def search
@@ -58,7 +60,6 @@ class ApplicationController < ActionController::Base
         @project = Project.find_by_subdomain(url.subdomain)
       end
     end
-    render "search"
   end
 
   def not_found
