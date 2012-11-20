@@ -21,6 +21,7 @@
     });
 
     var filtration = {
+        show_filter_counts: false,
         data: {
             page: 1
         },
@@ -53,10 +54,28 @@
             $.ajax({
                 url: '<%= articles_path %>',
                 data: this.data,
+                dataType: 'json',
                 beforeSend: function() {},
                 success: function(response) {
+                    var content = response.content;
+
+                    // show filter counts
+                    if(filtration.show_filter_counts) {
+                        $('#articlesFiltration li.item').show();
+                        $.each(response.types_count, function(id, count) {
+                            var jLink = $('#articlesFiltration a.link[rel="'+id+'"]');
+                            if(count) {
+                                jLink.html(function(i, old) {
+                                    return old.replace(/ \(\d+\)$/, '') + ' ('+count+')';
+                                });
+                            } else {
+                                jLink.parent().hide();
+                            }
+                        });
+                    }
+
                     if(filtration.data.page == 1) {
-                        var newItems = $(response).filter('div');
+                        var newItems = $(content).filter('div');
                         newItems.css({opacity: 0});
                         $('#articlesList').html(newItems);
                         newItems.animate({opacity: 1});
@@ -69,12 +88,12 @@
                             return false;
                         });
                     } else {
-                        var newItems = $(response).find('.b-tiles-item');
+                        var newItems = $(content).find('.b-tiles-item');
                         newItems.css({opacity: 0}).appendTo($('#articlesList .b-tiles'));
                         newItems.animate({opacity: 1});
                         $('#articlesList .b-tiles').masonry('appended', newItems, true);
                     }
-                    if($(response).filter('.b-more').length == 0) {
+                    if($(content).filter('.b-more').length == 0) {
                         $('#articlesList .b-more').remove();
                     }
                 }

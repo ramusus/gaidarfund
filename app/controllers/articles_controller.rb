@@ -82,18 +82,23 @@ class ArticlesController < ApplicationController
       end
     end
     articles = articles.where("id != ?", @article_main ? @article_main.id: 0)
+    types_count = {}
 
     params[:page] = params.fetch(:page, 1).to_i
     params[:per_page] = params.fetch(:per_page, 20).to_i
     if not params[:query].blank?
-      order = params[:order] == 'date' ? "published_at DESC" : "@relevance DESC"
+      Articletype.all.each do |type|
+        types_count[type.id] = Article.search(params[:query], :with => {:id => articles.map(&:id), :articletype_id => type.id}).count()
+      end
+      order = params[:order] == 'relevance' ? "@relevance DESC" : "published_at DESC"
       articles = Article.search(params[:query], :order => order, :with => {:id => articles.map(&:id)}, :page => params[:page], :per_page => params[:per_page])
     else
       articles = articles.paginate(:page => params[:page], :per_page => params[:per_page])
     end
 
     @articles = articles
-    render :layout => false
+
+    render :json => {:types_count => types_count, :content => render_to_string(:layout => false)}
   end
 
 end

@@ -1,6 +1,7 @@
 <% content_for :extra_head do %>
     <script type="text/javascript">
         $(function() {
+            filtration.show_filter_counts = true;
             $('#f-project-only').change(function() {
                 filtration.data.project_ids = $(this).is(':checked') ? [$(this).val()] : [];
                 filtration.data.page = 1;
@@ -33,8 +34,8 @@
             </div>
         <% end %>
         <ul class="b-tab-menu b-tab-menu-compact">
-            <li class="item"><a rel="date" class="link order_by" href="#">По дате публикации</a></li>
-            <li class="item"><a rel="relevance" class="link order_by selected" href="#">По релевантности</a></li>
+            <li class="item"><a rel="date" class="link order_by selected" href="#">По дате публикации</a></li>
+            <li class="item"><a rel="relevance" class="link order_by" href="#">По релевантности</a></li>
         </ul>
         <%= render :partial => 'articles' %>
     </div>
