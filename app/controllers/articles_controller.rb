@@ -73,7 +73,7 @@ class ArticlesController < ApplicationController
     if not params[:project_ids].blank?
       articles = articles.scoped_by_project_id(params[:project_ids].split(','))
       # hide announces from past
-      articles = articles.where('published_at < ? AND articletype_id = ? OR articletype_id != ?', Time.now, Articletype::ANNOUNCE_ID, Articletype::ANNOUNCE_ID)
+      articles = articles.where('published_at > ? AND articletype_id = ? OR articletype_id != ?', Time.now, Articletype::ANNOUNCE_ID, Articletype::ANNOUNCE_ID)
     end
 
     if params[:query].blank?
