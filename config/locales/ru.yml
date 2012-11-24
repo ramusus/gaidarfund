@@ -97,6 +97,7 @@ ru:
         per_page: "Количество материалов"
       project_category:
         name: "Название"
+        position: "Позиция"
         projects: "Проекты"
       slide:
         title: "Заголовок"

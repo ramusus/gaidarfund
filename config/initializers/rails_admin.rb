@@ -290,10 +290,10 @@ RailsAdmin.config do |config|
       inverse_of :project_categories
     end
     list do
-      include_fields :name, :projects
+      include_fields :name, :position, :projects
     end
     edit do
-      include_fields :name, :projects
+      include_fields :name, :position, :projects
     end
   end
 
