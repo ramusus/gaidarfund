@@ -6,7 +6,7 @@ module ArticlesHelper
     elsif article.project
       polymorphic_url(article, :subdomain => article.project.subdomain)
     else
-      super
+      polymorphic_url(article, :subdomain => '')
     end
   end
 
