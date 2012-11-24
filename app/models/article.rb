@@ -58,7 +58,11 @@ class Article < ActiveRecord::Base
 
   def color_class
     # TODO: move to template helper
-    self.project ? 'project' : self.type.color_class
+    if self.type.id == Articletype::MEDIA_ID or not self.project
+      self.type.color_class
+    else
+      'project'
+    end
   end
 
   def is_video?
