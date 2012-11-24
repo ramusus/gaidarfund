@@ -10,6 +10,7 @@ class Project < ActiveRecord::Base
 
   has_many :articles
   has_many :pages
+  has_and_belongs_to_many :project_categories
 
   has_attached_file :css
   has_attached_file :background_image

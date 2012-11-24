@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   def index
+    @project_categories = ProjectCategory.all
     respond_to do |format|
       format.html # index.html.erb
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121116225145) do
+ActiveRecord::Schema.define(:version => 20121124161614) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -174,6 +174,17 @@ ActiveRecord::Schema.define(:version => 20121116225145) do
     t.boolean  "not_linkable",                  :default => false
     t.string   "url",                           :default => ""
     t.integer  "per_page", :default => 15
+  end
+
+  create_table "project_categories_projects", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "project_category_id"
+  end
+
+  create_table "project_categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
 
   create_table "rails_admin_histories", :force => true do |t|

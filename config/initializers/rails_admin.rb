@@ -285,6 +285,18 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model ProjectCategory do
+    configure :projects do
+      inverse_of :project_categories
+    end
+    list do
+      include_fields :name, :projects
+    end
+    edit do
+      include_fields :name, :projects
+    end
+  end
+
   config.model Slide do
     list do
       include_fields :title, :hide, :position

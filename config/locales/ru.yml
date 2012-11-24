@@ -10,6 +10,7 @@ ru:
       news: "Новость"
       article: "Материал"
       project: "Проект"
+      project_category: "Категория проектов"
       slide: "Промослайд"
       articletype: "Тип материала"
       blog: "Блог"
@@ -94,6 +95,9 @@ ru:
         logo_small_image: "Маленкое лого"
         social_image: "Картинка в соц. сетях"
         per_page: "Количество материалов"
+      project_category:
+        name: "Название"
+        projects: "Проекты"
       slide:
         title: "Заголовок"
         hide: "Скрыть?"

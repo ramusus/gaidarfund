@@ -13,6 +13,10 @@
             $('.b-large-tiles').masonry({
                 itemSelector: '.b-large-tiles-item'
             });
+            $('#tabs').tabs({
+                linkSelector: '.b-tab-menu .link',
+                tabSelector: '.js-tab'
+            });
         });
     </script>
 <% end %>
@@ -28,59 +32,32 @@
             <%= render :partial => 'social_likes' %>
         </div>
         <h1 class="b-separated-page-title">Проекты Фонда</h1>
-<%
-=begin
-%>
-        <ul class="b-tab-menu">
-            <li class="item">
-                <a class="link selected" href="?">Все</a>
-            </li>
-            <li class="item">
-                <a class="link" href="?">Активные</a>
-            </li>
-            <li class="item">
-                <a class="link" href="?">Дискуссионные площадки</a>
-            </li>
-            <li class="item">
-                <a class="link" href="?">Поддержка молодых экономистов</a>
-            </li>
-        </ul>
-<%
-=end
-%>
-        <div class="b-large-tiles">
-            <% @projects.each do |project| %>
-                <% if project %>
-                    <div class="b-project b-large-tiles-item">
-                        <a class="b-project-link" href="<%= project_path(project) %>">
-                            <h2 class="b-project-title"><%= project.title.html_safe %></h2>
-                            <em class="text"><%= project_path(project) %></em>
-                            <% if project.logo_small_image.exists? %>
-                                <%= image_tag(project.logo_small_image(:thumb), :class => 'image', :alt => strip_tags(project.title), :width => project.logo_small_image.width(:thumb), :height => project.logo_small_image.height(:thumb)) %>
-                            <% end %>
-                        </a>
-                        <% if not project.core.empty? %>
-                            <h3 class="sub-title first">Краткая суть проекта</h3>
-                            <p class="desc"><%= project.core.html_safe %></p>
-                        <% end %>
-                        <% if not project.status.empty? %>
-                            <h3 class="sub-title">Главное</h3>
-                            <p class="desc"><%= project.status.html_safe %></p>
-                        <% end %>
-                        <% if project.articles.count > 0 %>
-                            <h3 class="sub-title">Новости и публикации</h3>
-                            <ul class="b-news">
-                                <% project.articles.visible.slice(0,3).each do |article| %>
-                                    <li class="item">
-                                        <div class="date"><%= l article.published_at, :format => '%d %B %Y' %></div>
-                                        <h3 class="title"><%= link_to article.title, article_path(article), :class => 'link c-project-hidden-link' %></h3>
-                                    </li>
-                                <% end%>
-                            </ul>
-                            <a class="b-text-link" href="<%= project_path(project) %>">Все публикации проекта</a>
+        <div id="tabs">
+            <ul class="b-tab-menu">
+                <li class="item">
+                    <a class="link selected" href="#projectsAll">Все</a>
+                </li>
+                <% @project_categories.each do |category| %>
+                    <li class="item">
+                        <%= link_to category.name, '#projects' + category.id.to_s, :class => 'link' %>
+                    </li>
+                <% end %>
+            </ul>
+            <div id="projectsAll" class="js-tab">
+                <div class="b-large-tiles">
+                    <% @projects.each do |project| %>
+                        <%= render :partial => 'project', :locals => {:project => project} %>
+                    <% end %>
+                </div>
+            </div>
+            <% @project_categories.each do |category| %>
+                <div id="projects<%= category.id %>" class="js-tab">
+                    <div class="b-large-tiles">
+                        <% category.projects.each do |project| %>
+                            <%= render :partial => 'project', :locals => {:project => project} %>
                         <% end %>
                     </div>
-                <% end %>
+                </div>
             <% end %>
         </div>
     </div>
