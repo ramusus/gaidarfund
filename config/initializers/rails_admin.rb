@@ -144,7 +144,12 @@ RailsAdmin.config do |config|
         help 'Сео заголовок (если пуст, то по умолчанию выводистя title материала)'
       end
       include_fields :content do
-        help 'Основной блок материала'
+        help 'Основной блок материала.
+          Табы:
+          <div id="article-tabs">
+            <div class="article-tab" title="Вкладка 1"></div>
+            <div class="article-tab" title="Вкладка 2"></div>
+          </div>'
       end
       include_fields :right_column do
         help 'Выводится под списком смежных материалов "Еще по теме"'

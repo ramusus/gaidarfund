@@ -60,8 +60,10 @@ class Article < ActiveRecord::Base
     # TODO: move to template helper
     if self.type.id == Articletype::MEDIA_ID or not self.project
       self.type.color_class
-    else
+    elsif self.project
       'project'
+    else
+      ''
     end
   end
 

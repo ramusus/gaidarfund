@@ -93,6 +93,9 @@
     <% end %>
         <div id="tabs">
             <h1<% if @article.title.length > 50 %> class="b-long-page-title"<% end %>><%= @article.title.html_safe %></h1>
+            <% if user_signed_in? %>
+                <%= link_to 'Редактировать', rails_admin.edit_path('article', @article.id) %>
+            <% end %>
             <div class="b-meta">
                 <div class="meta">
                     <span class="date"><%= l @article.published_at, :format => '%d %B %Y' %></span>
