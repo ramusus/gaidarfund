@@ -48,6 +48,6 @@ class Project < ActiveRecord::Base
   end
 
   def is_lectures?
-    self.subdomain == 'lectures'
+    self.subdomain == 'lectures2'
   end
 end
