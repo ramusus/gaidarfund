@@ -46,4 +46,8 @@ class Project < ActiveRecord::Base
     # TODO: move to template helper
     self.subdomain
   end
+
+  def is_lectures?
+    self.subdomain == 'lectures'
+  end
 end

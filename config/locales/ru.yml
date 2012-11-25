@@ -15,6 +15,7 @@ ru:
       articletype: "Тип материала"
       blog: "Блог"
       static_file: "Файл"
+      lecture_subscriber: "Лекции. Подписчик"
     attributes:
       page:
         title: "Заголовок"
@@ -118,3 +119,7 @@ ru:
         title: "Заголовок"
         color_class: "Цветовой класс"
         page: "Родительская страница"
+      lecture_subscriber:
+        name: "Имя"
+        email: "E-mail"
+        article: "Материал"

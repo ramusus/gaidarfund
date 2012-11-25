@@ -23,13 +23,15 @@ Gaidarfund::Application.routes.draw do
   Articletype.where("slug != ''").each do |type|
     match type.slug => "articles#articles_by_type", :as => type.code, :slug => type.slug
   end
-#  match "/:slug/" => "articles#articles_by_type"
-  match "/:slug/" => "pages#show"
 
   constraints(Subdomain) do
     match "/" => "projects#show"
+    match "/subscribe/" => "projects#lectures_subscribe", :as => 'lectures_subscribe'
+    match "/unsubscribe/" => "projects#lectures_unsubscribe", :as => 'lectures_unsubscribe'
   end
   root :to => "application#index"
+
+  match "/:slug/" => "pages#show"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
