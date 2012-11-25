@@ -70,4 +70,16 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError.new('Forbidden')
   end
 
+  def set_cookie(name, value)
+    cookies[name] = {:expires => 5.year.from_now, :value => Marshal::dump(value)}
+  end
+
+  def read_cookie(name)
+    if cookies[name]
+      Marshal::load(cookies[name])
+    else
+      nil
+    end
+  end
+
 end
