@@ -78,28 +78,21 @@
 
             <div id="subscribe_success" class="b-form-message b-last-textblock">Спасибо за&nbsp;помощь организаторам.<br/> Ждем вас!</div>
 
-            <div id="subscribe_already">
-                <div class="b-form-message">Вы&nbsp;уже записались на&nbsp;лекцию.</div>
-                <%= link_to 'Отказаться от участия', lectures_unsubscribe_path(@lecture), :remote => true, :html => {:class => 'b-action-link'} %>
-            </div>
-
             <script type="text/javascript">
                 var subscribe = {
                     init: function() {
-                        $('#subscribe_form,#subscribe_success,#subscribe_already').hide();
+                        $('#subscribe_form,#subscribe_success').hide();
                     },
                     show_form: function(short) {
                         $('#subscribe_form').show();
-                        $('#subscribe_success,#subscribe_already').hide();
+                        $('#subscribe_success').hide();
                     },
                     success: function() {
                         $('#subscribe_success').show();
-                        $('#subscribe_already').hide();
                         $('#subscribe_form .b-field.b-wide-input').hide();
                         $('#subscribe_form input:submit').hide();
                     },
                     already: function() {
-                        $('#subscribe_already').show();
                         $('#subscribe_form,#subscribe_success').hide();
                     },
                 }

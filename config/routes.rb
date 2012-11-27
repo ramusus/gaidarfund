@@ -27,7 +27,6 @@ Gaidarfund::Application.routes.draw do
   constraints(Subdomain) do
     match "/" => "projects#show"
     match "/subscribe/" => "lectures#subscribe", :as => 'lectures_subscribe'
-    match "/unsubscribe/" => "lectures#unsubscribe", :as => 'lectures_unsubscribe'
   end
   root :to => "application#index"
 

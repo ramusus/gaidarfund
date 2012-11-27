@@ -48,20 +48,4 @@ class LecturesController < ApplicationController
     end
   end
 
-  def unsubscribe
-    # unsubscribe from lecture
-    cookie_value = read_cookie(:subscribe)
-
-    # delete all subscribers from this lecture with this email
-    LectureSubscriber.where('email = ? AND article_id = ?', cookie_value[:email], @article.id).destroy_all
-
-    # update cookie
-    cookie_value[:articles] -= [@article.id]
-    set_cookie(:subscribe, cookie_value)
-
-    respond_to do |format|
-      format.js
-    end
-  end
-
 end
