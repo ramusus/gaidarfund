@@ -17,13 +17,18 @@ class LecturesController < ApplicationController
     if cookie_value
       @subscriber.email = cookie_value[:email]
       @subscriber.name = cookie_value[:name]
-      @articles_subscribed = cookie_value.fetch(:articles, [])
+      @articles_subscribed = cookie_value[:articles] || []
     end
 
     respond_to do |format|
-      if params[:lecture_subscriber] and params[:articles]
+      if params[:lecture_subscriber]
 
-        params[:articles].each do |id|
+        # delete all subscribers from this lecture with this email
+        @articles.each do |article|
+          LectureSubscriber.where('email = ? AND article_id = ?', @subscriber.email, article.id).destroy_all
+        end
+
+        params.fetch(:articles, []).each do |id|
           @subscriber.article = Article.find(id)
           @subscriber.save
         end
@@ -40,7 +45,9 @@ class LecturesController < ApplicationController
         set_cookie(:subscribe, cookie_value)
 
         # send email
-        LectureSubscriberMailer.subscribe_email(@subscriber, params[:articles]).deliver
+        if params[:articles]
+          LectureSubscriberMailer.subscribe_email(@subscriber, params[:articles]).deliver
+        end
         format.js
       else
         format.html

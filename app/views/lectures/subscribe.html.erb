@@ -77,18 +77,22 @@
             <% end %>
 
             <div id="subscribe_success" class="b-form-message b-last-textblock">Спасибо за&nbsp;помощь организаторам.<br/> Ждем вас!</div>
+            <div id="unsubscribe_success" class="b-form-message b-last-textblock">Вы успешно отписались от всех лекций</div>
 
             <script type="text/javascript">
                 var subscribe = {
                     init: function() {
-                        $('#subscribe_form,#subscribe_success').hide();
+                        $('#subscribe_form,#subscribe_success,#unsubscribe_success').hide();
                     },
                     show_form: function(short) {
                         $('#subscribe_form').show();
                         $('#subscribe_success').hide();
                     },
-                    success: function() {
-                        $('#subscribe_success').show();
+                    success: function(subscribe) {
+                        if(subscribe)
+                            $('#subscribe_success').show();
+                        else
+                            $('#unsubscribe_success').show();
                         $('#subscribe_form .b-field.b-wide-input').hide();
                         $('#subscribe_form input:submit').hide();
                     },
