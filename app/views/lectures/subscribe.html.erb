@@ -12,6 +12,8 @@
 <% content_for :extra_head do %>
     <script type="text/javascript">
         $(function() {
+            $('.b-menu.b-menu-separated').append('<li class="item"><%= link_to 'Записаться на ближайшую лекцию', lectures_subscribe_path, :class => 'link c-about-link' %></li>');
+            $('.b-menu li.item a.link[href$="<%= lectures_subscribe_path %>"]').html(function(i,value) {return '<b class="b-graphics b-graphics-check"><b></b></b>' + value});
             $('ul.b-main-menu li.item.projects a.link')
                 .addClass('selected')
                 .html(function(i, html) {
@@ -31,70 +33,86 @@
     <%= render :partial => 'project_header', :locals => {:project => @project} %>
     <div class="l-column-472 l-intercolumn-28">
 
-        <%= form_for(@subscriber, :url => {:controller => 'lectures', :action => 'subscribe'}, :html => {:id => "subscribe_form", :class => ""}, :method => 'post', :remote => true) do |f| %>
+        <%= @lectures_subscribe %>
 
-              <% if @subscriber.errors.any? %>
-                <div id="error_explanation">
-                  <h2><%= pluralize(@subscriber.errors.count, "error") %> prohibited this lecture from being saved:</h2>
-                  <ul>
-                  <% @subscriber.errors.full_messages.each do |msg| %>
-                    <li><%= msg %></li>
+        <div class="b-yellow-block">
+
+            <%= form_for(@subscriber, :url => {:controller => 'lectures', :action => 'subscribe'}, :html => {:id => "subscribe_form", :class => ""}, :method => 'post', :remote => true) do |f| %>
+
+                  <% if @subscriber.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(@subscriber.errors.count, "error") %> prohibited this lecture from being saved:</h2>
+                      <ul>
+                      <% @subscriber.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                      <% end %>
+                      </ul>
+                    </div>
                   <% end %>
-                  </ul>
-                </div>
-              <% end %>
 
-            <fieldset>
-                <div class="b-field b-wide-input">
+                <fieldset>
                     <%= f.label :article_id, "Лекция", :class => "b-label" %>
-                    <%= f.select :article_id, @articles, :class => "b-input", :id => "f-lecture" %>
-                </div>
-                <div class="b-field b-wide-input">
-                    <%= f.label :name, "Ваше имя и фамилия", :class => "b-label" %>
-                    <%= f.text_field :name, :class => "b-input", :id => "f-fio" %>
-                </div>
-                <div class="b-field b-wide-input">
-                    <%= f.label :email, "Ваш e-mail", :class => "b-label" %>
-                    <%= f.text_field :email, :class => "b-input", :id => "f-email" %>
-                </div>
-                <%= f.submit 'Записаться', :class => "b-submit" %>
-            </fieldset>
-        <% end %>
+                    <div class="b-field b-choise">
+                        <% @articles.each do |article| %>
+                            <div class="item">
+                                <%= check_box_tag 'articles[]', article.id, @articles_subscribed.include?(article.id.to_s), :class => "input", :id => "articles_#{article.id}" %>
+                                <% label_text = l(article.published_at, :format => '%d %B') + ", " + article.title + "<br/>".html_safe + link_to('Описание лекции', article_path(article)) %>
+                                <%= label "articles", article.id, label_text.html_safe, :class => "label" %>
+                            </div>
+                        <% end %>
+                    </div>
 
-        <div id="subscribe_success" class="b-form-message b-last-textblock">Спасибо за&nbsp;помощь организаторам.<br/> Ждем вас!</div>
-
-        <div id="subscribe_already">
-            <div class="b-form-message">Вы&nbsp;уже записались на&nbsp;лекцию.</div>
-            <%= link_to 'Отказаться от участия', lectures_unsubscribe_path(@lecture), :remote => true, :html => {:class => 'b-action-link'} %>
-        </div>
-
-        <script type="text/javascript">
-            var subscribe = {
-                init: function() {
-                    $('#subscribe_form,#subscribe_success,#subscribe_already').hide();
-                },
-                show_form: function(short) {
-                    $('#subscribe_form').show();
-                    $('#subscribe_success,#subscribe_already').hide();
-                    if(short)
-                        $('#subscribe_form').find('input,label').not('input:submit').hide();
-                },
-                success: function() {
-                    $('#subscribe_success').show();
-                    $('#subscribe_form,#subscribe_already').hide();
-                },
-                already: function() {
-                    $('#subscribe_already').show();
-                    $('#subscribe_form,#subscribe_success').hide();
-                },
-            }
-            subscribe.init();
-            <% if @subscribed %>
-                subscribe.already();
-            <% else %>
-                subscribe.show_form(<% if @introduced %>true<% end %>);
+                    <div class="l-intercolumn-40">
+                    <div class="b-field b-wide-input">
+                        <%= f.label :name, "Ваше имя и фамилия", :class => "b-label" %>
+                        <%= f.text_field :name, :class => "b-input", :id => "f-fio" %>
+                    </div>
+                    <div class="b-field b-wide-input">
+                        <%= f.label :email, "Ваш e-mail", :class => "b-label" %>
+                        <%= f.text_field :email, :class => "b-input", :id => "f-email" %>
+                    </div>
+                    </div>
+                    <%= f.submit 'Записаться', :class => "b-submit" %>
+                </fieldset>
             <% end %>
-        </script>
+
+            <div id="subscribe_success" class="b-form-message b-last-textblock">Спасибо за&nbsp;помощь организаторам.<br/> Ждем вас!</div>
+
+            <div id="subscribe_already">
+                <div class="b-form-message">Вы&nbsp;уже записались на&nbsp;лекцию.</div>
+                <%= link_to 'Отказаться от участия', lectures_unsubscribe_path(@lecture), :remote => true, :html => {:class => 'b-action-link'} %>
+            </div>
+
+            <script type="text/javascript">
+                var subscribe = {
+                    init: function() {
+                        $('#subscribe_form,#subscribe_success,#subscribe_already').hide();
+                    },
+                    show_form: function(short) {
+                        $('#subscribe_form').show();
+                        $('#subscribe_success,#subscribe_already').hide();
+                        if(short)
+                            $('#subscribe_form .b-field.b-wide-input').hide();
+                    },
+                    success: function() {
+                        $('#subscribe_success').show();
+                        $('#subscribe_already').hide();
+                        $('#subscribe_form .b-field.b-wide-input').hide();
+                        $('#subscribe_form input:submit').hide();
+                    },
+                    already: function() {
+                        $('#subscribe_already').show();
+                        $('#subscribe_form,#subscribe_success').hide();
+                    },
+                }
+                subscribe.init();
+                <% if @subscribed %>
+                    subscribe.already();
+                <% else %>
+                    subscribe.show_form(<% if @introduced %>true<% end %>);
+                <% end %>
+            </script>
+        </div>
     </div>
 <% end %>
 

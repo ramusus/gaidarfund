@@ -79,6 +79,9 @@ class Article < ActiveRecord::Base
   def is_book?
     self.type.id == Articletype::BOOK_ID
   end
+  def is_news?
+    self.type.id == Articletype::NEWS_ID
+  end
 
 end
 

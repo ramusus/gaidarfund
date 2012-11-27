@@ -145,11 +145,33 @@ RailsAdmin.config do |config|
       end
       include_fields :content do
         help 'Основной блок материала.
+
           Табы:
           <div id="article-tabs">
             <div class="article-tab" title="Вкладка 1"></div>
             <div class="article-tab" title="Вкладка 2"></div>
-          </div>'
+          </div>
+
+          Для персон:
+          <ul class="b-persons">
+          <li class="item">
+          <h3 class="title"><img src="/photo-url.jpg" alt="Имя Фамилия" /></div>Имя фамилия персоны</h3>
+          <p class="desc">Должность и краткое представление или текст от имени персоны</p>
+          </li>
+          </ul>
+
+          Для подзаголовков и акцентированных абзацев:
+          <h2 class="b-page-title">Крупный подзаголовок</h2>
+          <h3 class="b-sub-title">Подзаголовок цвета раздела</h3>
+          <p class="b-sub-intro"><strong>Заглавный абзац в блоке, ставиться </strong></p> <p class="b-huge-intro">Заглавный абзац, цвета раздела с отступом слева</p>
+
+          Для цитат:
+          <blockquote> <p>Текст цитаты серым крупным, не жирным</p> </blockquote>
+          <blockquote class="b-compact-quote"><p>Цитата жирным компактным шрифтом</p></blockquote>
+
+          Раскрывающийся блок
+          <div class="article-desc" title="Описание" hide-title="Скрыть описание">Описание</div>
+          '
       end
       include_fields :right_column do
         help 'Выводится под списком смежных материалов "Еще по теме"'

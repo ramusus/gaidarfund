@@ -2,9 +2,10 @@
 class LectureSubscriberMailer < ActionMailer::Base
   default :from => "no-reply@gaidarfund.ru"
 
-  def subscribe_email(subscriber)
+  def subscribe_email(subscriber, article_ids)
     @subscriber = subscriber
-    mail(:to => subscriber.email, :subject => "Запись на лекцию #{Russian.strftime(subscriber.article.published_at, '%d %B')}")
+    @articles = Article.find(article_ids)
+    mail(:to => subscriber.email, :subject => "Запись на лекции фонда Егора Гайдара")
   end
 
 end

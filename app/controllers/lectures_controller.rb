@@ -6,7 +6,9 @@ class LecturesController < ApplicationController
     if not @project.is_lectures?
       not_found
     end
-    @articles = @project.articles.announces.map{|a| [a.title, a.id]}
+
+    @articles = @project.lectures_active
+    @articles_subscribed = []
 
     @subscriber = LectureSubscriber.new(params[:lecture_subscriber])
 
@@ -18,14 +20,16 @@ class LecturesController < ApplicationController
       @introduced = true
       @subscriber.email = cookie_value[:email]
       @subscriber.name = cookie_value[:name]
-      # check if user already subscribed to this lecture
-#      if cookie_value[:articles].include? @article.id
-#        @subscribed = true
-#      end
+      @articles_subscribed = cookie_value.fetch(:articles, [])
     end
 
     respond_to do |format|
-      if params[:lecture_subscriber] and @subscriber.save
+      if params[:lecture_subscriber] and params[:articles]
+
+        params[:articles].each do |id|
+          @subscriber.article = Article.find(id)
+          @subscriber.save
+        end
 
         # update cookie
         if not cookie_value
@@ -35,11 +39,11 @@ class LecturesController < ApplicationController
             :articles => [],
           }
         end
-        cookie_value[:articles] += [@subscriber.article.id]
+        cookie_value[:articles] = params[:articles]
         set_cookie(:subscribe, cookie_value)
 
         # send email
-        LectureSubscriberMailer.subscribe_email(@subscriber).deliver
+        LectureSubscriberMailer.subscribe_email(@subscriber, params[:articles]).deliver
         format.js
       else
         format.html

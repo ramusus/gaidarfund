@@ -152,6 +152,9 @@ SUB {
 	margin: 0 auto;
 	padding: 0 20px;
 	}
+.l-container {
+	background-position: 100% 128px;
+	}
 	.l-header {
 		position: relative;
 		min-height: 123px;
@@ -228,6 +231,11 @@ SUB {
 	}
 .l-shift-20 {
 	padding-left: 20px;
+	}
+
+/* Column wrappers */
+.l-wrapper-36 {
+	margin-bottom: 36px;
 	}
 
 /* =Clearfix and global
@@ -802,6 +810,19 @@ SUB {
 		}
 	.b-text-link:hover .b-graphics B {
 		background-color: #676767;
+		}
+
+/* Black description link */
+.b-desc-link {
+	text-transform: uppercase;
+	font-size: 12px;
+	line-height: 16px;
+	font-weight: bold;
+	}
+	.b-desc-link .link {
+		border-bottom: 1px dotted;
+		text-decoration: none;
+		color: #231F20;
 		}
 
 /* Sphinx search results highlight */
@@ -1758,6 +1779,14 @@ SUB {
 		display: none;
 		}
 
+/* Small yellow block */
+.b-yellow-block {
+	width: 346px;
+	margin-bottom: 36px;
+	padding: 20px;
+	background: #FEF3D7;
+	}
+
 /* =Banners
 --------------------------------------- */
 
@@ -1772,6 +1801,14 @@ SUB {
 /* =Form elements
 --------------------------------------- */
 
+/* Label */
+.b-label {
+	display: block;
+	margin-bottom: 4px;
+	font-size: 16px;
+	font-weight: bold;
+	}
+
 /* Label goes to input */
 .b-hint-label {
     display: none;
@@ -1780,7 +1817,16 @@ SUB {
 /* Simple text input */
 .b-input {
 	margin: 0;
-	padding: 5px 10px;
+	font-size: 14px;
+	}
+
+/* 100% width input with wrapper */
+.b-wide-input INPUT {
+	width: 100%;
+
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box !important;
 	}
 
 /* Input with grey hint */
@@ -1788,18 +1834,30 @@ SUB {
 	color: #888;
 	}
 
-/* Radio buttons */
-.b-radio {
+/* Radio or checkboxes */
+.b-choise {
 	margin-bottom: 18px;
 	padding-left: 18px;
+	font-size: 14px;
+	line-height: 18px;
 	}
-	.b-radio .item {
+	.b-choise .item {
+		margin-bottom: 9px;
+		}
+		.b-choise .input {
+			float: left;
+			margin: 2px 0 0 -18px;
+			padding: 0;
+			}
+.b-choise-compact {
+	font-size: 12px;
+	line-height: 16px;
+	}
+	.b-choise-compact .item {
 		margin-bottom: 6px;
 		}
-		.b-radio .input {
-			float: left;
-			margin: 1px 0 0 -18px;
-			padding: 0;
+		.b-choise-compact .input {
+			margin-top: 1px;
 			}
 
 /* Submit button */
@@ -1807,6 +1865,18 @@ SUB {
 	margin: 0;
 	padding: 2px 14px;
 	font-size: 14px;
+	}
+
+/* Form field */
+.b-field {
+	margin-bottom: 16px;
+	}
+
+/* Form message */
+.b-form-message {
+	margin-bottom: 9px;
+	line-height: 20px;
+	font-weight: bold;
 	}
 
 /* =Forms
@@ -1818,6 +1888,7 @@ SUB {
 	}
 	.b-search-form .b-input {	
 		width: 150px;
+		padding: 5px 10px;
 		font-size: 12px;
 		}
 .b-search-form-separated {

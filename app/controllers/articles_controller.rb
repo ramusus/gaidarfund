@@ -44,12 +44,14 @@ class ArticlesController < ApplicationController
       return forbidden
     end
 
-    if @article.project
+    if @article.type.page and not @article.project
+      @menu_class = @article.type.page.color_class
+    elsif @article.project
       @menu_class = 'projects'
-    elsif @article.type.id == Articletype::PUBLICATION_ID
-      @menu_class = 'articles'
-    elsif @article.type.id == Articletype::NEWS_ID
+    elsif @article.is_news?
       @menu_class = 'news'
+    else
+      @menu_class = 'articles'
     end
 
     articles = Article.visible.where("articletype_id = ?", @article.articletype_id)
@@ -66,6 +68,11 @@ class ArticlesController < ApplicationController
   end
 
   def list
+
+    if params[:format] == "html"
+      not_found
+    end
+
     articles = Article.visible
     if not params[:type_ids].blank?
       articles = articles.scoped_by_articletype_id(params[:type_ids].split(','))

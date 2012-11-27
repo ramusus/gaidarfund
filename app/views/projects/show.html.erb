@@ -12,6 +12,9 @@
 <% content_for :extra_head do %>
     <script type="text/javascript">
         $(function() {
+            <% if @project.is_lectures? and @project.lectures_active.count > 0 %>
+                $('.b-menu.b-menu-separated').append('<li class="item"><%= link_to 'Записаться на ближайшую лекцию', lectures_subscribe_path, :class => 'link c-about-link' %></li>');
+            <% end %>
             $('ul.b-main-menu li.item.projects a.link')
                 .addClass('selected')
                 .html(function(i, html) {
@@ -25,9 +28,6 @@
     <%= render :partial => 'block_links', :locals => {:title => @project.about_title.blank? ? 'О проекте' : @project.about_title, :items => @project.pages} %>
     <%= render :partial => 'filters', :locals => {:show_filters => false, :defaults => {:project_ids => @project.id, :per_page => @project.per_page}} %>
     <%= @project.projects.html_safe %>
-    <% if @project.is_lectures? %>
-        <%= render :partial => "lectures_subscribe" %>
-    <% end %>
 <% end %>
 
 <% content_for :content do %>

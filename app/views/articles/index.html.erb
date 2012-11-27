@@ -7,7 +7,7 @@
                 $('.b-menu li.item a.link[href$="/<%= @type.slug %>"]').html(function(i,value) {return '<b class="b-graphics b-graphics-check"><b></b></b>' + value});
                 $('ul.b-main-menu li.item.<%= @type.page.color_class %> a.link')
             <% else %>
-                $('ul.b-main-menu li.item.<%= @menu_class %> a.link')
+                $('ul.b-main-menu li.item.<%= @menu_class.blank? ? 'none' : @menu_class %> a.link')
             <% end %>
                 .addClass('selected')
                 .html(function(i, html) {

@@ -19,12 +19,13 @@
 <% content_for :extra_head do %>
     <script type="text/javascript">
         $(function() {
-            <% if @article.type.page %>
+            <% if @article.type.page and not @article.project %>
                 $('.b-menu li.item a.link[href$="/<%= @article.type.slug %>"]').html(function(i,value) {return '<b class="b-graphics b-graphics-check"><b></b></b>' + value});
-                $('ul.b-main-menu li.item.<%= @article.type.page.color_class %> a.link')
-            <% else %>
-                $('ul.b-main-menu li.item.<%= @menu_class && @menu_class || 'none' %> a.link')
             <% end %>
+            <% if @article.project and @article.project.is_lectures? and @article.project.lectures_active.count > 0 %>
+                $('.b-menu.b-menu-separated').append('<li class="item"><%= link_to 'Записаться на ближайшую лекцию', lectures_subscribe_path, :class => 'link c-about-link' %></li>');
+            <% end %>
+            $('ul.b-main-menu li.item.<%= @menu_class %> a.link')
                 .addClass('selected')
                 .html(function(i, html) {
                     return html + ' <b class="b-graphics b-graphics-down-arrow"><b></b></b>';
@@ -38,6 +39,7 @@
                 tabSelector: '.article-tab',
                 generateMenu: true
             });
+            $('#article-tabs .article-desc').desc({});
         });
     </script>
 <% end %>
@@ -59,7 +61,7 @@
 
 <% content_for :left_column do %>
     <%# меню для memorues and media листингов %>
-    <% if @article.type.page %>
+    <% if @article.type.page and not @article.project %>
         <%= render :partial => 'block_links', :locals => {:title => @article.type.page.title, :items => @article.type.page.pages} %>
     <% end %>
     <% if @article.project %>

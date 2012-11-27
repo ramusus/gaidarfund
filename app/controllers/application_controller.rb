@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     @projects_footer = Project.visible.where("id NOT IN (1,2,7)")
     @blogs = Blog.all
 
-    ['partners','banners_right_column','footer_links_1','footer_links_2','golden_fund','social_likes','social_links','extra_head','projects_introduction','yandex_metrica_gaidarfund','yandex_metrica_all','disqus'].each do |var_name|
+    ['partners','banners_right_column','footer_links_1','footer_links_2','golden_fund','social_likes','social_links','extra_head','projects_introduction','yandex_metrica_gaidarfund','yandex_metrica_all','disqus','lectures_subscribe'].each do |var_name|
       chunk = Chunk.find_by_code(var_name)
       if chunk and chunk.visible
         chunk = chunk.content.html_safe

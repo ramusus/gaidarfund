@@ -18,6 +18,9 @@
     <script type="text/javascript">
         $(function() {
             <% if @page.project %>
+                <% if @page.project.is_lectures? and @page.project.lectures_active.count > 0 %>
+                    $('.b-menu.b-menu-separated').append('<li class="item"><%= link_to 'Записаться на ближайшую лекцию', lectures_subscribe_path, :class => 'link c-about-link' %></li>');
+                <% end %>
                 $('ul.b-main-menu li.item.project a.link')
             <% elsif @page.page %>
                 $('ul.b-main-menu li.item.<%= @page.page.color_class %> a.link')
@@ -29,28 +32,6 @@
                     return html + ' <b class="b-graphics b-graphics-down-arrow"><b></b></b>';
                 });
             $('.b-menu li.item a.link[href$="/<%= @page.slug %>"]').html(function(i,value) {return '<b class="b-graphics b-graphics-check"><b></b></b>' + value});
-<%
-=begin
-%>
-            if($('h2.b-page-title').length == 0) {
-                $('h2.b-navigation-title:first').remove();
-                $('#menu').parent().remove();
-            } else {
-                $('h2.b-page-title').each(function() {
-                    var title = this;
-                    var li = '<li class="item"> \
-                            <a class="link c-about-link" href="">' + $(title).text() + '</a> \
-                        </li>';
-                    $('#menu').append(li);
-                    $('#menu a:last').click(function() {
-                        $.scrollTo($(title), 1000);
-                        return false;
-                    });
-                });
-            }
-<%
-=end
-%>
         });
     </script>
 <% end %>

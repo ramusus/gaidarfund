@@ -53,7 +53,7 @@
             <% @project_categories.each do |category| %>
                 <div id="projects<%= category.id %>" class="js-tab">
                     <div class="b-large-tiles">
-                        <% category.projects.each do |project| %>
+                        <% category.projects.visible.each do |project| %>
                             <%= render :partial => 'project', :locals => {:project => project} %>
                         <% end %>
                     </div>
