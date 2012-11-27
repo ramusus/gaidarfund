@@ -13,11 +13,8 @@ class LecturesController < ApplicationController
     @subscriber = LectureSubscriber.new(params[:lecture_subscriber])
 
     # check if user has site cookie and probably was subscribed before to any lecture
-    @subscribed = false
-    @introduced = false
     cookie_value = read_cookie(:subscribe)
     if cookie_value
-      @introduced = true
       @subscriber.email = cookie_value[:email]
       @subscriber.name = cookie_value[:name]
       @articles_subscribed = cookie_value.fetch(:articles, [])

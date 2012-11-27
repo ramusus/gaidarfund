@@ -91,8 +91,6 @@
                     show_form: function(short) {
                         $('#subscribe_form').show();
                         $('#subscribe_success,#subscribe_already').hide();
-                        if(short)
-                            $('#subscribe_form .b-field.b-wide-input').hide();
                     },
                     success: function() {
                         $('#subscribe_success').show();
@@ -106,11 +104,7 @@
                     },
                 }
                 subscribe.init();
-                <% if @subscribed %>
-                    subscribe.already();
-                <% else %>
-                    subscribe.show_form(<% if @introduced %>true<% end %>);
-                <% end %>
+                subscribe.show_form();
             </script>
         </div>
     </div>
