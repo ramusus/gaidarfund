@@ -48,7 +48,7 @@ class Project < ActiveRecord::Base
   end
 
   def is_lectures?
-    self.subdomain == 'lectures2'
+    self.subdomain == 'lectures'
   end
   def lectures_active
     self.articles.announces.where("published_at > ?", Time.now)
