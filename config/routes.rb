@@ -16,7 +16,7 @@ Gaidarfund::Application.routes.draw do
   match "/news.php" => "articles#show_old_news"
   match "/calendar.php" => "articles#show_old_announce"
 
-  match "/articles/" => "articles#list", :as => 'articles'
+  match "/articles/" => "articles#list", :as => 'articles', :defaults => { :format => 'json' }
   match "/publications/" => "articles#publications", :as => 'publications'
   match "/search/" => "application#search", :as => 'search'
 

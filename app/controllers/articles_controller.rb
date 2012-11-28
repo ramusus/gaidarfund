@@ -69,10 +69,6 @@ class ArticlesController < ApplicationController
 
   def list
 
-    if params[:format] == "html"
-      not_found
-    end
-
     articles = Article.visible
     if not params[:type_ids].blank?
       articles = articles.scoped_by_articletype_id(params[:type_ids].split(','))
