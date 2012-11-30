@@ -34,3 +34,8 @@
         $.getScript("<%= project.css %>");
     <% end %>
 </script>
+<% if not project.css_styles.blank? %>
+    <style>
+        <%= project.css_styles.html_safe %>
+    </style>
+<% end %>

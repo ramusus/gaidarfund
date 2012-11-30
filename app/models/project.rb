@@ -4,7 +4,7 @@ class Project < ActiveRecord::Base
   scope :linkable, where(:not_linkable => false)
   default_scope :order => 'position DESC'
   attr_accessible :title, :title_short, :title_seo, :subdomain, :url, :color, :core, :sign, :hide, :hide_sidebar, :about_title, :news_title,
-    :status, :likes, :partners, :counters, :right_block, :projects, :html_block, :position, :per_page, :not_linkable,
+    :status, :likes, :partners, :counters, :right_block, :projects, :html_block, :position, :per_page, :not_linkable, :css_styles,
     :css, :background_image, :logo_image, :logo_small_image, :social_image,
     :delete_css, :delete_background_image, :delete_logo_image, :delete_logo_small_image, :delete_social_image
 
