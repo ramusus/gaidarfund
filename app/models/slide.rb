@@ -13,6 +13,9 @@ class Slide < ActiveRecord::Base
   end
 
   def save(args={})
+    if not self.position
+      self.position = 0
+    end
     if not self.color
       self.color = '#FFFFFF'
     end
