@@ -144,12 +144,13 @@ RailsAdmin.config do |config|
         help 'Сео заголовок (если пуст, то по умолчанию выводистя title материала)'
       end
       include_fields :content do
-        help 'Основной блок материала.
+        help do
+          value = 'Основной блок материала.
 
           Табы:
           <div id="article-tabs">
-            <div class="article-tab" title="Вкладка 1"></div>
-            <div class="article-tab" title="Вкладка 2"></div>
+          <div class="article-tab" title="Вкладка 1"></div>
+          <div class="article-tab" title="Вкладка 2"></div>
           </div>
 
           Для персон:
@@ -163,15 +164,18 @@ RailsAdmin.config do |config|
           Для подзаголовков и акцентированных абзацев:
           <h2 class="b-page-title">Крупный подзаголовок</h2>
           <h3 class="b-sub-title">Подзаголовок цвета раздела</h3>
-          <p class="b-sub-intro"><strong>Заглавный абзац в блоке, ставиться </strong></p> <p class="b-huge-intro">Заглавный абзац, цвета раздела с отступом слева</p>
+          <p class="b-sub-intro"><strong>Заглавный абзац в блоке, ставиться </strong></p>
+          <p class="b-huge-intro">Заглавный абзац, цвета раздела с отступом слева</p>
 
           Для цитат:
-          <blockquote> <p>Текст цитаты серым крупным, не жирным</p> </blockquote>
+          <blockquote><p>Текст цитаты серым крупным, не жирным</p></blockquote>
           <blockquote class="b-compact-quote"><p>Цитата жирным компактным шрифтом</p></blockquote>
 
-          Раскрывающийся блок
+          Раскрывающийся блок:
           <div class="article-desc" title="Описание" hide-title="Скрыть описание">Описание</div>
           '
+          value.gsub(/</,"&lt;").gsub(/>/,"&gt;").gsub(/\n/,"<br />").html_safe
+        end
       end
       include_fields :right_column do
         help 'Выводится под списком смежных материалов "Еще по теме"'
