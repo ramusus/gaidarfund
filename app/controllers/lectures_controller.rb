@@ -7,7 +7,7 @@ class LecturesController < ApplicationController
       not_found
     end
 
-    @articles = @project.lectures_active
+    @articles = @project.lectures_active.order("published_at ASC")
     @articles_subscribed = []
 
     @subscriber = LectureSubscriber.new(params[:lecture_subscriber])

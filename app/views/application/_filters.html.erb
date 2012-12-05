@@ -25,17 +25,26 @@
         data: {
             page: 1
         },
+        initial_data: {},
         init: function(data) {
-            $.extend(this.data, data);
-            this.reload();
-            this.initFilters();
-            this.initSearch();
+            $.extend(filtration.data, data);
+            filtration.initial_data = $.extend({}, filtration.data);
+            filtration.reload();
+            filtration.initFilters();
+            filtration.initSearch();
         },
         initFilters: function() {
             $('#articlesFiltration a').click(function() {
                 $('#articlesFiltration a').not(this).addClass('disabled');
-                filtration.data.type_ids = [$(this).removeClass('disabled').attr('rel')].join(',');
-                filtration.data.page = 1;
+                var type_id = $(this).removeClass('disabled').attr('rel');
+                if(type_id) {
+                    $.extend(filtration.data, {
+                        type_ids: type_id,
+                        page: 1
+                    });
+                } else {
+                    filtration.data = $.extend({}, filtration.initial_data);
+                }
                 filtration.reload();
                 return false;
             });
