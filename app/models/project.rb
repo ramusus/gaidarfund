@@ -51,7 +51,7 @@ class Project < ActiveRecord::Base
     self.subdomain == 'lectures'
   end
   def lectures_active
-    self.articles.announces.where("published_at > ?", Time.now)
+    Article.unscoped.announces.where("project_id = ? AND published_at > ?", self.id, Time.now).order("published_at ASC")
   end
 
 end
