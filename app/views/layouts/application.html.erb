@@ -35,7 +35,7 @@
 
         <div class="l-container">
             <div class="l-header">
-                <a class="b-logo" href="<%= root_url(:subdomain => false) %>"> <img class="image" src="/img/logo.png" alt="Фонд Егора Гайдара"/> </a>
+                <a class="b-logo" href="<%= root_url(:subdomain => false) %>"> <img class="image" src="<%= @file_logo ? @file_logo.file : '/img/logo.png' %>" alt="Фонд Егора Гайдара"/> </a>
                 <ul class="b-main-menu">
                     <li class="item about">
                         <%= link_to 'О Фонде', page_path('/about_fund/'), :class => 'link' %>
