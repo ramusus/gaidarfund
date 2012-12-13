@@ -1,6 +1,7 @@
 class Page < ActiveRecord::Base
+  scope :visible, where(:visible => true)
   default_scope :order => 'position DESC'
-  attr_accessible :title, :slug, :content, :service, :info, :project_id, :page_id, :position
+  attr_accessible :title, :slug, :content, :service, :info, :project_id, :page_id, :position, :visible
 
   belongs_to :project
   belongs_to :page

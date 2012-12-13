@@ -70,6 +70,9 @@ class ArticlesController < ApplicationController
   def list
 
     articles = Article.visible
+    if not params[:index].blank?
+      articles = articles.visible_on_index
+    end
     if not params[:type_ids].blank?
       articles = articles.scoped_by_articletype_id(params[:type_ids].split(','))
     end

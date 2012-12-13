@@ -62,11 +62,11 @@
 <% content_for :left_column do %>
     <%# меню для memorues and media листингов %>
     <% if @article.type.page and not @article.project %>
-        <%= render :partial => 'block_links', :locals => {:title => @article.type.page.title, :items => @article.type.page.pages} %>
+        <%= render :partial => 'block_links', :locals => {:title => @article.type.page.title, :items => @article.type.page.pages.visible} %>
     <% end %>
     <% if @article.project %>
         <%# блок страниц проекта %>
-        <%= render :partial => 'block_links', :locals => {:title => @article.project.about_title.blank? ? 'О проекте' : @article.project.about_title, :items => @article.project.pages} %>
+        <%= render :partial => 'block_links', :locals => {:title => @article.project.about_title.blank? ? 'О проекте' : @article.project.about_title, :items => @article.project.pages.visible} %>
         <%# блок проектов проекта %>
         <%= @article.project.projects.html_safe %>
     <% else %>

@@ -39,13 +39,13 @@
 <% content_for :left_column do %>
     <%# блок сиблингов %>
     <% if @page.page %>
-        <%= render :partial => 'block_links', :locals => {:title => @page.page.title, :items => @page.page.pages} %>
+        <%= render :partial => 'block_links', :locals => {:title => @page.page.title, :items => @page.page.pages.visible} %>
     <% end %>
     <%# блок детей %>
-    <%= render :partial => 'block_links', :locals => {:title => @page.title, :items => @page.pages} %>
+    <%= render :partial => 'block_links', :locals => {:title => @page.title, :items => @page.pages.visible} %>
     <% if @page.project %>
         <%# блок страниц проекта %>
-        <%= render :partial => 'block_links', :locals => {:title => @page.project.about_title.blank? ? 'О проекте' : @page.project.about_title, :items => @page.project.pages} %>
+        <%= render :partial => 'block_links', :locals => {:title => @page.project.about_title.blank? ? 'О проекте' : @page.project.about_title, :items => @page.project.pages.visible} %>
         <%# блок проектов проекта %>
         <%= @page.project.projects.html_safe %>
     <% else %>
@@ -58,6 +58,9 @@
     <% if @page.project %>
         <div class="l-column-710">
             <%= render :partial => 'project_header', :locals => {:project => @page.project, :compact => true} %>
+            <% if user_signed_in? %>
+                <%= link_to 'Редактировать', rails_admin.edit_path('page', @page.id) %>
+            <% end %>
             <div class="l-column-536 l-intercolumn-24">
                 <div class="l-cover-fix">
                     <%= @page.content.html_safe %>
@@ -72,6 +75,9 @@
             <div class="b-share">
                 <%= render :partial => 'social_likes' %>
             </div>
+            <% if user_signed_in? %>
+                <%= link_to 'Редактировать', rails_admin.edit_path('page', @page.id) %>
+            <% end %>
             <%= @page.content.html_safe %>
         </div>
         <div class="l-column-210">

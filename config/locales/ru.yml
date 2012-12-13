@@ -7,7 +7,6 @@ ru:
       page: "Страница"
       user: "Пользователь"
       chunk: "Блок"
-      news: "Новость"
       article: "Материал"
       project: "Проект"
       project_category: "Категория проектов"
@@ -21,12 +20,7 @@ ru:
         title: "Заголовок"
         slug: "Адрес"
         content: "Основной блок"
-      news:
-        title: "Заголовок"
-        subtitle: "Подзаголовок"
-        date: "Дата"
-        content: "Основной блок"
-        important: "Выделить в списке"
+        visible: "Отображать?"
       chunk:
         title: "Название"
         code: "Код"
@@ -57,6 +51,7 @@ ru:
         main: "Основной на сайте?"
         main_for_project: "Основной на проекте?"
         hide: "Скрыть?"
+        hide_on_index: "Скрыть на главной?"
         only_for_signed: "Только для авторизованных?"
         hide_discussions: "Скрыть дискуссии?"
         content: "Контент"
@@ -68,6 +63,7 @@ ru:
         project: "Проект"
         articletype: "Тип"
         author: "Автор"
+        play_icon: "Иконка play"
       project:
         title: "Заголовок"
         title_short: "Короткий заголовок"

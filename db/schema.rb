@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121130145816) do
+ActiveRecord::Schema.define(:version => 20121213132427) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -28,8 +28,10 @@ ActiveRecord::Schema.define(:version => 20121130145816) do
     t.boolean  "main_for_project"
     t.boolean  "hide"
     t.boolean  "hide_discussions"
+    t.boolean  "hide_on_index", :default => false
     t.boolean  "checked"
     t.boolean  "only_for_signed", :default => false
+    t.boolean  "play_icon", :default => false
     t.integer  "old_id"
     t.datetime "published_at"
     t.string   "title_seo"
@@ -131,6 +133,7 @@ ActiveRecord::Schema.define(:version => 20121130145816) do
     t.string   "title"
     t.text     "content"
     t.string   "slug"
+    t.boolean  "visible",    :default => true
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "project_id"

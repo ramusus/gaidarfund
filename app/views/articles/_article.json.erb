@@ -7,7 +7,7 @@
             <% if article.image.exists? %>
                 <div class="image-container">
                     <%= image_tag(article.image(:square), :class => 'image', :alt => article.title, :width => article.image.width(:square), :height => article.image.height(:square)) %>
-                    <% if article.is_video? %><b class="b-icon b-icon-video"><b></b></b><% end %>
+                    <% if article.play_icon %><b class="b-icon b-icon-video"><b></b></b><% end %>
                 </div>
             <% end %>
             <% if not defined?(featured) and not article.is_book? %>

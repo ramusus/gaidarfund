@@ -53,10 +53,10 @@ RailsAdmin.config do |config|
 
   config.model Page do
     list do
-      include_fields :title, :slug, :project, :page, :position
+      include_fields :title, :slug, :project, :page, :visible, :position
     end
     show do
-      include_fields :title, :slug
+      include_fields :title, :slug, :visible
       include_fields :content do
         pretty_value do
           value.html_safe
@@ -65,6 +65,9 @@ RailsAdmin.config do |config|
     end
     edit do
       include_fields :title, :slug
+      include_fields :visible do
+        help 'Отображать ссылку на страницу в автоматических листингах'
+      end
       include_fields :project do
         help 'Принадлежность страницы проекту'
         associated_collection_scope do
@@ -135,8 +138,14 @@ RailsAdmin.config do |config|
       include_fields :hide do
         help 'Скрытый материал доступен всем по прямой ссылке, он скрывается только из листингов'
       end
+      include_fields :hide_on_index do
+        help 'Скрыть из листинга главной страницы'
+      end
       include_fields :only_for_signed do
         help 'Материал скрывается из всех листингов и доступен по прямой ссылке только авторизованным'
+      end
+      include_fields :play_icon do
+        help 'Добавить иконку play на картинку анонса материала'
       end
       include_fields :published_at do
       end
