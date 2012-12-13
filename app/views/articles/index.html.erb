@@ -20,7 +20,7 @@
 <% content_for :left_column do %>
     <%# меню для memorues and media листингов %>
     <% if @type and @type.page %>
-        <%= render :partial => 'block_links', :locals => {:title => @type.page.title, :items => @type.page.pages} %>
+        <%= render :partial => 'block_links', :locals => {:title => @type.page.title, :items => @type.page.pages.visible} %>
     <% end %>
     <%= render :partial => 'projects' %>
     <%= render :partial => 'calendar' %>
