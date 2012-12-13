@@ -21,6 +21,9 @@ ru:
         slug: "Адрес"
         content: "Основной блок"
         visible: "Отображать?"
+        project: "Проект"
+        project: "Страница"
+        position: "Позиция"
       chunk:
         title: "Название"
         code: "Код"
