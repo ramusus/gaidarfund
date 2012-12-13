@@ -22,7 +22,7 @@ ru:
         content: "Основной блок"
         visible: "Отображать?"
         project: "Проект"
-        project: "Страница"
+        page: "Страница"
         position: "Позиция"
       chunk:
         title: "Название"
