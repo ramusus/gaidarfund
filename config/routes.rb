@@ -23,6 +23,7 @@ Gaidarfund::Application.routes.draw do
   Articletype.where("slug != ''").each do |type|
     match type.slug => "articles#articles_by_type", :as => type.code, :slug => type.slug
   end
+  match 'memories_3goda_bez' => "articles#memories_3goda_bez"
 
   constraints(Subdomain) do
     match "/" => "projects#show"

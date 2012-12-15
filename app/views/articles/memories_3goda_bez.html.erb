@@ -1,0 +1,21 @@
+<% @articles.each do |article| %>
+    <div class="b-article b-tiles-item b-article-illustrated masonry-brick">
+        <a class="link c-gaidar-link" href="http://gaidarfund.ru/articles/1537">;
+            <div class="b-section-label c-gaidar-block"><%= l article.published_at, :format => '%Y' %></div>
+            <% if article.image.exists? %>
+                <div class="image-container">
+                    <%= image_tag(article.image(:square), :class => 'image', :alt => article.title, :width => article.image.width(:square), :height => article.image.height(:square)) %>
+                    <% if article.play_icon %><b class="b-icon b-icon-video"><b></b></b><% end %>
+                </div>
+            <% end %>
+            <h3 class="title">
+                <% if article.excerpts %>
+                    <%= article.excerpts.title.html_safe %>
+                <% else %>
+                    <%= article.title.html_safe %>
+                <% end %>
+            </h3>
+        </a>
+        <div class="modal-content"><%= article.content.html_safe %></div>
+    </div>
+<% end %>

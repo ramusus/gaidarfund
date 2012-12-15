@@ -11,6 +11,11 @@ class ArticlesController < ApplicationController
     render "index"
   end
 
+  def memories_3goda_bez
+    @articles = Article.visible.scoped_by_articletype_id(Articletype::MEMORY_ID)
+    render :layout => false
+  end
+
   def articles_by_type
     @type = Articletype.find_by_slug(params[:slug])
     @type_ids = @type.id
