@@ -112,6 +112,7 @@
         first_announce: function() {
             var item = $('#articlesList .b-tiles-item .b-section-label:contains("Лекция"):first').closest('.b-tiles-item');
             $(item)
+                .removeClass('b-article-illustrated')
                 .addClass('b-article-highlighted')
                 .addClass('c-project-block')
             $('.image-container', item)

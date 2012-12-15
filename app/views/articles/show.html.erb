@@ -50,10 +50,10 @@
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'gaidarfund'; // required: replace example with your forum shortname
     (function () {
-        var countLink = ^$('#disqus-comments-count'),
-            disqussionLinks = ^$('.b-meta .link[href=#disqussion]');
+        var countLink = $('#disqus-comments-count'),
+            disqussionLinks = $('.b-meta .link[href=#disqussion]');
 
-        ^$.getScript('http://' + disqus_shortname + '.disqus.com/count.js', function(){
+        $.getScript('http://' + disqus_shortname + '.disqus.com/count.js', function(){
             setTimeout(function(){
                 var commentsCount = /^^\d+/.exec(countLink.text()),
                     commentsCount = parseInt(commentsCount[0], 10);
