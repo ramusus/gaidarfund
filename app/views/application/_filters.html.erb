@@ -110,11 +110,11 @@
             });
         },
         first_announce: function() {
-            var item = $('#articlesList .b-tiles-item .b-section-label:contains("Анонс"):first').closest('.b-tiles-item');
+            var item = $('#articlesList .b-tiles-item .b-section-label:contains("Лекция"):first').closest('.b-tiles-item');
             $(item)
                 .addClass('b-article-highlighted')
                 .addClass('c-project-block')
-            $('.b-section-label', item).attr('class', 'b-section-label');
+            $('.b-section-label', item).attr('class', 'b-section-label').text('Ближайшая');
         }
     }
 </script>
