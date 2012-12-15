@@ -114,7 +114,11 @@
             $(item)
                 .addClass('b-article-highlighted')
                 .addClass('c-project-block')
-            $('.b-section-label', item).attr('class', 'b-section-label').text('Ближайшая');
+            $('.image-container', item)
+                .remove();
+            $('.b-section-label', item)
+                .attr('class', 'b-section-label')
+                .text('Ближайшая');
         }
     }
 </script>
