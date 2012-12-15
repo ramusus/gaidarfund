@@ -1,6 +1,6 @@
 <% if article %>
     <div class="<% if defined?(featured) %>b-featured-article<% else %>b-article b-tiles-item<% if article.image.exists? %> b-article-illustrated<% end %><% end %>">
-        <a class="link c-<%= article.color_class %>-link" href="<%= article_path(article) %>">
+        <a class="b-article-link c-<%= article.color_class %>-link" href="<%= article_path(article) %>">
             <% if article.type %>
                 <div class="b-section-label c-<%= article.color_class %>-block"><%= article.type.name %></div>
             <% end %>
@@ -28,5 +28,12 @@
                 <%= article.subtitle.html_safe %>
             <% end %>
         </p>
+        <% if article.project and not defined?(featured) and not params['project_ids'] %>
+            <div class="meta">
+                <a class="link <%= "c-#{article.color_class}-hidden-link" %>" href="<%= project_path(article.project) %>">
+                    <b class="b-graphics b-graphics-7-square"><b></b></b><%= article.project %></a>
+                </a>
+            </div>
+        <% end %>
     </div>
 <% end %>

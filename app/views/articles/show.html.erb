@@ -45,6 +45,7 @@
 <% end %>
 
 <% content_for :extra_body do %>
+    <a id="disqus-comments-count" href="#disqus_thread" style="display: none;">Disqus comments count</a>
     <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'gaidarfund'; // required: replace example with your forum shortname
@@ -56,6 +57,23 @@
         s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
+
+    (function () {
+        var countLink = ^$('#disqus-comments-count'),
+            disqussionLinks = ^$('.b-meta .link[href=#disqussion]');
+
+        ^$.getScript('http://' + disqus_shortname + '.disqus.com/count.js', function(){
+            setTimeout(function(){
+                var commentsCount = /^^\d+/.exec(countLink.text()),
+                    commentsCount = parseInt(commentsCount[0], 10);
+
+                if( commentsCount > 0 ){
+                    disqussionLinks.text('Обсуждение (' + commentsCount + ')');
+                }
+            }, 500);
+        });
+    }());
+
     </script>
 <% end %>
 
@@ -135,7 +153,7 @@
                 <% if not @article.hide_discussions %>
                     <div class="disqussion">
                         <a class="link" href="#article">Текст статьи</a>
-                        <a class="link" href="#disqus_thread">Обсуждение</a>
+                        <a class="link" href="##disqussion">Обсуждение</a>
                     </div>
                 <% end %>
             </div>
