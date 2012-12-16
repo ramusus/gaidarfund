@@ -1,10 +1,12 @@
 <% if article %>
-    <div class="<% if defined?(featured) %>b-featured-article<% else %>b-article b-tiles-item<% if article.image.exists? %> b-article-illustrated<% end %><% end %>">
+    <div class="<% if defined?(featured) %>b-featured-article<% else %>b-article b-tiles-item<% if article.is_announce? %> c-project-block b-article-highlighted<% elsif article.image.exists? %> b-article-illustrated<% end %><% end %>">
         <a class="b-article-link c-<%= article.color_class %>-link" href="<%= article_path(article) %>">
-            <% if article.type %>
+            <% if article.is_announce? and not defined?(featured) %>
+                <div class="b-section-label">Ближайшее</div>
+            <% elsif article.type %>
                 <div class="b-section-label c-<%= article.color_class %>-block"><%= article.type.name %></div>
             <% end %>
-            <% if article.image.exists? %>
+            <% if article.image.exists? and not article.is_announce? %>
                 <div class="image-container">
                     <%= image_tag(article.image(:square), :class => 'image', :alt => article.title, :width => article.image.width(:square), :height => article.image.height(:square)) %>
                     <% if article.play_icon %><b class="b-icon b-icon-video"><b></b></b><% end %>

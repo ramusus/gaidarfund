@@ -83,6 +83,9 @@ class Article < ActiveRecord::Base
   def is_news?
     self.type.id == Articletype::NEWS_ID
   end
+  def is_announce?
+    self.type.id == Articletype::ANNOUNCE_ID
+  end
 
 end
 
