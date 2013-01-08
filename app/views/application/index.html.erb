@@ -1,6 +1,7 @@
 <% content_for :description do %><%= @article_main.title_seo.blank? ? strip_tags(@article_main.title) : @article_main.title_seo %> <%= strip_tags(@article_main.subtitle) %><% end %>
 
 <% content_for :extra_head do %>
+    <%= auto_discovery_link_tag(:rss, articles_path(:format => 'rss', :index => true, :type_ids => @type_ids.join(','), :per_page => 15)) %>
     <script type="text/javascript">
         $(function() {
             $('.b-promo').slideShow({

@@ -10,6 +10,7 @@
 <% end %>
 
 <% content_for :extra_head do %>
+    <%= auto_discovery_link_tag(:rss, articles_path(:format => 'rss', :project_ids => @project.id, :per_page => @project.per_page)) %>
     <script type="text/javascript">
         $(function() {
             <% if @project.is_lectures? and @project.lectures_active.count > 0 %>

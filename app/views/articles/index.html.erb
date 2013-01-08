@@ -1,6 +1,7 @@
 <% content_for :title do %><%= @title %><% end %>
 
 <% content_for :extra_head do %>
+    <%= auto_discovery_link_tag(:rss, articles_path(:format => 'rss', :type_ids => @type_ids, :per_page => 30)) %>
     <script type="text/javascript">
         $(function() {
             <% if @type and @type.page %>
@@ -18,7 +19,7 @@
 <% end %>
 
 <% content_for :left_column do %>
-    <%# меню для memorues and media листингов %>
+    <%# меню для memories and media листингов %>
     <% if @type and @type.page %>
         <%= render :partial => 'block_links', :locals => {:title => @type.page.title, :items => @type.page.pages.visible} %>
     <% end %>

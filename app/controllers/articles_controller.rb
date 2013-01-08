@@ -111,7 +111,10 @@ class ArticlesController < ApplicationController
 
     @articles = articles
 
-    render :json => {:types_count => types_count, :content => render_to_string(:layout => false)}
+    respond_to do |format|
+       format.json { render :json => {:types_count => types_count, :content => render_to_string(:layout => false)}}
+       format.rss { render :layout => false }
+    end
   end
 
 end
