@@ -1,7 +1,7 @@
 <% if project %>
     <div class="b-project b-large-tiles-item">
         <a class="b-project-link" href="<%= project_path(project) %>">
-            <h2 class="b-project-title"><%= project.title.html_safe %></h2>
+            <h2 class="b-project-title"><%= project.title_list_short.empty? ? project.title.html_safe : project.title_list_short.html_safe %></h2>
             <em class="text"><%= project_path(project) %></em>
             <% if project.logo_small_image.exists? %>
                 <%= image_tag(project.logo_small_image(:thumb), :class => 'image', :alt => strip_tags(project.title), :width => project.logo_small_image.width(:thumb), :height => project.logo_small_image.height(:thumb)) %>
@@ -15,7 +15,7 @@
             <h3 class="sub-title">Главное</h3>
             <p class="desc"><%= project.status.html_safe %></p>
         <% end %>
-        <% if project.articles.count > 0 %>
+        <% if project.articles.count > 0 and not project.hide_news_list %>
             <h3 class="sub-title">Новости и публикации</h3>
             <ul class="b-news">
                 <% project.articles.visible.slice(0,3).each do |article| %>

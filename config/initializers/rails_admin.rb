@@ -236,6 +236,9 @@ RailsAdmin.config do |config|
       include_fields :title_short do
         help 'Короткий заголовок проекта в листингах и меню'
       end
+      include_fields :title_list_short do
+        help 'Краткое название проекта специально для листинга проектов'
+      end
       include_fields :subdomain do
         help 'Заполняется Если проекту дается поддомен в зоне gaidarfund.ru (надо добавить соответствующий домен в редакторе DNS)'
       end
@@ -262,6 +265,9 @@ RailsAdmin.config do |config|
       end
       include_fields :hide_sidebar do
         help 'Скрыть проект в левом меню проекта'
+      end
+      include_fields :hide_news_list do
+        help 'Не отображать ленту новостей в листинге проектов'
       end
 #      include_fields :not_linkable do
 #        help 'Скрыть проект в выпадающих списка форм материалов и страниц'

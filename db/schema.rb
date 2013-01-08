@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121213132427) do
+ActiveRecord::Schema.define(:version => 20130108091739) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -165,6 +165,7 @@ ActiveRecord::Schema.define(:version => 20121213132427) do
     t.text     "right_block"
     t.text     "projects"
     t.string   "title_short"
+    t.string   "title_list_short",                     :default => ""
     t.text     "html_block"
     t.text     "css_styles"
     t.string   "css_file_name"
@@ -185,6 +186,7 @@ ActiveRecord::Schema.define(:version => 20121213132427) do
     t.integer  "position"
     t.boolean  "hide",                          :default => false
     t.boolean  "hide_sidebar",                  :default => false
+    t.boolean  "hide_news_list",                :default => false
     t.boolean  "not_linkable",                  :default => false
     t.string   "url",                           :default => ""
     t.integer  "per_page", :default => 15
