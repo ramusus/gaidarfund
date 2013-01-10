@@ -1,6 +1,11 @@
 <% if show_filters %>
     <div id="filter">
-        <h2 class="b-navigation-title">Главное</h2>
+        <h2 class="b-navigation-title">
+           <span class="inner">
+               Главное
+               <canvas id="articles-line" class="line"></canvas>
+           </span>
+        </h2>
         <div class="l-shift-20">
             <ul class="b-menu" id="articlesFiltration">
                 <li class="item">
@@ -96,6 +101,9 @@
                             filtration.data.page++;
                             filtration.reload();
                             return false;
+                        });
+                        $('#articles-line').line({
+                            targetSelector: '#featured-article'
                         });
                     } else {
                         var newItems = $(content).find('.b-tiles-item');

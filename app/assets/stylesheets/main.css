@@ -745,6 +745,15 @@ SUB {
 .b-navigation-title {
 	margin: 48px 0 8px 0;
 	}
+	.b-navigation-title .inner {
+		position: relative;
+		}
+		.b-navigation-title .line {
+			position: absolute;
+			top: 13px;
+			left: 100%;
+			z-index: -1;
+			}
 
 /* Page title */
 .b-page-title {
@@ -1823,6 +1832,10 @@ SUB {
 	.b-fixed-filter .b-navigation-title {
 		margin-top: 0;
 		}
+		.b-fixed-filter .b-navigation-title .line,
+		.b-bottom-filter .b-navigation-title .line {
+			display: none;
+			}
 .b-bottom-filter {
 	position: absolute;
 	bottom: 80px;

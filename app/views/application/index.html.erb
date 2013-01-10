@@ -7,12 +7,16 @@
             $('.b-promo').slideShow({
                dots: true
             });
-            $('.b-slideshow').slideShow({
+            $('#events').slideShow({
                 slideSelector: '.b-events .item',
                 slideBy: 2,
                 slidePerPage: 5,
                 slideWidth: 122,
                 slideDistance: 20
+           });
+
+           $('#events-line').line({
+               targetSelector: '#events'
            });
         });
     </script>
@@ -44,29 +48,31 @@
             </b></a>
         <div class="previews"></div>
     </div>
-    <div class="b-slideshow">
-        <div class="frame">
-            <ul class="b-events slides<% if @announces.count < 4 %> b-events-compact<% end %>">
-                <% @announces.reverse.each_with_index do |announce, i| %>
-                    <li class="item nearest-<%= i+1 %>">
-                        <a class="b-events-link" href="<%= article_path(announce) %>">
-                            <strong class="date"><span class="day<% if announce.published_at.strftime("%-d").to_s[0] == '1' %> from-1<% end %>"><%= l announce.published_at, :format => '%-d' %></span>&nbsp;<%= l announce.published_at, :format => '%B' %></strong><%=  announce.title %>
-                        </a>
-                        <% if announce.project %>
-                            <em class="meta">
-                                <a class="link <%= "c-#{announce.color_class}-hidden-link" %>" href="<%= project_path(announce.project) %>">
-                                <b class="b-graphics b-graphics-7-square"><b></b></b><%= announce.project %></a>
-                            </em>
-                        <% end %>
-                    </li>
-                <% end %>
-                </ul>
-            </div>
-        <a class="arrow prev" href="?"><b class="b-graphics b-graphics-small-left-arrow"><b></b></b> назад</a>
-        <a class="arrow next" href="?"><b class="b-graphics b-graphics-small-right-arrow"><b></b></b> будущее</a>
-        <i class="b-left-fader"></i>
-        <i class="b-right-fader"></i>
-    </div>
+    <% if @announces.size > 0 %>
+        <div id="events" class="b-slideshow">
+            <div class="frame">
+                <ul class="b-events slides<% if @announces.count < 4 %> b-events-compact<% end %>">
+                    <% @announces.reverse.each_with_index do |announce, i| %>
+                        <li class="item nearest-<%= i+1 %>">
+                            <a class="b-events-link" href="<%= article_path(announce) %>">
+                                <strong class="date"><span class="day<% if announce.published_at.strftime("%-d").to_s[0] == '1' %> from-1<% end %>"><%= l announce.published_at, :format => '%-d' %></span>&nbsp;<%= l announce.published_at, :format => '%B' %></strong><%=  announce.title %>
+                            </a>
+                            <% if announce.project %>
+                                <em class="meta">
+                                    <a class="link <%= "c-#{announce.color_class}-hidden-link" %>" href="<%= project_path(announce.project) %>">
+                                    <b class="b-graphics b-graphics-7-square"><b></b></b><%= announce.project %></a>
+                                </em>
+                            <% end %>
+                        </li>
+                    <% end %>
+                    </ul>
+                </div>
+            <a class="arrow prev" href="?"><b class="b-graphics b-graphics-small-left-arrow"><b></b></b> назад</a>
+            <a class="arrow next" href="?"><b class="b-graphics b-graphics-small-right-arrow"><b></b></b> будущее</a>
+            <i class="b-left-fader"></i>
+            <i class="b-right-fader"></i>
+        </div>
+    <% end %>
     <div class="l-column-472 l-intercolumn-28">
         <%= render :partial => 'articles' %>
     </div>
