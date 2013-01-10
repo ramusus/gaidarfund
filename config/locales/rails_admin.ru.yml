@@ -1,4 +1,4 @@
-# Russian. Updated 2012-07-18
+# Russian. Updated 2013-01-10
 
 ru:
   admin:
@@ -107,6 +107,7 @@ ru:
       confirmation: "Да, уверен"
       delete_confirmation: "Подтвердить удаление"
       bulk_delete: "Следующие объекты будут удалены, что может сломать связи с другими объектами:"
+      new_model: "Новый"
     export:
       confirmation: "Экспортировать как %{name}"
       select: "Выберите поля для экспорта"

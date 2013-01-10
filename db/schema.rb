@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130108091739) do
+ActiveRecord::Schema.define(:version => 20130110110820) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -189,7 +189,17 @@ ActiveRecord::Schema.define(:version => 20130108091739) do
     t.boolean  "hide_news_list",                :default => false
     t.boolean  "not_linkable",                  :default => false
     t.string   "url",                           :default => ""
-    t.integer  "per_page", :default => 15
+    t.integer  "per_page",                      :default => 15
+    t.string   "archive_periods_title",         :default => ""
+  end
+
+  create_table "project_archive_periods", :force => true do |t|
+    t.string   "name"
+    t.datetime "date_start"
+    t.datetime "date_end"
+    t.integer  "project_id"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
 
   create_table "project_categories_projects", :force => true do |t|

@@ -1,5 +1,5 @@
 <% if article %>
-    <div<% if defined?(featured) %> id="featured-article"<% end %> class="<% if defined?(featured) %>b-featured-article<% else %>b-article b-tiles-item<% if article.is_announce? %> c-project-block b-article-highlighted<% elsif article.image.exists? %> b-article-illustrated<% end %><% end %>">
+    <div class="<% if defined?(featured) %>b-featured-article<% else %>b-article b-tiles-item<% if article.is_announce? %> c-project-block b-article-highlighted<% elsif article.image.exists? %> b-article-illustrated<% end %><% end %>">
         <a class="b-article-link c-<%= article.color_class %>-link" href="<%= article_path(article) %>">
             <% if article.is_announce? and not defined?(featured) %>
                 <div class="b-section-label">Ближайшее</div>

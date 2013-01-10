@@ -1,4 +1,21 @@
-<% if show_filters %>
+<% if defined?(show_periods) and show_periods %>
+    <div id="filter">
+        <h2 class="b-navigation-title"><%= show_periods[:title] %></h2>
+        <div class="l-shift-20">
+            <ul class="b-menu" id="articlesPeriodFiltration">
+                <li class="item">
+                    <a class="link b-text-link disabled" href="#"><b class="b-graphics b-graphics-check"><b></b></b>Все</a>
+                </li>
+                <% show_periods[:periods].each do |period| %>
+                    <li class="item">
+                        <%= link_to '<b class="b-graphics b-graphics-check"><b></b></b>'.html_safe + period.name, '', :class => "link b-text-link", :rel => 'period_id', :id => period.id %>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+<% end %>
+<% if defined?(show_filters) and show_filters %>
     <div id="filter">
         <h2 class="b-navigation-title">
            <span class="inner">
@@ -7,19 +24,20 @@
            </span>
         </h2>
         <div class="l-shift-20">
-            <ul class="b-menu" id="articlesFiltration">
+            <ul class="b-menu" id="articlesTypeFiltration">
                 <li class="item">
                     <a class="link b-text-link disabled" href="#"><b class="b-graphics b-graphics-check"><b></b></b>Все</a>
                 </li>
                 <% @articletypes.each do |type| %>
                     <li class="item">
-                        <%= link_to '<b class="b-graphics b-graphics-check"><b></b></b>'.html_safe + type.name_plural, articletype_path(type), :class => "link b-text-link", :rel => type.id %>
+                        <%= link_to '<b class="b-graphics b-graphics-check"><b></b></b>'.html_safe + type.name_plural, articletype_path(type), :class => "link b-text-link", :rel => 'type_ids', :id => type.id %>
                     </li>
                 <% end %>
             </ul>
         </div>
     </div>
 <% end %>
+
 <script type="text/javascript">
     $(function() {
         filtration.init(<%= defaults.to_json.html_safe %>);
@@ -39,14 +57,13 @@
             filtration.initSearch();
         },
         initFilters: function() {
-            $('#articlesFiltration a').click(function() {
-                $('#articlesFiltration a').not(this).addClass('disabled');
-                var type_id = $(this).removeClass('disabled').attr('rel');
-                if(type_id) {
-                    $.extend(filtration.data, {
-                        type_ids: type_id,
-                        page: 1
-                    });
+            $('#articlesTypeFiltration a,#articlesPeriodFiltration a').click(function() {
+                $(this).parents('.b-menu').find('a').not(this).addClass('disabled');
+                var value = $(this).removeClass('disabled').attr('id');
+                var name = $(this).attr('rel');
+                if(value) {
+                    filtration.data.page = 1;
+                    filtration.data[name] = value;
                 } else {
                     filtration.data = $.extend({}, filtration.initial_data);
                 }
@@ -75,9 +92,9 @@
 
                     // show filter counts
                     if(filtration.show_filter_counts) {
-                        $('#articlesFiltration li.item').show();
+                        $('#articlesTypeFiltration li.item').show();
                         $.each(response.types_count, function(id, count) {
-                            var jLink = $('#articlesFiltration a.link[rel="'+id+'"]');
+                            var jLink = $('#articlesTypeFiltration a.link[rel="'+id+'"]');
                             if(count) {
                                 jLink.html(function(i, old) {
                                     return old.replace(/ \(\d+\)$/, '') + ' ('+count+')';
@@ -103,7 +120,7 @@
                             return false;
                         });
                         $('#articles-line').line({
-                            targetSelector: '#featured-article'
+                            targetSelector: '#articlesList'
                         });
                     } else {
                         var newItems = $(content).find('.b-tiles-item');

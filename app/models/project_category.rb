@@ -10,4 +10,16 @@ class ProjectCategory < ActiveRecord::Base
     super(args)
   end
 
+  rails_admin do
+    configure :projects do
+      inverse_of :project_categories
+    end
+    list do
+      include_fields :name, :position, :projects
+    end
+    edit do
+      include_fields :name, :position, :projects
+    end
+  end
+
 end

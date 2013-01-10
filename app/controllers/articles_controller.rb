@@ -86,6 +86,10 @@ class ArticlesController < ApplicationController
       # hide announces from past
       articles = articles.where('published_at > ? AND articletype_id = ? OR articletype_id != ?', Time.now, Articletype::ANNOUNCE_ID, Articletype::ANNOUNCE_ID)
     end
+    if not params[:period_id].blank?
+      period = ProjectArchivePeriod.find(params[:period_id])
+      articles = articles.where('published_at >= ? AND published_at <= ?', period.date_start, period.date_end)
+    end
 
     if params[:query].blank?
       if not params[:project_ids].blank?
