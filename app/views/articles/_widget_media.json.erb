@@ -1,0 +1,15 @@
+<div class="b-tiles-item">
+    <h2 class="b-section-label c-about-block">
+        <%= link_to title, '/media/', :class => "link" %>
+    </h2>
+    <ul class="b-news">
+        <% articles.slice(0, count).each do |article| %>
+            <li class="item">
+                <div class="date"><%= l article.published_at, :format => '%d %B %Y' %></div>
+                <h3 class="title">
+                    <a class="link c-news-hidden-link" href="<%= article_path(article) %>"><%= article.title.html_safe %></a>
+                </h3>
+            </li>
+        <% end %>
+    </ul>
+</div>
