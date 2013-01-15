@@ -88,7 +88,7 @@
     <%= @golden_fund %>
     <%= render :partial => 'banners_right_column' %>
     <%= render :partial => 'social_links' %>
-    <%= render :partial => 'rss_link', :locals => {:link => rss_path} %>
+    <%= link_to '<b class="b-icon b-icon-rss"><b></b></b>Подписка на&nbsp;ленту фонда&nbsp;по&nbsp;RSS'.html_safe, rss_path, :class => "b-rss-link" %>
 <% end %>
 
 <%= render :template => 'layouts/3columns' %>
