@@ -1,3 +1,5 @@
+<% rss_path = articles_path(:format => 'rss', :project_ids => @project.id, :per_page => 50) %>
+
 <% content_for :title do %><%= @project.title_seo.blank? ? strip_tags(@project.title) : @project.title_seo %><% end %>
 
 <% content_for :body_class do %><%= 'l-%s-page' % [@project.body_class] %><% end %>
@@ -10,7 +12,7 @@
 <% end %>
 
 <% content_for :extra_head do %>
-    <%= auto_discovery_link_tag(:rss, articles_path(:format => 'rss', :project_ids => @project.id, :per_page => @project.per_page)) %>
+    <%= auto_discovery_link_tag(:rss, rss_path) %>
     <script type="text/javascript">
         $(function() {
             <% if @project.is_lectures? and @project.lectures_active.count > 0 %>
@@ -27,7 +29,7 @@
 
 <% content_for :left_column do %>
     <%= render :partial => 'block_links', :locals => {:title => @project.about_title.blank? ? 'О проекте' : @project.about_title, :items => @project.pages.visible} %>
-    <%= render :partial => 'filters', :locals => {:show_filters => false, :show_periods => {:title => @project.archive_periods_title, :periods => @project.project_archive_periods.all}, :defaults => {:project_ids => @project.id, :per_page => @project.per_page}} %>
+    <%= render :partial => 'filters', :locals => {:show_filters => false, :show_periods => @project.archive_periods_title.blank? ? false : {:title => @project.archive_periods_title, :periods => @project.project_archive_periods.all}, :defaults => {:project_ids => @project.id, :per_page => @project.per_page}} %>
     <%= @project.projects.html_safe %>
 <% end %>
 
@@ -43,6 +45,7 @@
     <div class="l-shift-20">
         <%= @project.right_block.html_safe %>
         <%= render :partial => 'social_links' %>
+        <%= render :partial => 'rss_link', :locals => {:link => rss_path} %>
     </div>
     </div>
 <% end %>

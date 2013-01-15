@@ -34,6 +34,7 @@ set :js_files, ['jquery-1.8.2.min.js',
 ]
 set :css_source_dir, '../project_html/www/css/'
 set :js_source_dir, '../project_html/www/js/'
+set :img_source_dir, '../project_html/www/img/'
 
 default_run_options[:pty] = true
 
@@ -72,6 +73,7 @@ namespace :static do
     js_files.each do |file|
       system "cp #{js_source_dir}#{file} app/assets/javascripts/"
     end
+    system "cp -R #{img_source_dir} public"
   end
 end
 

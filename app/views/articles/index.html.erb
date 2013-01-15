@@ -1,7 +1,9 @@
+<% rss_path = articles_path(:format => 'rss', :type_ids => @type_ids, :per_page => 50) %>
+
 <% content_for :title do %><%= @title %><% end %>
 
 <% content_for :extra_head do %>
-    <%= auto_discovery_link_tag(:rss, articles_path(:format => 'rss', :type_ids => @type_ids, :per_page => 30)) %>
+    <%= auto_discovery_link_tag(:rss, rss_path) %>
     <script type="text/javascript">
         $(function() {
             <% if @type and @type.page %>
@@ -44,6 +46,7 @@
     <%= render :partial => 'blogs' %>
     <%= render :partial => 'banners_right_column' %>
     <%= render :partial => 'social_links' %>
+    <%= render :partial => 'rss_link', :locals => {:link => rss_path} %>
 <% end %>
 
 <%= render :template => 'layouts/3columns' %>

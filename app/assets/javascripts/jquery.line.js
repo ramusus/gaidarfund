@@ -89,7 +89,7 @@
 				});
 				
 				canvas[0].width = Math.abs(x2 - x1);
-				canvas[0].height = Math.abs(y2 - y1) + 10;
+				canvas[0].height = Math.abs(y2 - y1) + 5;
 			}
 			
 			function draw(){
