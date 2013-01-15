@@ -83,7 +83,7 @@ class ArticlesController < ApplicationController
       articles = articles.visible_on_index
 
       # media widget
-      if params[:page] == 1
+      if params[:page] == 1 and params[:type_ids].include?(',')
         widgets[2] = {:type => 'media', :count => 4, :title => 'СМИ о фонде', :articles => articles.media}
       end
       articles = articles.not_media
