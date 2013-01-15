@@ -2,10 +2,12 @@ class Article < ActiveRecord::Base
 
   scope :not_announces, where("articletype_id != ?", Articletype::ANNOUNCE_ID)
   scope :not_news, where("articletype_id != ?", Articletype::NEWS_ID)
+  scope :not_media, where("articletype_id != ?", Articletype::MEDIA_ID)
 
   scope :announces, where(:articletype_id => Articletype::ANNOUNCE_ID)
   scope :news, where(:articletype_id => Articletype::NEWS_ID)
   scope :publications, where(:articletype_id => Articletype::PUBLICATION_ID)
+  scope :media, where(:articletype_id => Articletype::MEDIA_ID)
 
   scope :main, where(:main => true)
   scope :main_for_project, where(:main_for_project => true)

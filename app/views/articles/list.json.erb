@@ -3,7 +3,7 @@
 <% end %>
 <div class="b-tiles">
     <% if @articles.count > 0 %>
-        <%= render :partial => 'article', :collection => @articles || 'No pubs.' %>
+        <%= render :partial => 'article', :collection => @articles || 'No pubs.', :locals => {:widgets => @widgets} %>
     <% elsif params[:query] %>
         <p>По запросу <strong><%= params[:query] %></strong> ничего не найдено.</p>
     <% else %>

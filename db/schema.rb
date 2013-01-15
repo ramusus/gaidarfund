@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110110820) do
+ActiveRecord::Schema.define(:version => 20130115085427) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -191,6 +191,8 @@ ActiveRecord::Schema.define(:version => 20130110110820) do
     t.string   "url",                           :default => ""
     t.integer  "per_page",                      :default => 15
     t.string   "archive_periods_title",         :default => ""
+    t.integer  "widget_media_articles_count"
+    t.integer  "widget_media_position",         :default => 3
   end
 
   create_table "project_archive_periods", :force => true do |t|

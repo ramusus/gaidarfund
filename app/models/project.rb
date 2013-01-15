@@ -9,7 +9,8 @@ class Project < ActiveRecord::Base
     :status, :likes, :partners, :counters, :right_block, :projects, :html_block, :position, :per_page, :not_linkable, :css_styles,
     :css, :background_image, :logo_image, :logo_small_image, :social_image,
     :delete_css, :delete_background_image, :delete_logo_image, :delete_logo_small_image, :delete_social_image,
-    :archive_periods_title, :project_archive_periods
+    :archive_periods_title, :project_archive_periods,
+    :widget_media_articles_count, :widget_media_position
 
   has_many :articles
   has_many :pages
@@ -165,6 +166,15 @@ class Project < ActiveRecord::Base
         field :social_image do
           help 'Картинка проекта используемая в социальных сетях (уменьшается до размера 89 на 89 пикс)'
         end
+      end
+
+      group :widget_media do
+        label "Виджет СМИ"
+        active false
+        field :widget_media_articles_count do
+          help 'Оставьте поле пустым или равным 0, если хотите скрыть виджет'
+        end
+        field :widget_media_position
       end
 
       group :archive do

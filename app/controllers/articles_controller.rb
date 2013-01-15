@@ -74,9 +74,19 @@ class ArticlesController < ApplicationController
 
   def list
 
+    params[:page] = params.fetch(:page, 1).to_i
+    params[:per_page] = params.fetch(:per_page, 20).to_i
+
     articles = Article.visible
+    widgets = {}
     if not params[:index].blank?
       articles = articles.visible_on_index
+
+      # media widget
+      if params[:page] == 1
+        widgets[2] = {:type => 'media', :count => 4, :title => 'СМИ о фонде', :articles => articles.media}
+      end
+      articles = articles.not_media
     end
     if not params[:type_ids].blank?
       articles = articles.scoped_by_articletype_id(params[:type_ids].split(','))
@@ -85,6 +95,15 @@ class ArticlesController < ApplicationController
       articles = articles.scoped_by_project_id(params[:project_ids].split(','))
       # hide announces from past
       articles = articles.where('published_at > ? AND articletype_id = ? OR articletype_id != ?', Time.now, Articletype::ANNOUNCE_ID, Articletype::ANNOUNCE_ID)
+
+      # media widget
+      project = Project.find(params[:project_ids][0])
+      if project.widget_media_articles_count.to_i > 0
+        if params[:page] == 1
+          widgets[project.widget_media_position - 1] = {:type => 'media', :count => project.widget_media_articles_count, :title => 'СМИ о проекте', :articles => articles.media}
+        end
+        articles = articles.not_media
+      end
     end
     if not params[:period_id].blank?
       period = ProjectArchivePeriod.find(params[:period_id])
@@ -101,8 +120,6 @@ class ArticlesController < ApplicationController
     articles = articles.where("id != ?", @article_main ? @article_main.id: 0)
     types_count = {}
 
-    params[:page] = params.fetch(:page, 1).to_i
-    params[:per_page] = params.fetch(:per_page, 20).to_i
     if not params[:query].blank?
       Articletype.all.each do |type|
         types_count[type.id] = Article.search(params[:query], :with => {:id => articles.map(&:id), :articletype_id => type.id}).count()
@@ -114,6 +131,7 @@ class ArticlesController < ApplicationController
     end
 
     @articles = articles
+    @widgets = widgets
 
     respond_to do |format|
        format.json { render :json => {:types_count => types_count, :content => render_to_string(:layout => false)}}

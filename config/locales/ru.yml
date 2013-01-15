@@ -101,6 +101,8 @@ ru:
         per_page: "Количество материалов"
         project_archive_periods: "Циклы архива"
         archive_periods_title: "Заголовок циклов архива"
+        widget_media_articles_count: "Количество материалов"
+        widget_media_position: "Позиция"
       project_category:
         name: "Название"
         position: "Позиция"
