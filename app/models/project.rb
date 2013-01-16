@@ -174,7 +174,9 @@ class Project < ActiveRecord::Base
         field :widget_media_articles_count do
           help 'Оставьте поле пустым или равным 0, если хотите скрыть виджет'
         end
-        field :widget_media_position
+        field :widget_media_position do
+          help 'Позиция виджета среди анонсов материалов, возможно любое число >= 2'
+        end
       end
 
       group :archive do

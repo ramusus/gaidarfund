@@ -900,6 +900,24 @@ SUB {
 	color: #676767;
 	}
 
+/* Publication source */
+.b-source {
+	position: relative;
+	display: block;
+	margin-top: 4px;
+	padding-left: 12px;
+	font-size: 11px;
+	line-height: 14px;
+	font-style: normal;
+	}
+	.b-source .link {
+		text-decoration: none;
+		color: #231F20;
+		}
+		.b-source .b-graphics-7-square {
+			left: 1px;
+			}
+
 /* Last text block (paragraph, list, table, definition list) has no bottom margin */
 .b-last-textblock {
 	margin-bottom: 0 !important;
@@ -1189,26 +1207,13 @@ SUB {
 					margin-left: -6px;
 					letter-spacing: -1px;
 					}
-		.b-events .meta {
-			position: relative;
-			display: block;
-			margin-top: 4px;
-			padding-left: 12px;
-			font-size: 11px;
-			line-height: 14px;
-			font-style: normal;
+		.b-events .b-source .link {
+			color: #B2B2B2;
 			}
-			.b-events .meta .link {
-				text-decoration: none;
-				color: #B2B2B2;
-				}
-				.b-events .b-graphics-7-square {
-					left: 1px;
-					}
 		.b-events .nearest-1 .b-events-link {
 			color: #404040 !important;
 			}
-		.b-events .nearest-1 .meta .link {
+		.b-events .nearest-1 .b-source .link {
 			color: #404040;
 			}
 		.b-events .nearest-1 .b-events-link:hover {
@@ -1217,7 +1222,7 @@ SUB {
 		.b-events .nearest-2 .b-events-link {
 			color: #676767 !important;
 			}
-		.b-events .nearest-2 .meta .link {
+		.b-events .nearest-2 .b-source .link {
 			color: #676767;
 			}
 		.b-events .nearest-2 .b-events-link:hover {
@@ -1226,7 +1231,7 @@ SUB {
 		.b-events .nearest-3 .b-events-link {
 			color: #8C8C8C !important;
 			}
-		.b-events .nearest-3 .meta .link {
+		.b-events .nearest-3 .b-source .link {
 			color: #8C8C8C;
 			}
 		.b-events .nearest-3 .b-events-link:hover {
@@ -1307,20 +1312,9 @@ SUB {
 	.b-article .desc {
 		margin: 0;
 		}
-	.b-article .meta {
-		position: relative;
-		margin-top: 4px;
-		padding-left: 12px;
-		font-size: 11px;
-		line-height: 14px;
+	.b-article .b-source .link {
+		color: #676767;
 		}
-		.b-article .meta .link {
-			text-decoration: none;
-			color: #676767;
-			}
-			.b-article .b-graphics-7-square {
-				left: 1px;
-				}
 .b-article-illustrated .b-section-label {
 	position: absolute;
 	top: 8px;
@@ -1425,13 +1419,13 @@ SUB {
 			line-height: 16px;
 			font-weight: normal;
 			}
-			.b-news .link {
+			.b-news .title .link {
 				text-decoration: none;
 				color: #676767;
 				}
-			.b-news .link:visited {
-				color: #999;
-				}
+		.b-news .b-source {
+			margin: 2px 0 11px 0;
+			}
 .b-news-separated {
 	margin-bottom: 84px;
 	}

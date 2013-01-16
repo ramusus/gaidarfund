@@ -1,7 +1,3 @@
-<% if defined?(article_counter) and @widgets.keys.include?(article_counter) %>
-    <%= render :partial => "widget_#{@widgets[article_counter][:type]}", :locals => @widgets[article_counter] %>
-<% end %>
-
 <% if article %>
     <div class="<% if defined?(featured) %>b-featured-article<% else %>b-article b-tiles-item<% if article.is_announce? %> c-project-block b-article-highlighted<% elsif article.image.exists? %> b-article-illustrated<% end %><% end %>">
         <a class="b-article-link c-<%= article.color_class %>-link" href="<%= article_path(article) %>">
@@ -35,11 +31,15 @@
             <% end %>
         </p>
         <% if article.project and not defined?(featured) and not params['project_ids'] %>
-            <div class="meta">
+            <div class="b-source">
                 <a class="link <%= "c-#{article.color_class}-hidden-link" %>" href="<%= project_path(article.project) %>">
                     <b class="b-graphics b-graphics-7-square"><b></b></b><%= article.project %></a>
                 </a>
             </div>
         <% end %>
     </div>
+<% end %>
+
+<% if defined?(article_counter) and @widgets.keys.include?(article_counter) %>
+    <%= render :partial => "widget_#{@widgets[article_counter][:type]}", :locals => @widgets[article_counter] %>
 <% end %>

@@ -7,8 +7,14 @@
             <li class="item">
                 <div class="date"><%= l article.published_at, :format => '%d %B %Y' %></div>
                 <h3 class="title">
-                    <a class="link c-news-hidden-link" href="<%= article_path(article) %>"><%= article.title.html_safe %></a>
+                    <a class="link c-about-hidden-link" href="<%= article_path(article) %>"><%= article.title.html_safe %></a>
                 </h3>
+                <% if not article.author.blank? %>
+                    <div class="b-source c-about-hidden-link">
+                        <b class="b-graphics b-graphics-7-square"><b></b></b>
+                        <%= article.author %>
+                    </div>
+                <% end %>
             </li>
         <% end %>
     </ul>

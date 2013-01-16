@@ -84,7 +84,7 @@ class ArticlesController < ApplicationController
 
       # media widget
       if params[:page] == 1 and params[:type_ids].include?(',')
-        widgets[2] = {:type => 'media', :count => 4, :title => 'СМИ о фонде', :articles => articles.media}
+        widgets[3-2] = {:type => 'media', :count => 4, :title => 'СМИ о фонде', :articles => articles.media}
       end
       articles = articles.not_media
     end
@@ -100,7 +100,7 @@ class ArticlesController < ApplicationController
       project = Project.find(params[:project_ids][0])
       if project.widget_media_articles_count.to_i > 0
         if params[:page] == 1
-          widgets[project.widget_media_position - 1] = {:type => 'media', :count => project.widget_media_articles_count, :title => 'СМИ о проекте', :articles => articles.media}
+          widgets[project.widget_media_position - 2] = {:type => 'media', :count => project.widget_media_articles_count, :title => 'СМИ о проекте', :articles => articles.media}
         end
         articles = articles.not_media
       end
