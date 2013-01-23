@@ -21,12 +21,12 @@
 <script type="text/javascript">
     <% if project.background_image.exists? %>
         $('.l-<%= project.body_class %>-page .l-container')
-            .css('backgroundImage', 'url(<%= project.background_image %>)')
+            .css('backgroundImage', 'url("<%= project.background_image %>")')
             .css('backgroundRepeat', 'no-repeat');
     <% end %>
     <% if project.logo_image.exists? %>
         $('.b-<%= project.body_class %>-header a.link')
-            .css('backgroundImage', 'url(<%= project.logo_image %>)')
+            .css('backgroundImage', 'url("<%= project.logo_image %>")')
             .css('backgroundRepeat', 'no-repeat');
     <% end %>
     <% if project.css.exists? %>
