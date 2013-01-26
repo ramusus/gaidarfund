@@ -31,10 +31,6 @@
                     return html + ' <b class="b-graphics b-graphics-down-arrow"><b></b></b>';
                 });
             $('.b-award-header p.label').remove();
-            $('#tabs').tabs({
-                linkSelector: '.b-meta .disqussion .link',
-                tabSelector: '.js-tab'
-            });
             $('#article-tabs').tabs({
                 tabSelector: '.article-tab',
                 generateMenu: true
@@ -117,12 +113,11 @@
                 </div>
                 <% if not @article.hide_discussions %>
                     <div class="disqussion">
-                        <a class="link" href="#article">Текст статьи</a>
                         <a class="link" href="#disqussion">Обсуждение</a>
                     </div>
                 <% end %>
             </div>
-            <div id="article" class="js-tab">
+            <div id="article">
                 <p class="b-intro">
                     <strong><%= @article.subtitle.html_safe %></strong>
                 </p>
@@ -130,24 +125,18 @@
                     <%= @article.content.html_safe %>
                 </div>
             </div>
+            <div class="b-meta b-meta-after">
+                <div class="b-share">
+                    <%= render :partial => 'social_likes' %>
+                </div>
+            </div>
             <% if not @article.hide_discussions %>
-                <div id="disqussion" class="js-tab">
+                <div id="disqussion">
                     <div class="b-disqus">
                         <%= @disqus %>
                     </div>
                 </div>
             <% end %>
-            <div class="b-meta b-meta-after">
-                <div class="b-share">
-                    <%= render :partial => 'social_likes' %>
-                </div>
-                <% if not @article.hide_discussions %>
-                    <div class="disqussion">
-                        <a class="link" href="#article">Текст статьи</a>
-                        <a class="link" href="#disqussion">Обсуждение</a>
-                    </div>
-                <% end %>
-            </div>
         </div>
         <div class="b-nearest-articles">
             <% if @previous %>
