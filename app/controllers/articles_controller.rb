@@ -81,15 +81,16 @@ class ArticlesController < ApplicationController
     widgets = {}
     if not params[:index].blank?
       articles = articles.visible_on_index
+    end
+    if not params[:type_ids].blank?
+      type_ids = params[:type_ids]
+      articles = articles.scoped_by_articletype_id(type_ids)
 
-      # media widget
-      if params[:page] == 1 and params[:type_ids].include?(',')
+      # media widget for index and publications pages
+      if params[:project_ids].blank? and type_ids.is_a? Array and type_ids.count > 1 and type_ids.include? Articletype::MEDIA_ID.to_s
         widgets[3-2] = {:type => 'media', :count => 4, :title => 'СМИ о фонде', :articles => articles.media}
       end
       articles = articles.not_media
-    end
-    if not params[:type_ids].blank?
-      articles = articles.scoped_by_articletype_id(params[:type_ids].split(','))
     end
     if not params[:project_ids].blank?
       articles = articles.scoped_by_project_id(params[:project_ids].split(','))
