@@ -40,6 +40,6 @@
     </div>
 <% end %>
 
-<% if defined?(article_counter) and @widgets.keys.include?(article_counter) %>
+<% if params[:page] == 1 and defined?(article_counter) and @widgets.keys.include?(article_counter) %>
     <%= render :partial => "widget_#{@widgets[article_counter][:type]}", :locals => @widgets[article_counter] %>
 <% end %>

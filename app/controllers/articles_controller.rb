@@ -88,9 +88,7 @@ class ArticlesController < ApplicationController
 
       # media widget for index and publications pages
       if params[:project_ids].blank? and type_ids.is_a? Array and type_ids.count > 1 and type_ids.include? Articletype::MEDIA_ID.to_s
-        if params[:page] == 1
-          widgets[3-2] = {:type => 'media', :count => 4, :title => 'СМИ о фонде', :articles => articles.media}
-        end
+        widgets[3-2] = {:type => 'media', :count => 4, :title => 'СМИ о фонде', :articles => articles.media}
         articles = articles.not_media
       end
     end
@@ -102,9 +100,7 @@ class ArticlesController < ApplicationController
       # media widget
       project = Project.find(params[:project_ids][0])
       if project.widget_media_articles_count.to_i > 0
-        if params[:page] == 1
-          widgets[project.widget_media_position - 2] = {:type => 'media', :count => project.widget_media_articles_count, :title => 'СМИ о проекте', :articles => articles.media}
-        end
+        widgets[project.widget_media_position - 2] = {:type => 'media', :count => project.widget_media_articles_count, :title => 'СМИ о проекте', :articles => articles.media}
         articles = articles.not_media
       end
     end
