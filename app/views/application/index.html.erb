@@ -63,7 +63,7 @@
                                 <strong class="date"><span class="day<% if announce.published_at.strftime("%-d").to_s[0] == '1' %> from-1<% end %>"><%= l announce.published_at, :format => '%-d' %></span>&nbsp;<%= l announce.published_at, :format => '%B' %></strong><%=  announce.title %>
                             </a>
                             <% if announce.project %>
-                                <em class="meta">
+                                <em class="b-source">
                                     <a class="link <%= "c-#{announce.color_class}-hidden-link" %>" href="<%= project_path(announce.project) %>">
                                     <b class="b-graphics b-graphics-7-square"><b></b></b><%= announce.project %></a>
                                 </em>

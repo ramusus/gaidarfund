@@ -165,7 +165,7 @@ RailsAdmin.config do |config|
           Для персон:
           <ul class="b-persons">
           <li class="item">
-          <h3 class="title"><img src="/photo-url.jpg" alt="Имя Фамилия" /></div>Имя фамилия персоны</h3>
+          <h3 class="title"><img alt="Кирилл Рогов" class="image" src="/system/pictures/215/content_rogov.jpg" width="120" /> Кирилл Рогов</h3>
           <p class="desc">Должность и краткое представление или текст от имени персоны</p>
           </li>
           </ul>
