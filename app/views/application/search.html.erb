@@ -21,7 +21,7 @@
 <% end %>
 
 <% content_for :left_column do %>
-    <%= render :partial => 'filters', :locals => {:show_filters => true, :defaults => {:query => params[:query], :per_page => 30}} %>
+    <%= render :partial => 'filters', :locals => {:show_filters => true, :title => 'Фильтр', :defaults => {:query => params[:query], :per_page => 30}} %>
 <% end %>
 
 <% content_for :main_column do %>

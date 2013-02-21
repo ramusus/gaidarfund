@@ -24,7 +24,7 @@
     <div id="filter">
         <h2 class="b-navigation-title">
            <span class="inner">
-               Главное
+               <% if defined?(title) and not title.blank? %><%= title %><% else %>Главное<% end %>
                <canvas id="type-filtration-line" class="line"></canvas>
            </span>
         </h2>
