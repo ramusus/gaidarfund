@@ -50,6 +50,7 @@
 
     var filtration = {
         show_filter_counts: false,
+        show_connection: true,
         data: {
             page: 1
         },
@@ -99,7 +100,7 @@
                     if(filtration.show_filter_counts) {
                         $('#articlesTypeFiltration li.item').show();
                         $.each(response.types_count, function(id, count) {
-                            var jLink = $('#articlesTypeFiltration a.link[rel="'+id+'"]');
+                            var jLink = $('#articlesTypeFiltration a.link#' + id);
                             if(count) {
                                 jLink.html(function(i, old) {
                                     return old.replace(/ \(\d+\)$/, '') + ' ('+count+')';
@@ -124,9 +125,10 @@
                             filtration.reload();
                             return false;
                         });
-                        $('#type-filtration-line,#period-filtration-line').line({
-                            targetSelector: '#articlesList'
-                        });
+                        if(filtration.show_connection)
+                            $('#type-filtration-line,#period-filtration-line').line({
+                                targetSelector: '#articlesList'
+                            });
                     } else {
                         var newItems = $(content).find('.b-tiles-item');
                         newItems.css({opacity: 0}).appendTo($('#articlesList .b-tiles'));

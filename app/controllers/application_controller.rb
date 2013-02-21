@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   def set_context
 
-    @articletypes = Articletype.not_announce.not_memory.not_media
+    @articletypes = Articletype.where(:filter_hide => false)
     @projects = Project.visible.all
     @projects_sidebar = Project.visible.where(:hide_sidebar => false)
     @projects_footer = Project.visible.where("id NOT IN (1,2,7)")

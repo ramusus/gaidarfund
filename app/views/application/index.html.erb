@@ -67,6 +67,10 @@
                                     <a class="link <%= "c-#{announce.color_class}-hidden-link" %>" href="<%= project_path(announce.project) %>">
                                     <b class="b-graphics b-graphics-7-square"><b></b></b><%= announce.project %></a>
                                 </em>
+                            <% elsif announce.author %>
+                                <em class="b-source">
+                                    <b class="b-graphics b-graphics-7-square"><b></b></b><%= announce.author %>
+                                </em>
                             <% end %>
                         </li>
                     <% end %>

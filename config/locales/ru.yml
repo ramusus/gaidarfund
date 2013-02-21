@@ -131,6 +131,7 @@ ru:
         title: "Заголовок"
         color_class: "Цветовой класс"
         page: "Родительская страница"
+        filter_hide: "Скрыть среди фильтров"
       lecture_subscriber:
         name: "Имя"
         email: "E-mail"

@@ -24,7 +24,7 @@ class Articletype < ActiveRecord::Base
   scope :not_news, where('id != ?', NEWS_ID)
   scope :not_book, where('id != ?', BOOK_ID)
 
-  attr_accessible :name, :name_plural, :slug, :code, :title, :color_class, :page_id
+  attr_accessible :name, :name_plural, :slug, :code, :title, :color_class, :page_id, :filter_hide
 
   COLOR_CLASS_OPTIONS = ['','news','about','gaidar','article','project'].map{|i| [i,i]}
   validates_inclusion_of :color_class, :in => COLOR_CLASS_OPTIONS.collect{|pair| pair[1]}

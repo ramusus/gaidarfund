@@ -6,6 +6,7 @@
     <%= auto_discovery_link_tag(:rss, rss_path) %>
     <script type="text/javascript">
         $(function() {
+            filtration.show_connection = false;
             <% if @type and @type.page %>
                 $('.b-menu li.item a.link[href$="/<%= @type.slug %>"]').html(function(i,value) {return '<b class="b-graphics b-graphics-check"><b></b></b>' + value});
                 $('ul.b-main-menu li.item.<%= @type.page.color_class %> a.link')
