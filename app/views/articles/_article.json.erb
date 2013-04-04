@@ -6,7 +6,13 @@
             <% if future_announce and not defined?(featured) %>
                 <div class="b-section-label">Ближайшее</div>
             <% elsif article.type %>
-                <div class="b-section-label c-<%= article.color_class %>-block"><%= article.type.name %></div>
+                <div class="b-section-label c-<%= article.color_class %>-block">
+                    <% if article.is_announce? and article.published_at < Time.now %>
+                        Архив
+                    <% else %>
+                        <%= article.type.name %>
+                    <% end %>
+                </div>
             <% end %>
             <% if need_image %>
                 <div class="image-container">

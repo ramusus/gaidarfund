@@ -142,7 +142,11 @@
             });
         },
         first_announce: function() {
-            $('.b-section-label:contains("Ближайшее")').not(':last').remove();
+            // change order of announces:
+            $('.b-article .b-section-label:contains("Ближайшее")').closest('div.b-article').each(function() {
+                $('.b-tiles').prepend(this);
+            });
+            $('.b-section-label:contains("Ближайшее")').not(':first').text('');
         }
     }
 </script>
