@@ -41,7 +41,7 @@
         <% if article.project and not defined?(featured) and not params['project_ids'] %>
             <div class="b-source">
                 <a class="link <%= "c-#{article.color_class}-hidden-link" %>" href="<%= project_path(article.project) %>">
-                    <b class="b-graphics b-graphics-7-square"><b></b></b><%= article.project %></a>
+                    <b class="b-graphics b-graphics-7-square"><b></b></b><%= article.project %>
                 </a>
             </div>
         <% end %>

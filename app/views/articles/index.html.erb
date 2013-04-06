@@ -27,7 +27,9 @@
         <%= render :partial => 'block_links', :locals => {:title => @type.page.title, :items => @type.page.pages.visible} %>
     <% end %>
     <%= render :partial => 'projects' %>
-    <%= render :partial => 'calendar' %>
+    <% if request.path != '/calendar' %>
+        <%= render :partial => 'calendar' %>
+    <% end %>
     <%= render :partial => 'filters', :locals => {:show_filters => (@menu_class == 'articles'), :defaults => {:type_ids => @type_ids, :per_page => 30}} %>
 <% end %>
 
