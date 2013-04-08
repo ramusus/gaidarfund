@@ -36,6 +36,9 @@
 <% content_for :content do %>
     <%= render :partial => 'project_header', :locals => {:project => @project} %>
     <div class="l-column-472 l-intercolumn-28">
+        <% if @project and not @project.html_block_2.empty? %>
+            <%= @project.html_block_2.html_safe %>
+        <% end %>
         <%= render :partial => 'articles' %>
     </div>
 <% end %>
