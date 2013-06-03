@@ -103,6 +103,9 @@ class ArticlesController < ApplicationController
         widgets[project.widget_media_position - 2] = {:type => 'media', :count => project.widget_media_articles_count, :title => 'СМИ о проекте', :articles => articles.media}
         articles = articles.not_media
       end
+    else
+      # если не указан явно проект => убираем материалы скрытых проектов
+      articles = articles.where('project_id NOT IN (?)', Project.where(:hide => true))
     end
     if not params[:period_id].blank?
       period = ProjectArchivePeriod.find(params[:period_id])
