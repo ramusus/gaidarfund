@@ -83,6 +83,15 @@ class Project < ActiveRecord::Base
       include_fields :position do
         help ''
       end
+      include_fields :hide_sidebar do
+        help 'Скрыть проект в левом меню проекта'
+      end
+      include_fields :hide do
+        help 'Скрыть проект в автоматических листингах проекта'
+      end
+      include_fields :hide_news_list do
+        help 'Не отображать ленту новостей в листинге проектов'
+      end
       include_fields :subdomain do
         help 'Заполняется Если проекту дается поддомен в зоне gaidarfund.ru (надо добавить соответствующий домен в редакторе DNS)'
       end
@@ -100,15 +109,6 @@ class Project < ActiveRecord::Base
       end
       include_fields :core do
         help 'Краткая суть проекта для листинга (поставить перед статусом)'
-      end
-      include_fields :hide do
-        help 'Скрыть проект в автоматических листингах проекта'
-      end
-      include_fields :hide_sidebar do
-        help 'Скрыть проект в левом меню проекта'
-      end
-      include_fields :hide_news_list do
-        help 'Не отображать ленту новостей в листинге проектов'
       end
 #      include_fields :not_linkable do
 #        help 'Скрыть проект в выпадающих списка форм материалов и страниц'
