@@ -64,7 +64,11 @@ class Project < ActiveRecord::Base
 
   rails_admin do
     list do
-      include_fields :title, :subdomain, :hide, :position
+      include_fields :title, :subdomain, :hide, :hide_sidebar, :position
+      sort_by :position
+      field :position do
+        sort_reverse true
+      end
     end
     edit do
       include_fields :title do
@@ -75,6 +79,9 @@ class Project < ActiveRecord::Base
       end
       include_fields :title_list_short do
         help 'Краткое название проекта специально для листинга проектов'
+      end
+      include_fields :position do
+        help ''
       end
       include_fields :subdomain do
         help 'Заполняется Если проекту дается поддомен в зоне gaidarfund.ru (надо добавить соответствующий домен в редакторе DNS)'
@@ -93,9 +100,6 @@ class Project < ActiveRecord::Base
       end
       include_fields :core do
         help 'Краткая суть проекта для листинга (поставить перед статусом)'
-      end
-      include_fields :position do
-        help ''
       end
       include_fields :hide do
         help 'Скрыть проект в автоматических листингах проекта'
