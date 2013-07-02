@@ -15,7 +15,8 @@ gem 'squeel' # dependency of exception_notification
 gem 'exception_notification', :git => 'git://github.com/alanjds/exception_notification.git'
 gem "exception_logger", :git => 'git://github.com/ryancheung/exception_logger.git'
 gem 'pg'
-gem 'thinking-sphinx'
+gem 'mysql2',          '0.3.12b5'
+gem 'thinking-sphinx', '~> 3.0.2'
 gem 'domainatrix'
 
 group :development do
