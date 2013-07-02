@@ -1,0 +1,7 @@
+development:
+  mysql41: 3306
+test:
+  mysql41: 3306
+production:
+  address: 127.0.0.1
+  mysql41: 3200
