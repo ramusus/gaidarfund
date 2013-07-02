@@ -53,17 +53,6 @@ class Article < ActiveRecord::Base
 #  has_many :related1, :foreign_key => "article_id", :class_name => "Relation"
 #  has_many :related, :through => :relations
 
-  define_index do
-#    indexes published_at, :sortable => true
-    indexes title
-    indexes subtitle
-    indexes content
-    indexes author
-
-    # attributes
-    has project_id, articletype_id, published_at, id
-  end
-
   def save(args={})
     if not self.published_at
       self.published_at = Time.now
