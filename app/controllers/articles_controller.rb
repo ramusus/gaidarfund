@@ -112,6 +112,7 @@ class ArticlesController < ApplicationController
       articles = articles.where('published_at >= ? AND published_at <= ?', period.date_start, period.date_end)
     end
 
+    @articles_featured = []
     if params[:query].blank?
       if not params[:project_ids].blank?
         @articles_featured = articles.main_for_project
@@ -119,7 +120,9 @@ class ArticlesController < ApplicationController
         @articles_featured = articles.main
       end
     end
-    articles = articles.where("id NOT IN (?)", @articles_featured)
+    if @articles_featured.count > 0
+      articles = articles.where("id NOT IN (?)", @articles_featured)
+    end
     types_count = {}
 
     if not params[:query].blank?
