@@ -6,7 +6,7 @@
             <% if future_announce %>
                 <div class="b-section-label">Ближайшее</div>
             <% elsif article.type %>
-                <div class="b-section-label c-<%= article.color_class %>-block">
+                <div class="b-section-label c-<%= article.color_class %>-block" style="background-color: <%= article.project_color %> !important;">
                     <% if article.is_announce? and article.published_at < Time.now %>
                         Архив
                     <% else %>
@@ -23,7 +23,7 @@
             <% if not article.is_book? %>
                 <div class="date"><%= l article.published_at, :format => '%d %B %Y' %></div>
             <% end %>
-            <h3 class="title">
+            <h3 class="title" style="color: <%= article.project_color %> !important;">
                 <% if article.excerpts %>
                     <%= article.excerpts.title.html_safe %>
                 <% else %>

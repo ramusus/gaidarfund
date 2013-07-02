@@ -89,6 +89,14 @@ class Article < ActiveRecord::Base
     end
   end
 
+  def project_color
+    if self.project and self.project.color
+      self.project.color
+    else
+      ''
+    end
+  end
+
   def is_video?
     self.type.id == Articletype::VIDEO_ID
   end
