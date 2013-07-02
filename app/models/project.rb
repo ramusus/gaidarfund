@@ -10,7 +10,8 @@ class Project < ActiveRecord::Base
     :css_styles, :css, :background_image, :logo_image, :logo_small_image, :social_image,
     :delete_css, :delete_background_image, :delete_logo_image, :delete_logo_small_image, :delete_social_image,
     :archive_periods_title, :project_archive_periods,
-    :widget_media_articles_count, :widget_media_position
+    :widget_media_articles_count, :widget_media_position,
+    :robots_txt
 
   has_many :articles
   has_many :pages
@@ -148,6 +149,9 @@ class Project < ActiveRecord::Base
         end
         field :counters do
           help 'Коды счетчиков только для подпроекта (по умолчанию добавляется общий счетчик)'
+        end
+        field :robots_txt do
+          help 'Файл robots.txt для субдомена проекта'
         end
       end
 

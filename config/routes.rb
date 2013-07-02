@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 Gaidarfund::Application.routes.draw do
   require 'subdomain'
+  require 'robots_generator'
 
   resources :slides
   resources :projects, :only => [:index]
@@ -12,6 +13,7 @@ Gaidarfund::Application.routes.draw do
 
   devise_for :users
 
+  match '/robots.txt' => RobotsGenerator
   match "/public.php" => "articles#show_old_publication"
   match "/news.php" => "articles#show_old_news"
   match "/calendar.php" => "articles#show_old_announce"
