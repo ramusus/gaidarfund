@@ -131,6 +131,7 @@ class ArticlesController < ApplicationController
       end
       order = params[:order] == 'relevance' ? "@relevance DESC" : "published_at DESC"
       articles = Article.search(params[:query], :order => order, :with => {:id => articles.map(&:id)}, :page => params[:page], :per_page => params[:per_page])
+      articles.context.panes << ThinkingSphinx::Panes::ExcerptsPane
     else
       articles = articles.paginate(:page => params[:page], :per_page => params[:per_page])
     end
