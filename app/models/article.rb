@@ -19,9 +19,14 @@ class Article < ActiveRecord::Base
   attr_accessible :title, :subtitle, :image, :url, :main, :main_for_project, :hide, :hide_discussions, :content, :checked, :only_for_signed,
     :old_id, :published_at, :title_seo, :right_column, :project_id, :articletype_id, :delete_image, :old_group_id, :play_icon, :hide_on_index,
     :old_descr, :old_descr2, :author,
-    :social_image, :delete_social_image
+    :social_image, :delete_social_image,
+    :featured_block_type
 
-  has_attached_file :image, :styles => {:square => "140x140"}
+  has_attached_file :image, :styles => {:square => "140x140",
+    :featured_vertical => "113x",
+    :featured_horizontal => "190x",
+    :featured_big => "453x",
+  }
   has_attached_file :social_image, :styles => {:square => "200x200"}
   attr_accessor :delete_image
   attr_accessor :delete_social_image
@@ -30,6 +35,19 @@ class Article < ActiveRecord::Base
 
   belongs_to :project
   belongs_to :articletype
+
+  FEATURED_BLOCK_TYPE_OPTIONS = [
+    ['без картинки', 1],
+    ['с вертикальной картинкой', 2],
+    ['с горизонтальной картинкой', 3],
+    ['с большой горизонтальной картинкой в компоновке с анонсом на вырубке', 4],
+    ['с большой картинкой с заголовком слева', 5],
+  ]
+  validates_inclusion_of :featured_block_type, :in => FEATURED_BLOCK_TYPE_OPTIONS.collect{|pair| pair[1]}
+
+  def featured_block_type_enum
+    FEATURED_BLOCK_TYPE_OPTIONS
+  end
 
 # http://stackoverflow.com/questions/3396831/rails-many-to-many-self-join
 #  has_many :related1, :foreign_key => "article_id", :class_name => "Relation"
@@ -134,6 +152,12 @@ class Article < ActiveRecord::Base
       end
       include_fields :main_for_project do
         help 'Ставиться вверху ленты проекта, в котором представляется материал (показывается вверху один самый свежий материал).'
+      end
+      field :featured_block_type, :enum do
+        enum_method do
+          :featured_block_type_enum
+        end
+        help 'Тип отображения основного материала вверху ленты'
       end
       include_fields :hide_discussions do
         help 'Скрыть переход на вкладку "Обсуждение"'

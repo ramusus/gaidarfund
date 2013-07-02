@@ -114,12 +114,12 @@ class ArticlesController < ApplicationController
 
     if params[:query].blank?
       if not params[:project_ids].blank?
-        @article_main = articles.main_for_project.first
+        @articles_featured = articles.main_for_project
       else
-        @article_main = articles.main.first
+        @articles_featured = articles.main
       end
     end
-    articles = articles.where("id != ?", @article_main ? @article_main.id: 0)
+    articles = articles.where("id NOT IN (?)", @articles_featured)
     types_count = {}
 
     if not params[:query].blank?

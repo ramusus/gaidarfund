@@ -11,10 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130702105623) do
+ActiveRecord::Schema.define(:version => 20130702133153) do
 
   create_table "articles", :force => true do |t|
-    t.string   "title"
+    t.text     "title"
     t.text     "subtitle"
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20130702105623) do
     t.string   "social_image_content_type"
     t.integer  "social_image_file_size"
     t.datetime "social_image_updated_at"
+    t.integer  "featured_block_type", :default => 1
     t.boolean  "main"
     t.boolean  "main_for_project"
     t.boolean  "hide"
@@ -169,6 +170,7 @@ ActiveRecord::Schema.define(:version => 20130702105623) do
     t.string   "title_list_short",                     :default => ""
     t.text     "html_block"
     t.text     "html_block_2",                         :default => ""
+    t.text     "html_block_3",                         :default => ""
     t.text     "robots_txt",                           :default => ""
     t.text     "css_styles"
     t.string   "css_file_name"

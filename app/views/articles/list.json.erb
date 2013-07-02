@@ -1,9 +1,9 @@
 <% if params[:page] == 1 %>
-    <%= render :partial => 'article', :locals => {:article => @article_main, :featured => true} %>
+    <%= render :partial => 'article_featured', :collection => @articles_featured, :as => :article, :locals => {:widgets => @widgets} %>
 <% end %>
 <div class="b-tiles">
     <% if @articles.count > 0 %>
-        <%= render :partial => 'article', :collection => @articles || 'No pubs.', :locals => {:widgets => @widgets} %>
+        <%= render :partial => 'article', :collection => @articles, :locals => {:widgets => @widgets} %>
     <% elsif params[:query] %>
         <p>По запросу <strong><%= params[:query] %></strong> ничего не найдено.</p>
     <% else %>

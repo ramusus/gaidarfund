@@ -249,7 +249,8 @@ SUB {
 .b-meta:after,
 .b-structure:after,
 .b-contacts:after,
-.b-tiles:after {
+.b-tiles:after,
+.b-project-promo:after {
 	content: ".";
 	display: block;
 	height: 0;
@@ -1782,6 +1783,121 @@ small {
 		margin: 0;
 		}
 
+/* Project promo */
+.b-project-promo {
+	position: relative;
+	display: block;
+	margin-bottom: 44px;
+	padding-left: 41px;
+	text-decoration: none;
+	font-size: 13px;
+	line-height: 18px;
+	}
+	.b-project-promo .title {
+		position: relative;
+		z-index: 2;
+		margin: 0 0 -18px -35px;
+		font-size: 24px;
+		line-height: 18px;
+		color: #FFF;
+		}
+		.b-project-promo .line {
+			display: block;
+			}
+			.b-project-promo .shadow {
+				display: inline-block;
+				background: rgba(0, 0, 0, .08)
+				}
+				.b-project-promo .text {
+					position: relative;
+					top: -4px;
+					left: -6px;
+					display: inline-block;
+					padding: 4px;
+					background: #333;
+					white-space: nowrap;
+					}
+				.b-project-promo:hover .text {
+					background: #555;
+					}
+	.b-project-promo .inner {
+		position: relative;
+		z-index: 1;
+		padding: 32px 28px 26px 25px;
+		background: #F2F2F2;
+		}
+		.b-project-promo .image {
+			float: left;
+			margin: -18px 25px 0 -47px;
+			}
+		.b-project-promo .desc {
+			margin: 0;
+			overflow: hidden;
+			color: #231F20;
+			}
+		.b-project-promo .corner-1 {
+			position: absolute;
+			bottom: 0;
+			right: 28px;
+			width: 15px;
+			height: 13px;
+			background: #7D7D7D;
+			}
+		.b-project-promo .corner-2 {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 28px;
+			height: 13px;
+			background: #474747;
+			}
+		.b-project-promo .corner-3 {
+			position: absolute;
+			bottom: 13px;
+			right: 0;
+			width: 16px;
+			height: 13px;
+			background: #9B9B9B;
+			}
+.b-project-promo-clear {
+	padding-left: 19px;
+	}
+	.b-project-promo-clear .title {
+		float: left;
+		margin: 30px 24px 0 -13px;
+		}
+	.b-project-promo-clear .inner {
+		padding-bottom: 32px;
+		}
+.b-project-promo-cover {
+	padding-left: 19px;
+	}
+	.b-project-promo-cover .title {
+		margin-left: -13px;
+		}
+	.b-project-promo-cover .cover {
+		display: block;
+		}
+	.b-project-promo-cover .inner {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		max-width: 204px;
+		padding: 20px 24px 25px 27px;
+		}
+.b-project-promo-quote {
+	padding-left: 19px;
+	}
+	.b-project-promo-quote .title {
+		position: absolute;
+		top: 31px;
+		left: 41px;
+		}
+	.b-project-promo-quote .cover {
+		display: block;
+		}
+		
+
 /* =Containers
 --------------------------------------- */
 
@@ -2089,6 +2205,15 @@ small {
 .c-about-link .b-graphics-next B {
 	background-color: transparent !important;
 	}
+.c-about-promo .text {
+	background: #FF9F16;
+	}
+.c-about-promo:hover .text {
+	background: #FFC45B;
+	}
+.c-about-promo .corner-1 { background: #FFC45B; }
+.c-about-promo .corner-2 { background: #FFAE15; }
+.c-about-promo .corner-3 { background: #FF8112; }
 
 /* Gaidar */
 .c-gaidar-link,
@@ -2122,6 +2247,15 @@ small {
 	left: -132px;
 	background-color: transparent !important;
 	}
+.c-gaidar-promo .text {
+	background: #EC5F29;
+	}
+.c-gaidar-promo:hover .text {
+	background: #F68B46;
+	}
+.c-gaidar-promo .corner-1 { background: #F68B46; }
+.c-gaidar-promo .corner-2 { background: #EE6000; }
+.c-gaidar-promo .corner-3 { background: #FE9400; }
 
 /* Article */
 .c-article-link,
@@ -2188,6 +2322,21 @@ small {
 	left: -308px;
 	background-color: transparent !important;
 	}
+.c-project-promo .text {
+	background: #695C9D;
+	}
+.c-project-promo:hover .text {
+	background: #8681cc;
+	}
+.b-project-promo-clear .inner {
+	background-image: url('../img/containers/corner-project.png');
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	}
+.c-project-promo .corner-1 { background: #AC74B7; }
+.c-project-promo .corner-2 { background: #8A3B99; }
+.c-project-promo .corner-3 { background: #0053A1; }
+
 
 /* News */
 .c-news-link,
@@ -2221,3 +2370,14 @@ small {
 	left: -396px;
 	background-color: transparent !important;
 	}
+
+/* Summer */
+.c-summer-promo .text {
+	background: #43935F;
+	}
+.c-summer-promo:hover .text {
+	background: #73B791;
+	}
+.c-summer-promo .corner-1 { background: #73B791; }
+.c-summer-promo .corner-2 { background: #3B9964; }
+.c-summer-promo .corner-3 { background: #92A000; }

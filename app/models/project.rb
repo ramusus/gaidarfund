@@ -6,7 +6,8 @@ class Project < ActiveRecord::Base
   default_scope :order => 'position DESC'
   attr_accessible :title, :title_short, :title_list_short, :title_seo, :subdomain, :url, :color, :core, :sign,
     :hide, :hide_sidebar, :hide_news_list, :about_title, :news_title,
-    :status, :likes, :partners, :counters, :right_block, :projects, :html_block, :html_block_2, :position, :per_page, :not_linkable,
+    :status, :likes, :partners, :counters, :right_block, :projects, :html_block, :html_block_2, :html_block_3,
+    :position, :per_page, :not_linkable,
     :css_styles, :css, :background_image, :logo_image, :logo_small_image, :social_image,
     :delete_css, :delete_background_image, :delete_logo_image, :delete_logo_small_image, :delete_social_image,
     :archive_periods_title, :project_archive_periods,
@@ -141,6 +142,11 @@ class Project < ActiveRecord::Base
         end
         field :html_block_2 do
           help 'Произвольный блок, выводится перед лентой на главной проекта'
+          ckeditor true
+          ckeditor_config_js '/javascripts/ckeditor/config.js'
+        end
+        field :html_block_3 do
+          help 'Произвольный блок, выводится после лентой на главной проекта'
           ckeditor true
           ckeditor_config_js '/javascripts/ckeditor/config.js'
         end

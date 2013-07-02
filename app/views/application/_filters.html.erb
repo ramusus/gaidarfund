@@ -129,6 +129,21 @@
                             $('#type-filtration-line,#period-filtration-line').line({
                                 targetSelector: '#articlesList'
                             });
+
+                        // разбиваем на строчки заголовки главных материалов
+                        $('div.featured h3.title').html(function(i, oldTitle) {
+                            var newTitle = '';
+                            $.each(oldTitle.split('\n').reverse(), function(i, line) {
+                                console.log($.trim(line));
+                                newTitle = '<span class="line"> \
+                                       <span class="shadow"> \
+                                           <span class="text">' + $.trim(line) + '</span> \
+                                       </span> \
+                                   </span>' + newTitle;
+                            });
+                            return newTitle;
+                        });
+
                     } else {
                         var newItems = $(content).find('.b-tiles-item');
                         newItems.css({opacity: 0}).appendTo($('#articlesList .b-tiles'));

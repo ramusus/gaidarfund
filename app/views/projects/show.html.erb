@@ -38,6 +38,9 @@
             <%= @project.html_block_2.html_safe %>
         <% end %>
         <%= render :partial => 'articles' %>
+        <% if @project and not @project.html_block_3.empty? %>
+            <%= @project.html_block_3.html_safe %>
+        <% end %>
     </div>
 <% end %>
 

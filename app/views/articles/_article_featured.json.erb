@@ -1,0 +1,56 @@
+<% if article %>
+    <div class="featured">
+        <% if article.featured_block_type == 1 %>
+           <a class="b-project-promo b-project-promo-clear c-project-promo" href="<%= article_path(article) %>">
+               <h3 class="title"><%= article.title.html_safe %></h3>
+               <div class="inner">
+                   <p class="desc"><%= article.subtitle.html_safe %></p>
+                   <i class="corner-1"></i>
+                   <i class="corner-2"></i>
+                   <i class="corner-3"></i>
+               </div>
+           </a>
+        <% elsif article.featured_block_type == 2 %>
+           <a class="b-project-promo c-project-promo" href="<%= article_path(article) %>">
+               <h3 class="title"><%= article.title.html_safe %></h3>
+               <div class="inner">
+                   <img class="image" src="/img/tmp/project-promo-1.jpg" alt=""/>
+                   <p class="desc"><%= article.subtitle.html_safe %></p>
+                   <i class="corner-1"></i>
+                   <i class="corner-2"></i>
+                   <i class="corner-3"></i>
+               </div>
+           </a>
+        <% elsif article.featured_block_type == 3 %>
+           <a class="b-project-promo c-project-promo" href="<%= article_path(article) %>">
+               <h3 class="title"><%= article.title.html_safe %></h3>
+               <div class="inner">
+                   <img class="image" src="/img/tmp/project-promo-2.jpg" alt=""/>
+                   <p class="desc"><%= article.subtitle.html_safe %></p>
+                   <i class="corner-1"></i>
+                   <i class="corner-2"></i>
+                   <i class="corner-3"></i>
+               </div>
+           </a>
+        <% elsif article.featured_block_type == 4 %>
+           <a class="b-project-promo b-project-promo-cover c-project-promo" href="<%= article_path(article) %>">
+               <h3 class="title"><%= article.title.html_safe %></h3>
+               <img class="cover" src="/img/tmp/project-promo-3.jpg" alt=""/>
+               <div class="inner">
+                   <p class="desc"><%= article.subtitle.html_safe %></p>
+                   <i class="corner-1"></i>
+                   <i class="corner-2"></i>
+                   <i class="corner-3"></i>
+               </div>
+           </a>
+        <% elsif article.featured_block_type == 5 %>
+           <a class="b-project-promo b-project-promo-quote c-project-promo" href="<%= article_path(article) %>">
+               <h3 class="title"><%= article.title.html_safe %></h3>
+               <img class="cover" src="/img/tmp/project-promo-4.jpg" alt=""/>
+               <i class="corner-1"></i>
+               <i class="corner-2"></i>
+               <i class="corner-3"></i>
+           </a>
+        <% end %>
+    </div>
+<% end %>
