@@ -1,6 +1,6 @@
 Приветствуем, <%= @subscriber.name %>.
 
-Напоминаем о том, что вы записались на лекции:
+Напоминаем о том, что вы записались на мероприятия:
 <% @articles.each do |article| %>
 "<%= article.title.html_safe %>", время начала: <%= l article.published_at, :format => '%H:%M' %>
 <% end %>

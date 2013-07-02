@@ -15,9 +15,7 @@
     <%= auto_discovery_link_tag(:rss, rss_path) %>
     <script type="text/javascript">
         $(function() {
-            <% if @project.is_lectures? and @project.lectures_active.count > 0 %>
-                $('.b-menu.b-menu-separated').append('<li class="item"><%= link_to 'Записаться на ближайшую лекцию', lectures_subscribe_path, :class => 'link c-about-link' %></li>');
-            <% end %>
+            <%= render :partial => 'block_subsribe_event', :locals => {:project => @project} %>
             $('ul.b-main-menu li.item.projects a.link')
                 .addClass('selected')
                 .html(function(i, html) {

@@ -15,7 +15,7 @@ ru:
       articletype: "Тип материала"
       blog: "Блог"
       static_file: "Файл"
-      lecture_subscriber: "Лекции. Подписчик"
+      lecture_subscriber: "Мероприятия. Подписчик"
     attributes:
       page:
         title: "Заголовок"

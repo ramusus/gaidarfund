@@ -3,11 +3,11 @@ class LecturesController < ApplicationController
   def subscribe
     # show lecture and subscribe to lecture
     @project = Project.find_by_subdomain!(params[:subdomain] || request.subdomain)
-    if not @project.is_lectures?
+    if not @project.is_lectures? and not @project.is_club?
       not_found
     end
 
-    @articles = @project.lectures_active
+    @articles = @project.events_active
     @articles_subscribed = []
 
     @subscriber = LectureSubscriber.new(params[:lecture_subscriber])

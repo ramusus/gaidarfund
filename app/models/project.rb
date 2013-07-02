@@ -58,7 +58,10 @@ class Project < ActiveRecord::Base
   def is_lectures?
     self.subdomain == 'lectures'
   end
-  def lectures_active
+  def is_club?
+    self.subdomain == 'club'
+  end
+  def events_active
     Article.unscoped.announces.where("project_id = ? AND published_at > ?", self.id, Time.now).order("published_at ASC")
   end
 

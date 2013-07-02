@@ -1,0 +1,6 @@
+<% if project.is_lectures? and project.events_active.count > 0 %>
+    $('.b-menu.b-menu-separated').append('<li class="item"><%= link_to 'Записаться на ближайшую лекцию', events_subscribe_path, :class => 'link c-about-link' %></li>');
+<% end %>
+<% if project.is_club? and project.events_active.count > 0 %>
+    $('.b-menu.b-menu-separated').append('<li class="item"><%= link_to 'Записаться на ближайшее мероприятие', events_subscribe_path, :class => 'link c-about-link' %></li>');
+<% end %>

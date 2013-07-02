@@ -22,8 +22,8 @@
             <% if @article.type.page and not @article.project %>
                 $('.b-menu li.item a.link[href$="/<%= @article.type.slug %>"]').html(function(i,value) {return '<b class="b-graphics b-graphics-check"><b></b></b>' + value});
             <% end %>
-            <% if @article.project and @article.project.is_lectures? and @article.project.lectures_active.count > 0 %>
-                $('.b-menu.b-menu-separated').append('<li class="item"><%= link_to 'Записаться на ближайшую лекцию', lectures_subscribe_path, :class => 'link c-about-link' %></li>');
+            <% if @article.project %>
+                <%= render :partial => 'block_subsribe_event', :locals => {:project => @article.project} %>
             <% end %>
             $('ul.b-main-menu li.item.<%= @menu_class %> a.link')
                 .addClass('selected')

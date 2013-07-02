@@ -12,8 +12,8 @@
 <% content_for :extra_head do %>
     <script type="text/javascript">
         $(function() {
-            $('.b-menu.b-menu-separated').append('<li class="item"><%= link_to 'Записаться на ближайшую лекцию', lectures_subscribe_path, :class => 'link c-about-link' %></li>');
-            $('.b-menu li.item a.link[href$="<%= lectures_subscribe_path %>"]').html(function(i,value) {return '<b class="b-graphics b-graphics-check"><b></b></b>' + value});
+            <%= render :partial => 'block_subsribe_event', :locals => {:project => @project} %>
+            $('.b-menu li.item a.link[href$="<%= events_subscribe_path %>"]').html(function(i,value) {return '<b class="b-graphics b-graphics-check"><b></b></b>' + value});
             $('ul.b-main-menu li.item.projects a.link')
                 .addClass('selected')
                 .html(function(i, html) {
@@ -51,12 +51,12 @@
                   <% end %>
 
                 <fieldset>
-                    <%= f.label :article_id, "Лекция", :class => "b-label" %>
+                    <%= f.label :article_id, @project.is_lectures? ? "Лекция" : (@project.is_club? ? "Мероприятие" : ''), :class => "b-label" %>
                     <div class="b-field b-choise">
                         <% @articles.each do |article| %>
                             <div class="item">
                                 <%= check_box_tag 'articles[]', article.id, @articles_subscribed.include?(article.id.to_s), :class => "input", :id => "articles_#{article.id}" %>
-                                <% label_text = l(article.published_at, :format => '%d %B') + ", " + article.title + "<br/>".html_safe + link_to('Описание лекции', article_path(article)) %>
+                                <% label_text = l(article.published_at, :format => '%d %B') + ", " + article.title + "<br/>".html_safe + link_to('Описание', article_path(article)) %>
                                 <%= label "articles", article.id, label_text.html_safe, :class => "label" %>
                             </div>
                         <% end %>
@@ -77,7 +77,7 @@
             <% end %>
 
             <div id="subscribe_success" class="b-form-message b-last-textblock">Спасибо за&nbsp;помощь организаторам.<br/> Ждем вас!</div>
-            <div id="unsubscribe_success" class="b-form-message b-last-textblock">Вы успешно отписались от всех лекций</div>
+            <div id="unsubscribe_success" class="b-form-message b-last-textblock">Вы успешно отписались от всех мероприятий</div>
 
             <script type="text/javascript">
                 var subscribe = {
