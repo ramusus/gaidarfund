@@ -24,7 +24,7 @@
                 <div class="date"><%= l article.published_at, :format => '%d %B %Y' %></div>
             <% end %>
             <h3 class="title" style="color: <%= article.project_color %> !important;">
-                <% if article.excerpts %>
+                <% if defined?(article.excerpts) %>
                     <%= article.excerpts.title.html_safe %>
                 <% else %>
                     <%= article.title.html_safe %>
@@ -32,7 +32,7 @@
             </h3>
         </a>
         <p class="desc">
-            <% if article.excerpts %>
+            <% if defined?(article.excerpts) %>
                 <%= article.excerpts.subtitle.html_safe %>
             <% else %>
                 <%= article.subtitle.html_safe %>
