@@ -6,7 +6,7 @@
             <% if future_announce %>
                 <div class="b-section-label">Ближайшее</div>
             <% elsif article.type %>
-                <div class="b-section-label c-<%= article.color_class %>-block" style="background-color: <%= article.project_color %> !important;">
+                <div class="b-section-label c-<%= article.color_class %>-block"<%= article.background_color_style.html_safe %>>
                     <% if article.is_announce? and article.published_at < Time.now %>
                         Архив
                     <% else %>
@@ -23,7 +23,7 @@
             <% if not article.is_book? %>
                 <div class="date"><%= l article.published_at, :format => '%d %B %Y' %></div>
             <% end %>
-            <h3 class="title" style="color: <%= article.project_color %> !important;">
+            <h3 class="title"<%= article.color_style.html_safe %>>
                 <% if defined?(article.excerpts) %>
                     <%= article.excerpts.title.html_safe %>
                 <% else %>
@@ -41,7 +41,7 @@
         <% if article.project and not params['project_ids'] %>
             <div class="b-source">
                 <a class="link <%= "c-#{article.color_class}-hidden-link" %>" href="<%= project_path(article.project) %>">
-                    <b class="b-graphics b-graphics-7-square"><b></b></b><%= article.project %>
+                    <b class="b-graphics b-graphics-7-square"><b<%= article.background_color_style.html_safe %>></b></b><%= article.project %>
                 </a>
             </div>
         <% end %>

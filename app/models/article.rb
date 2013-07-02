@@ -78,6 +78,13 @@ class Article < ActiveRecord::Base
     end
   end
 
+  def color_style
+    self.project_color ? 'style="color: ' + self.project_color + ' !important;"' : ''
+  end
+  def background_color_style
+    self.project_color ? 'style="background-color: ' + self.project_color + ' !important;"' : ''
+  end
+
   def project_color
     if self.project and self.project.color
       self.project.color
