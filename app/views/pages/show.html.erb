@@ -18,9 +18,7 @@
     <script type="text/javascript">
         $(function() {
             <% if @page.project %>
-                <% if @page.project.is_lectures? and @page.project.lectures_active.count > 0 %>
-                    $('.b-menu.b-menu-separated').append('<li class="item"><%= link_to 'Записаться на ближайшую лекцию', lectures_subscribe_path, :class => 'link c-about-link' %></li>');
-                <% end %>
+                <%= render :partial => 'block_subsribe_event', :locals => {:project => @page.project} %>
                 $('ul.b-main-menu li.item.project a.link')
             <% elsif @page.page %>
                 $('ul.b-main-menu li.item.<%= @page.page.color_class %> a.link')
