@@ -647,7 +647,7 @@ SUB {
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 440px;
+		width: 528px;
 		height: 75px;
 		background: #000 url('../img/graphics.png');
 		}
@@ -2741,6 +2741,37 @@ small {
 	}
 
 /* Summer */
+.c-summer-link,
+.c-summer-hidden-link:hover,
+.c-summer-link.disabled:hover,
+.c-summer-page LI:before,
+.c-summer-page .b-intro,
+.c-summer-page .b-huge-intro,
+.c-summer-page .b-sub-title,
+.c-summer-page .b-square,
+.c-summer-block .b-section-label {
+	color: #467235 !important;
+	}
+.c-news-link:hover {
+	color: #6E9D5C !important;
+	}
+.c-summer-link .b-graphics B,
+.c-summer-hidden-link .b-graphics B,
+.c-summer-link.disabled:hover .b-graphics B,
+.c-summer-block {
+	background-color: #467235 !important;
+	}
+.c-summer-link:hover .b-graphics B {
+	background-color: #6E9D5C;
+	}
+.c-summer-link .b-graphics-prev B {
+	left: -440px;
+	background-color: transparent !important;
+	}
+.c-summer-link .b-graphics-next B {
+	left: -4846px;
+	background-color: transparent !important;
+	}
 .c-summer-promo .text {
 	background: #43935F;
 	}
@@ -2755,4 +2786,8 @@ small {
 	}
 .c-summer-promo .b-corner .different-brick {
 	background: #92A000;
+	}
+.c-summer-button:hover {
+	background: #467235;
+	color: #FFF;
 	}
