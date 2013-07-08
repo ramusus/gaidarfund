@@ -559,7 +559,7 @@ SUB {
 		top: 0;
 		left: 0;
 		width: 111px;
-		height: 79px;
+		height: 128px;
 		background: url("../img/icons.png") no-repeat;
 		text-indent: -9999px;
 		}
@@ -582,6 +582,15 @@ SUB {
 	}
 	.b-icon-rss B {
 		top: -17px;
+		}
+.b-icon-close {
+	width: 24px;
+	height: 24px;
+	margin-left: -27px;
+	}
+	.b-icon-close B {
+		top: -17px;
+		left: -25px;
 		}
 .b-icon-xls {
 	width: 36px;
@@ -610,6 +619,23 @@ SUB {
 	.b-icon-video B {
 		top: -42px;
 		left: -74px;
+		}
+.b-icon-prev {
+	width: 48px;
+	height: 48px;
+	margin: 0;
+	}
+	.b-icon-prev B {
+		top: -79px;
+		}
+.b-icon-next {
+	width: 48px;
+	height: 48px;
+	margin: 0;
+	}
+	.b-icon-next B {
+		top: -79px;
+		left: -49px;
 		}
 
 /* Stencil graphics */
@@ -865,14 +891,15 @@ SUB {
 /* Close modal button */
 .b-close-modal {
 	position: absolute;
-	top: 12px;
-	right: 14px;
+	top: 26px;
+	right: 32px;
 	z-index: 10;
 	}
 	.b-close-modal .b-icon-close {
 		position: relative;
 		display: block;
 		margin: 0;
+		opacity: .75;
 		}
 
 /* =Content blocks
@@ -2067,52 +2094,17 @@ small {
 				}
 
 /* Modal gallery */
-/*
-.b-modal-gallery {
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 78px 174px 96px 174px;
-	white-space: nowrap;
-	
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box !important;
-	}
-	.b-modal-gallery .item {
-		position: relative;
-		display: inline-block;
-		width: 100%;
-		height: 100%;
-		margin: 0 80px 0 0;
-		}
-	.b-modal-gallery .item:before {
-		content: none;
-		display: none;
-		}
-		.b-modal-gallery .image {
-			display: block;
-			width: 100%;
-			}
-		.b-modal-gallery .label {
-			position: absolute;
-			width: 80%;
-			padding: 20px 10% 0 10%;
-			text-align: center;
-			color: #CCC;
-			}
-*/
-
-/* Modal gallery */
 .b-modal-gallery {
 	position: relative;
 	width: 100%;
 	height: 100%;
+	min-width: 990px;
+	min-height: 400px;
 	overflow: hidden;
 	}
 	.b-modal-gallery .slide {
 		position: absolute;
-		z-index: 1;
+		z-index: 2;
 		width: 100%;
 		height: 100%;
 		padding: 78px 174px 96px 174px;
@@ -2123,6 +2115,7 @@ small {
 		}
 		.b-modal-gallery .image {
 			display: block;
+			cursor: pointer;
 			}
 		.b-modal-gallery .wide-image {
 			width: 100%;
@@ -2138,34 +2131,23 @@ small {
 			text-align: center;
 			color: #CCC;
 			}
-	.b-modal-gallery .b-graphics {
+	.b-modal-gallery .current-slide {
+		z-index: 1;
+		}
+	.b-modal-gallery .b-icon-prev,
+	.b-modal-gallery .b-icon-next {
 		position: absolute;
 		top: 50%;
 		left: 20px;
-		z-index: 2;
-		margin-top: -25px;
+		z-index: 10;
+		display: none;
+		margin-top: -32px;
+		opacity: .75;
 		}
-	.b-modal-gallery .b-graphics-next {
+	.b-modal-gallery .b-icon-next {
 		left: auto;
 		right: 20px;
 		}
-	/*
-	.b-modal-gallery .link:hover .b-control-next B {
-		margin-left: -180px;
-		}
-	*/
-	.b-modal-gallery .disabled {
-		cursor: default;
-		}
-		/*
-		.b-modal-gallery .disabled .b-icon-next B,
-		.b-modal-gallery .disabled:hover .b-icon-next B {
-			margin-left: -225px;
-			}
-		*/
-.b-modal-gallery-single .b-graphics {
-	display: none;
-	}
 
 /* =Containers
 --------------------------------------- */
