@@ -41,7 +41,7 @@
         <% elsif article.featured_block_type == 4 %>
            <a class="b-project-promo b-project-promo-cover c-project-promo" href="<%= article_path(article) %>">
                <h3 class="title"><%= article.title.html_safe %></h3>
-               <%= image_tag(article.image(:featured_big), :class => 'image', :alt => article.title, :width => article.image.width(:featured_big), :height => article.image.height(:featured_big)) %>
+               <%= image_tag(article.image(:featured_big), :class => 'cover', :alt => article.title, :width => article.image.width(:featured_big), :height => article.image.height(:featured_big)) %>
                <div class="inner">
                    <p class="desc"><%= article.subtitle.html_safe %></p>
                    <i class="b-corner b-corner-br">
@@ -54,7 +54,7 @@
         <% elsif article.featured_block_type == 5 %>
            <a class="b-project-promo b-project-promo-quote c-project-promo" href="<%= article_path(article) %>">
                <h3 class="title"><%= article.title.html_safe %></h3>
-               <%= image_tag(article.image(:featured_big), :class => 'image', :alt => article.title, :width => article.image.width(:featured_big), :height => article.image.height(:featured_big)) %>
+               <%= image_tag(article.image(:featured_big), :class => 'cover', :alt => article.title, :width => article.image.width(:featured_big), :height => article.image.height(:featured_big)) %>
                <i class="b-corner b-corner-br">
                    <i class="main-brick"></i>
                    <i class="light-brick"></i>
