@@ -32,6 +32,7 @@ set :js_files, ['jquery-1.8.2.min.js',
   'jquery.slideshow.js',
   'jquery.desc.js',
   'jquery.line.js',
+  'modal.js',
 #  'jquery.tabs.js'
 ]
 set :css_source_dir, '../project_html/www/css/'

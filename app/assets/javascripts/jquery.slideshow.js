@@ -5,17 +5,23 @@
 			slideSelector: '.slide',
 			prevLinkSelector: '.prev',
 			nextLinkSelector: '.next',
-			dotsContainerSelector: '.previews',
-			dotSelector: '.preview',
-			dotSample: '<a class="preview c-{color}-link c-{color}-block" href="?"><span class="number">{number}</span></a>',
-			dotSelectedClass: 'selected',
+			colorForLinks: true,
 			slideBy: 1,
 			slidePerPage: 1,
 			slideWidth: 699,
 			slideDistance: 0,
 			animationTime: 300,
 			slideFromKeyboard: false,
-			dots: false
+			
+			dots: false,
+			dotsContainerSelector: '.previews',
+			dotSelector: '.preview',
+			dotSample: '<a class="preview c-{color}-link c-{color}-block" href="?"><span class="number">{number}</span></a>',
+			dotSelectedClass: 'selected',
+			
+			numbers: false,
+			slideNumberSelector: '.slide-number',
+			slidesCountSelector: '.slides-count'
 		};
 		
 		return this.each(function(){
@@ -38,6 +44,13 @@
 				prepareDots();
 			}
 			
+			if( SETTINGS.numbers ){
+				var slideNumberIndicator = $(SETTINGS.slideNumberSelector, container),
+					slidesCountIndicator = $(SETTINGS.slidesCountSelector, container);
+				
+				prepareNumbers();
+			}
+			
 			manageLinks();
 			assignEvents();
 			
@@ -55,6 +68,11 @@
 				dots = $(SETTINGS.dotSelector, dotsContainer);
 			}
 			
+			function prepareNumbers(){
+				slideNumberIndicator.text(currentPage + 1);
+				slidesCountIndicator.text(slidesCount);
+			}
+			
 			function manageLinks(){
 				if( currentPage == 0 ){
 					prevLink.fadeOut();
@@ -62,7 +80,7 @@
 				else{
 					prevLink.fadeIn();
 					
-					if( SETTINGS.slidePerPage == 1 ){
+					if( SETTINGS.colorForLinks ){
 						prevLink.removeClass().addClass('prev c-' + slides.eq(currentPage - 1).attr('color-code') + '-link');
 					}
 				}
@@ -72,7 +90,7 @@
 				else{
 					nextLink.fadeIn();
 					
-					if( SETTINGS.slidePerPage == 1 ){
+					if( SETTINGS.colorForLinks ){
 						nextLink.removeClass().addClass('next c-' + slides.eq(currentPage + 1).attr('color-code') + '-link');
 					}
 				}
@@ -138,6 +156,10 @@
 					dotsContainer.animate({
 						marginLeft: currentPage * 38 * -1
 					}, SETTINGS.animationTime);
+				}
+				
+				if( SETTINGS.numbers ){
+					slideNumberIndicator.text(currentPage + 1);
 				}
 				
 				manageLinks();

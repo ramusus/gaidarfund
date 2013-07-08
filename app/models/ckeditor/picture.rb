@@ -2,7 +2,7 @@ class Ckeditor::Picture < Ckeditor::Asset
   has_attached_file :data,
                     :url => "/system/pictures/:id/:style_:basename.:extension",
                     :path => ":rails_root/public/system/pictures/:id/:style_:basename.:extension",
-                    :styles => { :content => '800>', :thumb => '118x100#' }
+                    :styles => { :content => '800>', :thumb => '118x100#', :gallery_slider => "476x317>", :gallery_bricks => "127x130>" }
 
   validates_attachment_size :data, :less_than => 2.megabytes
   validates_attachment_presence :data
