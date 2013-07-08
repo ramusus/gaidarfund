@@ -1,21 +1,37 @@
 <% if article %>
     <div class="featured">
         <% if article.featured_block_type == 1 %>
-           <a class="b-project-promo b-project-promo-clear c-project-promo" href="<%= article_path(article) %>">
-               <h3 class="title"><%= article.title.html_safe %></h3>
-               <div class="inner">
+            <a class="b-project-promo b-project-promo-clear c-project-promo" href="<%= article_path(article) %>">
+                <h3 class="title">
+                    <% article.title.html_safe.split("\n").each do |line| %>
+                        <span class="line">
+                            <span class="shadow">
+                                <span class="text"<%= article.background_color_style.html_safe %>><%= line.strip %></span>
+                            </span>
+                        </span>
+                    <% end %>
+                </h3>
+                <div class="inner">
                    <p class="desc"><%= article.subtitle.html_safe %></p>
                    <i class="b-corner b-corner-br">
                        <i class="main-brick"></i>
                        <i class="light-brick"></i>
                        <i class="different-brick"></i>
                    </i>
-               </div>
-           </a>
+                </div>
+            </a>
         <% elsif article.featured_block_type == 2 %>
            <a class="b-project-promo c-project-promo" href="<%= article_path(article) %>">
-               <h3 class="title"><%= article.title.html_safe %></h3>
-               <div class="inner">
+                <h3 class="title">
+                    <% article.title.html_safe.split("\n").each do |line| %>
+                        <span class="line">
+                            <span class="shadow">
+                                <span class="text"<%= article.background_color_style.html_safe %>><%= line.strip %></span>
+                            </span>
+                        </span>
+                    <% end %>
+                </h3>
+                <div class="inner">
                    <%= image_tag(article.image(:featured_vertical), :class => 'image', :alt => article.title, :width => article.image.width(:featured_vertical), :height => article.image.height(:featured_vertical)) %>
                    <p class="desc"><%= article.subtitle.html_safe %></p>
                    <i class="b-corner b-corner-br">
@@ -23,12 +39,20 @@
                        <i class="light-brick"></i>
                        <i class="different-brick"></i>
                    </i>
-               </div>
+                </div>
            </a>
         <% elsif article.featured_block_type == 3 %>
            <a class="b-project-promo c-project-promo" href="<%= article_path(article) %>">
-               <h3 class="title"><%= article.title.html_safe %></h3>
-               <div class="inner">
+                <h3 class="title">
+                    <% article.title.html_safe.split("\n").each do |line| %>
+                        <span class="line">
+                            <span class="shadow">
+                                <span class="text"<%= article.background_color_style.html_safe %>><%= line.strip %></span>
+                            </span>
+                        </span>
+                    <% end %>
+                </h3>
+                <div class="inner">
                    <%= image_tag(article.image(:featured_horizontal), :class => 'image', :alt => article.title, :width => article.image.width(:featured_horizontal), :height => article.image.height(:featured_horizontal)) %>
                    <p class="desc"><%= article.subtitle.html_safe %></p>
                    <i class="b-corner b-corner-br">
@@ -36,30 +60,46 @@
                        <i class="light-brick"></i>
                        <i class="different-brick"></i>
                    </i>
-               </div>
+                </div>
            </a>
         <% elsif article.featured_block_type == 4 %>
            <a class="b-project-promo b-project-promo-cover c-project-promo" href="<%= article_path(article) %>">
-               <h3 class="title"><%= article.title.html_safe %></h3>
-               <%= image_tag(article.image(:featured_big), :class => 'cover', :alt => article.title, :width => article.image.width(:featured_big), :height => article.image.height(:featured_big)) %>
-               <div class="inner">
+                <h3 class="title">
+                    <% article.title.html_safe.split("\n").each do |line| %>
+                        <span class="line">
+                            <span class="shadow">
+                                <span class="text"<%= article.background_color_style.html_safe %>><%= line.strip %></span>
+                            </span>
+                        </span>
+                    <% end %>
+                </h3>
+                <%= image_tag(article.image(:featured_big), :class => 'cover', :alt => article.title, :width => article.image.width(:featured_big), :height => article.image.height(:featured_big)) %>
+                <div class="inner">
                    <p class="desc"><%= article.subtitle.html_safe %></p>
                    <i class="b-corner b-corner-br">
                        <i class="main-brick"></i>
                        <i class="light-brick"></i>
                        <i class="different-brick"></i>
                    </i>
-               </div>
+                </div>
            </a>
         <% elsif article.featured_block_type == 5 %>
            <a class="b-project-promo b-project-promo-quote c-project-promo" href="<%= article_path(article) %>">
-               <h3 class="title"><%= article.title.html_safe %></h3>
-               <%= image_tag(article.image(:featured_big), :class => 'cover', :alt => article.title, :width => article.image.width(:featured_big), :height => article.image.height(:featured_big)) %>
-               <i class="b-corner b-corner-br">
-                   <i class="main-brick"></i>
-                   <i class="light-brick"></i>
-                   <i class="different-brick"></i>
-               </i>
+                <h3 class="title">
+                    <% article.title.html_safe.split("\n").each do |line| %>
+                        <span class="line">
+                            <span class="shadow">
+                                <span class="text"<%= article.background_color_style.html_safe %>><%= line.strip %></span>
+                            </span>
+                        </span>
+                    <% end %>
+                </h3>
+                <%= image_tag(article.image(:featured_big), :class => 'cover', :alt => article.title, :width => article.image.width(:featured_big), :height => article.image.height(:featured_big)) %>
+                <i class="b-corner b-corner-br">
+                    <i class="main-brick"></i>
+                    <i class="light-brick"></i>
+                    <i class="different-brick"></i>
+                </i>
            </a>
         <% end %>
     </div>

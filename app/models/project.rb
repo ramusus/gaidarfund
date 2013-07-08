@@ -2,6 +2,7 @@
 class Project < ActiveRecord::Base
 
   scope :visible, where(:hide => false)
+  scope :hidden, where(:hide => true)
   scope :linkable, where(:not_linkable => false)
   default_scope :order => 'position DESC'
   attr_accessible :title, :title_short, :title_list_short, :title_seo, :subdomain, :url, :color, :core, :sign,

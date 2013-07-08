@@ -105,7 +105,9 @@ class ArticlesController < ApplicationController
       end
     else
       # если не указан явно проект => убираем материалы скрытых проектов
-      articles = articles.where('project_id IS NULL OR project_id NOT IN (?)', Project.where(:hide => true))
+      if Project.hidden.count > 0
+        articles = articles.where('project_id IS NULL OR project_id NOT IN (?)', Project.hidden)
+      end
     end
     if not params[:period_id].blank?
       period = ProjectArchivePeriod.find(params[:period_id])
