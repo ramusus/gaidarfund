@@ -5,7 +5,7 @@ class Slide < ActiveRecord::Base
 
   has_attached_file :background_image, :styles => {:slide => "699x327"}
 
-  COLOR_CLASS_OPTIONS = ['news','about','gaidar','article','project'].map{|i| [i,i]}
+  COLOR_CLASS_OPTIONS = ['news','about','gaidar','article','project','summer'].map{|i| [i,i]}
   validates_inclusion_of :color_class, :in => COLOR_CLASS_OPTIONS.collect{|pair| pair[1]}
 
   def color_class_enum
