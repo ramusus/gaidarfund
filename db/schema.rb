@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130702133153) do
+ActiveRecord::Schema.define(:version => 20130715184958) do
 
   create_table "articles", :force => true do |t|
     t.text     "title"
@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(:version => 20130702133153) do
   create_table "projects", :force => true do |t|
     t.string   "title"
     t.string   "color"
+    t.string   "color_class",                          :default => ""
     t.string   "sign"
     t.string   "background_image_file_name"
     t.string   "background_image_content_type"

@@ -1,7 +1,7 @@
 <% if article %>
     <div class="featured">
         <% if article.featured_block_type == 1 %>
-            <a class="b-project-promo b-project-promo-clear c-project-promo" href="<%= article_path(article) %>">
+            <a class="b-project-promo b-project-promo-clear c-<%= article.color_class %>-promo" href="<%= article_path(article) %>">
                 <h3 class="title">
                     <% article.title.html_safe.split("\n").each do |line| %>
                         <span class="line">
@@ -21,7 +21,7 @@
                 </div>
             </a>
         <% elsif article.featured_block_type == 2 %>
-           <a class="b-project-promo c-project-promo" href="<%= article_path(article) %>">
+           <a class="b-project-promo c-<%= article.color_class %>-promo" href="<%= article_path(article) %>">
                 <h3 class="title">
                     <% article.title.html_safe.split("\n").each do |line| %>
                         <span class="line">
@@ -42,7 +42,7 @@
                 </div>
            </a>
         <% elsif article.featured_block_type == 3 %>
-           <a class="b-project-promo c-project-promo" href="<%= article_path(article) %>">
+           <a class="b-project-promo c-<%= article.color_class %>-promo" href="<%= article_path(article) %>">
                 <h3 class="title">
                     <% article.title.html_safe.split("\n").each do |line| %>
                         <span class="line">
@@ -63,7 +63,7 @@
                 </div>
            </a>
         <% elsif article.featured_block_type == 4 %>
-           <a class="b-project-promo b-project-promo-cover c-project-promo" href="<%= article_path(article) %>">
+           <a class="b-project-promo b-project-promo-cover c-<%= article.color_class %>-promo" href="<%= article_path(article) %>">
                 <h3 class="title">
                     <% article.title.html_safe.split("\n").each do |line| %>
                         <span class="line">
@@ -84,7 +84,7 @@
                 </div>
            </a>
         <% elsif article.featured_block_type == 5 %>
-           <a class="b-project-promo b-project-promo-quote c-project-promo" href="<%= article_path(article) %>">
+           <a class="b-project-promo b-project-promo-quote c-<%= article.color_class %>-promo" href="<%= article_path(article) %>">
                 <h3 class="title">
                     <% article.title.html_safe.split("\n").each do |line| %>
                         <span class="line">

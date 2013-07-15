@@ -5,7 +5,7 @@ class Project < ActiveRecord::Base
   scope :hidden, where(:hide => true)
   scope :linkable, where(:not_linkable => false)
   default_scope :order => 'position DESC'
-  attr_accessible :title, :title_short, :title_list_short, :title_seo, :subdomain, :url, :color, :core, :sign,
+  attr_accessible :title, :title_short, :title_list_short, :title_seo, :subdomain, :url, :color, :color_class, :core, :sign,
     :hide, :hide_sidebar, :hide_news_list, :about_title, :news_title,
     :status, :likes, :partners, :counters, :right_block, :projects, :html_block, :html_block_2, :html_block_3,
     :position, :per_page, :not_linkable,
@@ -105,6 +105,9 @@ class Project < ActiveRecord::Base
         help 'Заполняется только если это внешний проект, со своим доменом'
       end
       include_fields :color do
+        help ''
+      end
+      include_fields :color_class do
         help ''
       end
       include_fields :sign do
