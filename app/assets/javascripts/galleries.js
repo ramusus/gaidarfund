@@ -1,13 +1,16 @@
 var init_gallery_slider = function() {
     var gallery = '';
     $('p.gallery-slider').each(function(i, image_container) {
-      gallery += sprintf('<li class="item"> \
+        var jImg = $('img', image_container);
+        if(jImg.length == 0)
+            return;
+        gallery += sprintf('<li class="item"> \
                <img class="image" src="%s" alt="%s"/> \
                %s \
            </li>',
-        $('img', image_container).attr('src').replace('content','gallery_slider'),
-        $('img', image_container).attr('alt'),
-        $('img', image_container).attr('alt'));
+           jImg.attr('src').replace('content','gallery_slider'),
+           jImg.attr('alt'),
+           jImg.attr('alt'));
     });
 
     gallery = sprintf('<div class="b-photo-slideshow"> \
@@ -40,16 +43,21 @@ var init_gallery_slider = function() {
 
 var init_gallery_bricks = function() {
     var gallery = '';
+    var count = 0;
     $('p.gallery-bricks').each(function(i, image_container) {
-      gallery += sprintf('<li class="item"> \
-                <a class="link js-modal" href="%s" rel="gallery-1" title="%s"> \
-                <img class="image" src="%s" alt="%s"/> \
-            </a> \
-        </li>',
-        $('img', image_container).attr('src'),
-        $('img', image_container).attr('alt'),
-        $('img', image_container).attr('src').replace('content','gallery_bricks'),
-        $('img', image_container).attr('alt'));
+        var jImg = $('img', image_container);
+        if(jImg.length == 0)
+            return;
+        gallery += sprintf('<li class="item"> \
+                    <a class="link js-modal" href="%s" rel="gallery-1" title="%s"> \
+                    <img class="image" src="%s" alt="%s"/> \
+                </a> \
+            </li>',
+            jImg.attr('src'),
+            jImg.attr('alt'),
+            jImg.attr('src').replace('content','gallery_bricks'),
+            jImg.attr('alt'));
+        count++;
     });
 
     gallery = sprintf('<div class="b-gray-block"> \
@@ -64,10 +72,12 @@ var init_gallery_bricks = function() {
     $('p.gallery-bricks:first').before(gallery);
     $('p.gallery-bricks').remove();
 
-    $('.b-gallery').desc({
-        linkClass: 'link c-project-button',
-        linkWrapHTML: '<div class="b-more b-more-button"></div>',
-        height: 354
-    });
+    if(count > 6) {
+        $('.b-gallery').desc({
+            linkClass: 'link c-project-button',
+            linkWrapHTML: '<div class="b-more b-more-button"></div>',
+            height: 354
+        });
+    }
     modal.init();
 }
