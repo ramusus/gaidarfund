@@ -1,0 +1,19 @@
+.gallery-bricks {
+border: 1px solid #ccc;
+background: #ffff99;
+margin: 10px;
+}
+
+.gallery-slider {
+border: 1px solid #ccc;
+background: #ffee33;
+margin: 10px;
+}
+
+/*
+.gallery-bricks img, .gallery-slider img {
+height: 100px;
+float: left;
+margin: 5px;
+}
+*/
