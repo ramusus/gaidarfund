@@ -73,3 +73,6 @@ CKEDITOR.stylesSet.add( 'default', [
 ] );
 
 CKEDITOR.config.allowedContent = true;
+
+CKEDITOR.config.extraPlugins = 'stylesheetparser';
+CKEDITOR.config.contentsCss = '/css/ckeditor_galleries.css';

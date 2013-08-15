@@ -1,4 +1,4 @@
-var init_gallery_slider = function() {
+var init_gallery_slider = function(color_class) {
     var gallery = '';
     $('p.gallery-slider').each(function(i, image_container) {
         var jImg = $('img', image_container);
@@ -19,7 +19,7 @@ var init_gallery_slider = function() {
                <strong class="slide-number"></strong> из <strong class="slides-count"></strong> \
                <a class="arrow next" href="?"><b class="b-graphics b-graphics-gray-right-arrow"><b></b></b></a> \
            </div> \
-           <div class="b-gray-block"> \
+           <div class="b-gray-block %s"> \
                <ul class="b-photos">%s</ul> \
                <i class="b-corner b-corner-tl"> \
                    <i class="main-brick"></i> \
@@ -27,7 +27,7 @@ var init_gallery_slider = function() {
                    <i class="different-brick"></i>\
                </i> \
            </div> \
-       </div>', gallery);
+       </div>', color_class, gallery);
 
     $('p.gallery-slider:first').before(gallery);
     $('p.gallery-slider').remove();
@@ -41,7 +41,7 @@ var init_gallery_slider = function() {
     });
 }
 
-var init_gallery_bricks = function() {
+var init_gallery_bricks = function(color_class) {
     var gallery = '';
     var count = 0;
     $('p.gallery-bricks').each(function(i, image_container) {
@@ -60,14 +60,14 @@ var init_gallery_bricks = function() {
         count++;
     });
 
-    gallery = sprintf('<div class="b-gray-block"> \
+    gallery = sprintf('<div class="b-gray-block %s"> \
                 <ul class="b-gallery" title="Ещё фотографии" hide-title="Меньше фотографий">%s</ul> \
                 <i class="b-corner b-corner-tl"> \
                     <i class="main-brick"></i> \
                     <i class="light-brick"></i> \
                     <i class="different-brick"></i> \
                 </i> \
-            </div>', gallery);
+             </div>', color_class, gallery);
 
     $('p.gallery-bricks:first').before(gallery);
     $('p.gallery-bricks').remove();
