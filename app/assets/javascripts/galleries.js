@@ -1,9 +1,7 @@
 var init_gallery_slider = function(color_class) {
     var gallery = '';
-    $('p.gallery-slider').each(function(i, image_container) {
-        var jImg = $('img', image_container);
-        if(jImg.length == 0)
-            return;
+    $('p.gallery-slider img').each(function(i, img) {
+        var jImg = $(img);
         gallery += sprintf('<li class="item"> \
                <img class="image" src="%s" alt="%s"/> \
                %s \
@@ -44,10 +42,8 @@ var init_gallery_slider = function(color_class) {
 var init_gallery_bricks = function(color_class) {
     var gallery = '';
     var count = 0;
-    $('p.gallery-bricks').each(function(i, image_container) {
-        var jImg = $('img', image_container);
-        if(jImg.length == 0)
-            return;
+    $('p.gallery-bricks img').each(function(i, img) {
+        var jImg = $(img);
         gallery += sprintf('<li class="item"> \
                     <a class="link js-modal" href="%s" rel="gallery-1" title="%s"> \
                     <img class="image" src="%s" alt="%s"/> \

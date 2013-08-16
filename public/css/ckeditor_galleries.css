@@ -11,6 +11,7 @@ margin: 10px;
 }
 
 .gallery-bricks img, .gallery-slider img {
-height: 100px;
+height: 100px !important;
+width: auto !important;
 margin: 5px;
 }
