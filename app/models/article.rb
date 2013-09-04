@@ -210,12 +210,13 @@ class Article < ActiveRecord::Base
           Для подзаголовков и акцентированных абзацев:
           <h2 class="b-page-title">Крупный подзаголовок</h2>
           <h3 class="b-sub-title">Подзаголовок цвета раздела</h3>
-          <p class="b-sub-intro"><strong>Заглавный абзац в блоке, ставиться </strong></p>
-          <p class="b-huge-intro">Заглавный абзац, цвета раздела с отступом слева</p>
+          <p class="b-sub-intro"><strong>Жирный абзац</strong></p>
+          <p class="b-huge-intro"><strong>Цветной абзац в блоке с отступом</strong></p>
 
           Для цитат:
-          <blockquote><p>Текст цитаты серым крупным, не жирным</p></blockquote>
-          <blockquote class="b-compact-quote"><p>Цитата жирным компактным шрифтом</p></blockquote>
+          <blockquote><p>Цитата серым крупным</p></blockquote>
+          <blockquote class="b-compact-quote"><p>Цитата жирным компактным</p></blockquote>
+          <small>Мелким</small>
 
           Раскрывающийся блок:
           <div class="article-desc" title="Описание" hide-title="Скрыть описание">Описание</div>

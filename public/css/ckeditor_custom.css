@@ -1,0 +1,41 @@
+.gallery-bricks {
+border: 1px solid #ccc;
+background: #ffff99;
+margin: 10px;
+}
+
+.gallery-slider {
+border: 1px solid #ccc;
+background: #ffee33;
+margin: 10px;
+}
+
+.gallery-bricks img, .gallery-slider img {
+height: 100px !important;
+width: auto !important;
+margin: 5px;
+}
+
+h2.b-page-title {
+text-transform: uppercase;
+}
+h3.b-sub-title {
+text-transform: uppercase;
+color: #8D3192;
+}
+p.b-sub-intro {
+font-weight: bold;
+}
+p.b-huge-intro{
+font-weight: bold;
+color: #8D3192;
+padding-left: 30px;
+}
+blockquote p {
+color: #555555;
+padding-left: 30px;
+}
+blockquote.b-compact-quote{
+font-weight: bold;
+padding-left: 50px;
+}

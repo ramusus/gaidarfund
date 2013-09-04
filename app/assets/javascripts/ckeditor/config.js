@@ -68,6 +68,15 @@ CKEDITOR.stylesSet.add( 'default', [
     // Block Styles
     { name: 'Галерея слайдер',       element: 'p',      attributes: { 'class': 'gallery-slider' } },
     { name: 'Галерея плиткой',       element: 'p',      attributes: { 'class': 'gallery-bricks' } },
+
+    { name: 'КРУПНЫЙ ПОДЗАГОЛОВОК',  element: 'h2',     attributes: { 'class': 'b-page-title'} },
+    { name: 'ЦВЕТНОЙ ПОДЗАГОЛОВОК',  element: 'h3',     attributes: { 'class': 'b-sub-title'} },
+    { name: 'Жирный абзац',          element: 'p',      attributes: { 'class': 'b-sub-intro'} },
+    { name: 'ЦВЕТНАЯ ВСТАВКА',       element: 'p',      attributes: { 'class': 'b-huge-intro'} },
+    { name: 'Цитата серым',          element: 'blockquote'},
+    { name: 'Цитата жирным',         element: 'blockquote',     attributes: { 'class': 'b-compact-quote'} },
+    { name: 'Мелким',                element: 'small'},
+
 //    { name: 'Картинка справа',      element: 'div',      attributes: { 'style': 'float: right; margin: 0 0 10px 10px;' } },
 //    { name: 'Картинка слева',       element: 'div',      attributes: { 'style': 'float: left; margin: 0 10px 10px 0;' } },
 ] );
@@ -75,4 +84,4 @@ CKEDITOR.stylesSet.add( 'default', [
 CKEDITOR.config.allowedContent = true;
 
 CKEDITOR.config.extraPlugins = 'stylesheetparser';
-CKEDITOR.config.contentsCss = '/css/ckeditor_galleries.css';
+CKEDITOR.config.contentsCss = '/css/ckeditor_custom.css';
