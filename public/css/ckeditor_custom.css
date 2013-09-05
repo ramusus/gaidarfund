@@ -26,12 +26,12 @@ color: #8D3192;
 p.b-sub-intro {
 font-weight: bold;
 }
-p.b-huge-intro{
+p.b-huge-intro {
 font-weight: bold;
 color: #8D3192;
 padding-left: 30px;
 }
-blockquote p {
+blockquote {
 color: #555555;
 padding-left: 30px;
 }
