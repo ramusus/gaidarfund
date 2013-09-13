@@ -2,7 +2,6 @@
 require 'rvm/capistrano'
 require 'bundler/capistrano'
 require 'thinking_sphinx/deploy/capistrano'
-#require 'thinking_sphinx/capistrano'
 #require 'capistrano/deepmodules'
 
 set :application, "gaidarfund"
@@ -79,19 +78,6 @@ namespace :static do
     system "cp -R #{img_source_dir} public"
   end
 end
-
-# sphinx
-#before 'deploy:update_code', 'thinking_sphinx:stop'
-#after  'deploy:update_code', 'thinking_sphinx:start'
-#
-#namespace :sphinx do
-#  desc "Symlink Sphinx indexes"
-#  task :symlink_indexes, :roles => [:app] do
-#    run "ln -nfs #{shared_path}/db/sphinx #{release_path}/db/sphinx"
-#  end
-#end
-#
-#after 'deploy:finalize_update', 'sphinx:symlink_indexes'
 
 # from here https://gist.github.com/2016396
 namespace :deploy do
