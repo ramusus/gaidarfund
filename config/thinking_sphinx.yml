@@ -1,6 +1,6 @@
 development:
-  port: 9306
+  port: mysql41
 test:
-  port: 9306
+  port: mysql41
 production:
-  port: 9306
+  port: mysql41
