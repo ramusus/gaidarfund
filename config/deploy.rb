@@ -16,7 +16,7 @@ set :rvm_ruby_string, "1.9.2"
 set :rvm_type, :user
 
 set :scm, "git"
-set :repository,  "git@ram.unfuddle.com:ram/gaidarfundproject.git"
+set :repository,  "git@github.com:ramusus/gaidarfund.git"
 set :branch, "master"
 
 role :web, "beta.gaidarfund.ru"                          # Your HTTP server, Apache/etc
