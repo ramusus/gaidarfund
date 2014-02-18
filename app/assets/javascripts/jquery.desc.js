@@ -44,10 +44,24 @@
 			
 			function assignEvents(){
 				link.click(function(event){
+					if( originalHeight == 0 ){
+						setOriginalHeight();
+					}
 					toggleDesc();
 					
 					event.preventDefault();
 				});
+			}
+
+			function setOriginalHeight () {
+				// Высота установленная для картинок
+				var newHeight = descContainer.height();
+
+				// Удаляем созданный стиль с высотой и определяем оригинальную высоту,
+				// После чего вновь возвращаем установленную высоту.
+				descContainer.removeAttr('style');
+				originalHeight = descContainer.height();
+				descContainer.height(newHeight);
 			}
 			
 			function toggleDesc(){
