@@ -2331,6 +2331,24 @@ small {
     background: #F2F2F2;
     }
 
+/* Link on english site */
+.b-english-button {
+    position: fixed;
+    right: 0;
+    left: 0;
+    min-width: 1007px;
+    margin-top: -17px;
+    }
+    .b-english-button .link {
+        display: block;
+        float: right;
+        width: 24px;
+        height: 111px;
+        background: url('../img/english-button.jpg');
+        }
+        .b-english-button .link .text {
+            display: none;
+            }
 
 /* =Banners
 --------------------------------------- */
