@@ -2447,6 +2447,7 @@ small {
 
 /* Search */
 .b-search-form {
+    position: relative;
     margin: 4px 0 52px 0;
     }
     .b-search-form .b-input {

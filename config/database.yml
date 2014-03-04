@@ -3,8 +3,6 @@ development:
   encoding: unicode
   database: gaidarfund_project
   pool: 5
-  username: gaidarfund_project
-  password: eqd_ew3s_sd3kic
 
 test:
   adapter: sqlite3
