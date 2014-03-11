@@ -2335,8 +2335,6 @@ small {
 .b-english-button {
     position: fixed;
     right: 0;
-    left: 0;
-    min-width: 1007px;
     margin-top: -17px;
     }
     .b-english-button .link {
