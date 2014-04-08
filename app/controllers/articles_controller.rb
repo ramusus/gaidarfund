@@ -131,8 +131,8 @@ class ArticlesController < ApplicationController
       Articletype.all.each do |type|
         types_count[type.id] = Article.search(params[:query], :with => {:id => articles.map(&:id), :articletype_id => type.id}).count()
       end
-      order = params[:order] == 'relevance' ? "@weight DESC" : "published_at DESC"
-      articles = Article.search(params[:query], :order => order, :with => {:id => articles.map(&:id)}, :page => params[:page], :per_page => params[:per_page])
+      order = params[:order] == 'relevance' ? "w DESC" : "published_at DESC"
+      articles = Article.search(params[:query], :select => 'weight() w', :order => order, :with => {:id => articles.map(&:id)}, :page => params[:page], :per_page => params[:per_page])
       articles.context[:panes] << ThinkingSphinx::Panes::ExcerptsPane
     else
       articles = articles.paginate(:page => params[:page], :per_page => params[:per_page])
