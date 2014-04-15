@@ -15,7 +15,7 @@
     <%= auto_discovery_link_tag(:rss, rss_path) %>
     <script type="text/javascript">
         $(function() {
-            <%= render :partial => 'block_subcsribe_event', :locals => {:project => @project} %>
+            <%= render :partial => 'block_subscribe_event', :locals => {:project => @project} %>
             $('ul.b-main-menu li.item.projects a.link')
                 .addClass('selected')
                 .html(function(i, html) {
