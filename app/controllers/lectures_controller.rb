@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class LecturesController < ApplicationController
 
   def subscribe
@@ -11,14 +12,6 @@ class LecturesController < ApplicationController
     @articles_subscribed = []
 
     @subscriber = LectureSubscriber.new(params[:lecture_subscriber])
-
-    # check if user has site cookie and probably was subscribed before to any lecture
-    cookie_value = read_cookie(:subscribe)
-    if cookie_value
-      @subscriber.email = cookie_value[:email]
-      @subscriber.name = cookie_value[:name]
-      @articles_subscribed = cookie_value[:articles] || []
-    end
 
     respond_to do |format|
       if params[:lecture_subscriber]
@@ -34,23 +27,37 @@ class LecturesController < ApplicationController
         end
 
         # update cookie
-        if not cookie_value
-          cookie_value = {
-            :name => @subscriber.name,
-            :email => @subscriber.email,
-            :articles => [],
-          }
-        end
+        cookie_value = {
+          :name => @subscriber.name,
+          :email => @subscriber.email,
+          :articles => [],
+        }
         cookie_value[:articles] = params[:articles]
         set_cookie(:subscribe, cookie_value)
 
         # send email
         if params[:articles]
-          LectureSubscriberMailer.subscribe_email(@subscriber, params[:articles]).deliver
+          begin
+            LectureSubscriberMailer.subscribe_email(@subscriber, params[:articles]).deliver
+          rescue Net::SMTPFatalError
+            @error = 'Пользователь с таким почтовым адресом не найден'
+          end
         end
+
         format.js
+
       else
+
+        # check if user has site cookie and probably was subscribed before to any lecture
+        cookie_value = read_cookie(:subscribe)
+        if cookie_value
+          @subscriber.email = cookie_value[:email]
+          @subscriber.name = cookie_value[:name]
+          @articles_subscribed = cookie_value[:articles] || []
+        end
+
         format.html
+
       end
     end
   end

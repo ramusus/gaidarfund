@@ -12,7 +12,7 @@
 <% content_for :extra_head do %>
     <script type="text/javascript">
         $(function() {
-            <%= render :partial => 'block_subsribe_event', :locals => {:project => @project} %>
+            <%= render :partial => 'block_subcsribe_event', :locals => {:project => @project} %>
             $('.b-menu li.item a.link[href$="<%= events_subscribe_path %>"]').html(function(i,value) {return '<b class="b-graphics b-graphics-check"><b></b></b>' + value});
             $('ul.b-main-menu li.item.projects a.link')
                 .addClass('selected')
@@ -55,7 +55,7 @@
                     <div class="b-field b-choise">
                         <% @articles.each do |article| %>
                             <div class="item">
-                                <%= check_box_tag 'articles[]', article.id, @articles_subscribed.include?(article.id.to_s), :class => "input", :id => "articles_#{article.id}" %>
+                                <%= check_box_tag 'articles[]', article.id, true, :class => "input", :id => "articles_#{article.id}" %>
                                 <% label_text = l(article.published_at, :format => '%d %B') + ", " + article.title + "<br/>".html_safe + link_to('Описание', article_path(article)) %>
                                 <%= label "articles", article.id, label_text.html_safe, :class => "label" %>
                             </div>
@@ -65,11 +65,11 @@
                     <div class="l-intercolumn-40">
                     <div class="b-field b-wide-input">
                         <%= f.label :name, "Ваше имя и фамилия", :class => "b-label" %>
-                        <%= f.text_field :name, :class => "b-input", :id => "f-fio" %>
+                        <%= f.text_field :name, :class => "b-input", :id => "f-fio", :required => "required" %>
                     </div>
                     <div class="b-field b-wide-input">
                         <%= f.label :email, "Ваш e-mail", :class => "b-label" %>
-                        <%= f.text_field :email, :class => "b-input", :id => "f-email" %>
+                        <%= f.email_field :email, :class => "b-input", :id => "f-email", :required => "required" %>
                     </div>
                     </div>
                     <%= f.submit 'Записаться', :class => "b-submit" %>
@@ -83,6 +83,15 @@
                 var subscribe = {
                     init: function() {
                         $('#subscribe_form,#subscribe_success,#unsubscribe_success').hide();
+                        $("#subscribe_form").validate();
+                        $('#subscribe_form input:checkbox').change(function() {
+                            var $submit = $('#subscribe_form input:submit');
+                            if($('#subscribe_form input:checkbox').is(':checked')) {
+                                $submit.removeAttr('disabled');
+                            } else {
+                                $submit.attr('disabled', 'disabled');
+                            }
+                        });
                     },
                     show_form: function(short) {
                         $('#subscribe_form').show();

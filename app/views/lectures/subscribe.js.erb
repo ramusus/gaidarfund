@@ -1,1 +1,5 @@
-subscribe.success(<% if params[:articles] %>true<% else %>false<% end %>);
+<% if @error %>
+    alert('<%= @error %>');
+<% else %>
+    subscribe.success(true);
+<% end %>

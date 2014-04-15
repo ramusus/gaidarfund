@@ -18,7 +18,7 @@
     <script type="text/javascript">
         $(function() {
             <% if @page.project %>
-                <%= render :partial => 'block_subsribe_event', :locals => {:project => @page.project} %>
+                <%= render :partial => 'block_subscribe_event', :locals => {:project => @page.project} %>
                 $('ul.b-main-menu li.item.project a.link')
             <% elsif @page.page %>
                 $('ul.b-main-menu li.item.<%= @page.page.color_class %> a.link')

@@ -23,7 +23,7 @@
                 $('.b-menu li.item a.link[href$="/<%= @article.type.slug %>"]').html(function(i,value) {return '<b class="b-graphics b-graphics-check"><b></b></b>' + value});
             <% end %>
             <% if @article.project %>
-                <%= render :partial => 'block_subsribe_event', :locals => {:project => @article.project} %>
+                <%= render :partial => 'block_subscribe_event', :locals => {:project => @article.project} %>
             <% end %>
             $('ul.b-main-menu li.item.<%= @menu_class %> a.link')
                 .addClass('selected')
