@@ -11,17 +11,16 @@ class LecturesController < ApplicationController
     @articles = @project.events_active
     @articles_subscribed = []
 
-    @subscriber = LectureSubscriber.new(params[:lecture_subscriber])
-
     respond_to do |format|
       if params[:lecture_subscriber]
 
         # delete all subscribers from this lecture with this email
         @articles.each do |article|
-          LectureSubscriber.where('email = ? AND article_id = ?', @subscriber.email, article.id).destroy_all
+          LectureSubscriber.where('email = ? AND article_id = ?', params[:lecture_subscriber][:email], article.id).destroy_all
         end
 
         params.fetch(:articles, []).each do |id|
+          @subscriber = LectureSubscriber.new(params[:lecture_subscriber])
           @subscriber.article = Article.find(id)
           @subscriber.save
         end
@@ -30,9 +29,8 @@ class LecturesController < ApplicationController
         cookie_value = {
           :name => @subscriber.name,
           :email => @subscriber.email,
-          :articles => [],
+          :articles => params[:articles],
         }
-        cookie_value[:articles] = params[:articles]
         set_cookie(:subscribe, cookie_value)
 
         # send email
@@ -47,6 +45,8 @@ class LecturesController < ApplicationController
         format.js
 
       else
+
+        @subscriber = LectureSubscriber.new()
 
         # check if user has site cookie and probably was subscribed before to any lecture
         cookie_value = read_cookie(:subscribe)

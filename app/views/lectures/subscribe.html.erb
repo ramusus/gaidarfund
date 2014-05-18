@@ -55,7 +55,7 @@
                     <div class="b-field b-choise">
                         <% @articles.each do |article| %>
                             <div class="item">
-                                <%= check_box_tag 'articles[]', article.id, true, :class => "input", :id => "articles_#{article.id}" %>
+                                <%= check_box_tag 'articles[]', article.id, ((@articles_subscribed.include? article.id.to_s) ? true : false), :class => "input", :id => "articles_#{article.id}" %>
                                 <% label_text = l(article.published_at, :format => '%d %B') + ", " + article.title + "<br/>".html_safe + link_to('Описание', article_path(article)) %>
                                 <%= label "articles", article.id, label_text.html_safe, :class => "label" %>
                             </div>
@@ -91,7 +91,7 @@
                             } else {
                                 $submit.attr('disabled', 'disabled');
                             }
-                        });
+                        }).change();
                     },
                     show_form: function(short) {
                         $('#subscribe_form').show();
@@ -102,7 +102,7 @@
                             $('#subscribe_success').show();
                         else
                             $('#unsubscribe_success').show();
-                        $('#subscribe_form .b-field.b-wide-input').hide();
+                        $('#subscribe_form fieldset').hide();
                         $('#subscribe_form input:submit').hide();
                     },
                     already: function() {
