@@ -2846,3 +2846,13 @@ small {
     background: #467235;
     color: #FFF;
     }
+
+.c-museum-promo .b-corner .main-brick {
+    background: #FC4D38;
+    }
+.c-museum-promo .b-corner .light-brick {
+    background: #FA8A64;
+    }
+.c-museum-promo .b-corner .different-brick {
+    background: #C23E31;
+    }
