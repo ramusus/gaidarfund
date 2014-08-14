@@ -49,10 +49,16 @@ class Article < ActiveRecord::Base
     FEATURED_BLOCK_TYPE_OPTIONS
   end
 
+  # default values
+  after_initialize do
+    if self.new_record?
+      self.hide_discussions = true
+    end
+  end
+
 # http://stackoverflow.com/questions/3396831/rails-many-to-many-self-join
 #  has_many :related1, :foreign_key => "article_id", :class_name => "Relation"
 #  has_many :related, :through => :relations
-
   def save(args={})
     if not self.published_at
       self.published_at = Time.now
