@@ -2,8 +2,8 @@ class ApplicationController < ActionController::Base
 
   require 'domainatrix'
 
-  include ExceptionLogger::ExceptionLoggable # loades the module
-  rescue_from Exception, :with => :log_exception_handler # tells rails to forward the 'Exception' (you can change the type) to the handler of the module
+  # include ExceptionLogger::ExceptionLoggable # loades the module
+  # rescue_from Exception, :with => :log_exception_handler # tells rails to forward the 'Exception' (you can change the type) to the handler of the module
 
   protect_from_forgery
   before_filter :set_locale, :set_context

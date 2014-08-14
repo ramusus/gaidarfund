@@ -49,6 +49,13 @@ class Article < ActiveRecord::Base
     FEATURED_BLOCK_TYPE_OPTIONS
   end
 
+  # default values 
+  after_initialize do
+    if self.new_record?      
+      self.hide_discussions = true      
+    end
+  end
+
 # http://stackoverflow.com/questions/3396831/rails-many-to-many-self-join
 #  has_many :related1, :foreign_key => "article_id", :class_name => "Relation"
 #  has_many :related, :through => :relations
@@ -224,16 +231,20 @@ class Article < ActiveRecord::Base
           value.gsub(/</,"&lt;").gsub(/>/,"&gt;").gsub(/\n/,"<br />").html_safe
         end
       end
-      include_fields :right_column do
+      field :right_column, :ck_editor do
+        ckeditor_config_js '/javascripts/ckeditor/config.js'
         help 'Выводится под списком смежных материалов "Еще по теме"'
       end
       include_fields :social_image do
         help 'Картинка проекта используемая в социальных сетях (уменьшается до размера 89 на 89 пикс)'
       end
-      include_fields :content, :right_column do
-        ckeditor true
+      field :content, :ck_editor do 
         ckeditor_config_js '/javascripts/ckeditor/config.js'
-      end
+      end      
+      #include_fields :content, :right_column do
+      #  ckeditor true
+      #  
+      #end
     end
   end
 

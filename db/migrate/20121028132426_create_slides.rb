@@ -1,5 +1,6 @@
 class CreateSlides < ActiveRecord::Migration
   def change
+    return if table_exists? :slides
     create_table :slides do |t|
       t.integer :position
       t.string :color

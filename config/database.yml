@@ -1,10 +1,11 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: gaidarfund_project
+  database: gaidarfund
   pool: 5
-  username: gaidarfund_project
-  password: eqd_ew3s_sd3kic
+  host: localhost
+  username: dbuser
+  password: Rescad46
 
 test:
   adapter: sqlite3

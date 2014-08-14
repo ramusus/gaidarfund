@@ -13,27 +13,27 @@ Gaidarfund::Application.routes.draw do
 
   devise_for :users
 
-  match '/robots.txt' => RobotsGenerator
-  match "/public.php" => "articles#show_old_publication"
-  match "/news.php" => "articles#show_old_news"
-  match "/calendar.php" => "articles#show_old_announce"
+  get '/robots.txt' => RobotsGenerator
+  get "/public.php" => "articles#show_old_publication"
+  get "/news.php" => "articles#show_old_news"
+  get "/calendar.php" => "articles#show_old_announce"
 
-  match "/articles/" => "articles#list", :as => 'articles', :defaults => { :format => 'json' }
-  match "/publications/" => "articles#publications", :as => 'publications'
-  match "/search/" => "application#search", :as => 'search'
+  get "/articles/" => "articles#list", :as => 'articles', :defaults => { :format => 'json' }
+  get "/publications/" => "articles#publications", :as => 'publications'
+  get "/search/" => "application#search", :as => 'search'
 
   Articletype.where("slug != ''").each do |type|
-    match type.slug => "articles#articles_by_type", :as => type.code, :slug => type.slug
+    get type.slug => "articles#articles_by_type", :as => type.code, :slug => type.slug
   end
-  match 'memories_3goda_bez' => "articles#memories_3goda_bez"
+  get 'memories_3goda_bez' => "articles#memories_3goda_bez"
 
   constraints(Subdomain) do
-    match "/" => "projects#show"
-    match "/subscribe/" => "lectures#subscribe", :as => 'events_subscribe'
+    get  "/" => "projects#show"
+    get "/subscribe/" => "lectures#subscribe", :as => 'events_subscribe'
   end
   root :to => "application#index"
 
-  match "/:slug/" => "pages#show"
+  get "/:slug/" => "pages#show"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

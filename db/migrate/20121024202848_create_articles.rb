@@ -1,5 +1,6 @@
 class CreateArticles < ActiveRecord::Migration
   def change
+    return if table_exists? :articles
     create_table :articles do |t|
       t.string :title
       t.text :subtitle

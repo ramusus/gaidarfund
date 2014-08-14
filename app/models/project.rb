@@ -144,14 +144,12 @@ class Project < ActiveRecord::Base
         field :html_block do
           help 'Произвольный блок, выводится в шапке на всех страницах проекта перед лентой (может содержать, например, краткое описание проекта или баннер)'
         end
-        field :html_block_2 do
-          help 'Произвольный блок, выводится перед лентой на главной проекта'
-          ckeditor true
+        field :html_block_2, :ck_editor do
+          help 'Произвольный блок, выводится перед лентой на главной проекта'          
           ckeditor_config_js '/javascripts/ckeditor/config.js'
         end
-        field :html_block_3 do
-          help 'Произвольный блок, выводится после лентой на главной проекта'
-          ckeditor true
+        field :html_block_3, :ck_editor do
+          help 'Произвольный блок, выводится после лентой на главной проекта'          
           ckeditor_config_js '/javascripts/ckeditor/config.js'
         end
         field :partners do

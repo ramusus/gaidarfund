@@ -1,5 +1,6 @@
 class CreateProjects < ActiveRecord::Migration
   def change
+    return if table_exists? :projects
     create_table :projects do |t|
       t.string :title
       t.string :title_short
