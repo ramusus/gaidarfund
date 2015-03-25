@@ -1,5 +1,5 @@
 <% content_for :title do %><%= @article.title_seo.blank? ? strip_tags(@article.title) : @article.title_seo %><% end %>
-<% content_for :description do %><%= @article.title_seo.blank? ? strip_tags(@article.title) : @article.title_seo %> <%= strip_tags(@article.subtitle) %><% end %>
+<% content_for :description do %><%= strip_tags(@article.subtitle) %><% end %>
 
 <% if @article.project %>
     <% content_for :body_class do %><%= "l-#{@article.project.body_class}-page c-#{@article.color_class}-page" %><% end %>
